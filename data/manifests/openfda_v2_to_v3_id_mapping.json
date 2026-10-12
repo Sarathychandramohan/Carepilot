@@ -1,0 +1,620 @@
+{
+  "KB-FDA0001": {
+    "drug": "Lisinopril",
+    "old_id_v2": "KB-FDA0001",
+    "new_id_v3": "KB-FDA0001",
+    "same_id": true
+  },
+  "KB-FDA0002": {
+    "drug": "Amlodipine",
+    "old_id_v2": "KB-FDA0002",
+    "new_id_v3": "KB-FDA0002",
+    "same_id": true
+  },
+  "KB-FDA0003": {
+    "drug": "Losartan",
+    "old_id_v2": "KB-FDA0003",
+    "new_id_v3": "KB-FDA0003",
+    "same_id": true
+  },
+  "KB-FDA0004": {
+    "drug": "Hydrochlorothiazide",
+    "old_id_v2": "KB-FDA0004",
+    "new_id_v3": "KB-FDA0004",
+    "same_id": true
+  },
+  "KB-FDA0005": {
+    "drug": "Metoprolol",
+    "old_id_v2": "KB-FDA0005",
+    "new_id_v3": "KB-FDA0005",
+    "same_id": true
+  },
+  "KB-FDA0006": {
+    "drug": "Furosemide",
+    "old_id_v2": "KB-FDA0006",
+    "new_id_v3": "KB-FDA0006",
+    "same_id": true
+  },
+  "KB-FDA0007": {
+    "drug": "Atorvastatin",
+    "old_id_v2": "KB-FDA0007",
+    "new_id_v3": "KB-FDA0007",
+    "same_id": true
+  },
+  "KB-FDA0008": {
+    "drug": "Simvastatin",
+    "old_id_v2": "KB-FDA0008",
+    "new_id_v3": "KB-FDA0008",
+    "same_id": true
+  },
+  "KB-FDA0009": {
+    "drug": "Rosuvastatin",
+    "old_id_v2": "KB-FDA0009",
+    "new_id_v3": "KB-FDA0009",
+    "same_id": true
+  },
+  "KB-FDA0010": {
+    "drug": "Carvedilol",
+    "old_id_v2": "KB-FDA0010",
+    "new_id_v3": "KB-FDA0010",
+    "same_id": true
+  },
+  "KB-FDA0011": {
+    "drug": "Valsartan",
+    "old_id_v2": "KB-FDA0011",
+    "new_id_v3": "KB-FDA0011",
+    "same_id": true
+  },
+  "KB-FDA0012": {
+    "drug": "Spironolactone",
+    "old_id_v2": "KB-FDA0012",
+    "new_id_v3": "KB-FDA0012",
+    "same_id": true
+  },
+  "KB-FDA0013": {
+    "drug": "Diltiazem",
+    "old_id_v2": "KB-FDA0013",
+    "new_id_v3": "KB-FDA0013",
+    "same_id": true
+  },
+  "KB-FDA0014": {
+    "drug": "Clonidine",
+    "old_id_v2": "KB-FDA0014",
+    "new_id_v3": "KB-FDA0014",
+    "same_id": true
+  },
+  "KB-FDA0015": {
+    "drug": "Hydralazine",
+    "old_id_v2": "KB-FDA0015",
+    "new_id_v3": "KB-FDA0015",
+    "same_id": true
+  },
+  "KB-FDA0016": {
+    "drug": "Pravastatin",
+    "old_id_v2": "KB-FDA0016",
+    "new_id_v3": "KB-FDA0016",
+    "same_id": true
+  },
+  "KB-FDA0017": {
+    "drug": "Ezetimibe",
+    "old_id_v2": "KB-FDA0017",
+    "new_id_v3": "KB-FDA0017",
+    "same_id": true
+  },
+  "KB-FDA0018": {
+    "drug": "Propranolol",
+    "old_id_v2": "KB-FDA0018",
+    "new_id_v3": "KB-FDA0018",
+    "same_id": true
+  },
+  "KB-FDA0019": {
+    "drug": "Atenolol",
+    "old_id_v2": "KB-FDA0019",
+    "new_id_v3": "KB-FDA0019",
+    "same_id": true
+  },
+  "KB-FDA0020": {
+    "drug": "Ramipril",
+    "old_id_v2": "KB-FDA0020",
+    "new_id_v3": "KB-FDA0020",
+    "same_id": true
+  },
+  "KB-FDA0021": {
+    "drug": "Bumetanide",
+    "old_id_v2": "KB-FDA0021",
+    "new_id_v3": "KB-FDA0021",
+    "same_id": true
+  },
+  "KB-FDA0022": {
+    "drug": "Torsemide",
+    "old_id_v2": "KB-FDA0022",
+    "new_id_v3": "KB-FDA0022",
+    "same_id": true
+  },
+  "KB-FDA0023": {
+    "drug": "Chlorthalidone",
+    "old_id_v2": "KB-FDA0023",
+    "new_id_v3": "KB-FDA0023",
+    "same_id": true
+  },
+  "KB-FDA0024": {
+    "drug": "Nifedipine",
+    "old_id_v2": "KB-FDA0024",
+    "new_id_v3": "KB-FDA0024",
+    "same_id": true
+  },
+  "KB-FDA0025": {
+    "drug": "Nitroglycerin",
+    "old_id_v2": "KB-FDA0025",
+    "new_id_v3": "KB-FDA0025",
+    "same_id": true
+  },
+  "KB-FDA0026": {
+    "drug": "Metformin",
+    "old_id_v2": "KB-FDA0026",
+    "new_id_v3": "KB-FDA0026",
+    "same_id": true
+  },
+  "KB-FDA0027": {
+    "drug": "Insulin Glargine",
+    "old_id_v2": "KB-FDA0027",
+    "new_id_v3": "KB-FDA0027",
+    "same_id": true
+  },
+  "KB-FDA0028": {
+    "drug": "Empagliflozin",
+    "old_id_v2": "KB-FDA0028",
+    "new_id_v3": "KB-FDA0028",
+    "same_id": true
+  },
+  "KB-FDA0029": {
+    "drug": "Dapagliflozin",
+    "old_id_v2": "KB-FDA0029",
+    "new_id_v3": "KB-FDA0029",
+    "same_id": true
+  },
+  "KB-FDA0030": {
+    "drug": "Glipizide",
+    "old_id_v2": "KB-FDA0030",
+    "new_id_v3": "KB-FDA0030",
+    "same_id": true
+  },
+  "KB-FDA0031": {
+    "drug": "Glimepiride",
+    "old_id_v2": "KB-FDA0031",
+    "new_id_v3": "KB-FDA0031",
+    "same_id": true
+  },
+  "KB-FDA0032": {
+    "drug": "Sitagliptin",
+    "old_id_v2": "KB-FDA0032",
+    "new_id_v3": "KB-FDA0032",
+    "same_id": true
+  },
+  "KB-FDA0033": {
+    "drug": "Semaglutide",
+    "old_id_v2": "KB-FDA0033",
+    "new_id_v3": "KB-FDA0033",
+    "same_id": true
+  },
+  "KB-FDA0034": {
+    "drug": "Dulaglutide",
+    "old_id_v2": "KB-FDA0034",
+    "new_id_v3": "KB-FDA0034",
+    "same_id": true
+  },
+  "KB-FDA0035": {
+    "drug": "Pioglitazone",
+    "old_id_v2": "KB-FDA0035",
+    "new_id_v3": "KB-FDA0035",
+    "same_id": true
+  },
+  "KB-FDA0036": {
+    "drug": "Levothyroxine",
+    "old_id_v2": "KB-FDA0036",
+    "new_id_v3": "KB-FDA0036",
+    "same_id": true
+  },
+  "KB-FDA0037": {
+    "drug": "Liraglutide",
+    "old_id_v2": "KB-FDA0037",
+    "new_id_v3": "KB-FDA0037",
+    "same_id": true
+  },
+  "KB-FDA0038": {
+    "drug": "Canagliflozin",
+    "old_id_v2": "KB-FDA0038",
+    "new_id_v3": "KB-FDA0038",
+    "same_id": true
+  },
+  "KB-FDA0039": {
+    "drug": "Linagliptin",
+    "old_id_v2": "KB-FDA0039",
+    "new_id_v3": "KB-FDA0039",
+    "same_id": true
+  },
+  "KB-FDA0040": {
+    "drug": "Repaglinide",
+    "old_id_v2": "KB-FDA0040",
+    "new_id_v3": "KB-FDA0040",
+    "same_id": true
+  },
+  "KB-FDA0041": {
+    "drug": "Potassium Chloride",
+    "old_id_v2": "KB-FDA0041",
+    "new_id_v3": "KB-FDA0041",
+    "same_id": true
+  },
+  "KB-FDA0042": {
+    "drug": "Sodium Bicarbonate",
+    "old_id_v2": "KB-FDA0042",
+    "new_id_v3": "KB-FDA0042",
+    "same_id": true
+  },
+  "KB-FDA0043": {
+    "drug": "Calcium Acetate",
+    "old_id_v2": "KB-FDA0043",
+    "new_id_v3": "KB-FDA0043",
+    "same_id": true
+  },
+  "KB-FDA0044": {
+    "drug": "Sevelamer",
+    "old_id_v2": "KB-FDA0044",
+    "new_id_v3": "KB-FDA0044",
+    "same_id": true
+  },
+  "KB-FDA0045": {
+    "drug": "Cinacalcet",
+    "old_id_v2": "KB-FDA0045",
+    "new_id_v3": "KB-FDA0045",
+    "same_id": true
+  },
+  "KB-FDA0046": {
+    "drug": "Allopurinol",
+    "old_id_v2": "KB-FDA0046",
+    "new_id_v3": "KB-FDA0046",
+    "same_id": true
+  },
+  "KB-FDA0047": {
+    "drug": "Febuxostat",
+    "old_id_v2": "KB-FDA0047",
+    "new_id_v3": "KB-FDA0047",
+    "same_id": true
+  },
+  "KB-FDA0048": {
+    "drug": "Colchicine",
+    "old_id_v2": "KB-FDA0048",
+    "new_id_v3": "KB-FDA0048",
+    "same_id": true
+  },
+  "KB-FDA0049": {
+    "drug": "Albuterol",
+    "old_id_v2": "KB-FDA0049",
+    "new_id_v3": "KB-FDA0049",
+    "same_id": true
+  },
+  "KB-FDA0050": {
+    "drug": "Fluticasone",
+    "old_id_v2": "KB-FDA0050",
+    "new_id_v3": "KB-FDA0050",
+    "same_id": true
+  },
+  "KB-FDA0051": {
+    "drug": "Montelukast",
+    "old_id_v2": "KB-FDA0051",
+    "new_id_v3": "KB-FDA0051",
+    "same_id": true
+  },
+  "KB-FDA0052": {
+    "drug": "Budesonide",
+    "old_id_v2": "KB-FDA0052",
+    "new_id_v3": "KB-FDA0052",
+    "same_id": true
+  },
+  "KB-FDA0053": {
+    "drug": "Tiotropium",
+    "old_id_v2": "KB-FDA0053",
+    "new_id_v3": "KB-FDA0054",
+    "same_id": false
+  },
+  "KB-FDA0054": {
+    "drug": "Cetirizine",
+    "old_id_v2": "KB-FDA0054",
+    "new_id_v3": "KB-FDA0055",
+    "same_id": false
+  },
+  "KB-FDA0055": {
+    "drug": "Loratadine",
+    "old_id_v2": "KB-FDA0055",
+    "new_id_v3": "KB-FDA0056",
+    "same_id": false
+  },
+  "KB-FDA0056": {
+    "drug": "Fexofenadine",
+    "old_id_v2": "KB-FDA0056",
+    "new_id_v3": "KB-FDA0057",
+    "same_id": false
+  },
+  "KB-FDA0057": {
+    "drug": "Diphenhydramine",
+    "old_id_v2": "KB-FDA0057",
+    "new_id_v3": "KB-FDA0058",
+    "same_id": false
+  },
+  "KB-FDA0058": {
+    "drug": "Prednisone",
+    "old_id_v2": "KB-FDA0058",
+    "new_id_v3": "KB-FDA0059",
+    "same_id": false
+  },
+  "KB-FDA0059": {
+    "drug": "Methylprednisolone",
+    "old_id_v2": "KB-FDA0059",
+    "new_id_v3": "KB-FDA0060",
+    "same_id": false
+  },
+  "KB-FDA0060": {
+    "drug": "Dexamethasone",
+    "old_id_v2": "KB-FDA0060",
+    "new_id_v3": "KB-FDA0061",
+    "same_id": false
+  },
+  "KB-FDA0061": {
+    "drug": "Omeprazole",
+    "old_id_v2": "KB-FDA0061",
+    "new_id_v3": "KB-FDA0062",
+    "same_id": false
+  },
+  "KB-FDA0062": {
+    "drug": "Pantoprazole",
+    "old_id_v2": "KB-FDA0062",
+    "new_id_v3": "KB-FDA0063",
+    "same_id": false
+  },
+  "KB-FDA0063": {
+    "drug": "Famotidine",
+    "old_id_v2": "KB-FDA0063",
+    "new_id_v3": "KB-FDA0064",
+    "same_id": false
+  },
+  "KB-FDA0064": {
+    "drug": "Esomeprazole",
+    "old_id_v2": "KB-FDA0064",
+    "new_id_v3": "KB-FDA0065",
+    "same_id": false
+  },
+  "KB-FDA0065": {
+    "drug": "Lansoprazole",
+    "old_id_v2": "KB-FDA0065",
+    "new_id_v3": "KB-FDA0066",
+    "same_id": false
+  },
+  "KB-FDA0066": {
+    "drug": "Metoclopramide",
+    "old_id_v2": "KB-FDA0066",
+    "new_id_v3": "KB-FDA0067",
+    "same_id": false
+  },
+  "KB-FDA0067": {
+    "drug": "Ondansetron",
+    "old_id_v2": "KB-FDA0067",
+    "new_id_v3": "KB-FDA0068",
+    "same_id": false
+  },
+  "KB-FDA0068": {
+    "drug": "Sucralfate",
+    "old_id_v2": "KB-FDA0068",
+    "new_id_v3": "KB-FDA0069",
+    "same_id": false
+  },
+  "KB-FDA0069": {
+    "drug": "Dicyclomine",
+    "old_id_v2": "KB-FDA0069",
+    "new_id_v3": "KB-FDA0070",
+    "same_id": false
+  },
+  "KB-FDA0070": {
+    "drug": "Gabapentin",
+    "old_id_v2": "KB-FDA0070",
+    "new_id_v3": "KB-FDA0071",
+    "same_id": false
+  },
+  "KB-FDA0071": {
+    "drug": "Pregabalin",
+    "old_id_v2": "KB-FDA0071",
+    "new_id_v3": "KB-FDA0072",
+    "same_id": false
+  },
+  "KB-FDA0072": {
+    "drug": "Duloxetine",
+    "old_id_v2": "KB-FDA0072",
+    "new_id_v3": "KB-FDA0073",
+    "same_id": false
+  },
+  "KB-FDA0073": {
+    "drug": "Tramadol",
+    "old_id_v2": "KB-FDA0073",
+    "new_id_v3": "KB-FDA0074",
+    "same_id": false
+  },
+  "KB-FDA0074": {
+    "drug": "Acetaminophen",
+    "old_id_v2": "KB-FDA0074",
+    "new_id_v3": "KB-FDA0075",
+    "same_id": false
+  },
+  "KB-FDA0075": {
+    "drug": "Ibuprofen",
+    "old_id_v2": "KB-FDA0075",
+    "new_id_v3": "KB-FDA0076",
+    "same_id": false
+  },
+  "KB-FDA0076": {
+    "drug": "Naproxen",
+    "old_id_v2": "KB-FDA0076",
+    "new_id_v3": "KB-FDA0077",
+    "same_id": false
+  },
+  "KB-FDA0077": {
+    "drug": "Meloxicam",
+    "old_id_v2": "KB-FDA0077",
+    "new_id_v3": "KB-FDA0078",
+    "same_id": false
+  },
+  "KB-FDA0078": {
+    "drug": "Celecoxib",
+    "old_id_v2": "KB-FDA0078",
+    "new_id_v3": "KB-FDA0079",
+    "same_id": false
+  },
+  "KB-FDA0079": {
+    "drug": "Baclofen",
+    "old_id_v2": "KB-FDA0079",
+    "new_id_v3": "KB-FDA0080",
+    "same_id": false
+  },
+  "KB-FDA0080": {
+    "drug": "Cyclobenzaprine",
+    "old_id_v2": "KB-FDA0080",
+    "new_id_v3": "KB-FDA0081",
+    "same_id": false
+  },
+  "KB-FDA0081": {
+    "drug": "Tizanidine",
+    "old_id_v2": "KB-FDA0081",
+    "new_id_v3": "KB-FDA0082",
+    "same_id": false
+  },
+  "KB-FDA0082": {
+    "drug": "Sertraline",
+    "old_id_v2": "KB-FDA0082",
+    "new_id_v3": "KB-FDA0083",
+    "same_id": false
+  },
+  "KB-FDA0083": {
+    "drug": "Escitalopram",
+    "old_id_v2": "KB-FDA0083",
+    "new_id_v3": "KB-FDA0084",
+    "same_id": false
+  },
+  "KB-FDA0084": {
+    "drug": "Fluoxetine",
+    "old_id_v2": "KB-FDA0084",
+    "new_id_v3": "KB-FDA0085",
+    "same_id": false
+  },
+  "KB-FDA0085": {
+    "drug": "Amoxicillin",
+    "old_id_v2": "KB-FDA0085",
+    "new_id_v3": "KB-FDA0086",
+    "same_id": false
+  },
+  "KB-FDA0086": {
+    "drug": "Azithromycin",
+    "old_id_v2": "KB-FDA0086",
+    "new_id_v3": "KB-FDA0087",
+    "same_id": false
+  },
+  "KB-FDA0087": {
+    "drug": "Ciprofloxacin",
+    "old_id_v2": "KB-FDA0087",
+    "new_id_v3": "KB-FDA0088",
+    "same_id": false
+  },
+  "KB-FDA0088": {
+    "drug": "Levofloxacin",
+    "old_id_v2": "KB-FDA0088",
+    "new_id_v3": "KB-FDA0089",
+    "same_id": false
+  },
+  "KB-FDA0089": {
+    "drug": "Cephalexin",
+    "old_id_v2": "KB-FDA0089",
+    "new_id_v3": "KB-FDA0090",
+    "same_id": false
+  },
+  "KB-FDA0090": {
+    "drug": "Doxycycline",
+    "old_id_v2": "KB-FDA0090",
+    "new_id_v3": "KB-FDA0091",
+    "same_id": false
+  },
+  "KB-FDA0091": {
+    "drug": "Nitrofurantoin",
+    "old_id_v2": "KB-FDA0091",
+    "new_id_v3": "KB-FDA0093",
+    "same_id": false
+  },
+  "KB-FDA0092": {
+    "drug": "Fluconazole",
+    "old_id_v2": "KB-FDA0092",
+    "new_id_v3": "KB-FDA0094",
+    "same_id": false
+  },
+  "KB-FDA0093": {
+    "drug": "Clindamycin",
+    "old_id_v2": "KB-FDA0093",
+    "new_id_v3": "KB-FDA0095",
+    "same_id": false
+  },
+  "KB-FDA0094": {
+    "drug": "Metronidazole",
+    "old_id_v2": "KB-FDA0094",
+    "new_id_v3": "KB-FDA0096",
+    "same_id": false
+  },
+  "KB-FDA0095": {
+    "drug": "Cefdinir",
+    "old_id_v2": "KB-FDA0095",
+    "new_id_v3": "KB-FDA0097",
+    "same_id": false
+  },
+  "KB-FDA0096": {
+    "drug": "Augmentin",
+    "old_id_v2": "KB-FDA0096",
+    "new_id_v3": "KB-FDA0098",
+    "same_id": false
+  },
+  "KB-FDA0097": {
+    "drug": "Aspirin",
+    "old_id_v2": "KB-FDA0097",
+    "new_id_v3": "KB-FDA0099",
+    "same_id": false
+  },
+  "KB-FDA0098": {
+    "drug": "Clopidogrel",
+    "old_id_v2": "KB-FDA0098",
+    "new_id_v3": "KB-FDA0100",
+    "same_id": false
+  },
+  "KB-FDA0099": {
+    "drug": "Apixaban",
+    "old_id_v2": "KB-FDA0099",
+    "new_id_v3": "KB-FDA0101",
+    "same_id": false
+  },
+  "KB-FDA0100": {
+    "drug": "Rivaroxaban",
+    "old_id_v2": "KB-FDA0100",
+    "new_id_v3": "KB-FDA0102",
+    "same_id": false
+  },
+  "KB-FDA0101": {
+    "drug": "Warfarin",
+    "old_id_v2": "KB-FDA0101",
+    "new_id_v3": "KB-FDA0103",
+    "same_id": false
+  },
+  "KB-FDA0102": {
+    "drug": "Dabigatran",
+    "old_id_v2": "KB-FDA0102",
+    "new_id_v3": "KB-FDA0104",
+    "same_id": false
+  },
+  "KB-FDA0103": {
+    "drug": "Enoxaparin",
+    "old_id_v2": "KB-FDA0103",
+    "new_id_v3": "KB-FDA0105",
+    "same_id": false
+  }
+}

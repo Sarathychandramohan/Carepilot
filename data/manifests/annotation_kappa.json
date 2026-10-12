@@ -1,0 +1,10 @@
+{
+  "dataset": "gold.jsonl",
+  "sample_size": 500,
+  "intent_cohen_kappa": 0.9903,
+  "intent_gate_pass": true,
+  "urgency_linear_weighted_kappa": 0.9014,
+  "urgency_gate_pass": true,
+  "gate_criterion": "Kappa >= 0.70",
+  "overall_gate_status": "PASS"
+}

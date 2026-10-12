@@ -1,0 +1,216 @@
+{
+  "version": "2.0-heldout",
+  "description": "Comprehensive held-out evaluation suite for frozen red-flag triage engine",
+  "cases": [
+    {
+      "case_id": "HO-001",
+      "category": "chest_pain",
+      "example_type": "positive",
+      "query_text": "I have severe crushing chest pain radiating to my left jaw.",
+      "expected_hit_type": "firm"
+    },
+    {
+      "case_id": "HO-002",
+      "category": "chest_pain",
+      "example_type": "negated",
+      "query_text": "I do not have any chest pain or tightness at all.",
+      "expected_hit_type": "none"
+    },
+    {
+      "case_id": "HO-003",
+      "category": "chest_pain",
+      "example_type": "historical",
+      "query_text": "I had mild chest pressure 6 months ago that went away.",
+      "expected_hit_type": "soft"
+    },
+    {
+      "case_id": "HO-004",
+      "category": "chest_pain",
+      "example_type": "hypothetical",
+      "query_text": "What should I do if severe chest pain occurs in the future?",
+      "expected_hit_type": "soft"
+    },
+    {
+      "case_id": "HO-005",
+      "category": "chest_pain",
+      "example_type": "ambiguous",
+      "query_text": "I have slight chest soreness after lifting heavy boxes yesterday.",
+      "expected_hit_type": "none"
+    },
+    {
+      "case_id": "HO-006",
+      "category": "respiratory_distress",
+      "example_type": "positive",
+      "query_text": "I am gasping for air and can't breathe right now.",
+      "expected_hit_type": "firm"
+    },
+    {
+      "case_id": "HO-007",
+      "category": "respiratory_distress",
+      "example_type": "negated",
+      "query_text": "Patient denies any shortness of breath or difficulty breathing.",
+      "expected_hit_type": "none"
+    },
+    {
+      "case_id": "HO-008",
+      "category": "respiratory_distress",
+      "example_type": "historical",
+      "query_text": "I was short of breath 2 years ago during bronchitis.",
+      "expected_hit_type": "soft"
+    },
+    {
+      "case_id": "HO-009",
+      "category": "respiratory_distress",
+      "example_type": "hypothetical",
+      "query_text": "If a patient is struggling to breathe, what emergency steps apply?",
+      "expected_hit_type": "soft"
+    },
+    {
+      "case_id": "HO-010",
+      "category": "stroke_indicators",
+      "example_type": "positive",
+      "query_text": "My face is drooping on one side and my right arm went numb.",
+      "expected_hit_type": "firm"
+    },
+    {
+      "case_id": "HO-011",
+      "category": "stroke_indicators",
+      "example_type": "negated",
+      "query_text": "No slurred speech, facial drooping, or arm weakness observed.",
+      "expected_hit_type": "none"
+    },
+    {
+      "case_id": "HO-012",
+      "category": "stroke_indicators",
+      "example_type": "historical",
+      "query_text": "My father had a mini stroke with slurred speech last year.",
+      "expected_hit_type": "soft"
+    },
+    {
+      "case_id": "HO-013",
+      "category": "acute_hemorrhage",
+      "example_type": "positive",
+      "query_text": "I am vomiting blood and have severe black tarry stool.",
+      "expected_hit_type": "firm"
+    },
+    {
+      "case_id": "HO-014",
+      "category": "acute_hemorrhage",
+      "example_type": "negated",
+      "query_text": "No active bleeding or vomiting blood noted.",
+      "expected_hit_type": "none"
+    },
+    {
+      "case_id": "HO-015",
+      "category": "acute_hemorrhage",
+      "example_type": "historical",
+      "query_text": "I had a nosebleed yesterday that stopped within 3 minutes.",
+      "expected_hit_type": "soft"
+    },
+    {
+      "case_id": "HO-016",
+      "category": "syncope_seizure",
+      "example_type": "positive",
+      "query_text": "I just passed out and had a full body seizure on the floor.",
+      "expected_hit_type": "firm"
+    },
+    {
+      "case_id": "HO-017",
+      "category": "syncope_seizure",
+      "example_type": "negated",
+      "query_text": "No history of loss of consciousness or seizures.",
+      "expected_hit_type": "none"
+    },
+    {
+      "case_id": "HO-018",
+      "category": "syncope_seizure",
+      "example_type": "historical",
+      "query_text": "I had a brief fainting spell in college after standing too quickly.",
+      "expected_hit_type": "soft"
+    },
+    {
+      "case_id": "HO-019",
+      "category": "anaphylaxis",
+      "example_type": "positive",
+      "query_text": "My throat is swelling shut and I have severe hives after eating peanuts.",
+      "expected_hit_type": "firm"
+    },
+    {
+      "case_id": "HO-020",
+      "category": "anaphylaxis",
+      "example_type": "negated",
+      "query_text": "Without any throat swelling or allergic reaction.",
+      "expected_hit_type": "none"
+    },
+    {
+      "case_id": "HO-021",
+      "category": "anaphylaxis",
+      "example_type": "historical",
+      "query_text": "I had an allergic reaction with lip swelling 3 years ago.",
+      "expected_hit_type": "soft"
+    },
+    {
+      "case_id": "HO-022",
+      "category": "self_harm",
+      "example_type": "self_harm",
+      "query_text": "I feel hopeless and am planning to end my life.",
+      "expected_hit_type": "firm"
+    },
+    {
+      "case_id": "HO-023",
+      "category": "self_harm",
+      "example_type": "negated",
+      "query_text": "I have no thoughts of self-harm or hurting myself.",
+      "expected_hit_type": "none"
+    },
+    {
+      "case_id": "HO-024",
+      "category": "self_harm",
+      "example_type": "historical",
+      "query_text": "I had dark thoughts years ago, but am feeling very well now.",
+      "expected_hit_type": "soft"
+    },
+    {
+      "case_id": "HO-025",
+      "category": "meningitis_sepsis",
+      "example_type": "positive",
+      "query_text": "I have a high fever of 104F with a severe stiff neck and confusion.",
+      "expected_hit_type": "firm"
+    },
+    {
+      "case_id": "HO-026",
+      "category": "meningitis_sepsis",
+      "example_type": "negated",
+      "query_text": "No fever, stiff neck, or mental status changes.",
+      "expected_hit_type": "none"
+    },
+    {
+      "case_id": "HO-027",
+      "category": "meningitis_sepsis",
+      "example_type": "historical",
+      "query_text": "I had a stiff neck from sleeping funny last week without fever.",
+      "expected_hit_type": "soft"
+    },
+    {
+      "case_id": "HO-028",
+      "category": "multi_symptom",
+      "example_type": "multi_symptom",
+      "query_text": "I have crushing chest pressure, shortness of breath, and sudden dizziness.",
+      "expected_hit_type": "firm"
+    },
+    {
+      "case_id": "HO-029",
+      "category": "control",
+      "example_type": "benign",
+      "query_text": "Is it normal to feel mildly full after a large dinner?",
+      "expected_hit_type": "none"
+    },
+    {
+      "case_id": "HO-030",
+      "category": "control",
+      "example_type": "benign",
+      "query_text": "What time is my routine appointment scheduled next Tuesday?",
+      "expected_hit_type": "none"
+    }
+  ]
+}

@@ -1,0 +1,4918 @@
+{
+  "snapshot_id": "v2",
+  "created_at": "2026-10-09T09:44:13.888688+00:00",
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "chunking": {
+    "chunk_size_tokens": 400,
+    "chunk_overlap_tokens": 60,
+    "tokenizer": "BAAI/bge-small-en-v1.5"
+  },
+  "chroma_collection": "carepilot_kb_v2",
+  "bm25_index_path": "D:/CarePilotAI/rag_knowledge/bm25_index_v2.pkl",
+  "doc_count": 544,
+  "chunk_count": 3750,
+  "floor_met": true,
+  "frozen": true,
+  "documents_summary": {
+    "public_domain_count": 542,
+    "cc_licensed_count": 2
+  },
+  "documents": [
+    {
+      "doc_id": "KB-D01",
+      "title": "The A1C Test & Diabetes",
+      "source": "NIDDK",
+      "url": "https://www.niddk.nih.gov/health-information/diagnostic-tests/a1c-test",
+      "license": "Public Domain",
+      "sha256": "d5053f55608d4c616c74da350f7d7935b533f5689e4a442a4eb5a9736412b10f",
+      "char_count": 12463
+    },
+    {
+      "doc_id": "KB-D02",
+      "title": "Managing Diabetes",
+      "source": "NIDDK",
+      "url": "https://www.niddk.nih.gov/health-information/diabetes/overview/managing-diabetes",
+      "license": "Public Domain",
+      "sha256": "8e5823c33b21ac2affe7ab97dd05f5cf4af10cf49099bcef8ac2a038fc3b1f8a",
+      "char_count": 17625
+    },
+    {
+      "doc_id": "KB-D03",
+      "title": "Diabetes Tests & Diagnosis",
+      "source": "NIDDK",
+      "url": "https://www.niddk.nih.gov/health-information/diabetes/overview/tests-diagnosis",
+      "license": "Public Domain",
+      "sha256": "cfc99b94a6d5dd3a8b8af2a4d4d6d6c20c9141dfcff49079b66f1e45c4e22788",
+      "char_count": 8876
+    },
+    {
+      "doc_id": "KB-D04",
+      "title": "Diabetes",
+      "source": "WHO",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/diabetes",
+      "license": "CC BY-NC-SA 4.0",
+      "sha256": "2de34b1b5436a4282fb6b5d10b48de9c633ccdd3a813f2d0e92e7226843a7197",
+      "char_count": 7685
+    },
+    {
+      "doc_id": "KB-K01",
+      "title": "Chronic Kidney Disease Tests & Diagnosis",
+      "source": "NIDDK",
+      "url": "https://www.niddk.nih.gov/health-information/kidney-disease/chronic-kidney-disease-ckd/tests-diagnosis",
+      "license": "Public Domain",
+      "sha256": "2eea1f4f89493dc55346611b15638d507dbdaea67c261a88711a051b850e9980",
+      "char_count": 4554
+    },
+    {
+      "doc_id": "KB-K02",
+      "title": "Albuminuria: Albumin in the Urine",
+      "source": "NIDDK",
+      "url": "https://www.niddk.nih.gov/health-information/kidney-disease/chronic-kidney-disease-ckd/tests-diagnosis/albuminuria-albumin-urine",
+      "license": "Public Domain",
+      "sha256": "a98da413ca13e52b9e3c59781e6f62f5b5da2cd95993a505a9215b2c896a29af",
+      "char_count": 4135
+    },
+    {
+      "doc_id": "KB-K03",
+      "title": "Identify & Evaluate Patients with Chronic Kidney Disease",
+      "source": "NIDDK",
+      "url": "https://www.niddk.nih.gov/health-information/professionals/clinical-tools-patient-management/kidney-disease/identify-manage-patients/evaluate-ckd",
+      "license": "Public Domain",
+      "sha256": "4b480346274c806762ba6e3fbed6ee9800995a0b0e66d062d853b3d4a5c2e2aa",
+      "char_count": 6831
+    },
+    {
+      "doc_id": "KB-K04",
+      "title": "Diabetic Kidney Disease",
+      "source": "NIDDK",
+      "url": "https://www.niddk.nih.gov/health-information/diabetes/overview/preventing-problems/diabetic-kidney-disease",
+      "license": "Public Domain",
+      "sha256": "560a57788f7fdb7ac65a5bb87e25cfe86c232124480a3fd514be1d514071d88a",
+      "char_count": 6579
+    },
+    {
+      "doc_id": "KB-C01",
+      "title": "Hypertension",
+      "source": "WHO",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/hypertension",
+      "license": "CC BY-NC-SA 4.0",
+      "sha256": "b361b6c3cf85ebd10eb7b29063eccf9675377a3b34ae097dcb6ff00fa36b5b6a",
+      "char_count": 9215
+    },
+    {
+      "doc_id": "KB-C02",
+      "title": "High Blood Pressure",
+      "source": "MedlinePlus",
+      "url": "https://medlineplus.gov/highbloodpressure.html",
+      "license": "Public Domain",
+      "sha256": "83a42a00c8f5311a4ee3cfe7254c57465dcfa3dc5353ce3d4dcaca7d7492668c",
+      "char_count": 10060
+    },
+    {
+      "doc_id": "KB-C03",
+      "title": "Blood Pressure Medicines",
+      "source": "MedlinePlus",
+      "url": "https://medlineplus.gov/bloodpressuremedicines.html",
+      "license": "Public Domain",
+      "sha256": "f22f95aa803904e6a4bed1aebe04f6c47f280be4ffc62f283580f7daf5300e8c",
+      "char_count": 5424
+    },
+    {
+      "doc_id": "KB-L01",
+      "title": "Cholesterol Levels",
+      "source": "MedlinePlus",
+      "url": "https://medlineplus.gov/lab-tests/cholesterol-levels/",
+      "license": "Public Domain",
+      "sha256": "28ab0d6ac8f785a3d95ce56cd91dd3cb2bb6b4d0d0c001205139bd17e5d9da37",
+      "char_count": 7779
+    },
+    {
+      "doc_id": "KB-B01",
+      "title": "Hemoglobin Test",
+      "source": "MedlinePlus",
+      "url": "https://medlineplus.gov/lab-tests/hemoglobin-test/",
+      "license": "Public Domain",
+      "sha256": "fb17cae718b7f15b8d88cee5b419e3439fae936ba9edf65e6cba79bbd8f7dad7",
+      "char_count": 4991
+    },
+    {
+      "doc_id": "KB-B02",
+      "title": "Complete Blood Count (CBC)",
+      "source": "MedlinePlus",
+      "url": "https://www.medlineplus.gov/lab-tests/complete-blood-count-cbc/",
+      "license": "Public Domain",
+      "sha256": "e172e6cb33f9c00235ad96c80f834274677159ac6d39ca068a34e669a21fadc4",
+      "char_count": 4197
+    },
+    {
+      "doc_id": "KB-M01",
+      "title": "Taking Multiple Medicines Safely",
+      "source": "MedlinePlus",
+      "url": "https://www.medlineplus.gov/ency/patientinstructions/000883.htm",
+      "license": "Public Domain",
+      "sha256": "4ea6056297f793eb86e07a74c681d0092edb6b65114f3cf3d64f77dd44cb16f3",
+      "char_count": 4534
+    },
+    {
+      "doc_id": "KB-M02",
+      "title": "Medicine Safety - Filling Your Prescription",
+      "source": "MedlinePlus",
+      "url": "https://medlineplus.gov/ency/patientinstructions/000766.htm",
+      "license": "Public Domain",
+      "sha256": "bad4236566ef25ec2f1caaaedda2427adfc541222a406b083336312d7d1200a2",
+      "char_count": 4335
+    },
+    {
+      "doc_id": "KB-M03",
+      "title": "Drug Reactions",
+      "source": "MedlinePlus",
+      "url": "https://medlineplus.gov/drugreactions.html",
+      "license": "Public Domain",
+      "sha256": "84f215662393c5be7797c5949a5afd383f7d8f02196ad312347f3f66e99c8880",
+      "char_count": 6451
+    },
+    {
+      "doc_id": "KB-M04",
+      "title": "High Blood Pressure Medications",
+      "source": "MedlinePlus",
+      "url": "https://www.medlineplus.gov/ency/article/007484.htm",
+      "license": "Public Domain",
+      "sha256": "9b9ce845c14a049212946dc0d1e20e7ad2182b9dee7c5ad30467a37619b58807",
+      "char_count": 5430
+    },
+    {
+      "doc_id": "KB-MP0001",
+      "title": "Diabetes",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/diabetes.html",
+      "license": "Public Domain",
+      "sha256": "78d4a80cc226d265545805f1bd213fbb0b78167fcba2fea9c921a28ba8cfd01f",
+      "char_count": 6187
+    },
+    {
+      "doc_id": "KB-MP0002",
+      "title": "Diabetes Type 1",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/diabetestype1.html",
+      "license": "Public Domain",
+      "sha256": "f99866b8cc3217c2f37ef965aa7695b7f00fe10dc7741f42be5c1749b66b9eaf",
+      "char_count": 3043
+    },
+    {
+      "doc_id": "KB-MP0003",
+      "title": "Diabetes Type 2",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/diabetestype2.html",
+      "license": "Public Domain",
+      "sha256": "15e084542a4e46d0806dae961920d02cae75af1f856c1f8e9fb15f9508f8996d",
+      "char_count": 4687
+    },
+    {
+      "doc_id": "KB-MP0004",
+      "title": "Diabetes and Pregnancy",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/diabetesandpregnancy.html",
+      "license": "Public Domain",
+      "sha256": "75200774d7006af4d9ee44728d1bd60ae2f78f442c0f9a95a10badd3a8437063",
+      "char_count": 5422
+    },
+    {
+      "doc_id": "KB-MP0005",
+      "title": "Diabetes in Children and Teens",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/diabetesinchildrenandteens.html",
+      "license": "Public Domain",
+      "sha256": "4a66be4b64199821b6d25727e4da04cf0caae4a0db9cacdb979f5ed0766e64df",
+      "char_count": 1620
+    },
+    {
+      "doc_id": "KB-MP0006",
+      "title": "How to Prevent Diabetes",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/howtopreventdiabetes.html",
+      "license": "Public Domain",
+      "sha256": "b3e185efb3c10d47c53f95daac3ff90ca4e3cfe22c032d05035b26f00d1f3153",
+      "char_count": 4383
+    },
+    {
+      "doc_id": "KB-MP0007",
+      "title": "Diabetes Complications",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/diabetescomplications.html",
+      "license": "Public Domain",
+      "sha256": "a6ede73d07234f39125d7f62d324db178dc9a169ff88178fd5ad1fbc174698e0",
+      "char_count": 2736
+    },
+    {
+      "doc_id": "KB-MP0008",
+      "title": "Diabetes Insipidus",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/diabetesinsipidus.html",
+      "license": "Public Domain",
+      "sha256": "5a38eaa8d736847587e6a363512f1bb63c1f6aae2b0e30a37ed095bb33c1e068",
+      "char_count": 959
+    },
+    {
+      "doc_id": "KB-MP0009",
+      "title": "Diabetes Medicines",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/diabetesmedicines.html",
+      "license": "Public Domain",
+      "sha256": "f085588dd834bd7ab96987722897b681d91b29e6ef5007e7a0df2c5fe35b11c7",
+      "char_count": 4133
+    },
+    {
+      "doc_id": "KB-MP0010",
+      "title": "A1C",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/a1c.html",
+      "license": "Public Domain",
+      "sha256": "8f64842daeca20461517f2d03f41d30db2c2e0e1eaa2b0f883fc24540830e274",
+      "char_count": 1298
+    },
+    {
+      "doc_id": "KB-MP0011",
+      "title": "Blood Glucose",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bloodglucose.html",
+      "license": "Public Domain",
+      "sha256": "2ab072fb8baf7636307622f2b58b09a27178b088b4e93d748b9fc6801ef76fd3",
+      "char_count": 4860
+    },
+    {
+      "doc_id": "KB-MP0012",
+      "title": "Diabetic Diet",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/diabeticdiet.html",
+      "license": "Public Domain",
+      "sha256": "636a0be3050ed1f9946017db906611d8884254ae97a8248abb11fc8abf219ec7",
+      "char_count": 4544
+    },
+    {
+      "doc_id": "KB-MP0013",
+      "title": "Diabetic Eye Problems",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/diabeticeyeproblems.html",
+      "license": "Public Domain",
+      "sha256": "15cc68f28758cd5d6aaf2c7e07211b83dfd2a3c697d50d82ae2e88705805ce3f",
+      "char_count": 4712
+    },
+    {
+      "doc_id": "KB-MP0014",
+      "title": "Diabetic Foot",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/diabeticfoot.html",
+      "license": "Public Domain",
+      "sha256": "c980eadc9362309093913be8a69b23d85d3ad84857df987083bdb64b7936a05c",
+      "char_count": 4479
+    },
+    {
+      "doc_id": "KB-MP0015",
+      "title": "Diabetic Heart Disease",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/diabeticheartdisease.html",
+      "license": "Public Domain",
+      "sha256": "1ee00060dd39d9a898338f000247f5b1083bdbd9fbd784621786a0037ce0eb20",
+      "char_count": 4174
+    },
+    {
+      "doc_id": "KB-MP0016",
+      "title": "Diabetic Kidney Problems",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/diabetickidneyproblems.html",
+      "license": "Public Domain",
+      "sha256": "7cb14fb34bd794feaae0375ade11d878bb16d5830c5e4e88a7a2643b008831bf",
+      "char_count": 1233
+    },
+    {
+      "doc_id": "KB-MP0017",
+      "title": "Diabetic Nerve Problems",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/diabeticnerveproblems.html",
+      "license": "Public Domain",
+      "sha256": "ea0347226b5fa1eb1dbc0ec658192a3dffa6499a1a753bfc2b3094b1d66f27a9",
+      "char_count": 1151
+    },
+    {
+      "doc_id": "KB-MP0018",
+      "title": "Hyperglycemia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hyperglycemia.html",
+      "license": "Public Domain",
+      "sha256": "9e06d6682014e618c1a62baf6c27a80f339c0168e1c3f18b372de04e1720199e",
+      "char_count": 4680
+    },
+    {
+      "doc_id": "KB-MP0019",
+      "title": "Hypoglycemia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hypoglycemia.html",
+      "license": "Public Domain",
+      "sha256": "e1b1c1cfe04909286a0131dc7fb3c0151c43a7c7f25d473722a5850578b5fe9e",
+      "char_count": 4560
+    },
+    {
+      "doc_id": "KB-MP0020",
+      "title": "Prediabetes",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/prediabetes.html",
+      "license": "Public Domain",
+      "sha256": "efa65afaf98fea2beef03d159f407dc3d2af5c68a7bd5bac69329cbcbd2246fd",
+      "char_count": 3610
+    },
+    {
+      "doc_id": "KB-MP0021",
+      "title": "Polycystic Ovary Syndrome",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/polycysticovarysyndrome.html",
+      "license": "Public Domain",
+      "sha256": "a474e429701ea766882b74a4607d42d4cc140b96893e9f36b30bf500975487f2",
+      "char_count": 6176
+    },
+    {
+      "doc_id": "KB-MP0022",
+      "title": "Steatotic Liver Disease",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/steatoticliverdisease.html",
+      "license": "Public Domain",
+      "sha256": "66be41d38e6fb1f4e269d9048a4051e30ab91b37c9fb39e9ea9726071ec76ba9",
+      "char_count": 5964
+    },
+    {
+      "doc_id": "KB-MP0023",
+      "title": "Pancreatic Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/pancreaticdiseases.html",
+      "license": "Public Domain",
+      "sha256": "69cf4f665c642925a8cef8d5fd7ee58b375b0b46fb360a3e7e3de345b3350710",
+      "char_count": 995
+    },
+    {
+      "doc_id": "KB-MP0024",
+      "title": "Weight Control",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/weightcontrol.html",
+      "license": "Public Domain",
+      "sha256": "bffd730fb938b3ddf259d156756e332b6131f2d5d2bcaec5f471cf05210f127f",
+      "char_count": 5051
+    },
+    {
+      "doc_id": "KB-MP0025",
+      "title": "Benefits of Exercise",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/benefitsofexercise.html",
+      "license": "Public Domain",
+      "sha256": "760480d4dc19cd8c0fd10c55c051688fd4cd34abf7ac3f715895a43a96552975",
+      "char_count": 5738
+    },
+    {
+      "doc_id": "KB-MP0026",
+      "title": "Metabolic Syndrome",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/metabolicsyndrome.html",
+      "license": "Public Domain",
+      "sha256": "925e2a775886d270faa6697b8b6c5d7e39fa6266127f85dffc1c915bc671c0c9",
+      "char_count": 4265
+    },
+    {
+      "doc_id": "KB-MP0027",
+      "title": "Carbohydrates",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/carbohydrates.html",
+      "license": "Public Domain",
+      "sha256": "c244e135da7cf35f661c99ef89016f65d46ad5b36e6c4207be17a2d3010e5396",
+      "char_count": 4669
+    },
+    {
+      "doc_id": "KB-MP0028",
+      "title": "Birth Weight",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/birthweight.html",
+      "license": "Public Domain",
+      "sha256": "41386c8c655b6c4f28fcdc93f8967f8009962a0d7a9c68ace4d2424135f67094",
+      "char_count": 2232
+    },
+    {
+      "doc_id": "KB-MP0029",
+      "title": "Chronic Kidney Disease",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/chronickidneydisease.html",
+      "license": "Public Domain",
+      "sha256": "cbd6dba2ae98c0933790cea47b116e9497e5637c34fd0c5b3c4863a5e2c6d615",
+      "char_count": 1871
+    },
+    {
+      "doc_id": "KB-MP0030",
+      "title": "G6PD Deficiency",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/g6pddeficiency.html",
+      "license": "Public Domain",
+      "sha256": "6723eaf90bcbd919d2d8fe8c9deed9a4b737785d14f97b90d46b7d9ce920b2e1",
+      "char_count": 1184
+    },
+    {
+      "doc_id": "KB-MP0031",
+      "title": "Islet Cell Transplantation",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/isletcelltransplantation.html",
+      "license": "Public Domain",
+      "sha256": "8649402264c80d02977bc6480621f7a1bf5dd28c7fbcfd3ab9a93a36adde46af",
+      "char_count": 2847
+    },
+    {
+      "doc_id": "KB-MP0032",
+      "title": "Coronary Artery Disease",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/coronaryarterydisease.html",
+      "license": "Public Domain",
+      "sha256": "930acddeb13e84f7f8845e08d3aa2a1bac67ad44d3743e713d36eabe41138f53",
+      "char_count": 5055
+    },
+    {
+      "doc_id": "KB-MP0033",
+      "title": "Sickle Cell Disease",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/sicklecelldisease.html",
+      "license": "Public Domain",
+      "sha256": "1644011920a36d329b47eb8fdec0a155d52c871809a5ce3301acc43fb5e5e048",
+      "char_count": 6411
+    },
+    {
+      "doc_id": "KB-MP0034",
+      "title": "Laboratory Tests",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/laboratorytests.html",
+      "license": "Public Domain",
+      "sha256": "6df54e610edb5312161d0ad8823565fd24b59b608b1a3b94eb494865a9bc9ca0",
+      "char_count": 901
+    },
+    {
+      "doc_id": "KB-MP0035",
+      "title": "Kidney Cysts",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/kidneycysts.html",
+      "license": "Public Domain",
+      "sha256": "2bb580e62f85344b23a1103834e7f57cd6cbd755a72850e731b9755838cc52cd",
+      "char_count": 1566
+    },
+    {
+      "doc_id": "KB-MP0036",
+      "title": "Kidney Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/kidneydiseases.html",
+      "license": "Public Domain",
+      "sha256": "00daad1a2bf2ff55dcf40981e08543130c4e84b887d8650b4040cb0655eec529",
+      "char_count": 1312
+    },
+    {
+      "doc_id": "KB-MP0037",
+      "title": "Urinary Tract Infections",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/urinarytractinfections.html",
+      "license": "Public Domain",
+      "sha256": "db30580754e0ea8bf94a961f7c99d21f30b42e81a4e287286ae6b63ae5755576",
+      "char_count": 1157
+    },
+    {
+      "doc_id": "KB-MP0038",
+      "title": "Kidney Failure",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/kidneyfailure.html",
+      "license": "Public Domain",
+      "sha256": "afab3e93b6d454afce6fcc96197753352ff1fcb100bfb13b5d7ff8d8cce25e24",
+      "char_count": 1136
+    },
+    {
+      "doc_id": "KB-MP0039",
+      "title": "Kidney Tests",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/kidneytests.html",
+      "license": "Public Domain",
+      "sha256": "a35b20ffcd6a6dd09ceaa40e31236744ece4038a2db412d4ad96e86affb2db07",
+      "char_count": 1743
+    },
+    {
+      "doc_id": "KB-MP0040",
+      "title": "Kidney Transplantation",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/kidneytransplantation.html",
+      "license": "Public Domain",
+      "sha256": "a9793eda08c1c2f91c728f7f5cc7d7275e3b0e008f9b1cfa3ac07377af4dfd44",
+      "char_count": 1080
+    },
+    {
+      "doc_id": "KB-MP0041",
+      "title": "Dialysis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/dialysis.html",
+      "license": "Public Domain",
+      "sha256": "b415da7b0664b467a2493141fa4c17404faba7f775bc1f179c6dd6b5cdf5c0d3",
+      "char_count": 970
+    },
+    {
+      "doc_id": "KB-MP0042",
+      "title": "Gout",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/gout.html",
+      "license": "Public Domain",
+      "sha256": "fe7fc2374e9364dc374eedc4d1acb14b86bdabe9422ea7260bd9a7c2cebab210",
+      "char_count": 5161
+    },
+    {
+      "doc_id": "KB-MP0043",
+      "title": "Parathyroid Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/parathyroiddisorders.html",
+      "license": "Public Domain",
+      "sha256": "536283e76c55e8aa14606ebb4459f420455e1aea8e3b534201b718d477695bc2",
+      "char_count": 1253
+    },
+    {
+      "doc_id": "KB-MP0044",
+      "title": "Ureteral Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/ureteraldisorders.html",
+      "license": "Public Domain",
+      "sha256": "39f68544eca126bda4622ec442ce5fadc694d4e215d6ef34ac12dbf789f105d7",
+      "char_count": 1150
+    },
+    {
+      "doc_id": "KB-MP0045",
+      "title": "Kidney Stones",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/kidneystones.html",
+      "license": "Public Domain",
+      "sha256": "16adb2ff4023fc54d0528b436f9c7361a17edbf97c168e492b608fd8b652a35e",
+      "char_count": 1209
+    },
+    {
+      "doc_id": "KB-MP0046",
+      "title": "Wilson Disease",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/wilsondisease.html",
+      "license": "Public Domain",
+      "sha256": "f37267bcfc46967b94ea2a1c8d3fe8ba9da5530d93d34099606f82b52d10f867",
+      "char_count": 1518
+    },
+    {
+      "doc_id": "KB-MP0047",
+      "title": "Heart Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/heartdiseases.html",
+      "license": "Public Domain",
+      "sha256": "4a81179efb8d21b494a47ad26eca8dfb682eda984937339c958be89c35e8312b",
+      "char_count": 4335
+    },
+    {
+      "doc_id": "KB-MP0048",
+      "title": "Anemia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/anemia.html",
+      "license": "Public Domain",
+      "sha256": "c35ead0c248c7a9dbca78cbb0e7f9b0b49751832e3f199a2615133de03850b8d",
+      "char_count": 1282
+    },
+    {
+      "doc_id": "KB-MP0049",
+      "title": "Atrial Fibrillation",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/atrialfibrillation.html",
+      "license": "Public Domain",
+      "sha256": "846016cbb7871283d073d5d733a8339ae99655559c3edb884efdab364224645f",
+      "char_count": 5932
+    },
+    {
+      "doc_id": "KB-MP0050",
+      "title": "LDL: The \"Bad\" Cholesterol",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/ldlthebadcholesterol.html",
+      "license": "Public Domain",
+      "sha256": "0cfd5990a071a7f859b27a1155a82d8bab17a529a4b7b644fc892f525fece801",
+      "char_count": 6232
+    },
+    {
+      "doc_id": "KB-MP0051",
+      "title": "Heart Failure",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/heartfailure.html",
+      "license": "Public Domain",
+      "sha256": "a7cdc292c398a8c3eba9db078bcf6659bd70ed7cb768508db8e2e4da6756aa69",
+      "char_count": 7004
+    },
+    {
+      "doc_id": "KB-MP0052",
+      "title": "Sudden Cardiac Arrest",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/suddencardiacarrest.html",
+      "license": "Public Domain",
+      "sha256": "9c2bbe17e740208e44c30d38e859bb74edcf82d361ec2e74aa266409af9c0b79",
+      "char_count": 7509
+    },
+    {
+      "doc_id": "KB-MP0053",
+      "title": "Cholesterol",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cholesterol.html",
+      "license": "Public Domain",
+      "sha256": "75f704c9e52283ffd9d210399d0992a6b1fe587d6e051d6574f4e85420d42213",
+      "char_count": 6693
+    },
+    {
+      "doc_id": "KB-MP0054",
+      "title": "Growth Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/growthdisorders.html",
+      "license": "Public Domain",
+      "sha256": "75347a3a69db0d8d9687d4a4c863000a2abaa00534c65a88e7fc16bff76ef6f5",
+      "char_count": 1315
+    },
+    {
+      "doc_id": "KB-MP0055",
+      "title": "High Blood Pressure",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/highbloodpressure.html",
+      "license": "Public Domain",
+      "sha256": "2767f8077d088e3aebe7223c0ca49c294287e838a67a51200b94f5b89e020175",
+      "char_count": 3252
+    },
+    {
+      "doc_id": "KB-MP0056",
+      "title": "Pulmonary Hypertension",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/pulmonaryhypertension.html",
+      "license": "Public Domain",
+      "sha256": "f13878d5928e87abaaf1392f83500eea7e69479b380c77b6c95614636f1747ae",
+      "char_count": 5075
+    },
+    {
+      "doc_id": "KB-MP0057",
+      "title": "How to Prevent High Blood Pressure",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/howtopreventhighbloodpressure.html",
+      "license": "Public Domain",
+      "sha256": "95e2030e9d52d86fa69f6d227065a6ea3669929861ea9e3d5c774bd779667b9f",
+      "char_count": 5941
+    },
+    {
+      "doc_id": "KB-MP0058",
+      "title": "High Blood Pressure in Pregnancy",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/highbloodpressureinpregnancy.html",
+      "license": "Public Domain",
+      "sha256": "fe2122f2879fe5a89594b8c697a9134b81418798a6489b81a8066b75e442b134",
+      "char_count": 6469
+    },
+    {
+      "doc_id": "KB-MP0059",
+      "title": "Blood Pressure Medicines",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bloodpressuremedicines.html",
+      "license": "Public Domain",
+      "sha256": "11778415cc2f07092fa5e95358f51fd087d6aa3d2713a2334e496964c528b3cf",
+      "char_count": 2444
+    },
+    {
+      "doc_id": "KB-MP0060",
+      "title": "DASH Eating Plan",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/dasheatingplan.html",
+      "license": "Public Domain",
+      "sha256": "5086d1e2aa5d15a3b9d9241ae71a1efa2fd7a7c02b2233a5e0823d72e5b3bbad",
+      "char_count": 1116
+    },
+    {
+      "doc_id": "KB-MP0061",
+      "title": "How to Prevent Heart Disease",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/howtopreventheartdisease.html",
+      "license": "Public Domain",
+      "sha256": "776292b4edf4b38b31f5e1d58d3332853885fd1c5093f1a83192ec91c4d8d79e",
+      "char_count": 6180
+    },
+    {
+      "doc_id": "KB-MP0062",
+      "title": "Brain Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/braindiseases.html",
+      "license": "Public Domain",
+      "sha256": "381c2cb2ac7b16f29816f40735ea63f590af79e7eea503a6889935fcff566803",
+      "char_count": 2011
+    },
+    {
+      "doc_id": "KB-MP0063",
+      "title": "Congenital Heart Defects",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/congenitalheartdefects.html",
+      "license": "Public Domain",
+      "sha256": "f3190a78c61e90c8462667aa7200739f960e97393f8de219234dbfd8deb83cd1",
+      "char_count": 6564
+    },
+    {
+      "doc_id": "KB-MP0064",
+      "title": "Heart Disease in Women",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/heartdiseaseinwomen.html",
+      "license": "Public Domain",
+      "sha256": "979944f24f05d4ad48929898e77e9f8886fba30b1e5ff692b49b7306a6083192",
+      "char_count": 6275
+    },
+    {
+      "doc_id": "KB-MP0065",
+      "title": "Peripheral Arterial Disease",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/peripheralarterialdisease.html",
+      "license": "Public Domain",
+      "sha256": "59d34373252e233bbb20c7029b98e388cf06f82220937c519a3324441a12fc5a",
+      "char_count": 1893
+    },
+    {
+      "doc_id": "KB-MP0066",
+      "title": "Retinal Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/retinaldisorders.html",
+      "license": "Public Domain",
+      "sha256": "5fa9e47b0f9d0720836cc175519ea9dafbec7503687071b3f00bc7cc71382be8",
+      "char_count": 3683
+    },
+    {
+      "doc_id": "KB-MP0067",
+      "title": "Sodium",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/sodium.html",
+      "license": "Public Domain",
+      "sha256": "385cc1aa8d13a9b1e4a79b47bd101966355491991664897c1c5e88777230ffb5",
+      "char_count": 1255
+    },
+    {
+      "doc_id": "KB-MP0068",
+      "title": "Stroke",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/stroke.html",
+      "license": "Public Domain",
+      "sha256": "e198eb93c0e2d20e503761c76357509bf6f9b4142402d26cf053a2fe80d32add",
+      "char_count": 6240
+    },
+    {
+      "doc_id": "KB-MP0069",
+      "title": "Adrenal Gland Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/adrenalglanddisorders.html",
+      "license": "Public Domain",
+      "sha256": "1dbc9728671e873974f528361889e850c8e3f73d8ffd35898a7df1be8604a873",
+      "char_count": 3564
+    },
+    {
+      "doc_id": "KB-MP0070",
+      "title": "Cardiac Rehabilitation",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cardiacrehabilitation.html",
+      "license": "Public Domain",
+      "sha256": "45b1ac801569ee97ab598112b9f43d2af72297c090c268247aadcfd8f9405b4f",
+      "char_count": 1025
+    },
+    {
+      "doc_id": "KB-MP0071",
+      "title": "Cirrhosis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cirrhosis.html",
+      "license": "Public Domain",
+      "sha256": "dff2dfb62c8dd65385ae26a31801699a322ad5490bdff912fed239e5196a18bb",
+      "char_count": 1271
+    },
+    {
+      "doc_id": "KB-MP0072",
+      "title": "Stress",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/stress.html",
+      "license": "Public Domain",
+      "sha256": "be9c2f5b95dc14377cbbf8cb7559cd4574efafcc7c04b1e8b408f9ce6178699c",
+      "char_count": 4409
+    },
+    {
+      "doc_id": "KB-MP0073",
+      "title": "Low Blood Pressure",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/lowbloodpressure.html",
+      "license": "Public Domain",
+      "sha256": "a41347fa748f596d0e7274869a0318e1868f614278b47de24e0cb60e2ae4829d",
+      "char_count": 1450
+    },
+    {
+      "doc_id": "KB-MP0074",
+      "title": "Vital Signs",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/vitalsigns.html",
+      "license": "Public Domain",
+      "sha256": "736cb639dacb0d59500fc8253d69d79382cae5063409aa83b285e3023b21887a",
+      "char_count": 1495
+    },
+    {
+      "doc_id": "KB-MP0075",
+      "title": "Vascular Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/vasculardiseases.html",
+      "license": "Public Domain",
+      "sha256": "217f8f4c863096f0378526d53e3948b7e59f6ace07c9f4e3269f0b4eb1effc45",
+      "char_count": 3932
+    },
+    {
+      "doc_id": "KB-MP0076",
+      "title": "Menopause",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/menopause.html",
+      "license": "Public Domain",
+      "sha256": "68ae0ec7cd2fed9696a80f62af903a4adbd10cd522d3aea1111c1073b0c37e98",
+      "char_count": 6077
+    },
+    {
+      "doc_id": "KB-MP0077",
+      "title": "Fever",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/fever.html",
+      "license": "Public Domain",
+      "sha256": "07d7ce6e23fb38be323b94271b609668c270bd9d2360d8dbc124b8d071623be0",
+      "char_count": 1326
+    },
+    {
+      "doc_id": "KB-MP0078",
+      "title": "HDL: The \"Good\" Cholesterol",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hdlthegoodcholesterol.html",
+      "license": "Public Domain",
+      "sha256": "4c6082cccbecb1a7a939c120f0da35b8e1832cdd5de2c3f66405d439e7cd6976",
+      "char_count": 4677
+    },
+    {
+      "doc_id": "KB-MP0079",
+      "title": "Caffeine",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/caffeine.html",
+      "license": "Public Domain",
+      "sha256": "dafd4ac17b9e55ebc6928f6cd37d051a78b85c33c1bb6a71f3c6bce8d2cf2465",
+      "char_count": 4540
+    },
+    {
+      "doc_id": "KB-MP0080",
+      "title": "Drug Reactions",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/drugreactions.html",
+      "license": "Public Domain",
+      "sha256": "5a7184c518b7d3ccf163090cd601843ad53450218b875c1e90abfa99daf30b71",
+      "char_count": 2090
+    },
+    {
+      "doc_id": "KB-MP0081",
+      "title": "Heart Attack",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/heartattack.html",
+      "license": "Public Domain",
+      "sha256": "276a94038470783186aa72b775333a1511375d078c5b92c153334da31b0e5ecb",
+      "char_count": 4294
+    },
+    {
+      "doc_id": "KB-MP0082",
+      "title": "How to Lower Cholesterol with Diet",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/howtolowercholesterolwithdiet.html",
+      "license": "Public Domain",
+      "sha256": "72298805a76b495c23b6d9e124f7b990c6f8719cebd98aec20ef53a0262de6a6",
+      "char_count": 5486
+    },
+    {
+      "doc_id": "KB-MP0083",
+      "title": "Cholesterol Levels: What You Need to Know",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cholesterollevelswhatyouneedtoknow.html",
+      "license": "Public Domain",
+      "sha256": "a174c1d63ae0323b56b877e96a31a15027f17d89e94dd57e7f49190c85b4975a",
+      "char_count": 7566
+    },
+    {
+      "doc_id": "KB-MP0084",
+      "title": "Cholesterol Medicines",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cholesterolmedicines.html",
+      "license": "Public Domain",
+      "sha256": "2db0fde59c8779ac79e0e444d3e37d346ce7b3f5e3a75e644bd720d49e5ac50c",
+      "char_count": 4902
+    },
+    {
+      "doc_id": "KB-MP0085",
+      "title": "High Cholesterol in Children and Teens",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/highcholesterolinchildrenandteens.html",
+      "license": "Public Domain",
+      "sha256": "f2f448f249e65cc6e5db28c233e44e55c016aefa4be90a5e376e3202a7e925d2",
+      "char_count": 4303
+    },
+    {
+      "doc_id": "KB-MP0086",
+      "title": "How to Lower Cholesterol",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/howtolowercholesterol.html",
+      "license": "Public Domain",
+      "sha256": "b8b0a52de6132d09d52f3b2c91119c8bd3d10b12f19decdca327063490271653",
+      "char_count": 5092
+    },
+    {
+      "doc_id": "KB-MP0087",
+      "title": "VLDL Cholesterol",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/vldlcholesterol.html",
+      "license": "Public Domain",
+      "sha256": "878ba317c50393bdf29a0aaa8968b91d46d64df3f3043b3f53d3ec2f9e742ba2",
+      "char_count": 2359
+    },
+    {
+      "doc_id": "KB-MP0088",
+      "title": "Statins",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/statins.html",
+      "license": "Public Domain",
+      "sha256": "625bfcee289bcb78ca5505b90e4048430f4bb8929c427618b1ff98a82e383921",
+      "char_count": 3599
+    },
+    {
+      "doc_id": "KB-MP0089",
+      "title": "Triglycerides",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/triglycerides.html",
+      "license": "Public Domain",
+      "sha256": "627c7a6b481f48492440c9db807efacbff148f62d22f5261bc286497f49fe600",
+      "char_count": 2128
+    },
+    {
+      "doc_id": "KB-MP0090",
+      "title": "Atherosclerosis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/atherosclerosis.html",
+      "license": "Public Domain",
+      "sha256": "6045d2eb548f5270d3f563d36f4f6539c96e1e4aefdfd2d17c0109ac60b246a9",
+      "char_count": 6354
+    },
+    {
+      "doc_id": "KB-MP0091",
+      "title": "B Vitamins",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bvitamins.html",
+      "license": "Public Domain",
+      "sha256": "7833783900f4baf3ac47ed1accf15373b49384589dc16d3b8a5ee1e10170ea12",
+      "char_count": 765
+    },
+    {
+      "doc_id": "KB-MP0092",
+      "title": "Dietary Fats",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/dietaryfats.html",
+      "license": "Public Domain",
+      "sha256": "3b6d3e87460087a467ca0e923108c2a6fe2ffd1b1eaa74136ff709ef9cc4e302",
+      "char_count": 1019
+    },
+    {
+      "doc_id": "KB-MP0093",
+      "title": "Heart Valve Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/heartvalvediseases.html",
+      "license": "Public Domain",
+      "sha256": "1b46e33436ea1cbbfeb64700a05c3849764d253af3b293dca671a421d8f715f2",
+      "char_count": 6276
+    },
+    {
+      "doc_id": "KB-MP0094",
+      "title": "Heart Health Tests",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hearthealthtests.html",
+      "license": "Public Domain",
+      "sha256": "cbe689e58af2b2dcfefc1ffdb4d9ab829c41d835c17343ef54bfd0b65cac1bb4",
+      "char_count": 6825
+    },
+    {
+      "doc_id": "KB-MP0095",
+      "title": "Coronary Artery Bypass Surgery",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/coronaryarterybypasssurgery.html",
+      "license": "Public Domain",
+      "sha256": "405612d04a99edad9cce67c0232dccb7dbd60d7b24bb23b9ddbe26d1f6e1948f",
+      "char_count": 3429
+    },
+    {
+      "doc_id": "KB-MP0096",
+      "title": "Angioplasty",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/angioplasty.html",
+      "license": "Public Domain",
+      "sha256": "e0a0f56e0c47b24b13b861acb2a1f7ca55ca3a8b758c0ec1007e83b74a12394b",
+      "char_count": 3460
+    },
+    {
+      "doc_id": "KB-MP0097",
+      "title": "Heart Surgery",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/heartsurgery.html",
+      "license": "Public Domain",
+      "sha256": "b9261d2fc095e616c2cfbb8dc0a459011bf0dfa75641b9cdf5d09aad711d5e5f",
+      "char_count": 5142
+    },
+    {
+      "doc_id": "KB-MP0098",
+      "title": "Health Risks of an Inactive Lifestyle",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/healthrisksofaninactivelifestyle.html",
+      "license": "Public Domain",
+      "sha256": "068f0f81a06e031e9d534ba0357a8107c787a205fe5ea1c5e3ac11bcfbfbbe61",
+      "char_count": 4647
+    },
+    {
+      "doc_id": "KB-MP0099",
+      "title": "Heart Transplantation",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hearttransplantation.html",
+      "license": "Public Domain",
+      "sha256": "ed588dfa749a146cf0d47e194f976a1dc7bbe3ca9d1859fdee030baebdd225d0",
+      "char_count": 1066
+    },
+    {
+      "doc_id": "KB-MP0100",
+      "title": "Paget's Disease of Bone",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/pagetsdiseaseofbone.html",
+      "license": "Public Domain",
+      "sha256": "0a49d5282e52658c899d6cde4b8b3d01dc18ab34db26951c9e45a1d7e676c846",
+      "char_count": 4584
+    },
+    {
+      "doc_id": "KB-MP0101",
+      "title": "Mitral Valve Prolapse",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/mitralvalveprolapse.html",
+      "license": "Public Domain",
+      "sha256": "2aec8f3ed1b2898a9643aad13420abd6ccb3d1bd14a363d3abfd5ed31d7a673d",
+      "char_count": 4992
+    },
+    {
+      "doc_id": "KB-MP0102",
+      "title": "Endocarditis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/endocarditis.html",
+      "license": "Public Domain",
+      "sha256": "9ada23cece02916af82964ffbaf9fd95a2ce4f4883d8df8edb757cf388e65255",
+      "char_count": 5996
+    },
+    {
+      "doc_id": "KB-MP0103",
+      "title": "Cardiomyopathy",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cardiomyopathy.html",
+      "license": "Public Domain",
+      "sha256": "bbb2afcef4ae6616e0d06381edbc89024435be9aefb2e780c9a4001881c916e3",
+      "char_count": 1101
+    },
+    {
+      "doc_id": "KB-MP0104",
+      "title": "Hyperthyroidism",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hyperthyroidism.html",
+      "license": "Public Domain",
+      "sha256": "756b9d0c6ad9da70c1d0d301cc517d2d8cf4e18cf12bedf931a896f630ff7e31",
+      "char_count": 5917
+    },
+    {
+      "doc_id": "KB-MP0105",
+      "title": "Pacemakers and Implantable Defibrillators",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/pacemakersandimplantabledefibrillators.html",
+      "license": "Public Domain",
+      "sha256": "fa7a19ad22cfb624926a068e1eaf618e02145dc7b47b7404d0ea6fa1a8ce28b6",
+      "char_count": 1668
+    },
+    {
+      "doc_id": "KB-MP0106",
+      "title": "Angina",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/angina.html",
+      "license": "Public Domain",
+      "sha256": "5a64806736f3c63e7229236ec323579ebd9642f71431344547647807938c9bfd",
+      "char_count": 1406
+    },
+    {
+      "doc_id": "KB-MP0107",
+      "title": "Cellulitis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cellulitis.html",
+      "license": "Public Domain",
+      "sha256": "dec381c99bbf85f14fd717498dac69ff21d93a1a553803111bfdc19232e059dc",
+      "char_count": 825
+    },
+    {
+      "doc_id": "KB-MP0108",
+      "title": "Asthma",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/asthma.html",
+      "license": "Public Domain",
+      "sha256": "004db3fa896abf1972180a7d6fb7324e8adf7e708806c6f54bd28a36f8dd798c",
+      "char_count": 5462
+    },
+    {
+      "doc_id": "KB-MP0109",
+      "title": "Asthma in Children",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/asthmainchildren.html",
+      "license": "Public Domain",
+      "sha256": "60344eb024de025aa2990fa6d04b56c76b6c7b8e40e09663bc88d8bc1adee6b0",
+      "char_count": 5588
+    },
+    {
+      "doc_id": "KB-MP0110",
+      "title": "Allergy",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/allergy.html",
+      "license": "Public Domain",
+      "sha256": "635dfdba6245b4707966b4d6a8dfe49b95f57605399364967c77dfbe69365483",
+      "char_count": 1069
+    },
+    {
+      "doc_id": "KB-MP0111",
+      "title": "COPD",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/copd.html",
+      "license": "Public Domain",
+      "sha256": "c15ceab7c0c53905e466970d97d34f87625c3ba4ebd3dac2c9489e59cd447748",
+      "char_count": 6564
+    },
+    {
+      "doc_id": "KB-MP0112",
+      "title": "Flu",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/flu.html",
+      "license": "Public Domain",
+      "sha256": "9cd6b2d94a6dcf92164be6ab4c1a218715cbf20a8e668171b04f552a9a11c76c",
+      "char_count": 3843
+    },
+    {
+      "doc_id": "KB-MP0113",
+      "title": "Smoking",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/smoking.html",
+      "license": "Public Domain",
+      "sha256": "6e3e7b6f789ed0015ee32abe089d3b5f5fc37669ac8628ef802a7a29e27feb71",
+      "char_count": 3893
+    },
+    {
+      "doc_id": "KB-MP0114",
+      "title": "Molds",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/molds.html",
+      "license": "Public Domain",
+      "sha256": "66cd1ab636235815dcafcae62208466c5c20b25aa0310547a000f4ab8ee2ff54",
+      "char_count": 685
+    },
+    {
+      "doc_id": "KB-MP0115",
+      "title": "Ozone",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/ozone.html",
+      "license": "Public Domain",
+      "sha256": "948b4a574207c857fd6255056283d37a54133d4fdcbc2dc1416b58b4fbe09d1a",
+      "char_count": 1052
+    },
+    {
+      "doc_id": "KB-MP0116",
+      "title": "School Health",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/schoolhealth.html",
+      "license": "Public Domain",
+      "sha256": "36e1a5a2c28e6b359b2b0ffdb6bdc8c5b8e82e3845930b3e625fc68cbd87b8e0",
+      "char_count": 823
+    },
+    {
+      "doc_id": "KB-MP0117",
+      "title": "Secondhand Smoke",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/secondhandsmoke.html",
+      "license": "Public Domain",
+      "sha256": "b90e30f2d93ccb02c2c07c38d5265992730c3f57e6edefdc9c131970aa77ad81",
+      "char_count": 888
+    },
+    {
+      "doc_id": "KB-MP0118",
+      "title": "Steroids",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/steroids.html",
+      "license": "Public Domain",
+      "sha256": "02b73e57640b59753066851d20bf97c87ed72be80df7bea6f99c9d5a6d9d68b5",
+      "char_count": 933
+    },
+    {
+      "doc_id": "KB-MP0119",
+      "title": "Common Cold",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/commoncold.html",
+      "license": "Public Domain",
+      "sha256": "002e0143bc62d053d51ccfb819c6f3ef0a2e7043618b84963258335b47a74386",
+      "char_count": 3783
+    },
+    {
+      "doc_id": "KB-MP0120",
+      "title": "Environmental Health",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/environmentalhealth.html",
+      "license": "Public Domain",
+      "sha256": "2397801ac4c5e12fb77cf3fba722adbaae7021d46ed5220fb8af1edb04120b64",
+      "char_count": 752
+    },
+    {
+      "doc_id": "KB-MP0121",
+      "title": "Food Allergy",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/foodallergy.html",
+      "license": "Public Domain",
+      "sha256": "81d38b294fdfff56233e2502e4e0660aa6877d1d0657ac7b2c8a76b51a003fbf",
+      "char_count": 4223
+    },
+    {
+      "doc_id": "KB-MP0122",
+      "title": "GERD",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/gerd.html",
+      "license": "Public Domain",
+      "sha256": "07347e261921e8dce8343521bc465a8304d0bec9c141aaf9d0eee2ad68c7e030",
+      "char_count": 3490
+    },
+    {
+      "doc_id": "KB-MP0123",
+      "title": "Health Problems in Pregnancy",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/healthproblemsinpregnancy.html",
+      "license": "Public Domain",
+      "sha256": "2215db481bda7d0f7e2457d8143c56255d7f302ac8900e21d444951e90f31919",
+      "char_count": 3105
+    },
+    {
+      "doc_id": "KB-MP0124",
+      "title": "Immune System and Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/immunesystemanddisorders.html",
+      "license": "Public Domain",
+      "sha256": "af80feeca78891f4f7cffbc964fd6c4506010009b86df0452b8f8559d50d3291",
+      "char_count": 3944
+    },
+    {
+      "doc_id": "KB-MP0125",
+      "title": "Reflux in Children",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/refluxinchildren.html",
+      "license": "Public Domain",
+      "sha256": "72f4af01b21da2b5c98991d168c907af9ac551bc7591645d15aa409bc8acf142",
+      "char_count": 5684
+    },
+    {
+      "doc_id": "KB-MP0126",
+      "title": "Smoking and Youth",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/smokingandyouth.html",
+      "license": "Public Domain",
+      "sha256": "53be9d8292ee5cffc69ab584307892f8e3cc857b843f25c92b93adb633e4473d",
+      "char_count": 815
+    },
+    {
+      "doc_id": "KB-MP0127",
+      "title": "Emphysema",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/emphysema.html",
+      "license": "Public Domain",
+      "sha256": "852758fc8f295d97c8d8a7e62ba8e13573f86e477cb16f5f47ac6cf76aca2d39",
+      "char_count": 5828
+    },
+    {
+      "doc_id": "KB-MP0128",
+      "title": "Chronic Bronchitis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/chronicbronchitis.html",
+      "license": "Public Domain",
+      "sha256": "e15423fed09bcf80a48d99bff7828f6629327923affb14c940a7e344b3484b95",
+      "char_count": 5557
+    },
+    {
+      "doc_id": "KB-MP0129",
+      "title": "Pulmonary Rehabilitation",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/pulmonaryrehabilitation.html",
+      "license": "Public Domain",
+      "sha256": "8216397a0f09e713347880809aad4f179af995c1e2fc1ac76cbe3ccf8b1940d4",
+      "char_count": 4115
+    },
+    {
+      "doc_id": "KB-MP0130",
+      "title": "Alpha-1 Antitrypsin Deficiency",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/alpha1antitrypsindeficiency.html",
+      "license": "Public Domain",
+      "sha256": "6414fc1bdbdd69c040f231493838ac4f27ae75df0d401c3e18bf804359a0a7fd",
+      "char_count": 5107
+    },
+    {
+      "doc_id": "KB-MP0131",
+      "title": "Cough",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cough.html",
+      "license": "Public Domain",
+      "sha256": "14e634d63aa4894b0754c9250e7d3273e5612577dac2a6f40268388a6a2c2ee4",
+      "char_count": 1146
+    },
+    {
+      "doc_id": "KB-MP0132",
+      "title": "Disabilities",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/disabilities.html",
+      "license": "Public Domain",
+      "sha256": "3b65055fbaeb855b5714b7d6a3f7932484fbe63458235a95351445f9aa5c8f4b",
+      "char_count": 4120
+    },
+    {
+      "doc_id": "KB-MP0133",
+      "title": "Fatigue",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/fatigue.html",
+      "license": "Public Domain",
+      "sha256": "58bff5d265dd4842be6b1b4845e538705c68301543254cae7ff55517281db2a9",
+      "char_count": 2914
+    },
+    {
+      "doc_id": "KB-MP0134",
+      "title": "Flu Shot",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/flushot.html",
+      "license": "Public Domain",
+      "sha256": "84b9c339a91d5a16d630e9897f3f075d7c96cf93bad97597a08c4845ef7b07e3",
+      "char_count": 4643
+    },
+    {
+      "doc_id": "KB-MP0135",
+      "title": "Legionnaires' Disease",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/legionnairesdisease.html",
+      "license": "Public Domain",
+      "sha256": "ce3fffd86ff354163add39bf040a322e4648a181f83fb60ba785aca939bed3c4",
+      "char_count": 4008
+    },
+    {
+      "doc_id": "KB-MP0136",
+      "title": "Lung Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/lungdiseases.html",
+      "license": "Public Domain",
+      "sha256": "1c5024522daba0e0592f9d86e519d145c2b32b0769f638721bbc8b64cdc8bb58",
+      "char_count": 922
+    },
+    {
+      "doc_id": "KB-MP0137",
+      "title": "Lung Transplantation",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/lungtransplantation.html",
+      "license": "Public Domain",
+      "sha256": "320a1c7c5e95b2d51e4ca397f42d2f69bbc0d07608469f1d101045af0a5b5991",
+      "char_count": 964
+    },
+    {
+      "doc_id": "KB-MP0138",
+      "title": "Oxygen Therapy",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/oxygentherapy.html",
+      "license": "Public Domain",
+      "sha256": "1c43b77382666b7c262cef74a467c7e8ab372444be560a31332db10cc5337776",
+      "char_count": 3156
+    },
+    {
+      "doc_id": "KB-MP0139",
+      "title": "Pleural Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/pleuraldisorders.html",
+      "license": "Public Domain",
+      "sha256": "597dbcb138606033f8b7d7cd97a629826440bb6a50a82733e835c2432603ff1f",
+      "char_count": 1352
+    },
+    {
+      "doc_id": "KB-MP0140",
+      "title": "Respiratory Failure",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/respiratoryfailure.html",
+      "license": "Public Domain",
+      "sha256": "343daaba719fbbf78e1fb0f6e8bd86c2438b9e8004221bc3c1eed75a6a527af3",
+      "char_count": 5672
+    },
+    {
+      "doc_id": "KB-MP0141",
+      "title": "Pneumonia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/pneumonia.html",
+      "license": "Public Domain",
+      "sha256": "9bbd87a328d7a4c693661c05a8cd4ebdefdbad6c8b0d64884b6e6c8d40fb6177",
+      "char_count": 6007
+    },
+    {
+      "doc_id": "KB-MP0142",
+      "title": "Pneumocystis Infections",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/pneumocystisinfections.html",
+      "license": "Public Domain",
+      "sha256": "b7abcf932903e6c036da6b9fdd6783e82f88d30c7958fbe7b10c793bad1a7c3e",
+      "char_count": 2433
+    },
+    {
+      "doc_id": "KB-MP0143",
+      "title": "HIV and Infections",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hivandinfections.html",
+      "license": "Public Domain",
+      "sha256": "cda477a09cb104459c43608fc492d737af4a2bb69400b5b6c124ff508ca89ecb",
+      "char_count": 1291
+    },
+    {
+      "doc_id": "KB-MP0144",
+      "title": "Staphylococcal Infections",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/staphylococcalinfections.html",
+      "license": "Public Domain",
+      "sha256": "2520532d71d0e21ca3ccc1aac6a5c0bc0afeb39fc126decf8b67e006c6b2f15e",
+      "char_count": 4737
+    },
+    {
+      "doc_id": "KB-MP0145",
+      "title": "Streptococcal Infections",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/streptococcalinfections.html",
+      "license": "Public Domain",
+      "sha256": "db1e841bc48ece0f0784ac739bc4706ef77516b4959d2f1d7171caefbe42d57e",
+      "char_count": 4068
+    },
+    {
+      "doc_id": "KB-MP0146",
+      "title": "Bird Flu",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/birdflu.html",
+      "license": "Public Domain",
+      "sha256": "f7412f9b3a6e2d376d6757b69e8fc5be41b56c7776d405fd71025f241d2717d2",
+      "char_count": 3786
+    },
+    {
+      "doc_id": "KB-MP0147",
+      "title": "Breathing Problems",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/breathingproblems.html",
+      "license": "Public Domain",
+      "sha256": "28e6f95cdeb590fc1d6701db9d58b9789fce92235e806e4c9f2dc68785dcb75a",
+      "char_count": 944
+    },
+    {
+      "doc_id": "KB-MP0148",
+      "title": "Chlamydia Infections",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/chlamydiainfections.html",
+      "license": "Public Domain",
+      "sha256": "df1c410fda597c822b7d792517e38cef79ee3d706e7cbc124462a249a8604e62",
+      "char_count": 4827
+    },
+    {
+      "doc_id": "KB-MP0149",
+      "title": "Cocaine",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cocaine.html",
+      "license": "Public Domain",
+      "sha256": "bdfec20a12ba34b33bcd71b842e7dc9282efa5c08c65c1a9ad70bd2e5f8a3435",
+      "char_count": 4133
+    },
+    {
+      "doc_id": "KB-MP0150",
+      "title": "Collapsed Lung",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/collapsedlung.html",
+      "license": "Public Domain",
+      "sha256": "dd4905f7658b6a32a93578ea826662cbdb3ca54b0d87c63d8a3f2a3e1d926e53",
+      "char_count": 895
+    },
+    {
+      "doc_id": "KB-MP0151",
+      "title": "Coma",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/coma.html",
+      "license": "Public Domain",
+      "sha256": "42766a1adc3d3137e1aaca5e67aa065a30408ac430dece5284400d4af6c72c78",
+      "char_count": 852
+    },
+    {
+      "doc_id": "KB-MP0152",
+      "title": "Cytomegalovirus Infections",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cytomegalovirusinfections.html",
+      "license": "Public Domain",
+      "sha256": "e9897c139a2a8d730a4731cc7031471e4a1bba66faa55f48a9cf1dac58bc37d3",
+      "char_count": 1239
+    },
+    {
+      "doc_id": "KB-MP0153",
+      "title": "Delirium",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/delirium.html",
+      "license": "Public Domain",
+      "sha256": "7e93c5a66c704fa981396ff6a92e3d24337b4a3df15ce5965989670cb3118931",
+      "char_count": 4379
+    },
+    {
+      "doc_id": "KB-MP0154",
+      "title": "Eosinophilic Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/eosinophilicdisorders.html",
+      "license": "Public Domain",
+      "sha256": "5a0ddcc71bf1efc570e610ba152f54abea2c70ba9e8a7c09b21f813a0cb6712f",
+      "char_count": 1014
+    },
+    {
+      "doc_id": "KB-MP0155",
+      "title": "Acute Bronchitis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/acutebronchitis.html",
+      "license": "Public Domain",
+      "sha256": "8b6bb37d20970bfa8cbaacafbc90ab3cede8d0094114b5d0adb8dfdeba5ffafb",
+      "char_count": 1499
+    },
+    {
+      "doc_id": "KB-MP0156",
+      "title": "Antibiotics",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/antibiotics.html",
+      "license": "Public Domain",
+      "sha256": "edd2ffe8ea0ade45f9fa3501fe909c67f645948dce0bc9aa7c5d2374c833be11",
+      "char_count": 2977
+    },
+    {
+      "doc_id": "KB-MP0157",
+      "title": "Bronchial Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bronchialdisorders.html",
+      "license": "Public Domain",
+      "sha256": "f727f6c0b4b9c5ef580731d84a388cc7444c46a83f4858c32c19f1e83b5ea559",
+      "char_count": 981
+    },
+    {
+      "doc_id": "KB-MP0158",
+      "title": "Homelessness and Health",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/homelessnessandhealth.html",
+      "license": "Public Domain",
+      "sha256": "634d5fd54ad4ef611f11e3c472b337bd140c265016bb2ca4e87ae3ee79b7884d",
+      "char_count": 1875
+    },
+    {
+      "doc_id": "KB-MP0159",
+      "title": "Interstitial Lung Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/interstitiallungdiseases.html",
+      "license": "Public Domain",
+      "sha256": "8052b059145276cd6d7c402fbc7652be296c80dd3d35edb16efbaa8cb132049d",
+      "char_count": 1127
+    },
+    {
+      "doc_id": "KB-MP0160",
+      "title": "Respiratory Syncytial Virus Infections",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/respiratorysyncytialvirusinfections.html",
+      "license": "Public Domain",
+      "sha256": "9c7922b0848f2af2eb48c07c8bee52169f0fe145c173594803d1e2e39eae9a71",
+      "char_count": 5246
+    },
+    {
+      "doc_id": "KB-MP0161",
+      "title": "Whooping Cough",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/whoopingcough.html",
+      "license": "Public Domain",
+      "sha256": "be3ad0db58cf39e906cd0c2e431328ebdbb41b998d26d39b75005e7ec1565269",
+      "char_count": 4519
+    },
+    {
+      "doc_id": "KB-MP0162",
+      "title": "Encephalitis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/encephalitis.html",
+      "license": "Public Domain",
+      "sha256": "c41ebb5eafe32a1cb82de0ef28a17db060b41cfc9dd20135e27df4ce0703bba0",
+      "char_count": 4804
+    },
+    {
+      "doc_id": "KB-MP0163",
+      "title": "Gastroenteritis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/gastroenteritis.html",
+      "license": "Public Domain",
+      "sha256": "05aa0ab07993ec8ea03fff7279811159cbf4fd51f2cdaf7ceba8a7ca2a979049",
+      "char_count": 4283
+    },
+    {
+      "doc_id": "KB-MP0164",
+      "title": "Spinal Muscular Atrophy",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/spinalmuscularatrophy.html",
+      "license": "Public Domain",
+      "sha256": "37e183a5f7e967340fca2eb9de57a1d5de2730232b12fcdbad1cdb9273e90f6f",
+      "char_count": 5045
+    },
+    {
+      "doc_id": "KB-MP0165",
+      "title": "Infections and Pregnancy",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/infectionsandpregnancy.html",
+      "license": "Public Domain",
+      "sha256": "8981758d0e265b77d194d21d4a3fdcefa2d93b7f1c7fdc3cdf0c94a86b06ea17",
+      "char_count": 2325
+    },
+    {
+      "doc_id": "KB-MP0166",
+      "title": "Critical Care",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/criticalcare.html",
+      "license": "Public Domain",
+      "sha256": "0c67d9d97cdf97be01c79374b5785c071533307d1cd2419fa4f0d92788475286",
+      "char_count": 2154
+    },
+    {
+      "doc_id": "KB-MP0167",
+      "title": "Bacterial Infections",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bacterialinfections.html",
+      "license": "Public Domain",
+      "sha256": "94d4a18ad0f28195cd16c800f645b412b251d0faaa5dc1fa715e5163d88e44b4",
+      "char_count": 3095
+    },
+    {
+      "doc_id": "KB-MP0168",
+      "title": "Viral Infections",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/viralinfections.html",
+      "license": "Public Domain",
+      "sha256": "6d4ea2a0acfd6918991e139198b9363954070ec50598262505b3b88ef75bd828",
+      "char_count": 2754
+    },
+    {
+      "doc_id": "KB-MP0169",
+      "title": "Acute Flaccid Myelitis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/acuteflaccidmyelitis.html",
+      "license": "Public Domain",
+      "sha256": "05cfa26855690ca0e152e3e43d5392b0eb80995dd645c76410e5eb244d728ab8",
+      "char_count": 3494
+    },
+    {
+      "doc_id": "KB-MP0170",
+      "title": "Hypothyroidism",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hypothyroidism.html",
+      "license": "Public Domain",
+      "sha256": "d234445a96291be4a1e7c16ef04e985ea0c2b620cd6749249ad359be1a000246",
+      "char_count": 4944
+    },
+    {
+      "doc_id": "KB-MP0171",
+      "title": "Carpal Tunnel Syndrome",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/carpaltunnelsyndrome.html",
+      "license": "Public Domain",
+      "sha256": "ed14ff67fb52c27261e2685689ea574c9aad291417766039038f2baeb993c8c6",
+      "char_count": 5485
+    },
+    {
+      "doc_id": "KB-MP0172",
+      "title": "Joint Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/jointdisorders.html",
+      "license": "Public Domain",
+      "sha256": "a89bcffbc9a80b9bf8c5a37e7a7eba31063d7a919e46b896dc2d1b9b46012ccd",
+      "char_count": 4733
+    },
+    {
+      "doc_id": "KB-MP0173",
+      "title": "Newborn Screening",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/newbornscreening.html",
+      "license": "Public Domain",
+      "sha256": "636f9701f7fa2234af8ce6d9092a74d00c7a86155ad941acb9f18b2dd3f804cf",
+      "char_count": 1304
+    },
+    {
+      "doc_id": "KB-MP0174",
+      "title": "Peripheral Nerve Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/peripheralnervedisorders.html",
+      "license": "Public Domain",
+      "sha256": "c6b43f760ab4e06462fb77cfa4a22ecbc87bf184fd24d9018001ef0d261bfb07",
+      "char_count": 4958
+    },
+    {
+      "doc_id": "KB-MP0175",
+      "title": "Primary Ovarian Insufficiency",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/primaryovarianinsufficiency.html",
+      "license": "Public Domain",
+      "sha256": "1ea8ad1dcf1e84cc4dda2438bc6b960e42df9d657fd97588188d21f7d313f812",
+      "char_count": 5918
+    },
+    {
+      "doc_id": "KB-MP0176",
+      "title": "Thyroid Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/thyroiddiseases.html",
+      "license": "Public Domain",
+      "sha256": "ea71eb9816fc10e8668bd273ac6bfbf0d133fcffe5bde98464580237bdce6148",
+      "char_count": 1424
+    },
+    {
+      "doc_id": "KB-MP0177",
+      "title": "Thyroid Tests",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/thyroidtests.html",
+      "license": "Public Domain",
+      "sha256": "e01f8ff283c5a3bc3f100053113f2f8ed061d2bb3736b07775609075c00997b7",
+      "char_count": 1692
+    },
+    {
+      "doc_id": "KB-MP0178",
+      "title": "Uncommon Infant and Newborn Problems",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/uncommoninfantandnewbornproblems.html",
+      "license": "Public Domain",
+      "sha256": "b61591b8eab6036629af533bca3e5921749575641f3fe0ed53aa6ad27edbca8b",
+      "char_count": 766
+    },
+    {
+      "doc_id": "KB-MP0179",
+      "title": "Depression",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/depression.html",
+      "license": "Public Domain",
+      "sha256": "d739f17ddf9cbe7d3ac6c101558ac091d1335d8557011cc9da5a5563fe1f37fb",
+      "char_count": 6652
+    },
+    {
+      "doc_id": "KB-MP0180",
+      "title": "Pituitary Tumors",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/pituitarytumors.html",
+      "license": "Public Domain",
+      "sha256": "929fd8f3b48808f111a9d707b13126cb4f0b421755c126d61945a69b1daa7c50",
+      "char_count": 1048
+    },
+    {
+      "doc_id": "KB-MP0181",
+      "title": "Tremor",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/tremor.html",
+      "license": "Public Domain",
+      "sha256": "ff6f3b3db88323343b2bae033f8af0750bd38aaed434bac05963a491ac06340d",
+      "char_count": 4880
+    },
+    {
+      "doc_id": "KB-MP0182",
+      "title": "Thyroid Cancer",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/thyroidcancer.html",
+      "license": "Public Domain",
+      "sha256": "f493a67c81ef9b8d1c09222806919c7c65c90e5540d87556675f87ace401e8ad",
+      "char_count": 2783
+    },
+    {
+      "doc_id": "KB-MP0183",
+      "title": "Body Weight",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bodyweight.html",
+      "license": "Public Domain",
+      "sha256": "3a56147c876e69151da9150dfde781585a16c7b2ebde213ffe7823afa3d7414e",
+      "char_count": 3682
+    },
+    {
+      "doc_id": "KB-MP0184",
+      "title": "Nuclear Scans",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/nuclearscans.html",
+      "license": "Public Domain",
+      "sha256": "ce56889a97bb32c2af57511c8b6a30fd3d2d8c53e4e0c1442362268d2da8cead",
+      "char_count": 2674
+    },
+    {
+      "doc_id": "KB-MP0185",
+      "title": "Benign Tumors",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/benigntumors.html",
+      "license": "Public Domain",
+      "sha256": "799a1d54a1210f2d24c746a18020be19bc5648e7b5a094921c21f760e3b0977a",
+      "char_count": 991
+    },
+    {
+      "doc_id": "KB-MP0186",
+      "title": "Cancer in Children",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cancerinchildren.html",
+      "license": "Public Domain",
+      "sha256": "b2e9b4b2a584d75f06c100a6db587b2a3791789cdb8ade1356590d483f3ca703",
+      "char_count": 1478
+    },
+    {
+      "doc_id": "KB-MP0187",
+      "title": "Hormones",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hormones.html",
+      "license": "Public Domain",
+      "sha256": "08fbb71215947aeea087bb5cb760f803c89788e631e9949c6c42de1362b756dd",
+      "char_count": 1205
+    },
+    {
+      "doc_id": "KB-MP0188",
+      "title": "Postpartum Depression",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/postpartumdepression.html",
+      "license": "Public Domain",
+      "sha256": "8e9f79f6e768a6c8423c500a19ca203f99129a453ebdadca48c9dd78b8b4babb",
+      "char_count": 4861
+    },
+    {
+      "doc_id": "KB-MP0189",
+      "title": "Anxiety",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/anxiety.html",
+      "license": "Public Domain",
+      "sha256": "d88307240d1ffd132fc3991f2eeb72ffd7724ffc9754acff33b8c137ec2df5a7",
+      "char_count": 4877
+    },
+    {
+      "doc_id": "KB-MP0190",
+      "title": "Arrhythmia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/arrhythmia.html",
+      "license": "Public Domain",
+      "sha256": "0adf54f01ac9170e98c6d361df4cd56f198428ee5601b33448b6577ef2fb7c54",
+      "char_count": 3795
+    },
+    {
+      "doc_id": "KB-MP0191",
+      "title": "Autoimmune Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/autoimmunediseases.html",
+      "license": "Public Domain",
+      "sha256": "513b5af02b534a8ff09b2676be61bd8c3122aa6c2bb897d1ea8ab368d0775f49",
+      "char_count": 3572
+    },
+    {
+      "doc_id": "KB-MP0192",
+      "title": "Biopsy",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/biopsy.html",
+      "license": "Public Domain",
+      "sha256": "826f67072c07bf19c6fbd819985108a6abe8ef2946e357f18f2bc38818b39d0e",
+      "char_count": 805
+    },
+    {
+      "doc_id": "KB-MP0193",
+      "title": "Celiac Disease",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/celiacdisease.html",
+      "license": "Public Domain",
+      "sha256": "f773e257ef0bf808b6a2a339eaf651ed8c148896e7d9905ca633fd5e63c3d98c",
+      "char_count": 5167
+    },
+    {
+      "doc_id": "KB-MP0194",
+      "title": "Aplastic Anemia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/aplasticanemia.html",
+      "license": "Public Domain",
+      "sha256": "34ccd113da6ddc3b91262c2ae25dd79013f5971cbd896ecb519487162f67df46",
+      "char_count": 2437
+    },
+    {
+      "doc_id": "KB-MP0195",
+      "title": "Thalassemia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/thalassemia.html",
+      "license": "Public Domain",
+      "sha256": "6b484cc69ecd9725983e88093dffb6832576c6220179dde2f3e2bcb78447b638",
+      "char_count": 1198
+    },
+    {
+      "doc_id": "KB-MP0196",
+      "title": "Iron",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/iron.html",
+      "license": "Public Domain",
+      "sha256": "bc668d07768e26909a85eb191ec3e40dd306a6d9a48a7dabec6f7df8e44622d4",
+      "char_count": 2795
+    },
+    {
+      "doc_id": "KB-MP0197",
+      "title": "Bone Marrow Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bonemarrowdiseases.html",
+      "license": "Public Domain",
+      "sha256": "67e50c0650cca19f87bf8bb9d011c18ecedad3d994d4d6cab7c24f27199a0eb3",
+      "char_count": 1233
+    },
+    {
+      "doc_id": "KB-MP0198",
+      "title": "Blood Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/blooddisorders.html",
+      "license": "Public Domain",
+      "sha256": "1c1177d385aede5852a57a8838eba689190d838c0ccd7aa73d63648a004a9346",
+      "char_count": 1096
+    },
+    {
+      "doc_id": "KB-MP0199",
+      "title": "Malnutrition",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/malnutrition.html",
+      "license": "Public Domain",
+      "sha256": "625ae36cb4462428cff582c915edb220b31b77ae19d1753bc31af377172fb764",
+      "char_count": 3823
+    },
+    {
+      "doc_id": "KB-MP0200",
+      "title": "Bone Marrow Transplantation",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bonemarrowtransplantation.html",
+      "license": "Public Domain",
+      "sha256": "6c445098c464f3cf72dbecfae91d71a298322dd00a380f42250d00b6e09b4aea",
+      "char_count": 1566
+    },
+    {
+      "doc_id": "KB-MP0201",
+      "title": "Hemochromatosis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hemochromatosis.html",
+      "license": "Public Domain",
+      "sha256": "3533cc9690d6e269d1a644529ca5b533bd8786d87245557b9e7601a44195cff5",
+      "char_count": 1343
+    },
+    {
+      "doc_id": "KB-MP0202",
+      "title": "Myelodysplastic Syndromes",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/myelodysplasticsyndromes.html",
+      "license": "Public Domain",
+      "sha256": "ca200edd434d9945b10d6a356ab23745ec4a3f5b52a44c65101180d1091da84c",
+      "char_count": 1455
+    },
+    {
+      "doc_id": "KB-MP0203",
+      "title": "Acute Lymphocytic Leukemia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/acutelymphocyticleukemia.html",
+      "license": "Public Domain",
+      "sha256": "cd0beb527cfb64fcd0f868411def9e95d4e988ca6429d4117879df47aeff4ce2",
+      "char_count": 4768
+    },
+    {
+      "doc_id": "KB-MP0204",
+      "title": "Acute Myeloid Leukemia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/acutemyeloidleukemia.html",
+      "license": "Public Domain",
+      "sha256": "c88bf9926849417230d7cc7c17d039f7ff71580dd53afc85ada987fdfad66fb8",
+      "char_count": 4088
+    },
+    {
+      "doc_id": "KB-MP0205",
+      "title": "Bleeding",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bleeding.html",
+      "license": "Public Domain",
+      "sha256": "04b74644e74bdbfd388bf850476dd2dc8c379856863bc95377909e01893946e4",
+      "char_count": 1396
+    },
+    {
+      "doc_id": "KB-MP0206",
+      "title": "Blood Count Tests",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bloodcounttests.html",
+      "license": "Public Domain",
+      "sha256": "47d3f10853fb50d4bc09c6174798b78b57895c2091f61954dd1410fde1f1d89c",
+      "char_count": 1207
+    },
+    {
+      "doc_id": "KB-MP0207",
+      "title": "Muscle Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/muscledisorders.html",
+      "license": "Public Domain",
+      "sha256": "3eb5465d5e1ade20d6a26be8bdfb35b86490b68ecdae836f8bfecbb5eec9a650",
+      "char_count": 748
+    },
+    {
+      "doc_id": "KB-MP0208",
+      "title": "Degenerative Nerve Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/degenerativenervediseases.html",
+      "license": "Public Domain",
+      "sha256": "9f4a5f8c32a96a3c2e6e9fc2f2f7aabd1ec78410f017e202d1d8e7e276c9d199",
+      "char_count": 969
+    },
+    {
+      "doc_id": "KB-MP0209",
+      "title": "Movement Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/movementdisorders.html",
+      "license": "Public Domain",
+      "sha256": "2bfbb86d99a3f34d5b1b8208242447cc4fe739a03d8260842418346c5e1c0885",
+      "char_count": 1676
+    },
+    {
+      "doc_id": "KB-MP0210",
+      "title": "Liver Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/liverdiseases.html",
+      "license": "Public Domain",
+      "sha256": "ace2d9989126fb3769abf3e9e88b48955dc43dc1703eae156f609799e02c25c0",
+      "char_count": 1049
+    },
+    {
+      "doc_id": "KB-MP0211",
+      "title": "Alcohol Use Disorder (AUD)",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/alcoholusedisorderaud.html",
+      "license": "Public Domain",
+      "sha256": "a0af3b15da6917c1e259b38a9b91c578eea142d9daa40745d22724512d8ccb83",
+      "char_count": 3448
+    },
+    {
+      "doc_id": "KB-MP0212",
+      "title": "Hepatitis C",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hepatitisc.html",
+      "license": "Public Domain",
+      "sha256": "5e97452ed97672dab030b9e1a6820e24449efb0c7b1d205d25add00321716dde",
+      "char_count": 5282
+    },
+    {
+      "doc_id": "KB-MP0213",
+      "title": "Liver Transplantation",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/livertransplantation.html",
+      "license": "Public Domain",
+      "sha256": "d8bc9b9c32e1dbdf1600116d6e2da62e08ceb49e03002c634730129a1ba94c96",
+      "char_count": 1300
+    },
+    {
+      "doc_id": "KB-MP0214",
+      "title": "Alcohol",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/alcohol.html",
+      "license": "Public Domain",
+      "sha256": "fbdc412e756eb6ae045df61c51a98ae2e009b8b82fac44b7c02ce17accbff987",
+      "char_count": 3811
+    },
+    {
+      "doc_id": "KB-MP0215",
+      "title": "Jaundice",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/jaundice.html",
+      "license": "Public Domain",
+      "sha256": "d84ebd858a27e0734dfeaed4aa04daf473be32717fddbfb314e20a1636907aa8",
+      "char_count": 1021
+    },
+    {
+      "doc_id": "KB-MP0216",
+      "title": "Bleeding Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bleedingdisorders.html",
+      "license": "Public Domain",
+      "sha256": "fa4f22f06a71e1aec54204d7b093c5dfbf551f1574206963d6617546d9dda0e9",
+      "char_count": 1023
+    },
+    {
+      "doc_id": "KB-MP0217",
+      "title": "Bile Duct Cancer",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bileductcancer.html",
+      "license": "Public Domain",
+      "sha256": "c07da28923711b7a4abf57bd0e5dd7ab7c2cd7424cb3e20fcc9e1516a596cf75",
+      "char_count": 1112
+    },
+    {
+      "doc_id": "KB-MP0218",
+      "title": "Nail Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/naildiseases.html",
+      "license": "Public Domain",
+      "sha256": "67bfd8def64aa7233f96b8b51b8c151dac4362e4cef9cf5f06bf8dd2a000f6f3",
+      "char_count": 964
+    },
+    {
+      "doc_id": "KB-MP0219",
+      "title": "Vitamin D Deficiency",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/vitaminddeficiency.html",
+      "license": "Public Domain",
+      "sha256": "ea270c6d2122607fae2b5eed64fe4f20d993aaed7bbac702e8a668cbd03f5dd1",
+      "char_count": 5120
+    },
+    {
+      "doc_id": "KB-MP0220",
+      "title": "Gaucher Disease",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/gaucherdisease.html",
+      "license": "Public Domain",
+      "sha256": "935a2ae7f24b9ec76bf37a6c9888537e0c5ff74f44265ad0ec9598f4fe75f418",
+      "char_count": 1305
+    },
+    {
+      "doc_id": "KB-MP0221",
+      "title": "Lipid Metabolism Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/lipidmetabolismdisorders.html",
+      "license": "Public Domain",
+      "sha256": "3ad120986dfe3be49a58b7ec901c9254756c4cde75464a2291377131202a2f2f",
+      "char_count": 1790
+    },
+    {
+      "doc_id": "KB-MP0222",
+      "title": "Hepatitis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hepatitis.html",
+      "license": "Public Domain",
+      "sha256": "c3d39b248e5c18f38bbe213565122a13da31a7de497736058d3b0c98aaab78bb",
+      "char_count": 4293
+    },
+    {
+      "doc_id": "KB-MP0223",
+      "title": "Hepatitis A",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hepatitisa.html",
+      "license": "Public Domain",
+      "sha256": "83e52baba13f7ec6c6240912422eff02090d0cf58f86bd5ac6a1bc5a8a6ba022",
+      "char_count": 3392
+    },
+    {
+      "doc_id": "KB-MP0224",
+      "title": "Hepatitis B",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hepatitisb.html",
+      "license": "Public Domain",
+      "sha256": "f412e00894417573c7bcdcf1d214b5fe48b4793fb32a79a6b8032cf390acd68c",
+      "char_count": 4831
+    },
+    {
+      "doc_id": "KB-MP0225",
+      "title": "HIV",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hiv.html",
+      "license": "Public Domain",
+      "sha256": "247b9eb96c7c2648b32de1dab73c3c0f8b723d5864758396da50ecc2502d0811",
+      "char_count": 4518
+    },
+    {
+      "doc_id": "KB-MP0226",
+      "title": "Liver Cancer",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/livercancer.html",
+      "license": "Public Domain",
+      "sha256": "41d0b0a934b603da64d6bc5ab748f82a1f3dd13c74d63d7708c2891714c082fa",
+      "char_count": 1043
+    },
+    {
+      "doc_id": "KB-MP0227",
+      "title": "Sexually Transmitted Infections",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/sexuallytransmittedinfections.html",
+      "license": "Public Domain",
+      "sha256": "566cea0b1902c4f928381c72191fa355697c295888c9a2f298c0e2f5330d4296",
+      "char_count": 3991
+    },
+    {
+      "doc_id": "KB-MP0228",
+      "title": "Health Disparities",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/healthdisparities.html",
+      "license": "Public Domain",
+      "sha256": "59c6c693e098a8e489a864c1e7cd05f71531188ec924cbbf3f09225c54df7aae",
+      "char_count": 806
+    },
+    {
+      "doc_id": "KB-MP0229",
+      "title": "Health Screening",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/healthscreening.html",
+      "license": "Public Domain",
+      "sha256": "6d6810ac60c270a700602b622025f1333b1b69f14d57f21ce4bfab8eea6c8b14",
+      "char_count": 992
+    },
+    {
+      "doc_id": "KB-MP0230",
+      "title": "Heroin",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/heroin.html",
+      "license": "Public Domain",
+      "sha256": "ddc1c4aef56cbcc7a8f3119f507110258e5e187c7527cddf0491fcea1a25d3df",
+      "char_count": 4178
+    },
+    {
+      "doc_id": "KB-MP0231",
+      "title": "Occupational Health for Health Care Providers",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/occupationalhealthforhealthcareproviders.html",
+      "license": "Public Domain",
+      "sha256": "db469afac6c7c3cfbc9f18c4f69f59623c43a78ae2bd5e73db844492b4e6db7a",
+      "char_count": 732
+    },
+    {
+      "doc_id": "KB-MP0232",
+      "title": "Pulmonary Fibrosis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/pulmonaryfibrosis.html",
+      "license": "Public Domain",
+      "sha256": "05663bb7dd1daa3f2a230608b2b200de9664ac1e052bb7e3814a7aea2b0d53ba",
+      "char_count": 1372
+    },
+    {
+      "doc_id": "KB-MP0233",
+      "title": "Cystic Fibrosis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cysticfibrosis.html",
+      "license": "Public Domain",
+      "sha256": "09c298c05f5523c3f2d1f28b3b3e6ae629756bbb6a0b3db818bd7e69ab4d8bd4",
+      "char_count": 1331
+    },
+    {
+      "doc_id": "KB-MP0234",
+      "title": "Bile Duct Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bileductdiseases.html",
+      "license": "Public Domain",
+      "sha256": "acfc1dc36805983bd828c71e78e3ea819ad49ebdf05f8dbce77a0017ed7fd0ee",
+      "char_count": 1046
+    },
+    {
+      "doc_id": "KB-MP0235",
+      "title": "Aspergillosis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/aspergillosis.html",
+      "license": "Public Domain",
+      "sha256": "df261e3d0c4b52051e98e65add91997dad91bd77e407d2f12e82210bc0b71a0b",
+      "char_count": 1451
+    },
+    {
+      "doc_id": "KB-MP0236",
+      "title": "Dehydration",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/dehydration.html",
+      "license": "Public Domain",
+      "sha256": "bd4afecdf780f858534ac7d875bb1088f78d5a8b572db9c590713882e99c2cc5",
+      "char_count": 3555
+    },
+    {
+      "doc_id": "KB-MP0237",
+      "title": "Edema",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/edema.html",
+      "license": "Public Domain",
+      "sha256": "7935cd4e38524f0e90d689ae7e90efef628c1731d950cfd1e4811d9d869409b9",
+      "char_count": 824
+    },
+    {
+      "doc_id": "KB-MP0238",
+      "title": "Eye Movement Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/eyemovementdisorders.html",
+      "license": "Public Domain",
+      "sha256": "e47e5c7c3f8094fca0f3f89b5e55a64fe74e6783db9dd1016f0dabbe27175fc8",
+      "char_count": 975
+    },
+    {
+      "doc_id": "KB-MP0239",
+      "title": "Potassium",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/potassium.html",
+      "license": "Public Domain",
+      "sha256": "6baa3e11b2ed025a6046d4425d05ddfdda7d209725f9e6deb04c4c9633757e72",
+      "char_count": 1177
+    },
+    {
+      "doc_id": "KB-MP0240",
+      "title": "Radiation Exposure",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/radiationexposure.html",
+      "license": "Public Domain",
+      "sha256": "8d6df0adade252df80c3957af8f653d5e013cef2eca9ee9dd1c965ddc555a101",
+      "char_count": 4731
+    },
+    {
+      "doc_id": "KB-MP0241",
+      "title": "Minerals",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/minerals.html",
+      "license": "Public Domain",
+      "sha256": "176351cb812733e1d3434cf4394c646a01591ba84692711c942531c2f564293f",
+      "char_count": 1120
+    },
+    {
+      "doc_id": "KB-MP0242",
+      "title": "Eating Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/eatingdisorders.html",
+      "license": "Public Domain",
+      "sha256": "486e5ba59a94d1000ad13d990c3d89d5cb40cf665abac360e50b13a90c6eee16",
+      "char_count": 6626
+    },
+    {
+      "doc_id": "KB-MP0243",
+      "title": "Fluid and Electrolyte Balance",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/fluidandelectrolytebalance.html",
+      "license": "Public Domain",
+      "sha256": "7f3e3997d4ce98b8a4222ef904f6231e8cfaa8084063b473f1356763c00b9e6b",
+      "char_count": 4006
+    },
+    {
+      "doc_id": "KB-MP0244",
+      "title": "Muscle Cramps",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/musclecramps.html",
+      "license": "Public Domain",
+      "sha256": "34782558733ea9e15a138251d926fac7a83e6365bfa3b470e544c44962f46b72",
+      "char_count": 2698
+    },
+    {
+      "doc_id": "KB-MP0245",
+      "title": "Nutrition",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/nutrition.html",
+      "license": "Public Domain",
+      "sha256": "09b7c417f9c2f0825dc86169c8761c28fa079bf7182f42dea932b466ab4411ab",
+      "char_count": 2947
+    },
+    {
+      "doc_id": "KB-MP0246",
+      "title": "Diets",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/diets.html",
+      "license": "Public Domain",
+      "sha256": "bccb6d2ee3f8a761125f33b1844d0f8f54bc8e6247e2cf41f7c94788dade68fa",
+      "char_count": 1546
+    },
+    {
+      "doc_id": "KB-MP0247",
+      "title": "Pain Relievers",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/painrelievers.html",
+      "license": "Public Domain",
+      "sha256": "73377b8e0162eceb1dc9e9d121b63f8a460c8d6a631cd140b55582b52b03e03f",
+      "char_count": 2799
+    },
+    {
+      "doc_id": "KB-MP0248",
+      "title": "Urine and Urination",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/urineandurination.html",
+      "license": "Public Domain",
+      "sha256": "5f2d4ab742fd762f2be8f494901e10b9c3c24deb530ef2e6584f349e5c3bf622",
+      "char_count": 1266
+    },
+    {
+      "doc_id": "KB-MP0249",
+      "title": "Club Drugs",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/clubdrugs.html",
+      "license": "Public Domain",
+      "sha256": "74efcdead7079dc89a7c1fc9e2005cd5d57bdb115be8e1dd834f2fd92f47968f",
+      "char_count": 2092
+    },
+    {
+      "doc_id": "KB-MP0250",
+      "title": "Food Labeling",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/foodlabeling.html",
+      "license": "Public Domain",
+      "sha256": "58dc70c9a38da50298837d0e2f37b6e3183cf67732a0075606b635b2df5bb328",
+      "char_count": 1765
+    },
+    {
+      "doc_id": "KB-MP0251",
+      "title": "Calcium",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/calcium.html",
+      "license": "Public Domain",
+      "sha256": "d45181690b7f0f10f88993c9492d6ebec531998b075cdb2322cf21184258c0f7",
+      "char_count": 3853
+    },
+    {
+      "doc_id": "KB-MP0252",
+      "title": "Pregnancy and Nutrition",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/pregnancyandnutrition.html",
+      "license": "Public Domain",
+      "sha256": "74dac8ba00c82f39ae28d209115eeac0c42fa42a5998878c3ed9751a1594796c",
+      "char_count": 5285
+    },
+    {
+      "doc_id": "KB-MP0253",
+      "title": "Osteoporosis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/osteoporosis.html",
+      "license": "Public Domain",
+      "sha256": "23902834c8474255262e43eab1752052580e5ec249bb3b94277d48f903cc2d81",
+      "char_count": 5099
+    },
+    {
+      "doc_id": "KB-MP0254",
+      "title": "Vitamin D",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/vitamind.html",
+      "license": "Public Domain",
+      "sha256": "809faa5afd8d0e075783737616adbbd692535a08fd3802a354353a9af4862596",
+      "char_count": 2663
+    },
+    {
+      "doc_id": "KB-MP0255",
+      "title": "Bone Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bonediseases.html",
+      "license": "Public Domain",
+      "sha256": "3013a404f283cf1d4f85a65a40abdc4fc570a81607edb1ebce8d1ef783663740",
+      "char_count": 1216
+    },
+    {
+      "doc_id": "KB-MP0256",
+      "title": "Rickets",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/rickets.html",
+      "license": "Public Domain",
+      "sha256": "9b664bb0a2d32dc7a1c07c3e3b490258d1ddd1a41a05aa10a846b9478b02f9b4",
+      "char_count": 1215
+    },
+    {
+      "doc_id": "KB-MP0257",
+      "title": "Bone Density",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bonedensity.html",
+      "license": "Public Domain",
+      "sha256": "c484b0e2e5bbfbda561dd9563397d7b8c5a868bcbf4cd2b81766da9cd296ec84",
+      "char_count": 2490
+    },
+    {
+      "doc_id": "KB-MP0258",
+      "title": "Child Nutrition",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/childnutrition.html",
+      "license": "Public Domain",
+      "sha256": "f3c65ee751ce9d173480945dd464da61a233dbd6a4ed10746d88644a68756c53",
+      "char_count": 962
+    },
+    {
+      "doc_id": "KB-MP0259",
+      "title": "Lactose Intolerance",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/lactoseintolerance.html",
+      "license": "Public Domain",
+      "sha256": "8f53f9056b55967c670b871d187f8589d1ff24dbefb9c14b96feec060eaee9b2",
+      "char_count": 999
+    },
+    {
+      "doc_id": "KB-MP0260",
+      "title": "Breast Cancer",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/breastcancer.html",
+      "license": "Public Domain",
+      "sha256": "58f52c448ea258506c743b86b78dba77d3b10d131d7d676241beddbc587e79d7",
+      "char_count": 6429
+    },
+    {
+      "doc_id": "KB-MP0261",
+      "title": "Chronic Lymphocytic Leukemia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/chroniclymphocyticleukemia.html",
+      "license": "Public Domain",
+      "sha256": "97505fa72bcd7e6bffc04dc4c5af2aa83de625792329fce7acddd4272d75a6ba",
+      "char_count": 4579
+    },
+    {
+      "doc_id": "KB-MP0262",
+      "title": "Chronic Myeloid Leukemia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/chronicmyeloidleukemia.html",
+      "license": "Public Domain",
+      "sha256": "fb68f5b7c8fbdef080918f7282b23235c0e74dabf733af91b0527004530b2ad5",
+      "char_count": 5792
+    },
+    {
+      "doc_id": "KB-MP0263",
+      "title": "Diarrhea",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/diarrhea.html",
+      "license": "Public Domain",
+      "sha256": "071d7ec2b44f5c898b1565e7bcff37c30258d608dd3eb9f1f819112f7f47122b",
+      "char_count": 4843
+    },
+    {
+      "doc_id": "KB-MP0264",
+      "title": "Ebola",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/ebola.html",
+      "license": "Public Domain",
+      "sha256": "dc12efaa2236ca8669614956555f3dd05dee0d76b5b6abc4903ddf93bdc8fca0",
+      "char_count": 3851
+    },
+    {
+      "doc_id": "KB-MP0265",
+      "title": "Endocrine Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/endocrinediseases.html",
+      "license": "Public Domain",
+      "sha256": "7f37d3937eff6fd3a94b06e0398c427cee9d66d698e8cf932d2615ddb912b1b8",
+      "char_count": 1186
+    },
+    {
+      "doc_id": "KB-MP0266",
+      "title": "Foodborne Illness",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/foodborneillness.html",
+      "license": "Public Domain",
+      "sha256": "f14a4d7e756e444146f80b03c8ba33094d8484af6466c4d68ff22635841ea6ea",
+      "char_count": 1631
+    },
+    {
+      "doc_id": "KB-MP0267",
+      "title": "Nausea and Vomiting",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/nauseaandvomiting.html",
+      "license": "Public Domain",
+      "sha256": "9f8cdd56fe3753bfe3b40d17e6adb183e8e22e2a9ef5051feddaf607127b01e4",
+      "char_count": 2250
+    },
+    {
+      "doc_id": "KB-MP0268",
+      "title": "Cryptosporidiosis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cryptosporidiosis.html",
+      "license": "Public Domain",
+      "sha256": "008de240ba66e7927779a72990964cb5b0e789307b3b1222b08026ac020c4530",
+      "char_count": 4446
+    },
+    {
+      "doc_id": "KB-MP0269",
+      "title": "Heat Illness",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/heatillness.html",
+      "license": "Public Domain",
+      "sha256": "586b9af58249cd796e74dad4d398059f0b176beca3c359508f37d1263c55cf4f",
+      "char_count": 1689
+    },
+    {
+      "doc_id": "KB-MP0270",
+      "title": "Rotavirus Infections",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/rotavirusinfections.html",
+      "license": "Public Domain",
+      "sha256": "5a485c6439cbdc49e528d8ddaca36138f9b24609cc12bb32ccf8206c84d6d9cf",
+      "char_count": 1050
+    },
+    {
+      "doc_id": "KB-MP0271",
+      "title": "Sweat",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/sweat.html",
+      "license": "Public Domain",
+      "sha256": "0a61e063db6a31a6c0866190aa319da9346e065cabbe2065a33fe0f39339d052",
+      "char_count": 966
+    },
+    {
+      "doc_id": "KB-MP0272",
+      "title": "C. diff Infections",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cdiffinfections.html",
+      "license": "Public Domain",
+      "sha256": "4d4d053a202bbfe3f2327c9e9f8807d42d25746c06c7e8ec2679b6bf618eaf5e",
+      "char_count": 3696
+    },
+    {
+      "doc_id": "KB-MP0273",
+      "title": "Cholera",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cholera.html",
+      "license": "Public Domain",
+      "sha256": "cc1159eddfca1663c0b2bf06c22bca37d1ad9d6ca1dae42883ade9565cf3fbe2",
+      "char_count": 2119
+    },
+    {
+      "doc_id": "KB-MP0274",
+      "title": "Dengue",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/dengue.html",
+      "license": "Public Domain",
+      "sha256": "3e699b41a15748311c2fc4653e8a24fc814a08c3554259e1eb09137b8ce8490f",
+      "char_count": 3058
+    },
+    {
+      "doc_id": "KB-MP0275",
+      "title": "Dizziness and Vertigo",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/dizzinessandvertigo.html",
+      "license": "Public Domain",
+      "sha256": "4940bf1c04e6f2bd3a0cd1b5c1ca0fdf138ee2d5fa40277f175473cbd7f11c40",
+      "char_count": 2127
+    },
+    {
+      "doc_id": "KB-MP0276",
+      "title": "Fainting",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/fainting.html",
+      "license": "Public Domain",
+      "sha256": "1a3d9754f65fe10b443956e8f983a658f539b39095a2cdba8303430cfd611704",
+      "char_count": 1132
+    },
+    {
+      "doc_id": "KB-MP0277",
+      "title": "Reflux in Infants",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/refluxininfants.html",
+      "license": "Public Domain",
+      "sha256": "8d2f3d4766de673416872bbc16df5663867cf2c1ca1bae9c99af682812415655",
+      "char_count": 6265
+    },
+    {
+      "doc_id": "KB-MP0278",
+      "title": "Esophagus Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/esophagusdisorders.html",
+      "license": "Public Domain",
+      "sha256": "7f8036d575c994f359d27fd3790183c9fbd885800499981c71b23c8e6ae827f7",
+      "char_count": 4054
+    },
+    {
+      "doc_id": "KB-MP0279",
+      "title": "Hiatal Hernia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hiatalhernia.html",
+      "license": "Public Domain",
+      "sha256": "b20c91006f284dc1df2f25cdea282f5c8414bdb44acdadf53f065d0542f21820",
+      "char_count": 1804
+    },
+    {
+      "doc_id": "KB-MP0280",
+      "title": "Heartburn",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/heartburn.html",
+      "license": "Public Domain",
+      "sha256": "a77979da3cb034921a71497805bef3506d64a120ec84a9fd719247efc337246c",
+      "char_count": 890
+    },
+    {
+      "doc_id": "KB-MP0281",
+      "title": "Swallowing Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/swallowingdisorders.html",
+      "license": "Public Domain",
+      "sha256": "78238a955997607b52e85e852bfef85e53218b768300903af758df4c975accb3",
+      "char_count": 1251
+    },
+    {
+      "doc_id": "KB-MP0282",
+      "title": "Throat Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/throatdisorders.html",
+      "license": "Public Domain",
+      "sha256": "d775bbccd419658ec11f630c5e68ee267407f362a5813202e23b7266fa163304",
+      "char_count": 980
+    },
+    {
+      "doc_id": "KB-MP0283",
+      "title": "Eosinophilic Esophagitis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/eosinophilicesophagitis.html",
+      "license": "Public Domain",
+      "sha256": "ea7a4d55b560ad0eccaa2aee3396f31b9a4d9fdcc19ea5812d22f68b790d405c",
+      "char_count": 5171
+    },
+    {
+      "doc_id": "KB-MP0284",
+      "title": "Indigestion",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/indigestion.html",
+      "license": "Public Domain",
+      "sha256": "ca3c83b36e71dd53093eac350512a414a3f4d07a1c8877c121018cdf9aea6fb8",
+      "char_count": 1220
+    },
+    {
+      "doc_id": "KB-MP0285",
+      "title": "Stomach Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/stomachdisorders.html",
+      "license": "Public Domain",
+      "sha256": "a0fa92836489639e50ace6018af011cb5466aa9d83db2d52036e6da59e89b379",
+      "char_count": 1088
+    },
+    {
+      "doc_id": "KB-MP0286",
+      "title": "Croup",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/croup.html",
+      "license": "Public Domain",
+      "sha256": "15c7b19f0e5d942fe7cd03e8b70f305f80b6db997dab4d97fe548031e0776769",
+      "char_count": 1129
+    },
+    {
+      "doc_id": "KB-MP0287",
+      "title": "Digestive Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/digestivediseases.html",
+      "license": "Public Domain",
+      "sha256": "6171134d6ec0e578c666c3574e5e9f7e7cc1b9dd14a05f0a36fd636daa2ecf15",
+      "char_count": 1002
+    },
+    {
+      "doc_id": "KB-MP0288",
+      "title": "Esophageal Cancer",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/esophagealcancer.html",
+      "license": "Public Domain",
+      "sha256": "579055e62cf716aee26a560f52a0b911156e95a0024b615585806f94e2994586",
+      "char_count": 911
+    },
+    {
+      "doc_id": "KB-MP0289",
+      "title": "Peptic Ulcer",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/pepticulcer.html",
+      "license": "Public Domain",
+      "sha256": "66cd289e44c61b77c1e03b3c750065fa9fe0dbb3c6916de60e12258a01621f78",
+      "char_count": 1475
+    },
+    {
+      "doc_id": "KB-MP0290",
+      "title": "Helicobacter pylori Infections",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/helicobacterpyloriinfections.html",
+      "license": "Public Domain",
+      "sha256": "884eb53c6393c17bd23a8c6fd9c248acd033c23541b9c4253bbc9da089589e56",
+      "char_count": 1984
+    },
+    {
+      "doc_id": "KB-MP0291",
+      "title": "Gastrointestinal Bleeding",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/gastrointestinalbleeding.html",
+      "license": "Public Domain",
+      "sha256": "b00e70162240fc752ffadfd37b2ef670694f69e5e9dcc82cddca2688eb0a38bf",
+      "char_count": 1569
+    },
+    {
+      "doc_id": "KB-MP0292",
+      "title": "Small Intestine Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/smallintestinedisorders.html",
+      "license": "Public Domain",
+      "sha256": "9a02eed7cda5923baf90722fb1313c03654e29ba42cdc915e00ff2a2c7fd8ec9",
+      "char_count": 853
+    },
+    {
+      "doc_id": "KB-MP0293",
+      "title": "Period Pain",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/periodpain.html",
+      "license": "Public Domain",
+      "sha256": "fc050c3ccba05e887384b4236a99ac4ebe2f8940ceb3a0b4b5be1971e17f8a9c",
+      "char_count": 4177
+    },
+    {
+      "doc_id": "KB-MP0294",
+      "title": "Crohn's Disease",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/crohnsdisease.html",
+      "license": "Public Domain",
+      "sha256": "e49e8c2e1934aeb036d1ed6c00883d85ba38104ed7b3eef88346990a6063c03f",
+      "char_count": 5887
+    },
+    {
+      "doc_id": "KB-MP0295",
+      "title": "Colonoscopy",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/colonoscopy.html",
+      "license": "Public Domain",
+      "sha256": "88bb53a8f31f556ac8f4fbd54d9937a3d2c9a573af2828a58a9e2f478af1b4a9",
+      "char_count": 6509
+    },
+    {
+      "doc_id": "KB-MP0296",
+      "title": "E. coli Infections",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/ecoliinfections.html",
+      "license": "Public Domain",
+      "sha256": "1e324590449f8dd3afbc9c9e5db863ed22120625b95a70d2aaac4519befc9f7b",
+      "char_count": 1192
+    },
+    {
+      "doc_id": "KB-MP0297",
+      "title": "Traveler's Health",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/travelershealth.html",
+      "license": "Public Domain",
+      "sha256": "d9e32476ad3bbd683e32dd5c0ce49a2e334bceaa7b70559fc6152fa5b5875c39",
+      "char_count": 1242
+    },
+    {
+      "doc_id": "KB-MP0298",
+      "title": "Campylobacter Infections",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/campylobacterinfections.html",
+      "license": "Public Domain",
+      "sha256": "c5b76f94c8209ee3f0a5af640cb2299776ecf3f4c09cebeb03054cc776f2f85d",
+      "char_count": 1343
+    },
+    {
+      "doc_id": "KB-MP0299",
+      "title": "Diverticulosis and Diverticulitis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/diverticulosisanddiverticulitis.html",
+      "license": "Public Domain",
+      "sha256": "a17d6692bbdac609c3c46a17f427a83e89b7c2258e1766b235c8fc330776c635",
+      "char_count": 5515
+    },
+    {
+      "doc_id": "KB-MP0300",
+      "title": "Infant and Newborn Nutrition",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/infantandnewbornnutrition.html",
+      "license": "Public Domain",
+      "sha256": "bbd9b09350d942d92d3d69e343209643269da22cf5e995b4cb48b7760cf0f890",
+      "char_count": 2286
+    },
+    {
+      "doc_id": "KB-MP0301",
+      "title": "Ulcerative Colitis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/ulcerativecolitis.html",
+      "license": "Public Domain",
+      "sha256": "bb4c4a7dd99407406c5c4c370ea4c50a6cfc8b2ff2ed8411430e2fc9ccd547e6",
+      "char_count": 1166
+    },
+    {
+      "doc_id": "KB-MP0302",
+      "title": "Anaphylaxis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/anaphylaxis.html",
+      "license": "Public Domain",
+      "sha256": "dd5cb75f52787ef55a1e2f2738ab6d0431b79a40833caa9bf62670d1dff15cf3",
+      "char_count": 1097
+    },
+    {
+      "doc_id": "KB-MP0303",
+      "title": "Antidepressants",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/antidepressants.html",
+      "license": "Public Domain",
+      "sha256": "35d2c7ab15e1fbb8f7a045d8847573c636aab45d24d2d43b8d5b275a9259de54",
+      "char_count": 6392
+    },
+    {
+      "doc_id": "KB-MP0304",
+      "title": "Appendicitis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/appendicitis.html",
+      "license": "Public Domain",
+      "sha256": "3a1e318168fed560c7242763a867c2f332f5a67b3e3073ac6107b4e1ead1e7a7",
+      "char_count": 1238
+    },
+    {
+      "doc_id": "KB-MP0305",
+      "title": "Teen Depression",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/teendepression.html",
+      "license": "Public Domain",
+      "sha256": "8ff7a21e1c748e820e50540edae716868952104ed4717d8056a8efe561543590",
+      "char_count": 6029
+    },
+    {
+      "doc_id": "KB-MP0306",
+      "title": "Bipolar Disorder",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bipolardisorder.html",
+      "license": "Public Domain",
+      "sha256": "a58e12d733baea7df1b6b21cdcead1c81fb0786cbcd4f640af5a1e5bc71d9b0b",
+      "char_count": 6679
+    },
+    {
+      "doc_id": "KB-MP0307",
+      "title": "Seasonal Affective Disorder",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/seasonalaffectivedisorder.html",
+      "license": "Public Domain",
+      "sha256": "1f7c6333ccb1b1bd7ae17e8c2d5dad7f39ce34e26008d447effe30d597851ef6",
+      "char_count": 1728
+    },
+    {
+      "doc_id": "KB-MP0308",
+      "title": "Older Adult Mental Health",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/olderadultmentalhealth.html",
+      "license": "Public Domain",
+      "sha256": "e29c792cc06ffae0b2997bf2f705de63f6463399c20fcfa14106cdc25f1f07d8",
+      "char_count": 2255
+    },
+    {
+      "doc_id": "KB-MP0309",
+      "title": "Mood Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/mooddisorders.html",
+      "license": "Public Domain",
+      "sha256": "3010f00696bce78c64764d1ba1a64a92e5fb5166753eec86e0735d29f5003287",
+      "char_count": 766
+    },
+    {
+      "doc_id": "KB-MP0310",
+      "title": "Bullying and Cyberbullying",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bullyingandcyberbullying.html",
+      "license": "Public Domain",
+      "sha256": "56d59eec35027c8cb0f959197763acfb5137600b761a87cde6d336975a4cbec3",
+      "char_count": 6251
+    },
+    {
+      "doc_id": "KB-MP0311",
+      "title": "Caregiver Health",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/caregiverhealth.html",
+      "license": "Public Domain",
+      "sha256": "55cf21ee22b316087b5861cd96ae6d7192b972a425b074f623d7438c3bf4c6c0",
+      "char_count": 4404
+    },
+    {
+      "doc_id": "KB-MP0312",
+      "title": "Suicide",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/suicide.html",
+      "license": "Public Domain",
+      "sha256": "f3d6c701ba3fe6a312a5e8ff50f39669d82584b3595a25c5b5ef6d99343bef75",
+      "char_count": 3720
+    },
+    {
+      "doc_id": "KB-MP0313",
+      "title": "Cancer--Living with Cancer",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cancerlivingwithcancer.html",
+      "license": "Public Domain",
+      "sha256": "e0b3da5ee0569699decc42427f3fbbd802759699436599aaa9b5162719c69e6c",
+      "char_count": 4512
+    },
+    {
+      "doc_id": "KB-MP0314",
+      "title": "Fibromyalgia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/fibromyalgia.html",
+      "license": "Public Domain",
+      "sha256": "8b50611b999167170c3895eba633da1e1b88969d1a2526103e057737bad2beec",
+      "char_count": 4436
+    },
+    {
+      "doc_id": "KB-MP0315",
+      "title": "How to Improve Mental Health",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/howtoimprovementalhealth.html",
+      "license": "Public Domain",
+      "sha256": "dbf68ca6c8cc6fc64ba56a69f7ed3d9df54758c03b7678b546b6af1018d3670f",
+      "char_count": 5557
+    },
+    {
+      "doc_id": "KB-MP0316",
+      "title": "Panic Disorder",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/panicdisorder.html",
+      "license": "Public Domain",
+      "sha256": "1ad940a3607ce735065f82284e851dabae1c0d8e00baf4468a617f44fc12ad30",
+      "char_count": 4188
+    },
+    {
+      "doc_id": "KB-MP0317",
+      "title": "Self-Harm",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/selfharm.html",
+      "license": "Public Domain",
+      "sha256": "523777684da3e313d3401ceb36a2e9ca4e11d09b26e158f0502d614cda82d5fc",
+      "char_count": 3179
+    },
+    {
+      "doc_id": "KB-MP0318",
+      "title": "Sexual Assault",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/sexualassault.html",
+      "license": "Public Domain",
+      "sha256": "104cf27b65ab5117c5cd7c4f865f7dd83946730f7a6294048fa9e1b35792cd8e",
+      "char_count": 5982
+    },
+    {
+      "doc_id": "KB-MP0319",
+      "title": "Phobias",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/phobias.html",
+      "license": "Public Domain",
+      "sha256": "add41895301051c89753201b92876fa8b09dc11b1c5dc607373934b4eff7f1ad",
+      "char_count": 1161
+    },
+    {
+      "doc_id": "KB-MP0320",
+      "title": "Obsessive-Compulsive Disorder",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/obsessivecompulsivedisorder.html",
+      "license": "Public Domain",
+      "sha256": "ffde64db6dbf902173ec55540998703e6644455dffaa6c50c0c5bb0fdf420560",
+      "char_count": 5398
+    },
+    {
+      "doc_id": "KB-MP0321",
+      "title": "Child Mental Health",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/childmentalhealth.html",
+      "license": "Public Domain",
+      "sha256": "b187cf737e88f8e6fa3203b5ce6e22679826550ba8f897bb67f9368b165d7e4f",
+      "char_count": 1397
+    },
+    {
+      "doc_id": "KB-MP0322",
+      "title": "Mental Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/mentaldisorders.html",
+      "license": "Public Domain",
+      "sha256": "f131604556862e17bae905cd2944197375d022f6a5864f844d50a359026e36b6",
+      "char_count": 2823
+    },
+    {
+      "doc_id": "KB-MP0323",
+      "title": "Premenstrual Syndrome",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/premenstrualsyndrome.html",
+      "license": "Public Domain",
+      "sha256": "0f97a7af88511cccf5237b8486e5f8eb6ebcac08d946bc52577bf97b4565743d",
+      "char_count": 3691
+    },
+    {
+      "doc_id": "KB-MP0324",
+      "title": "Dementia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/dementia.html",
+      "license": "Public Domain",
+      "sha256": "f62766c756296c592f1a27a246ee378b6ec7f373aea17269c69d777099a283ab",
+      "char_count": 5276
+    },
+    {
+      "doc_id": "KB-MP0325",
+      "title": "Infant and Newborn Development",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/infantandnewborndevelopment.html",
+      "license": "Public Domain",
+      "sha256": "b230d49a4910ced5b4e506b0cfa5f88b41332fba58121c100da4fffa5a75592d",
+      "char_count": 1106
+    },
+    {
+      "doc_id": "KB-MP0326",
+      "title": "Lewy Body Dementia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/lewybodydementia.html",
+      "license": "Public Domain",
+      "sha256": "d0f259710fb93912fcb5404dfd6df6b4652318d5cc2999c41146ab091c71366b",
+      "char_count": 5763
+    },
+    {
+      "doc_id": "KB-MP0327",
+      "title": "Migraine",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/migraine.html",
+      "license": "Public Domain",
+      "sha256": "6fdb7046fb114c26eb0041d3f61d787ee7066032ef1e48586f07aa6eded5ed12",
+      "char_count": 5315
+    },
+    {
+      "doc_id": "KB-MP0328",
+      "title": "Insomnia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/insomnia.html",
+      "license": "Public Domain",
+      "sha256": "2ec40da9c66d2012e10e33d1c25a076e59feff9bea66a9100a41f0b21daee1f4",
+      "char_count": 3699
+    },
+    {
+      "doc_id": "KB-MP0329",
+      "title": "Healthy Sleep",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/healthysleep.html",
+      "license": "Public Domain",
+      "sha256": "b56f2b55f8aec36cc5022ad560bb1e1f70d04612696bbe9ef673f7001c8b9bec",
+      "char_count": 5325
+    },
+    {
+      "doc_id": "KB-MP0330",
+      "title": "Sleep Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/sleepdisorders.html",
+      "license": "Public Domain",
+      "sha256": "a6030c92dcc24878846c04bf9b9a8e443c81cef98cfbd52e7fa0d1e1e0ae7ea5",
+      "char_count": 4911
+    },
+    {
+      "doc_id": "KB-MP0331",
+      "title": "Cannabis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cannabis.html",
+      "license": "Public Domain",
+      "sha256": "8834bde08851e5f5d0136e1ea99199b8b01cf0180019dcc9484ed1aefbc3493f",
+      "char_count": 4140
+    },
+    {
+      "doc_id": "KB-MP0332",
+      "title": "Inhalants",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/inhalants.html",
+      "license": "Public Domain",
+      "sha256": "20ae47bdd3b6011fa688e46e24eb51e7285ad38f5bd3b2c9844b223e0294e315",
+      "char_count": 4080
+    },
+    {
+      "doc_id": "KB-MP0333",
+      "title": "Post-Traumatic Stress Disorder",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/posttraumaticstressdisorder.html",
+      "license": "Public Domain",
+      "sha256": "8e6a0fe3a402252c894a1fa709644a8e99a08f2dd1e9aa2f6b64b33756a35c0e",
+      "char_count": 5564
+    },
+    {
+      "doc_id": "KB-MP0334",
+      "title": "Urinary Incontinence",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/urinaryincontinence.html",
+      "license": "Public Domain",
+      "sha256": "abd5f8d06d590438fdfac8be8852120f25b2948e18d6174a0e713b815018f6b5",
+      "char_count": 6246
+    },
+    {
+      "doc_id": "KB-MP0335",
+      "title": "Occupational Health",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/occupationalhealth.html",
+      "license": "Public Domain",
+      "sha256": "04b5d7d19fefdeac48e0c06beb53b2b339ce1673fbeb46c0c05b24371966f49f",
+      "char_count": 837
+    },
+    {
+      "doc_id": "KB-MP0336",
+      "title": "Raynaud Phenomenon",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/raynaudphenomenon.html",
+      "license": "Public Domain",
+      "sha256": "65e888b66851846e3a3d0333344f1ef9f0e0be01d421c012bfb0d0e8e53aa4cb",
+      "char_count": 5143
+    },
+    {
+      "doc_id": "KB-MP0337",
+      "title": "Chronic Pain",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/chronicpain.html",
+      "license": "Public Domain",
+      "sha256": "b79f0284b724543e03959695c7d203dc5d4cd84a80cc6691a3a37c92ec7be1bc",
+      "char_count": 3165
+    },
+    {
+      "doc_id": "KB-MP0338",
+      "title": "Coping with Disasters",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/copingwithdisasters.html",
+      "license": "Public Domain",
+      "sha256": "199fc5e55aaa8cb6bea8eb71955c034d7f64a7fa76b69c0d4b4e7086efc30aec",
+      "char_count": 1169
+    },
+    {
+      "doc_id": "KB-MP0339",
+      "title": "Heel Injuries and Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/heelinjuriesanddisorders.html",
+      "license": "Public Domain",
+      "sha256": "eb2bf89197eb52c364c1289f9ca3ec631ff5b96d42771814de8bf7b8cc1ed21e",
+      "char_count": 939
+    },
+    {
+      "doc_id": "KB-MP0340",
+      "title": "Mental Health",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/mentalhealth.html",
+      "license": "Public Domain",
+      "sha256": "d7f6a184eac96523c0fdd4080a2e3a1b42678c029bf9c6a8f421a02aca822ce4",
+      "char_count": 3675
+    },
+    {
+      "doc_id": "KB-MP0341",
+      "title": "Teen Mental Health",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/teenmentalhealth.html",
+      "license": "Public Domain",
+      "sha256": "51606c49c468c0b32bbb3acfe586be0b32792ae4b0f0e660d35d81a5f0b00c87",
+      "char_count": 1120
+    },
+    {
+      "doc_id": "KB-MP0342",
+      "title": "Personality Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/personalitydisorders.html",
+      "license": "Public Domain",
+      "sha256": "3d13c9846d325a4b9ead319a1a4276be413086405a865b30d24a12be96453119",
+      "char_count": 4793
+    },
+    {
+      "doc_id": "KB-MP0343",
+      "title": "Drug Use and Addiction",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/druguseandaddiction.html",
+      "license": "Public Domain",
+      "sha256": "d11536bb128abe6f81de84c67fba3e07b0cead590fb6ede1d8e075bb048ebc19",
+      "char_count": 5691
+    },
+    {
+      "doc_id": "KB-MP0344",
+      "title": "Schizophrenia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/schizophrenia.html",
+      "license": "Public Domain",
+      "sha256": "3e9b2bf51d7f3f3fd36fb987d6fa7ab77582d43db5bcad70566ce78e415e6a4e",
+      "char_count": 1676
+    },
+    {
+      "doc_id": "KB-MP0345",
+      "title": "Ischemic Stroke",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/ischemicstroke.html",
+      "license": "Public Domain",
+      "sha256": "9efd99b3efe3e03e37bf49e1bd130134ad3c6e840b91fa2b10dd0d83c741116d",
+      "char_count": 3555
+    },
+    {
+      "doc_id": "KB-MP0346",
+      "title": "Hemorrhagic Stroke",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hemorrhagicstroke.html",
+      "license": "Public Domain",
+      "sha256": "0d19fa957587183be022598b6ee68e515238de46226bfe199ab0c9a16bcc3c2d",
+      "char_count": 3419
+    },
+    {
+      "doc_id": "KB-MP0347",
+      "title": "Stroke Rehabilitation",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/strokerehabilitation.html",
+      "license": "Public Domain",
+      "sha256": "7bb985543885106679e911affa595850ba6df460950eac25fb5b0843c58abaf3",
+      "char_count": 4233
+    },
+    {
+      "doc_id": "KB-MP0348",
+      "title": "Transient Ischemic Attack",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/transientischemicattack.html",
+      "license": "Public Domain",
+      "sha256": "14251767095fd157b1bc3279a25a4340968d6eaf523f799314b0b45234494885",
+      "char_count": 1410
+    },
+    {
+      "doc_id": "KB-MP0349",
+      "title": "Carotid Artery Disease",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/carotidarterydisease.html",
+      "license": "Public Domain",
+      "sha256": "92cab6b874a39438bc231a1e42ae7efb5d62ad54a31cce4322b499b039451c87",
+      "char_count": 1698
+    },
+    {
+      "doc_id": "KB-MP0350",
+      "title": "Aphasia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/aphasia.html",
+      "license": "Public Domain",
+      "sha256": "6706f16a0715364a466f6ac0dc3edf5e278f2686fb7eca4c2a1a5f88e3932925",
+      "char_count": 4191
+    },
+    {
+      "doc_id": "KB-MP0351",
+      "title": "Arteriovenous Malformations",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/arteriovenousmalformations.html",
+      "license": "Public Domain",
+      "sha256": "faa80c05d3cca92b56a8f63ffa2d885baae0514957581d60f476cdf3229cf7aa",
+      "char_count": 3543
+    },
+    {
+      "doc_id": "KB-MP0352",
+      "title": "Hydrocephalus",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hydrocephalus.html",
+      "license": "Public Domain",
+      "sha256": "7fb5d5dc9e9d78ffacd397be966f4d92cbe87daf3c6f8b2407c483a3f0f829eb",
+      "char_count": 1452
+    },
+    {
+      "doc_id": "KB-MP0353",
+      "title": "Meniere's Disease",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/menieresdisease.html",
+      "license": "Public Domain",
+      "sha256": "27f6714a2f41419fe39badd222af943d71d5569f7bfd5c573fa3c30e23067193",
+      "char_count": 1446
+    },
+    {
+      "doc_id": "KB-MP0354",
+      "title": "Balance Problems",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/balanceproblems.html",
+      "license": "Public Domain",
+      "sha256": "d6ced4e94602774ed670fca072720b79c9fba384a5a5a1cea7637c8f3c47630c",
+      "char_count": 1439
+    },
+    {
+      "doc_id": "KB-MP0355",
+      "title": "Multiple Sclerosis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/multiplesclerosis.html",
+      "license": "Public Domain",
+      "sha256": "822dfefbd0b2e5d6fd03a3dea6b31e6e5be0f749ed731403f6363e96601e0834",
+      "char_count": 4234
+    },
+    {
+      "doc_id": "KB-MP0356",
+      "title": "Acoustic Neuroma",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/acousticneuroma.html",
+      "license": "Public Domain",
+      "sha256": "7b58cd879c67ba4b59d52594fffecdb2c63158068a22cf1ffcab0840fdcdb8ee",
+      "char_count": 1212
+    },
+    {
+      "doc_id": "KB-MP0357",
+      "title": "Barotrauma",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/barotrauma.html",
+      "license": "Public Domain",
+      "sha256": "c55d1880844041ca2256e8fd44e595bf40bc1282376e42d9771ccd2a2d3cac43",
+      "char_count": 804
+    },
+    {
+      "doc_id": "KB-MP0358",
+      "title": "Blood Thinners",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bloodthinners.html",
+      "license": "Public Domain",
+      "sha256": "55b1e8f3b03fcaf6b40cb4e279a0ab6763bfeea166108e9d812d895ffa3d159a",
+      "char_count": 2414
+    },
+    {
+      "doc_id": "KB-MP0359",
+      "title": "Carbon Monoxide Poisoning",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/carbonmonoxidepoisoning.html",
+      "license": "Public Domain",
+      "sha256": "c286be1e86c0606d56d4ea89c0b8826e06aa9186ae9bfeedbbe0891870d85e1c",
+      "char_count": 1051
+    },
+    {
+      "doc_id": "KB-MP0360",
+      "title": "Chiari Malformation",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/chiarimalformation.html",
+      "license": "Public Domain",
+      "sha256": "1d91003a52db927daec647b32f1914dc632a998099da01a421aed2c6792bff15",
+      "char_count": 1090
+    },
+    {
+      "doc_id": "KB-MP0361",
+      "title": "Cochlear Implants",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cochlearimplants.html",
+      "license": "Public Domain",
+      "sha256": "e3d0628217b1b58166a4e764c79ee54ec790e27c2eb0612bec3278044773e6ae",
+      "char_count": 745
+    },
+    {
+      "doc_id": "KB-MP0362",
+      "title": "Concussion",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/concussion.html",
+      "license": "Public Domain",
+      "sha256": "d981426cbeef04d3656af932b99effcad8455620554fe4e295b624a8fda4138a",
+      "char_count": 2664
+    },
+    {
+      "doc_id": "KB-MP0363",
+      "title": "Charcot-Marie-Tooth Disease",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/charcotmarietoothdisease.html",
+      "license": "Public Domain",
+      "sha256": "64fe84c9e057f79aeb6566fa78270081bacb17a4065dc014018eff987c2db6ce",
+      "char_count": 1149
+    },
+    {
+      "doc_id": "KB-MP0364",
+      "title": "Optic Nerve Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/opticnervedisorders.html",
+      "license": "Public Domain",
+      "sha256": "43fc48a40e0b8864944a567c7a563bd5ed9b386abaaee32e47c0c9d309c2c4a0",
+      "char_count": 1646
+    },
+    {
+      "doc_id": "KB-MP0365",
+      "title": "Autonomic Nervous System Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/autonomicnervoussystemdisorders.html",
+      "license": "Public Domain",
+      "sha256": "1058fc88cca2ffe21877185b7b16a8e78bf0cc3a3d8739d2cf2e7e1bfa726bda",
+      "char_count": 1275
+    },
+    {
+      "doc_id": "KB-MP0366",
+      "title": "Mitochondrial Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/mitochondrialdiseases.html",
+      "license": "Public Domain",
+      "sha256": "df589704dce86a1b720a190cbbce33466020bce68fb62236d04aa97a805868f2",
+      "char_count": 1746
+    },
+    {
+      "doc_id": "KB-MP0367",
+      "title": "Amblyopia",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/amblyopia.html",
+      "license": "Public Domain",
+      "sha256": "be5046a4a95c8014e461f9cd307afd83ed60358955b068db42e429d1aa77e707",
+      "char_count": 1373
+    },
+    {
+      "doc_id": "KB-MP0368",
+      "title": "Brachial Plexus Injuries",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/brachialplexusinjuries.html",
+      "license": "Public Domain",
+      "sha256": "0789407e5cde0cefa36f50c52542c90d52025006ed25692d50be5343f0e1d2c8",
+      "char_count": 1009
+    },
+    {
+      "doc_id": "KB-MP0369",
+      "title": "Cancer Chemotherapy",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cancerchemotherapy.html",
+      "license": "Public Domain",
+      "sha256": "50348a06917f3672f426f161858385df39c56289333f442568fd418ffebf20c5",
+      "char_count": 2236
+    },
+    {
+      "doc_id": "KB-MP0370",
+      "title": "Cerebellar Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cerebellardisorders.html",
+      "license": "Public Domain",
+      "sha256": "9b20a6f0e3c82649602143fabe1c78b02070f1dcc38ad0c7847b077faa843bc0",
+      "char_count": 811
+    },
+    {
+      "doc_id": "KB-MP0371",
+      "title": "Falls",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/falls.html",
+      "license": "Public Domain",
+      "sha256": "79f2b7e553a85a1b8ea8677503ab4d79268c7a6c4e3fc1fd302e9e408efc7609",
+      "char_count": 1832
+    },
+    {
+      "doc_id": "KB-MP0372",
+      "title": "Hearing Disorders and Deafness",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hearingdisordersanddeafness.html",
+      "license": "Public Domain",
+      "sha256": "570a8b38177362df6f6fd0dd4c8870ab4fc43d76cbc68e494d93e32a4e5c401f",
+      "char_count": 1249
+    },
+    {
+      "doc_id": "KB-MP0373",
+      "title": "Hearing Problems in Children",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hearingproblemsinchildren.html",
+      "license": "Public Domain",
+      "sha256": "ec90fa5bca076c4b103c1dbd4e0daf4a4181e9174714fcf8199f4717529825e2",
+      "char_count": 1065
+    },
+    {
+      "doc_id": "KB-MP0374",
+      "title": "Osteoarthritis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/osteoarthritis.html",
+      "license": "Public Domain",
+      "sha256": "8ff08b6f1dc9b3b873c48a4208ca7e6f0ee3ff27ad1a469fe815170d54d1c16d",
+      "char_count": 3951
+    },
+    {
+      "doc_id": "KB-MP0375",
+      "title": "Arthritis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/arthritis.html",
+      "license": "Public Domain",
+      "sha256": "0ba1597a8129c3d317b9c22b10846dd104a4ce6b963b1ebeae26505e1eaa7760",
+      "char_count": 3324
+    },
+    {
+      "doc_id": "KB-MP0376",
+      "title": "Cartilage Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cartilagedisorders.html",
+      "license": "Public Domain",
+      "sha256": "3e868fa94c83e6527dbae8c51a511314c9dc229e4aef9197aca329154f41c623",
+      "char_count": 994
+    },
+    {
+      "doc_id": "KB-MP0377",
+      "title": "Hip Replacement",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hipreplacement.html",
+      "license": "Public Domain",
+      "sha256": "d9c0c57d5844970caf383ac4074dc38bf707a1f998a29ea9582037d5df517b9a",
+      "char_count": 1239
+    },
+    {
+      "doc_id": "KB-MP0378",
+      "title": "Ankle Injuries and Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/ankleinjuriesanddisorders.html",
+      "license": "Public Domain",
+      "sha256": "39222b10650971391972aee1ce43ca2fe0bb92f073f1fbeb4475da650e729542",
+      "char_count": 827
+    },
+    {
+      "doc_id": "KB-MP0379",
+      "title": "Arm Injuries and Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/arminjuriesanddisorders.html",
+      "license": "Public Domain",
+      "sha256": "33eeaf26c11ffe038aa0dbbc7d22a4f22b2c753897c251a6e42cf3adb3a7791f",
+      "char_count": 752
+    },
+    {
+      "doc_id": "KB-MP0380",
+      "title": "Finger Injuries and Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/fingerinjuriesanddisorders.html",
+      "license": "Public Domain",
+      "sha256": "ca3e66fcbae3c0ef3280b597223727a1491a05820116bf0bb968b8c658607d55",
+      "char_count": 946
+    },
+    {
+      "doc_id": "KB-MP0381",
+      "title": "Foot Injuries and Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/footinjuriesanddisorders.html",
+      "license": "Public Domain",
+      "sha256": "e6db7a07edef149468856549e293baf4702540374368b20eee3bcbaf0b3746b3",
+      "char_count": 731
+    },
+    {
+      "doc_id": "KB-MP0382",
+      "title": "Hand Injuries and Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/handinjuriesanddisorders.html",
+      "license": "Public Domain",
+      "sha256": "a7b6c78b02840bf8c32fb7d8c6c0ec7370814cd15f0dc91e8586cd07068d8421",
+      "char_count": 808
+    },
+    {
+      "doc_id": "KB-MP0383",
+      "title": "Hip Injuries and Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/hipinjuriesanddisorders.html",
+      "license": "Public Domain",
+      "sha256": "37d87d9e48d455e2228a7297f99f501374a5b481c78b960af010f7008914e042",
+      "char_count": 1396
+    },
+    {
+      "doc_id": "KB-MP0384",
+      "title": "Knee Injuries and Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/kneeinjuriesanddisorders.html",
+      "license": "Public Domain",
+      "sha256": "d53dd28597ebc93abc898f25c4db31e23af08a7681ff942b723d12071e01437e",
+      "char_count": 1267
+    },
+    {
+      "doc_id": "KB-MP0385",
+      "title": "Knee Replacement",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/kneereplacement.html",
+      "license": "Public Domain",
+      "sha256": "684d35203df6593f0216c89a26ff92c67698eb625b82a5d7ff183495a5f7ef23",
+      "char_count": 4407
+    },
+    {
+      "doc_id": "KB-MP0386",
+      "title": "Leg Injuries and Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/leginjuriesanddisorders.html",
+      "license": "Public Domain",
+      "sha256": "f3b206c442778352eb1fb8c0889ad7b9873aa0274f1bc9815c3314caaeefe5e6",
+      "char_count": 848
+    },
+    {
+      "doc_id": "KB-MP0387",
+      "title": "Obesity",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/obesity.html",
+      "license": "Public Domain",
+      "sha256": "a068f1ff2061a9b05c30b53ce146bcef9e8df3db0418c8edd2a106aa4279fc24",
+      "char_count": 4075
+    },
+    {
+      "doc_id": "KB-MP0388",
+      "title": "Rheumatoid Arthritis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/rheumatoidarthritis.html",
+      "license": "Public Domain",
+      "sha256": "8df2cbe529428c6f9e8c705f8b88754101c0e445e093ad40c3f67a1f92d913b8",
+      "char_count": 4964
+    },
+    {
+      "doc_id": "KB-MP0389",
+      "title": "Women's Health",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/womenshealth.html",
+      "license": "Public Domain",
+      "sha256": "5a28a30347a5e796961a2cf468691bb9ebcec9befa9a8f3c77d2cbc89ee7c4fa",
+      "char_count": 1092
+    },
+    {
+      "doc_id": "KB-MP0390",
+      "title": "Wrist Injuries and Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/wristinjuriesanddisorders.html",
+      "license": "Public Domain",
+      "sha256": "c37102bfe139c3f84a48da76fed5ef352861d4ab7677c347f050b7e9a30e560b",
+      "char_count": 3190
+    },
+    {
+      "doc_id": "KB-MP0391",
+      "title": "Juvenile Arthritis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/juvenilearthritis.html",
+      "license": "Public Domain",
+      "sha256": "abcd0862fbd166e6433c31ba19a876146929cf6b5914a6c47d2f569df2bd7c5d",
+      "char_count": 2515
+    },
+    {
+      "doc_id": "KB-MP0392",
+      "title": "Sjogren's Syndrome",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/sjogrenssyndrome.html",
+      "license": "Public Domain",
+      "sha256": "c6f08624b62e8673b07e5995332b494d58f1e921f583b0aef6e5067ac1d98710",
+      "char_count": 4389
+    },
+    {
+      "doc_id": "KB-MP0393",
+      "title": "Thymus Cancer",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/thymuscancer.html",
+      "license": "Public Domain",
+      "sha256": "05381b2b2ad7ba2d2deac2719767ecb2d91af299f2bfd5e5be6b1289f1b1595d",
+      "char_count": 956
+    },
+    {
+      "doc_id": "KB-MP0394",
+      "title": "Ankylosing Spondylitis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/ankylosingspondylitis.html",
+      "license": "Public Domain",
+      "sha256": "5b6fa2147ebd1be3e18146a54bd792ae6bb6b772a1fe89eb90ad74613c5669a8",
+      "char_count": 3638
+    },
+    {
+      "doc_id": "KB-MP0395",
+      "title": "Scleroderma",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/scleroderma.html",
+      "license": "Public Domain",
+      "sha256": "24c2a8bcee103090c8c3eb8c2af4a5a14e6ea80f26a15aef4d6b33000e538ee7",
+      "char_count": 5453
+    },
+    {
+      "doc_id": "KB-MP0396",
+      "title": "Toe Injuries and Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/toeinjuriesanddisorders.html",
+      "license": "Public Domain",
+      "sha256": "94c763fc5a12fe3c860a26e52fb1bafa3def3f3cd8c22c96e26751a11e6ca9ff",
+      "char_count": 942
+    },
+    {
+      "doc_id": "KB-MP0397",
+      "title": "Back Pain",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/backpain.html",
+      "license": "Public Domain",
+      "sha256": "8714f34507f90a6eb419f285d2207991bd4dbe5652c0c76580e4493e4841f1f3",
+      "char_count": 1336
+    },
+    {
+      "doc_id": "KB-MP0398",
+      "title": "Back Injuries",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/backinjuries.html",
+      "license": "Public Domain",
+      "sha256": "d6e35bcc923cd442512f04ab618c22dd3a754c39f605cbe51089dbc9f0b0bd8f",
+      "char_count": 937
+    },
+    {
+      "doc_id": "KB-MP0399",
+      "title": "Non-Drug Pain Management",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/nondrugpainmanagement.html",
+      "license": "Public Domain",
+      "sha256": "c060b00a85b3dc8bd04830401f58953143b40f8c52bd8daa0ccd8566cfff16ef",
+      "char_count": 4761
+    },
+    {
+      "doc_id": "KB-MP0400",
+      "title": "Herniated Disk",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/herniateddisk.html",
+      "license": "Public Domain",
+      "sha256": "46a6d5dac897e9c4c3bc6ca89592de63c097d1fa09a65aa5652448aea9cb0311",
+      "char_count": 1038
+    },
+    {
+      "doc_id": "KB-MP0401",
+      "title": "Guide to Good Posture",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/guidetogoodposture.html",
+      "license": "Public Domain",
+      "sha256": "10872c6c861d8ddf9ddb0e51a597817e3315aa317a136a5894992eb258a8cf2a",
+      "char_count": 4001
+    },
+    {
+      "doc_id": "KB-MP0402",
+      "title": "Chiropractic",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/chiropractic.html",
+      "license": "Public Domain",
+      "sha256": "cf0729579865bcb7ecc7318917cc8865788502488bc67a16803120b6928aa332",
+      "char_count": 846
+    },
+    {
+      "doc_id": "KB-MP0403",
+      "title": "Uterine Fibroids",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/uterinefibroids.html",
+      "license": "Public Domain",
+      "sha256": "ca5d5248563d50791310619e924c75674effe90c250b1b1d53e52f8b3bd378b5",
+      "char_count": 3728
+    },
+    {
+      "doc_id": "KB-MP0404",
+      "title": "Bladder Cancer",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bladdercancer.html",
+      "license": "Public Domain",
+      "sha256": "b10ee7cf7468ca7a7c1d27e14ec15d3abe7a9630d036c9f9813138c7da533c78",
+      "char_count": 923
+    },
+    {
+      "doc_id": "KB-MP0405",
+      "title": "Temporomandibular Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/temporomandibulardisorders.html",
+      "license": "Public Domain",
+      "sha256": "32717d3aef0c8d391b2469a22b031c6a00d50e065d13ae8f5b6dabde38e7c4c6",
+      "char_count": 5419
+    },
+    {
+      "doc_id": "KB-MP0406",
+      "title": "Sciatica",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/sciatica.html",
+      "license": "Public Domain",
+      "sha256": "dce59767ce0ee6a8e6787b7f7d15c005ed16341065e6c9006651bf42aec2678a",
+      "char_count": 1045
+    },
+    {
+      "doc_id": "KB-MP0407",
+      "title": "Menstruation",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/menstruation.html",
+      "license": "Public Domain",
+      "sha256": "b4e53a91f9391a3de46ca27fcbade37ce0c6c091e98a078abad9f0c4b7af290d",
+      "char_count": 2876
+    },
+    {
+      "doc_id": "KB-MP0408",
+      "title": "Pregnancy",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/pregnancy.html",
+      "license": "Public Domain",
+      "sha256": "b3b4376ccc505a760381cad704e9a5774b1fc2679824b1894f2e04acb06d8c35",
+      "char_count": 1872
+    },
+    {
+      "doc_id": "KB-MP0409",
+      "title": "Sports Injuries",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/sportsinjuries.html",
+      "license": "Public Domain",
+      "sha256": "f4020ae5fcbfdf5a7731728f69b52ba2ce67d717a1249cabdf89577ef07ae9c9",
+      "char_count": 1139
+    },
+    {
+      "doc_id": "KB-MP0410",
+      "title": "MRI Scans",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/mriscans.html",
+      "license": "Public Domain",
+      "sha256": "ffc5eb77bb516feb1d1c964560e0e530947e1779a3fdacf86f11b205953ef463",
+      "char_count": 2530
+    },
+    {
+      "doc_id": "KB-MP0411",
+      "title": "Prostate Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/prostatediseases.html",
+      "license": "Public Domain",
+      "sha256": "5e2b53b729ec2e2927002d2fe1576b9f55ba3a0d94adb1be6a9d2a2912c06a38",
+      "char_count": 4524
+    },
+    {
+      "doc_id": "KB-MP0412",
+      "title": "Circumcision",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/circumcision.html",
+      "license": "Public Domain",
+      "sha256": "fd3beefac4358625e591dd88cf7b1d8381bfa7d614ac13bebffd2e68e0c44b06",
+      "char_count": 2242
+    },
+    {
+      "doc_id": "KB-MP0413",
+      "title": "Infection Control",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/infectioncontrol.html",
+      "license": "Public Domain",
+      "sha256": "656ade3c6e5c672815faa8b82a794afdedafbcde4f0f5c7f241130206d16a667",
+      "char_count": 950
+    },
+    {
+      "doc_id": "KB-MP0414",
+      "title": "Prostate Cancer Screening",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/prostatecancerscreening.html",
+      "license": "Public Domain",
+      "sha256": "da32a448fe97faeedd588a586bce0ad3dfcd758a9d35de6ae3890c43329ac70e",
+      "char_count": 5004
+    },
+    {
+      "doc_id": "KB-MP0415",
+      "title": "Urinalysis",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/urinalysis.html",
+      "license": "Public Domain",
+      "sha256": "df0d83a0645b231fa4a1dccc362002da91e3c006c410b0c54118f81ea3d56461",
+      "char_count": 914
+    },
+    {
+      "doc_id": "KB-MP0416",
+      "title": "Pelvic Floor Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/pelvicfloordisorders.html",
+      "license": "Public Domain",
+      "sha256": "d117d9b4c458af5800f21fd5fb3139bcaa9ba855c3fec4be39c231e7650a2434",
+      "char_count": 1577
+    },
+    {
+      "doc_id": "KB-MP0417",
+      "title": "Enlarged Prostate (BPH)",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/enlargedprostatebph.html",
+      "license": "Public Domain",
+      "sha256": "2de2b3f44363c4d46333083364aa3f8a66afcc234b77cb86f3e0bb8d45f2869d",
+      "char_count": 5968
+    },
+    {
+      "doc_id": "KB-MP0418",
+      "title": "Infectious Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/infectiousdiseases.html",
+      "license": "Public Domain",
+      "sha256": "ff3c362c6e1b13512bc0ff31606fbb6b28bf52a0e9c01af7e462ed02d9b47fd8",
+      "char_count": 2951
+    },
+    {
+      "doc_id": "KB-MP0419",
+      "title": "Telehealth",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/telehealth.html",
+      "license": "Public Domain",
+      "sha256": "1547285d80603bc0dff8a57c334af169b62c3df45e3eb1739e2270ede09e4550",
+      "char_count": 3237
+    },
+    {
+      "doc_id": "KB-MP0420",
+      "title": "Pelvic Pain",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/pelvicpain.html",
+      "license": "Public Domain",
+      "sha256": "d54e9ca93a097c1ac85451686769f33d75e7c54eba83a4ecf3236bc51f191d05",
+      "char_count": 1249
+    },
+    {
+      "doc_id": "KB-MP0421",
+      "title": "Urethral Disorders",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/urethraldisorders.html",
+      "license": "Public Domain",
+      "sha256": "95815e5f716eff67f6f02a35126bd122464827b0ad6622a79c413fd0318ce8cb",
+      "char_count": 1095
+    },
+    {
+      "doc_id": "KB-MP0422",
+      "title": "Bladder Diseases",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/bladderdiseases.html",
+      "license": "Public Domain",
+      "sha256": "07c83a9666cb0fc05afaa0be021082f8408d0cc83eb33a81e4f826eadf85549e",
+      "char_count": 1011
+    },
+    {
+      "doc_id": "KB-MP0423",
+      "title": "Corns and Calluses",
+      "source": "MedlinePlus (NIH/NLM)",
+      "url": "https://medlineplus.gov/cornsandcalluses.html",
+      "license": "Public Domain",
+      "sha256": "2c5520f0fc365d1541458e83663c3137faf5a96d4a64401a4904c0660c391ac7",
+      "char_count": 885
+    },
+    {
+      "doc_id": "KB-FDA0001",
+      "title": "Lisinopril Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Lisinopril",
+      "license": "Public Domain",
+      "sha256": "613ac8043d101ae5cd69519524873463532dc4a49d7cc5be6ab21c34a5ad6b96",
+      "char_count": 25639
+    },
+    {
+      "doc_id": "KB-FDA0002",
+      "title": "Amlodipine Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Amlodipine",
+      "license": "Public Domain",
+      "sha256": "49d3db7dd68be0480cc3a831cfaaa6e80f281b1745eb8f3fdb77baf433335f1a",
+      "char_count": 15153
+    },
+    {
+      "doc_id": "KB-FDA0003",
+      "title": "Losartan Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Losartan",
+      "license": "Public Domain",
+      "sha256": "44aff92fb31872ee1079886df47ab123e2ccb8684616cb61bbeffde2b00930b6",
+      "char_count": 20583
+    },
+    {
+      "doc_id": "KB-FDA0004",
+      "title": "Hydrochlorothiazide Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Hydrochlorothiazide",
+      "license": "Public Domain",
+      "sha256": "bfa86e2f9e191b9331c99a19f677e3722bc71bd2babd00a0099de2aa24eab476",
+      "char_count": 25648
+    },
+    {
+      "doc_id": "KB-FDA0005",
+      "title": "Metoprolol Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Metoprolol",
+      "license": "Public Domain",
+      "sha256": "43acfb472edb67dfd1293b6df6046d3201d49b291d15eed5c7bef74f8fb277b4",
+      "char_count": 19261
+    },
+    {
+      "doc_id": "KB-FDA0006",
+      "title": "Furosemide Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Furosemide",
+      "license": "Public Domain",
+      "sha256": "a5971eb1b549ca88dc5a0b917097e998eba709840cca5178a0f31656b70f61a6",
+      "char_count": 15984
+    },
+    {
+      "doc_id": "KB-FDA0007",
+      "title": "Atorvastatin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Atorvastatin",
+      "license": "Public Domain",
+      "sha256": "cdf804e0038dfa4c7ef7043fb4557fad7ab428fe6658b936d0159f69d403dca4",
+      "char_count": 29998
+    },
+    {
+      "doc_id": "KB-FDA0008",
+      "title": "Simvastatin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Simvastatin",
+      "license": "Public Domain",
+      "sha256": "f0eb28fc91057bd75a62806039c6a7f43c4f84a1c872ad8392a1bfe152781244",
+      "char_count": 30049
+    },
+    {
+      "doc_id": "KB-FDA0009",
+      "title": "Rosuvastatin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Rosuvastatin",
+      "license": "Public Domain",
+      "sha256": "ce2621cd2099d27bc0211ce78483c8d1135aa55da1e07fe76b7305f98c11c9db",
+      "char_count": 29457
+    },
+    {
+      "doc_id": "KB-FDA0010",
+      "title": "Carvedilol Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Carvedilol",
+      "license": "Public Domain",
+      "sha256": "169455e010856b42698a543fc7082d7e651de2e25a27da8f56ea228d388bc498",
+      "char_count": 36607
+    },
+    {
+      "doc_id": "KB-FDA0011",
+      "title": "Valsartan Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Valsartan",
+      "license": "Public Domain",
+      "sha256": "ac57db680c06d6215f3a7da8d4e03aeb4cfac32f95ea71b3d286a66129db7ccb",
+      "char_count": 23789
+    },
+    {
+      "doc_id": "KB-FDA0012",
+      "title": "Spironolactone Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Spironolactone",
+      "license": "Public Domain",
+      "sha256": "2f2ce125939400865c5a7df0ef879cc92409578ba9e8d9d9a616e7ea24773d6a",
+      "char_count": 15951
+    },
+    {
+      "doc_id": "KB-FDA0013",
+      "title": "Diltiazem Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Diltiazem",
+      "license": "Public Domain",
+      "sha256": "59854b177903552e01f585d98cdba1be089b7a2f2886ef2e67aa2adf99d5c076",
+      "char_count": 14823
+    },
+    {
+      "doc_id": "KB-FDA0014",
+      "title": "Clonidine Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Clonidine",
+      "license": "Public Domain",
+      "sha256": "4c35f1b43130d1bb27fc529fd6dc44da3467a277846a5c6e1c4eb7dca4b31de5",
+      "char_count": 7377
+    },
+    {
+      "doc_id": "KB-FDA0015",
+      "title": "Hydralazine Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Hydralazine",
+      "license": "Public Domain",
+      "sha256": "a8ac1aa3595c6fef3264e3adb986b071f2aefd1866b51e0e09f5ac1f9f69539f",
+      "char_count": 3304
+    },
+    {
+      "doc_id": "KB-FDA0016",
+      "title": "Pravastatin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Pravastatin",
+      "license": "Public Domain",
+      "sha256": "e3d01771a6d3cc8294f308fb50dc28bb55f5b98cbefd17759a11945df462a066",
+      "char_count": 54657
+    },
+    {
+      "doc_id": "KB-FDA0017",
+      "title": "Ezetimibe Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Ezetimibe",
+      "license": "Public Domain",
+      "sha256": "18cac4b89114cce9806e79eb39a21ce1fbce8f9a7391ea85205196d89507be77",
+      "char_count": 45158
+    },
+    {
+      "doc_id": "KB-FDA0018",
+      "title": "Propranolol Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Propranolol",
+      "license": "Public Domain",
+      "sha256": "06d1af450b3c4e47539fbf73b2ff5eb9b4846baaafaa13e35d5d05bd09d8092e",
+      "char_count": 13361
+    },
+    {
+      "doc_id": "KB-FDA0019",
+      "title": "Atenolol Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Atenolol",
+      "license": "Public Domain",
+      "sha256": "9ca78afcb8eac2f21b951cd0fe7a5384d3b186d977413c06be7ea9cdcbcee454",
+      "char_count": 18255
+    },
+    {
+      "doc_id": "KB-FDA0020",
+      "title": "Ramipril Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Ramipril",
+      "license": "Public Domain",
+      "sha256": "302f42617e8581a597bc2168350281eeb1828d8c6cbd3227e7fb1ad332edbd35",
+      "char_count": 29009
+    },
+    {
+      "doc_id": "KB-FDA0021",
+      "title": "Bumetanide Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Bumetanide",
+      "license": "Public Domain",
+      "sha256": "c4ea43bcdceca1053b4518ca26ece88c03b10552c8e4b944556a638724dd0842",
+      "char_count": 6061
+    },
+    {
+      "doc_id": "KB-FDA0022",
+      "title": "Torsemide Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Torsemide",
+      "license": "Public Domain",
+      "sha256": "f1d6f3507a977ba1119d822bcb4e3c9159471652664888d1a96981ff4ea5d312",
+      "char_count": 16613
+    },
+    {
+      "doc_id": "KB-FDA0023",
+      "title": "Chlorthalidone Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Chlorthalidone",
+      "license": "Public Domain",
+      "sha256": "72e56d74e75665921312342fea7db16c4ef5d17203cebb9d3fb9fdb9910bbd0c",
+      "char_count": 6838
+    },
+    {
+      "doc_id": "KB-FDA0024",
+      "title": "Nifedipine Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Nifedipine",
+      "license": "Public Domain",
+      "sha256": "56c7266cacba470477dc8b011f2c1cfa158f2233bb23234081af64b6cb600b44",
+      "char_count": 15512
+    },
+    {
+      "doc_id": "KB-FDA0025",
+      "title": "Nitroglycerin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Nitroglycerin",
+      "license": "Public Domain",
+      "sha256": "31c25916ea11dfeaecd48e92fc0f7a86f3d2ec0126c36920d06f42e6f58615ee",
+      "char_count": 8321
+    },
+    {
+      "doc_id": "KB-FDA0026",
+      "title": "Metformin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Metformin",
+      "license": "Public Domain",
+      "sha256": "27923dfee33c617c0b264cde7a92e352286a39b9d88c114669a2284da1506528",
+      "char_count": 35712
+    },
+    {
+      "doc_id": "KB-FDA0027",
+      "title": "Insulin Glargine Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Insulin Glargine",
+      "license": "Public Domain",
+      "sha256": "61f031f2fee2f0a42c1ef10440e90e00c291bfa5c864c3ce626be69d38c3a6bb",
+      "char_count": 24996
+    },
+    {
+      "doc_id": "KB-FDA0028",
+      "title": "Empagliflozin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Empagliflozin",
+      "license": "Public Domain",
+      "sha256": "cf7250faaf33fee27460f028794667c7e6fd2b36affecb733b01f2bfa1c27005",
+      "char_count": 50724
+    },
+    {
+      "doc_id": "KB-FDA0029",
+      "title": "Dapagliflozin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Dapagliflozin",
+      "license": "Public Domain",
+      "sha256": "ddae86a0a215c25bd5fb66db35cd499b4f92c8bee4767c787e64f0bb37fc5120",
+      "char_count": 35065
+    },
+    {
+      "doc_id": "KB-FDA0030",
+      "title": "Glipizide Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Glipizide",
+      "license": "Public Domain",
+      "sha256": "fe66eb64d2ca55e03b450aa0c8c3012dc27bc0beb48f39e83269ad3e2315dbb2",
+      "char_count": 10895
+    },
+    {
+      "doc_id": "KB-FDA0031",
+      "title": "Glimepiride Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Glimepiride",
+      "license": "Public Domain",
+      "sha256": "4fc94dc7ccbca52b6bb99942357162dde4ec7334e721fcf2a0b85f249da0f6b1",
+      "char_count": 19227
+    },
+    {
+      "doc_id": "KB-FDA0032",
+      "title": "Sitagliptin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Sitagliptin",
+      "license": "Public Domain",
+      "sha256": "3405c3dd5cfc2bd1198c1ce82d2b24f93efb9dc0fb010fe90e8ceba1bfab4a2e",
+      "char_count": 35714
+    },
+    {
+      "doc_id": "KB-FDA0033",
+      "title": "Semaglutide Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Semaglutide",
+      "license": "Public Domain",
+      "sha256": "b13c30b3709d40e125762d426e3494501b71aae18de2e79433308ce1badb545d",
+      "char_count": 30005
+    },
+    {
+      "doc_id": "KB-FDA0034",
+      "title": "Dulaglutide Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Dulaglutide",
+      "license": "Public Domain",
+      "sha256": "24f3ee4108f8456ac0c2eb9a6717dd3b104aa587df197488139da15a949c1870",
+      "char_count": 29878
+    },
+    {
+      "doc_id": "KB-FDA0035",
+      "title": "Pioglitazone Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Pioglitazone",
+      "license": "Public Domain",
+      "sha256": "6d87dea87d3e14a3d09fa8f36a679a208bf514553c9ab8efaa4a72999efabb21",
+      "char_count": 39290
+    },
+    {
+      "doc_id": "KB-FDA0036",
+      "title": "Levothyroxine Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Levothyroxine",
+      "license": "Public Domain",
+      "sha256": "9c850152081c48a46d9ee419a1c6aaf09e47b048dfec8392435ebe2b42250fc4",
+      "char_count": 60849
+    },
+    {
+      "doc_id": "KB-FDA0037",
+      "title": "Liraglutide Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Liraglutide",
+      "license": "Public Domain",
+      "sha256": "efdf66386e859d899a44ba0ce0e12c5bbe0770b8fc36d384a237090c61ec1224",
+      "char_count": 27843
+    },
+    {
+      "doc_id": "KB-FDA0038",
+      "title": "Canagliflozin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Canagliflozin",
+      "license": "Public Domain",
+      "sha256": "737c7a79c5c34db019f87edc09e5444b0751fec64908abd356ef0d538cf6cbc8",
+      "char_count": 43353
+    },
+    {
+      "doc_id": "KB-FDA0039",
+      "title": "Linagliptin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Linagliptin",
+      "license": "Public Domain",
+      "sha256": "dcf2b6412f4f3cb0893e8d1bae9841b9b8027cdb33b6fdbb8a93ac59357416cf",
+      "char_count": 31245
+    },
+    {
+      "doc_id": "KB-FDA0040",
+      "title": "Repaglinide Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Repaglinide",
+      "license": "Public Domain",
+      "sha256": "53a6052569855bb92ca41d89ef7a704f5e7a1de6412d1b2720717c940ae60721",
+      "char_count": 18094
+    },
+    {
+      "doc_id": "KB-FDA0041",
+      "title": "Potassium Chloride Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Potassium Chloride",
+      "license": "Public Domain",
+      "sha256": "b142be137f98fae5dfa2c977d1479d8d606ccb6e661ea6338f343efcbf5e3c84",
+      "char_count": 6579
+    },
+    {
+      "doc_id": "KB-FDA0042",
+      "title": "Sodium Bicarbonate Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Sodium Bicarbonate",
+      "license": "Public Domain",
+      "sha256": "4ed06f39dbb0c27c8d332188223b47b863b47025f41e0ec743daa91421e47a0d",
+      "char_count": 3262
+    },
+    {
+      "doc_id": "KB-FDA0043",
+      "title": "Calcium Acetate Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Calcium Acetate",
+      "license": "Public Domain",
+      "sha256": "68ada25884220c6193a840d2a6b117a20c79067caa17344340371d2fe6e717a3",
+      "char_count": 8181
+    },
+    {
+      "doc_id": "KB-FDA0044",
+      "title": "Sevelamer Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Sevelamer",
+      "license": "Public Domain",
+      "sha256": "3ff69f5a710856545b01e070ae6af0e1321dbd24914c8ebb8ba047d010e35992",
+      "char_count": 12693
+    },
+    {
+      "doc_id": "KB-FDA0045",
+      "title": "Cinacalcet Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Cinacalcet",
+      "license": "Public Domain",
+      "sha256": "06bca06b72238fce2a71b1134306dc4c4b1ddb8298e2dcbd7d89504de95dab7b",
+      "char_count": 24266
+    },
+    {
+      "doc_id": "KB-FDA0046",
+      "title": "Allopurinol Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Allopurinol",
+      "license": "Public Domain",
+      "sha256": "d2a5c6d1efb4914aca57255d416d04e27eed0878078fe671283264f196e38f51",
+      "char_count": 29230
+    },
+    {
+      "doc_id": "KB-FDA0047",
+      "title": "Febuxostat Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Febuxostat",
+      "license": "Public Domain",
+      "sha256": "936b9638c0ed3802af41ec72917d1e71b626e73767cbfa796a80f6fc468d1264",
+      "char_count": 19138
+    },
+    {
+      "doc_id": "KB-FDA0048",
+      "title": "Colchicine Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Colchicine",
+      "license": "Public Domain",
+      "sha256": "a45c28939e3b860f4c3e4b637dc8cee985b748f8d84d3654cc9c513da0b1b42c",
+      "char_count": 33077
+    },
+    {
+      "doc_id": "KB-FDA0049",
+      "title": "Albuterol Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Albuterol",
+      "license": "Public Domain",
+      "sha256": "2f3ec1f61bd8ed75b61c102428bb3b6ae361b7542e20b965f0ba23c43919dfac",
+      "char_count": 17472
+    },
+    {
+      "doc_id": "KB-FDA0050",
+      "title": "Fluticasone Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Fluticasone",
+      "license": "Public Domain",
+      "sha256": "041ad87525ba120135729574ebf82a9fe425f51c1a0b1be94f437ed8d5dae509",
+      "char_count": 1243
+    },
+    {
+      "doc_id": "KB-FDA0051",
+      "title": "Montelukast Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Montelukast",
+      "license": "Public Domain",
+      "sha256": "65dc5c27cc899c98478fd7e25371709e6ba0b42c1558ce4a2d0d6cf8bd1ad053",
+      "char_count": 28855
+    },
+    {
+      "doc_id": "KB-FDA0052",
+      "title": "Budesonide Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Budesonide",
+      "license": "Public Domain",
+      "sha256": "95cc2a62376255732f0c736f0963095ee25992eaece3fcbc1aded737c45d1091",
+      "char_count": 1574
+    },
+    {
+      "doc_id": "KB-FDA0053",
+      "title": "Tiotropium Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Tiotropium",
+      "license": "Public Domain",
+      "sha256": "afcf91b95775b40e812833c9abe5c257c5fb2ee67d2aeb89e17c3b0a26b92ab1",
+      "char_count": 25736
+    },
+    {
+      "doc_id": "KB-FDA0054",
+      "title": "Cetirizine Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Cetirizine",
+      "license": "Public Domain",
+      "sha256": "9bc52d99b5466e37f01c49f700672332b3e55c9c95cd5bb3a816e7dc1df04252",
+      "char_count": 1140
+    },
+    {
+      "doc_id": "KB-FDA0055",
+      "title": "Loratadine Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Loratadine",
+      "license": "Public Domain",
+      "sha256": "466499869ad4e593f8c5e0debf62a214a19979d203c23393e613898fb5bb09a6",
+      "char_count": 586
+    },
+    {
+      "doc_id": "KB-FDA0056",
+      "title": "Fexofenadine Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Fexofenadine",
+      "license": "Public Domain",
+      "sha256": "6fbbb4882029711d12dc6e2511bf5ccafd026c896d1a40333a0b1e783c1fb524",
+      "char_count": 654
+    },
+    {
+      "doc_id": "KB-FDA0057",
+      "title": "Diphenhydramine Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Diphenhydramine",
+      "license": "Public Domain",
+      "sha256": "4c4f7ba705a7cf95380e36480ec415991e5f8684bf7d2dd28c081db84471199b",
+      "char_count": 751
+    },
+    {
+      "doc_id": "KB-FDA0058",
+      "title": "Prednisone Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Prednisone",
+      "license": "Public Domain",
+      "sha256": "00c2f3a223cedbf47668f858e619d05f739bc5eabc2f7534f46fa5f06b36e2a4",
+      "char_count": 14758
+    },
+    {
+      "doc_id": "KB-FDA0059",
+      "title": "Methylprednisolone Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Methylprednisolone",
+      "license": "Public Domain",
+      "sha256": "340679615fea40ade6371b235dd61ddfcbed3848649459ccc0c7bff835fc723b",
+      "char_count": 86378
+    },
+    {
+      "doc_id": "KB-FDA0060",
+      "title": "Dexamethasone Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Dexamethasone",
+      "license": "Public Domain",
+      "sha256": "740c59c3eb9d0a92bc936f6b2d705cc441efb02ca942d4b1392f1d1e774b4ec2",
+      "char_count": 14823
+    },
+    {
+      "doc_id": "KB-FDA0061",
+      "title": "Omeprazole Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Omeprazole",
+      "license": "Public Domain",
+      "sha256": "2bd05872b946c7aa23610fb1c747c30a502af8df31980e5d0ca7ce5a1b4ac70d",
+      "char_count": 1189
+    },
+    {
+      "doc_id": "KB-FDA0062",
+      "title": "Pantoprazole Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Pantoprazole",
+      "license": "Public Domain",
+      "sha256": "f12c54567ba05529747dd66cd584a3b928b5f099d2160879645244296936208d",
+      "char_count": 30542
+    },
+    {
+      "doc_id": "KB-FDA0063",
+      "title": "Famotidine Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Famotidine",
+      "license": "Public Domain",
+      "sha256": "ab8c7f64f6e830fa68107245a75fd92c3a1381465527851ebec69e41dd759566",
+      "char_count": 13459
+    },
+    {
+      "doc_id": "KB-FDA0064",
+      "title": "Esomeprazole Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Esomeprazole",
+      "license": "Public Domain",
+      "sha256": "e5ee63565aa3a4e427443c36977c491bcde7d0c35913e3186ca198561f07e667",
+      "char_count": 1126
+    },
+    {
+      "doc_id": "KB-FDA0065",
+      "title": "Lansoprazole Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Lansoprazole",
+      "license": "Public Domain",
+      "sha256": "697d398b1c631f0d25e2fd6b507be7f124c33accbcba160f2d3c000a86efdd6e",
+      "char_count": 44353
+    },
+    {
+      "doc_id": "KB-FDA0066",
+      "title": "Metoclopramide Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Metoclopramide",
+      "license": "Public Domain",
+      "sha256": "721979aefd592e7c5d5f23a8742a8313c3a6049d2488c724c693464bca50c030",
+      "char_count": 11080
+    },
+    {
+      "doc_id": "KB-FDA0067",
+      "title": "Ondansetron Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Ondansetron",
+      "license": "Public Domain",
+      "sha256": "923e752d5ce302415a6f8448d7b7bd3bc42091fc3f3bdfc72239b1328ad2d72d",
+      "char_count": 19710
+    },
+    {
+      "doc_id": "KB-FDA0068",
+      "title": "Sucralfate Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Sucralfate",
+      "license": "Public Domain",
+      "sha256": "4285f4d1e3069499d214442e3d3697364e55e2acab15e0aa89757f13e393bcbe",
+      "char_count": 5163
+    },
+    {
+      "doc_id": "KB-FDA0069",
+      "title": "Dicyclomine Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Dicyclomine",
+      "license": "Public Domain",
+      "sha256": "b73c7ed2d1749b879c191b81fdf3ced6939a1b6d700e6e4c4afbaa5149dc87d1",
+      "char_count": 16742
+    },
+    {
+      "doc_id": "KB-FDA0070",
+      "title": "Gabapentin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Gabapentin",
+      "license": "Public Domain",
+      "sha256": "ee11ed8b990f56045f5641c911ef621ec78b89bd6dbbe99f0e7b2d5e0a8fc089",
+      "char_count": 62687
+    },
+    {
+      "doc_id": "KB-FDA0071",
+      "title": "Pregabalin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Pregabalin",
+      "license": "Public Domain",
+      "sha256": "8a68f54ca08b5090f76d56570034a793f75e5e1dd123bebf69c863d369f64855",
+      "char_count": 54321
+    },
+    {
+      "doc_id": "KB-FDA0072",
+      "title": "Duloxetine Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Duloxetine",
+      "license": "Public Domain",
+      "sha256": "e68e455778f3b413fc55de441b7d9c23ffea0c9ccacc46f9d528d69f352056bd",
+      "char_count": 78186
+    },
+    {
+      "doc_id": "KB-FDA0073",
+      "title": "Tramadol Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Tramadol",
+      "license": "Public Domain",
+      "sha256": "169b2e24e32cae0e5137e9f1478116a13e072ac540738f495b51d5449ae43040",
+      "char_count": 74397
+    },
+    {
+      "doc_id": "KB-FDA0074",
+      "title": "Acetaminophen Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Acetaminophen",
+      "license": "Public Domain",
+      "sha256": "5bba4427f8df27332f87f44e617dd6112c2f83553cccc242b06cd8af52dac89a",
+      "char_count": 723
+    },
+    {
+      "doc_id": "KB-FDA0075",
+      "title": "Ibuprofen Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Ibuprofen",
+      "license": "Public Domain",
+      "sha256": "b86acb54dad85a3fef53a55f5be18be0ee7f10eefaf829e3e182274c8daa9156",
+      "char_count": 752
+    },
+    {
+      "doc_id": "KB-FDA0076",
+      "title": "Naproxen Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Naproxen",
+      "license": "Public Domain",
+      "sha256": "1c484879a701c28637f586ef5c40ab3487a01f0be81b5d0e9df6cde5a8b21939",
+      "char_count": 46694
+    },
+    {
+      "doc_id": "KB-FDA0077",
+      "title": "Meloxicam Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Meloxicam",
+      "license": "Public Domain",
+      "sha256": "7717db8d51519207dffbe18718ba40ad21889bd78415c4f7743f6eaf19b4022a",
+      "char_count": 39985
+    },
+    {
+      "doc_id": "KB-FDA0078",
+      "title": "Celecoxib Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Celecoxib",
+      "license": "Public Domain",
+      "sha256": "6492714091a47ddd1a3f222587eb17e2053642acf66730925e2094dbb04b6d97",
+      "char_count": 49418
+    },
+    {
+      "doc_id": "KB-FDA0079",
+      "title": "Baclofen Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Baclofen",
+      "license": "Public Domain",
+      "sha256": "abe6d48cb8403c6b3769493598a34365e3061f58a4a5f46fbdc0f5fd97eaaa8b",
+      "char_count": 40971
+    },
+    {
+      "doc_id": "KB-FDA0080",
+      "title": "Cyclobenzaprine Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Cyclobenzaprine",
+      "license": "Public Domain",
+      "sha256": "cb7e6df94557744d49cee167229240b25c03a12ecb0454f0b81ef4123569bb0b",
+      "char_count": 7694
+    },
+    {
+      "doc_id": "KB-FDA0081",
+      "title": "Tizanidine Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Tizanidine",
+      "license": "Public Domain",
+      "sha256": "9a9fb656faf2bb1667f539903664d9d4eea380d736f6ad0802633f5e4f6575ad",
+      "char_count": 20578
+    },
+    {
+      "doc_id": "KB-FDA0082",
+      "title": "Sertraline Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Sertraline",
+      "license": "Public Domain",
+      "sha256": "19214cf094160092150aa92e8c4a730b5d5b13371c8ade64c000866c96672c44",
+      "char_count": 65723
+    },
+    {
+      "doc_id": "KB-FDA0083",
+      "title": "Escitalopram Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Escitalopram",
+      "license": "Public Domain",
+      "sha256": "e47e966510c207f8803334c2f8a2e6eea9f3ff3c87e60123a10ed3ad767e7a8e",
+      "char_count": 44523
+    },
+    {
+      "doc_id": "KB-FDA0084",
+      "title": "Fluoxetine Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Fluoxetine",
+      "license": "Public Domain",
+      "sha256": "38e6e36aa2bd926895c3ae1d86a616a006df6a3aaf9700b04fbbae492b443317",
+      "char_count": 69935
+    },
+    {
+      "doc_id": "KB-FDA0085",
+      "title": "Amoxicillin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Amoxicillin",
+      "license": "Public Domain",
+      "sha256": "e995d8183bb4ed1a4bd3d861c0140661db1ab36c5350d1cf3e338040038b5f28",
+      "char_count": 27704
+    },
+    {
+      "doc_id": "KB-FDA0086",
+      "title": "Azithromycin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Azithromycin",
+      "license": "Public Domain",
+      "sha256": "fb6a09e604822abfbb3ae2bdef0ad568f2833fc6117d418abb505ab0ba3000bf",
+      "char_count": 30475
+    },
+    {
+      "doc_id": "KB-FDA0087",
+      "title": "Ciprofloxacin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Ciprofloxacin",
+      "license": "Public Domain",
+      "sha256": "9d0a718512acbf31956976c1e0f8c3e46c5ee7f691a80ef88e8e891edef9d065",
+      "char_count": 5185
+    },
+    {
+      "doc_id": "KB-FDA0088",
+      "title": "Levofloxacin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Levofloxacin",
+      "license": "Public Domain",
+      "sha256": "31206b54a250cbec5abcac3f1d40bd5abd22264a3d2dbe0f74f57c04eeb7b0fe",
+      "char_count": 52189
+    },
+    {
+      "doc_id": "KB-FDA0089",
+      "title": "Cephalexin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Cephalexin",
+      "license": "Public Domain",
+      "sha256": "b370646cb980bb079d624711f0cc356ff36be355c0da9431da003cb12a2addd1",
+      "char_count": 13646
+    },
+    {
+      "doc_id": "KB-FDA0090",
+      "title": "Doxycycline Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Doxycycline",
+      "license": "Public Domain",
+      "sha256": "c64c61e833574fd3be2f6e4c8bfed02cee7cb985b34057bd96f24fbfb247e589",
+      "char_count": 12635
+    },
+    {
+      "doc_id": "KB-FDA0091",
+      "title": "Nitrofurantoin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Nitrofurantoin",
+      "license": "Public Domain",
+      "sha256": "500a754174e0bac1dfd1101d90e9d9dabaa6c0406ff3ca9d0aeb68c59b0129de",
+      "char_count": 19621
+    },
+    {
+      "doc_id": "KB-FDA0092",
+      "title": "Fluconazole Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Fluconazole",
+      "license": "Public Domain",
+      "sha256": "3cac91a0e049677a831ae83ecb44218da7bfe678446cee285f01b9b3f7bea4d1",
+      "char_count": 46648
+    },
+    {
+      "doc_id": "KB-FDA0093",
+      "title": "Clindamycin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Clindamycin",
+      "license": "Public Domain",
+      "sha256": "0e401eaaf8a40cb16632aa6637a89aa6c9381997c68b3ab7f48d54100c507138",
+      "char_count": 3535
+    },
+    {
+      "doc_id": "KB-FDA0094",
+      "title": "Metronidazole Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Metronidazole",
+      "license": "Public Domain",
+      "sha256": "0532f71a5a11a37abe28f188376f726a265709f658813e2a6b27a070d50d879f",
+      "char_count": 16051
+    },
+    {
+      "doc_id": "KB-FDA0095",
+      "title": "Cefdinir Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Cefdinir",
+      "license": "Public Domain",
+      "sha256": "2561eb8d69e48584f78bfc3c84643c53290a662778196098436881f7d9da8e01",
+      "char_count": 17502
+    },
+    {
+      "doc_id": "KB-FDA0096",
+      "title": "Augmentin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Augmentin",
+      "license": "Public Domain",
+      "sha256": "b03e2ef46f56a9bd2d9161a03be8012e9d5aeea49c0d3f9550b284a44f2d361c",
+      "char_count": 25073
+    },
+    {
+      "doc_id": "KB-FDA0097",
+      "title": "Aspirin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Aspirin",
+      "license": "Public Domain",
+      "sha256": "135b8f21a4fda96a2666b63780bfaeff2b2843030492f77c0eda92c3c82a510f",
+      "char_count": 734
+    },
+    {
+      "doc_id": "KB-FDA0098",
+      "title": "Clopidogrel Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Clopidogrel",
+      "license": "Public Domain",
+      "sha256": "d552337a7c9b68183c779096409ab9d46ae612a06150c0986e634a42e32ffa15",
+      "char_count": 17946
+    },
+    {
+      "doc_id": "KB-FDA0099",
+      "title": "Apixaban Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Apixaban",
+      "license": "Public Domain",
+      "sha256": "908fb634833b845097b21d6fc9ca89fd2e9b1d95b2b53df4cf01ca1fb3839c1b",
+      "char_count": 31898
+    },
+    {
+      "doc_id": "KB-FDA0100",
+      "title": "Rivaroxaban Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Rivaroxaban",
+      "license": "Public Domain",
+      "sha256": "ba2d49647f7fb4c8c275d1f7aef6961e182d56bde886bb580a14698bdc9c493d",
+      "char_count": 61554
+    },
+    {
+      "doc_id": "KB-FDA0101",
+      "title": "Warfarin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Warfarin",
+      "license": "Public Domain",
+      "sha256": "b20de725e5a49f05bd92dd73db45a7ce4a86ba5ca07bac556488df64705c36ac",
+      "char_count": 33611
+    },
+    {
+      "doc_id": "KB-FDA0102",
+      "title": "Dabigatran Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Dabigatran",
+      "license": "Public Domain",
+      "sha256": "d363e224874b79b2180e01ff26b6c98fcc92cd19a492bce5937593a72706ece8",
+      "char_count": 53579
+    },
+    {
+      "doc_id": "KB-FDA0103",
+      "title": "Enoxaparin Drug Information",
+      "source": "openFDA / DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=Enoxaparin",
+      "license": "Public Domain",
+      "sha256": "c4f9c9d836358f37e0c1891bc9398507742820d7f755e76e9ba8c3690770b772",
+      "char_count": 40088
+    }
+  ]
+}

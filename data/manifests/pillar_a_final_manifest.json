@@ -1,0 +1,55 @@
+{
+  "pillar": "Pillar A (Data & Retrieval Engine)",
+  "status": "FROZEN",
+  "version": "v5.1",
+  "created_at": "2026-10-12T00:28:00Z",
+  "database": "carepilot_v3",
+  "kb_collection": "carepilot_kb_v5",
+  "verified_artifacts": {
+    "ehr_source_manifest.json": {
+      "path": "data\\\\manifests\\\\ehr_source_manifest.json",
+      "sha256": "f84a4dd9140a91e6680a9ca963eb7cf78da71a7639614fde12be3ed1a872a92b",
+      "size_bytes": 1212
+    },
+    "kb_snapshot_v5.json": {
+      "path": "data\\\\manifests\\\\kb_snapshot_v5.json",
+      "sha256": "04227833c5699492261d04a15ac2c5de652f7914a992caf29d2223a92bb31683",
+      "size_bytes": 713425
+    },
+    "bm25_index_v5.pkl": {
+      "path": "rag_knowledge\\\\bm25_index_v5.pkl",
+      "sha256": "1e6c4569754f565e6128a0969d0f19a2b87c5156fe28f457299d08c21053e333",
+      "size_bytes": 15548899,
+      "total_chunks": 10074,
+      "synchronized_with": "carepilot_kb_v5"
+    },
+    "silver.jsonl": {
+      "path": "data\\\\queries\\\\silver.jsonl",
+      "sha256": "208c259dd298a2939c342618b30ffecb2c8116fc8371e99739587e9108e52bdc",
+      "size_bytes": 1617096
+    },
+    "rq3_stream.jsonl": {
+      "path": "data\\\\queries\\\\rq3_stream.jsonl",
+      "sha256": "c6fd95a368db426bdc5d3cb670f7f5dd308a19ceb23f4461d32f1ba02fd6ed1f",
+      "size_bytes": 25948
+    },
+    "pooled_relevance_template.csv": {
+      "path": "data\\\\queries\\\\pooled_relevance_template.csv",
+      "sha256": "bb62942490456836c41fbc898a6dc6055b6edc3aee77a27661c8d4bbf8def041",
+      "size_bytes": 1445601
+    },
+    "gold_scripted_candidate.jsonl": {
+      "path": "data\\\\queries\\\\gold_scripted_candidate.jsonl",
+      "sha256": "8dc3828539bb552795e76b5f8afb3a8141d782d11ccd13f6d870a1f3c09d3fa1",
+      "size_bytes": 268957
+    },
+    "redflag_test_table.json": {
+      "path": "data\\\\queries\\\\redflag_test_table.json",
+      "sha256": "933cc073b297a14c403ee973acf298d0ad335a9e939f35abe7aa4cd8812ba587",
+      "size_bytes": 7896,
+      "cases_count": 30,
+      "status": "agent-authored, NOT a validation set",
+      "note": "Written by the same process as redflag.py; cannot be cited as evidence of red-flag accuracy. Only redflag_heldout_template.csv, once populated by an independent human author, counts as a real validation set."
+    }
+  }
+}

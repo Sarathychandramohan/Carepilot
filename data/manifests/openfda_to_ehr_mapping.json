@@ -1,0 +1,952 @@
+{
+  "total_drugs": 105,
+  "in_ehr_count": 51,
+  "not_in_ehr_count": 54,
+  "drugs": [
+    {
+      "doc_id": "KB-FDA0001",
+      "drug": "Lisinopril",
+      "set_id": "021831ab-dfeb-40fc-aede-4aa1fbb8d918",
+      "effective_time": "20230818",
+      "in_ehr": true,
+      "ehr_rx_count": 9929,
+      "sample_ehr_desc": "hydrochlorothiazide 12.5 mg / lisinopril 10 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0002",
+      "drug": "Amlodipine",
+      "set_id": "003dd1ec-16f8-4f96-b6a8-c4689d35892a",
+      "effective_time": "20260420",
+      "in_ehr": true,
+      "ehr_rx_count": 5710,
+      "sample_ehr_desc": "amlodipine 10 mg / benazepril hydrochloride 20 mg oral capsule"
+    },
+    {
+      "doc_id": "KB-FDA0003",
+      "drug": "Losartan",
+      "set_id": "021cd76a-b093-4704-8410-5e7d01e20a54",
+      "effective_time": "20260827",
+      "in_ehr": true,
+      "ehr_rx_count": 661,
+      "sample_ehr_desc": "hydrochlorothiazide 25 mg / losartan potassium 100 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0004",
+      "drug": "Hydrochlorothiazide",
+      "set_id": "01ad3531-5ed9-434c-b7d5-02d72aa82e46",
+      "effective_time": "20231225",
+      "in_ehr": true,
+      "ehr_rx_count": 7099,
+      "sample_ehr_desc": "hydrochlorothiazide 25 mg / losartan potassium 100 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0005",
+      "drug": "Metoprolol",
+      "set_id": "09566368-f91d-43a3-b683-30c844fb125a",
+      "effective_time": "20240513",
+      "in_ehr": true,
+      "ehr_rx_count": 419,
+      "sample_ehr_desc": "24 hr metoprolol succinate 200 mg extended release oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0006",
+      "drug": "Furosemide",
+      "set_id": "01a5f094-b473-4e46-9e61-69d5ec6dd766",
+      "effective_time": "20230301",
+      "in_ehr": true,
+      "ehr_rx_count": 1317,
+      "sample_ehr_desc": "furosemide 40 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0007",
+      "drug": "Atorvastatin",
+      "set_id": "00afce9b-48c9-487a-a738-e359c005c707",
+      "effective_time": "20250828",
+      "in_ehr": true,
+      "ehr_rx_count": 54,
+      "sample_ehr_desc": "atorvastatin 40 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0008",
+      "drug": "Simvastatin",
+      "set_id": "02245025-218d-4297-aeb6-91fefa178291",
+      "effective_time": "20251125",
+      "in_ehr": true,
+      "ehr_rx_count": 2516,
+      "sample_ehr_desc": "simvastatin 80 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0009",
+      "drug": "Rosuvastatin",
+      "set_id": "0ad5b7de-e97d-4989-91e4-edae73543896",
+      "effective_time": "20241030",
+      "in_ehr": true,
+      "ehr_rx_count": 11,
+      "sample_ehr_desc": "rosuvastatin calcium 20 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0010",
+      "drug": "Carvedilol",
+      "set_id": "010290af-81f4-0037-e063-6394a90a4638",
+      "effective_time": "20260511",
+      "in_ehr": true,
+      "ehr_rx_count": 198,
+      "sample_ehr_desc": "carvedilol 6.25 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0011",
+      "drug": "Valsartan",
+      "set_id": "03af7d09-314a-fe85-e063-6294a90afa25",
+      "effective_time": "20260101",
+      "in_ehr": true,
+      "ehr_rx_count": 51,
+      "sample_ehr_desc": "valsartan 80 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0012",
+      "drug": "Spironolactone",
+      "set_id": "08738ad4-1607-4d55-af71-6790477353bd",
+      "effective_time": "20251119",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0013",
+      "drug": "Diltiazem",
+      "set_id": "0089fc7a-a7aa-4873-b699-39a1b21616ca",
+      "effective_time": "20250820",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0014",
+      "drug": "Clonidine",
+      "set_id": "2311836b-de63-4e8c-a021-600c40110024",
+      "effective_time": "20240111",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0015",
+      "drug": "Hydralazine",
+      "set_id": "024ac6b8-5ce0-4435-9b11-b1806c511d7b",
+      "effective_time": "20250701",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0016",
+      "drug": "Pravastatin",
+      "set_id": "01beb7e2-ba01-4f2f-8554-4a8ec0941c9f",
+      "effective_time": "20240814",
+      "in_ehr": true,
+      "ehr_rx_count": 12,
+      "sample_ehr_desc": "pravastatin sodium 40 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0017",
+      "drug": "Ezetimibe",
+      "set_id": "03609879-bad2-4e75-83fe-1e1a2fd300c3",
+      "effective_time": "20240403",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0018",
+      "drug": "Propranolol",
+      "set_id": "45b0aaf0-df6c-7db0-e063-6294a90a9135",
+      "effective_time": "20251211",
+      "in_ehr": true,
+      "ehr_rx_count": 4,
+      "sample_ehr_desc": "propranolol hydrochloride 40 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0019",
+      "drug": "Atenolol",
+      "set_id": "09b21985-1818-449d-9b29-98f733cf7b9f",
+      "effective_time": "20241126",
+      "in_ehr": true,
+      "ehr_rx_count": 13,
+      "sample_ehr_desc": "atenolol 25 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0020",
+      "drug": "Ramipril",
+      "set_id": "01da05d8-e72e-4208-bf92-a5cd929f15ab",
+      "effective_time": "20220701",
+      "in_ehr": true,
+      "ehr_rx_count": 3,
+      "sample_ehr_desc": "ramipril 2.5 mg oral capsule"
+    },
+    {
+      "doc_id": "KB-FDA0021",
+      "drug": "Bumetanide",
+      "set_id": "056be255-5880-48e9-b160-bd5b3d82c24a",
+      "effective_time": "20250108",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0022",
+      "drug": "Torsemide",
+      "set_id": "03fbbb85-4e0f-4f3b-b4b0-87f84cb33d47",
+      "effective_time": "20230630",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0023",
+      "drug": "Chlorthalidone",
+      "set_id": "01065eda-7515-46bc-b858-a062c3aa35bd",
+      "effective_time": "20221124",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0024",
+      "drug": "Nifedipine",
+      "set_id": "09a04e5f-d3b0-4ee3-b12d-f74203262179",
+      "effective_time": "20190606",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0025",
+      "drug": "Nitroglycerin",
+      "set_id": "2bad7976-4eb0-d064-e063-6394a90a75de",
+      "effective_time": "20250114",
+      "in_ehr": true,
+      "ehr_rx_count": 431,
+      "sample_ehr_desc": "nitroglycerin 0.4 mg sublingual tablet"
+    },
+    {
+      "doc_id": "KB-FDA0026",
+      "drug": "Metformin",
+      "set_id": "05999192-ebc6-4198-bd1e-f46abbfb4f8a",
+      "effective_time": "20260909",
+      "in_ehr": true,
+      "ehr_rx_count": 2793,
+      "sample_ehr_desc": "24 hr metformin hydrochloride 500 mg extended release oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0027",
+      "drug": "Insulin Glargine",
+      "set_id": "3ac85ebb-5594-59c8-77fd-df254329d151",
+      "effective_time": "20260123",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0028",
+      "drug": "Empagliflozin",
+      "set_id": "0fdd0255-0055-65f3-b2c0-db8fbb87beae",
+      "effective_time": "20260825",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0029",
+      "drug": "Dapagliflozin",
+      "set_id": "08baca21-e39e-4e61-961f-d89432fe8007",
+      "effective_time": "20260626",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0030",
+      "drug": "Glipizide",
+      "set_id": "00729e82-150a-464a-abe7-a3319721fbdb",
+      "effective_time": "20260827",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0031",
+      "drug": "Glimepiride",
+      "set_id": "0003458f-352a-46fa-9d99-230daa76ae29",
+      "effective_time": "20241113",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0032",
+      "drug": "Sitagliptin",
+      "set_id": "58e23b30-451c-f451-e063-6394a90a35a7",
+      "effective_time": "20260812",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0033",
+      "drug": "Semaglutide",
+      "set_id": "27f15fac-7d98-4114-a2ec-92494a91da98",
+      "effective_time": "20260130",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0034",
+      "drug": "Dulaglutide",
+      "set_id": "0a4716d0-9c9c-4bc3-a8f1-6784599aae89",
+      "effective_time": "20230805",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0035",
+      "drug": "Pioglitazone",
+      "set_id": "060e3169-46a7-419d-9acc-05586cb2406b",
+      "effective_time": "20260817",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0036",
+      "drug": "Levothyroxine",
+      "set_id": "008de8fd-150f-4022-8ccb-c8bfa94875c7",
+      "effective_time": "20260324",
+      "in_ehr": true,
+      "ehr_rx_count": 14,
+      "sample_ehr_desc": "levothyroxine sodium 0.075 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0037",
+      "drug": "Liraglutide",
+      "set_id": "0450d8a2-a88e-4849-9788-ed4f5246f223",
+      "effective_time": "20251113",
+      "in_ehr": true,
+      "ehr_rx_count": 3,
+      "sample_ehr_desc": "3 ml liraglutide 6 mg/ml pen injector"
+    },
+    {
+      "doc_id": "KB-FDA0038",
+      "drug": "Canagliflozin",
+      "set_id": "5f76e16f-0c24-454a-81af-4080b312c940",
+      "effective_time": "20260217",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0039",
+      "drug": "Linagliptin",
+      "set_id": "3d02a4d4-d312-80b4-05c4-691b8f0aa7aa",
+      "effective_time": "20260819",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0040",
+      "drug": "Repaglinide",
+      "set_id": "3b150917-e2fd-4366-af83-ebc1d7297ca9",
+      "effective_time": "20250116",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0041",
+      "drug": "Potassium Chloride",
+      "set_id": "00615fad-ad3b-46e8-a89d-48290d937ae2",
+      "effective_time": "20250923",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0042",
+      "drug": "Sodium Bicarbonate",
+      "set_id": "09cf38c2-0b44-eca1-e063-6294a90a72d8",
+      "effective_time": "20231110",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0043",
+      "drug": "Calcium Acetate",
+      "set_id": "000c044a-12ef-4484-942e-99552b777d58",
+      "effective_time": "20210601",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0044",
+      "drug": "Sevelamer",
+      "set_id": "0085356d-5fec-3cce-2bd3-108be70e515d",
+      "effective_time": "20250401",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0045",
+      "drug": "Cinacalcet",
+      "set_id": "0692252e-4cc6-4f16-8a54-aeacd59c3143",
+      "effective_time": "20260218",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0046",
+      "drug": "Allopurinol",
+      "set_id": "005048dd-844f-468c-bf56-1a09727e3477",
+      "effective_time": "20240708",
+      "in_ehr": true,
+      "ehr_rx_count": 8,
+      "sample_ehr_desc": "allopurinol 100 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0047",
+      "drug": "Febuxostat",
+      "set_id": "04f80eb2-8171-4e18-93e4-514440e84b75",
+      "effective_time": "20240508",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0048",
+      "drug": "Colchicine",
+      "set_id": "16d49c45-5b0a-a7fa-e063-6294a90a7320",
+      "effective_time": "20250623",
+      "in_ehr": true,
+      "ehr_rx_count": 4,
+      "sample_ehr_desc": "colchicine 0.6 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0049",
+      "drug": "Albuterol",
+      "set_id": "230d66fc-f62c-42a6-adb3-0a0f879c8ad4",
+      "effective_time": "20260414",
+      "in_ehr": true,
+      "ehr_rx_count": 4409,
+      "sample_ehr_desc": "albuterol 0.83 mg/ml inhalation solution"
+    },
+    {
+      "doc_id": "KB-FDA0050",
+      "drug": "Fluticasone",
+      "set_id": "535b2575-8af8-d951-e063-6394a90ac72d",
+      "effective_time": "20260901",
+      "in_ehr": true,
+      "ehr_rx_count": 3038,
+      "sample_ehr_desc": "120 actuat fluticasone propionate 0.044 mg/actuat metered dose inhaler [flovent]"
+    },
+    {
+      "doc_id": "KB-FDA0051",
+      "drug": "Montelukast",
+      "set_id": "365e1c5c-01b2-bf4e-e063-6394a90a0e43",
+      "effective_time": "20250530",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0052",
+      "drug": "Budesonide",
+      "set_id": "04eb9e98-1323-353f-3fd7-2d317dfac526",
+      "effective_time": "20260227",
+      "in_ehr": true,
+      "ehr_rx_count": 1174,
+      "sample_ehr_desc": "budesonide 0.125 mg/ml inhalation suspension"
+    },
+    {
+      "doc_id": "KB-FDA0053",
+      "drug": "Ipratropium",
+      "set_id": "05c56190-e346-4674-a4f8-049ce632ce2d",
+      "effective_time": "20220701",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0054",
+      "drug": "Tiotropium",
+      "set_id": "01e15aee-40e0-23f3-537f-c96dd63e2cb1",
+      "effective_time": "20250630",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0055",
+      "drug": "Cetirizine",
+      "set_id": "37c6d1e4-dd88-42a2-a828-539b68aa5dad",
+      "effective_time": "20260416",
+      "in_ehr": true,
+      "ehr_rx_count": 45,
+      "sample_ehr_desc": "cetirizine hydrochloride 10 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0056",
+      "drug": "Loratadine",
+      "set_id": "01cb43cf-57a9-f189-e063-6294a90afd88",
+      "effective_time": "20241231",
+      "in_ehr": true,
+      "ehr_rx_count": 105,
+      "sample_ehr_desc": "loratadine 5 mg chewable tablet"
+    },
+    {
+      "doc_id": "KB-FDA0057",
+      "drug": "Fexofenadine",
+      "set_id": "579c7ff9-0c44-1d46-e063-6294a90aef34",
+      "effective_time": "20260727",
+      "in_ehr": true,
+      "ehr_rx_count": 74,
+      "sample_ehr_desc": "fexofenadine hydrochloride 60 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0058",
+      "drug": "Diphenhydramine",
+      "set_id": "00f862aa-6917-45c7-b6aa-1bebb0a45e14",
+      "effective_time": "20250516",
+      "in_ehr": true,
+      "ehr_rx_count": 75,
+      "sample_ehr_desc": "diphenhydramine hydrochloride 25 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0059",
+      "drug": "Prednisone",
+      "set_id": "0062fcc7-aa08-4990-9d33-d798725907f1",
+      "effective_time": "20260908",
+      "in_ehr": true,
+      "ehr_rx_count": 35,
+      "sample_ehr_desc": "prednisone 5 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0060",
+      "drug": "Methylprednisolone",
+      "set_id": "22dd75d6-f89a-44f7-8ca6-b64c4e9806dd",
+      "effective_time": "20260622",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0061",
+      "drug": "Dexamethasone",
+      "set_id": "01cfaa3e-5e30-18fa-e063-6394a90a084e",
+      "effective_time": "20251029",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0062",
+      "drug": "Omeprazole",
+      "set_id": "01bde9ca-0114-426d-8188-c55aefaa0961",
+      "effective_time": "20250305",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0063",
+      "drug": "Pantoprazole",
+      "set_id": "07ff83f9-7039-ac26-e063-6394a90a37ce",
+      "effective_time": "20250203",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0064",
+      "drug": "Famotidine",
+      "set_id": "002875d2-8c30-2d2e-e063-6294a90ae01e",
+      "effective_time": "20251022",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0065",
+      "drug": "Esomeprazole",
+      "set_id": "0912d311-e26c-479d-9f13-ef0ac403e9b8",
+      "effective_time": "20251119",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0066",
+      "drug": "Lansoprazole",
+      "set_id": "00a574e0-bd03-deea-9f85-b108f78982ba",
+      "effective_time": "20220415",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0067",
+      "drug": "Metoclopramide",
+      "set_id": "0034a97a-fb05-418a-a234-de278907cd2a",
+      "effective_time": "20260724",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0068",
+      "drug": "Ondansetron",
+      "set_id": "02ddd5f5-76d3-4f1c-9af3-d39e05a19c29",
+      "effective_time": "20260729",
+      "in_ehr": true,
+      "ehr_rx_count": 96,
+      "sample_ehr_desc": "2 ml ondansetron 2 mg/ml injection"
+    },
+    {
+      "doc_id": "KB-FDA0069",
+      "drug": "Sucralfate",
+      "set_id": "0206d7fa-a1d5-35d9-e063-6294a90a5eb3",
+      "effective_time": "20250103",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0070",
+      "drug": "Dicyclomine",
+      "set_id": "2c656550-7e5b-445f-e063-6294a90a8f52",
+      "effective_time": "20250224",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0071",
+      "drug": "Gabapentin",
+      "set_id": "01b810b7-f4c8-4412-bbc5-b9220d8770d8",
+      "effective_time": "20240402",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0072",
+      "drug": "Pregabalin",
+      "set_id": "025c3adb-5f6b-45f5-a4c6-cea8e57102e3",
+      "effective_time": "20260407",
+      "in_ehr": true,
+      "ehr_rx_count": 4,
+      "sample_ehr_desc": "pregabalin 100 mg oral capsule"
+    },
+    {
+      "doc_id": "KB-FDA0073",
+      "drug": "Duloxetine",
+      "set_id": "075fc7c9-7b4b-b9c3-e063-6394a90a926e",
+      "effective_time": "20260319",
+      "in_ehr": true,
+      "ehr_rx_count": 4,
+      "sample_ehr_desc": "duloxetine 20 mg delayed release oral capsule"
+    },
+    {
+      "doc_id": "KB-FDA0074",
+      "drug": "Tramadol",
+      "set_id": "004de5a4-80f8-4040-a6ea-be5e99352a36",
+      "effective_time": "20251120",
+      "in_ehr": true,
+      "ehr_rx_count": 858,
+      "sample_ehr_desc": "tramadol hydrochloride 50 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0075",
+      "drug": "Acetaminophen",
+      "set_id": "0035a4fd-8dd5-4534-a1b5-f510d637f721",
+      "effective_time": "20240124",
+      "in_ehr": true,
+      "ehr_rx_count": 7607,
+      "sample_ehr_desc": "acetaminophen 500 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0076",
+      "drug": "Ibuprofen",
+      "set_id": "00872852-680a-41b3-901b-b991b12a176d",
+      "effective_time": "20250214",
+      "in_ehr": true,
+      "ehr_rx_count": 2380,
+      "sample_ehr_desc": "ibuprofen 200 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0077",
+      "drug": "Naproxen",
+      "set_id": "000155a8-709c-44e5-a75f-cd890f3a7caf",
+      "effective_time": "20260129",
+      "in_ehr": true,
+      "ehr_rx_count": 481,
+      "sample_ehr_desc": "naproxen 500 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0078",
+      "drug": "Meloxicam",
+      "set_id": "06a401f0-4380-4081-86ed-a309a25abf6b",
+      "effective_time": "20240808",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0079",
+      "drug": "Celecoxib",
+      "set_id": "05224473-27dc-4f6d-a52a-c40a7af2f2f4",
+      "effective_time": "20250430",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0080",
+      "drug": "Baclofen",
+      "set_id": "020632f4-5e8a-f4a0-e063-6294a90a6301",
+      "effective_time": "20250128",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0081",
+      "drug": "Cyclobenzaprine",
+      "set_id": "00b20a8c-debd-e930-e063-6394a90a7ed0",
+      "effective_time": "20260520",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0082",
+      "drug": "Tizanidine",
+      "set_id": "03fa03a6-fd05-4f17-872a-3c123330935d",
+      "effective_time": "20231109",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0083",
+      "drug": "Sertraline",
+      "set_id": "03e1f274-fa9a-4461-b7c9-31ba6428c107",
+      "effective_time": "20260330",
+      "in_ehr": true,
+      "ehr_rx_count": 8,
+      "sample_ehr_desc": "sertraline 100 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0084",
+      "drug": "Escitalopram",
+      "set_id": "09945404-e4cf-6269-e063-6294a90a5b8d",
+      "effective_time": "20260602",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0085",
+      "drug": "Fluoxetine",
+      "set_id": "02283de9-6087-45f7-a9ce-3b082ce860de",
+      "effective_time": "20190201",
+      "in_ehr": true,
+      "ehr_rx_count": 8,
+      "sample_ehr_desc": "fluoxetine 20 mg oral capsule"
+    },
+    {
+      "doc_id": "KB-FDA0086",
+      "drug": "Amoxicillin",
+      "set_id": "00fbd46e-05fd-4f8a-9f59-a7a4d01c8e54",
+      "effective_time": "20231218",
+      "in_ehr": true,
+      "ehr_rx_count": 771,
+      "sample_ehr_desc": "amoxicillin 875 mg / clavulanate 125 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0087",
+      "drug": "Azithromycin",
+      "set_id": "003307c5-3f73-4a5d-a704-bfdea3c656e8",
+      "effective_time": "20260316",
+      "in_ehr": true,
+      "ehr_rx_count": 6,
+      "sample_ehr_desc": "azithromycin 250 mg oral tablet [zithromax]"
+    },
+    {
+      "doc_id": "KB-FDA0088",
+      "drug": "Ciprofloxacin",
+      "set_id": "0ce2221d-940f-4c07-ba2e-fccb491f6b9b",
+      "effective_time": "20250401",
+      "in_ehr": true,
+      "ehr_rx_count": 91,
+      "sample_ehr_desc": "ciprofloxacin 250 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0089",
+      "drug": "Levofloxacin",
+      "set_id": "05d179f5-b200-8597-e063-6394a90a10cc",
+      "effective_time": "20250304",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0090",
+      "drug": "Cephalexin",
+      "set_id": "02b5cd6f-3df8-43c1-879d-217fcf55231a",
+      "effective_time": "20250211",
+      "in_ehr": true,
+      "ehr_rx_count": 66,
+      "sample_ehr_desc": "cephalexin 500 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0091",
+      "drug": "Doxycycline",
+      "set_id": "04de98f3-33a2-48ba-85b5-9fac867524b7",
+      "effective_time": "20260715",
+      "in_ehr": true,
+      "ehr_rx_count": 30,
+      "sample_ehr_desc": "doxycycline monohydrate 50 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0092",
+      "drug": "Trimethoprim-Sulfamethoxazole",
+      "set_id": "079c828c-148f-45b9-966e-d8906043b2a2",
+      "effective_time": "20241217",
+      "in_ehr": true,
+      "ehr_rx_count": 63,
+      "sample_ehr_desc": "sulfamethoxazole 800 mg / trimethoprim 160 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0093",
+      "drug": "Nitrofurantoin",
+      "set_id": "04af8b73-7e15-7da8-e063-6294a90af284",
+      "effective_time": "20240329",
+      "in_ehr": true,
+      "ehr_rx_count": 79,
+      "sample_ehr_desc": "nitrofurantoin  macrocrystals 25 mg / nitrofurantoin  monohydrate 75 mg oral capsule"
+    },
+    {
+      "doc_id": "KB-FDA0094",
+      "drug": "Fluconazole",
+      "set_id": "01df20c4-7b94-044e-e063-6394a90a406a",
+      "effective_time": "20251117",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0095",
+      "drug": "Clindamycin",
+      "set_id": "8a4e2ba4-90e6-48e8-a943-0c5d3f169780",
+      "effective_time": "20260218",
+      "in_ehr": true,
+      "ehr_rx_count": 6,
+      "sample_ehr_desc": "clindamycin 300 mg oral capsule"
+    },
+    {
+      "doc_id": "KB-FDA0096",
+      "drug": "Metronidazole",
+      "set_id": "02046a22-a5eb-4bb7-bec7-e5a2aa55e142",
+      "effective_time": "20260318",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0097",
+      "drug": "Cefdinir",
+      "set_id": "06fbdb63-d32f-4212-9962-f1de15597dda",
+      "effective_time": "20240214",
+      "in_ehr": true,
+      "ehr_rx_count": 2,
+      "sample_ehr_desc": "cefdinir 300 mg oral capsule"
+    },
+    {
+      "doc_id": "KB-FDA0098",
+      "drug": "Augmentin",
+      "set_id": "04a31a42-d79e-bbb4-e063-6394a90a63ee",
+      "effective_time": "20240516",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0099",
+      "drug": "Aspirin",
+      "set_id": "049ec1aa-66b3-9273-e063-6294a90a221b",
+      "effective_time": "20251211",
+      "in_ehr": true,
+      "ehr_rx_count": 548,
+      "sample_ehr_desc": "aspirin 81 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0100",
+      "drug": "Clopidogrel",
+      "set_id": "0078fb3d-3595-4ae1-a059-1d5e81c879cf",
+      "effective_time": "20240517",
+      "in_ehr": true,
+      "ehr_rx_count": 337,
+      "sample_ehr_desc": "clopidogrel 75 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0101",
+      "drug": "Apixaban",
+      "set_id": "19a60552-374d-4b8b-a8ce-ceae252ea5ba",
+      "effective_time": "20240523",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0102",
+      "drug": "Rivaroxaban",
+      "set_id": "122e6f78-067b-9065-adb2-ec7fec9f008e",
+      "effective_time": "20260429",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0103",
+      "drug": "Warfarin",
+      "set_id": "0cbce382-9c88-4f58-ae0f-532a841e8f95",
+      "effective_time": "20250617",
+      "in_ehr": true,
+      "ehr_rx_count": 600,
+      "sample_ehr_desc": "warfarin sodium 5 mg oral tablet"
+    },
+    {
+      "doc_id": "KB-FDA0104",
+      "drug": "Dabigatran",
+      "set_id": "13649035-a498-4e31-a7ea-8b18cedceca7",
+      "effective_time": "20251120",
+      "in_ehr": false,
+      "ehr_rx_count": 0,
+      "sample_ehr_desc": "NONE (Not in Synthea 2k EHR)"
+    },
+    {
+      "doc_id": "KB-FDA0105",
+      "drug": "Enoxaparin",
+      "set_id": "014c6710-f2c4-fd1e-e063-6394a90ae525",
+      "effective_time": "20240621",
+      "in_ehr": true,
+      "ehr_rx_count": 344,
+      "sample_ehr_desc": "0.3 ml enoxaparin sodium 100 mg/ml prefilled syringe"
+    }
+  ]
+}

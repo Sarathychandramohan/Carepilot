@@ -1,0 +1,19 @@
+{
+  "redflag_code_sha256": "862db6f538ffa9f9e4b9edc714fae93bcc1f5d5ea647da28fa73e93ef011dc21",
+  "evaluation_dataset": "redflag_held_out_table.json",
+  "total_cases": 30,
+  "positives_count": 9,
+  "negatives_count": 21,
+  "positive_recall": 1.0,
+  "positive_recall_wilson_95ci": [
+    0.7009,
+    1.0
+  ],
+  "false_positive_escalation_rate": 0.0476,
+  "false_positive_escalation_wilson_95ci": [
+    0.0085,
+    0.2267
+  ],
+  "soft_hit_capture_rate": 0.9,
+  "gate_status": "PASS"
+}

@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-10-10T13:09:04.335168+00:00",
+  "elapsed_seconds": 420.3,
+  "row_counts": {
+    "patients": 2299,
+    "encounters": 135581,
+    "lab_results": 1714939,
+    "conditions": 83121,
+    "prescriptions": 114777,
+    "allergies": 2424,
+    "procedures": 378244,
+    "care_plans": 7638,
+    "immunizations": 33755,
+    "alive": 2006,
+    "demo_fixture": 40
+  }
+}

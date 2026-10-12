@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-10-10T13:13:44.093693Z",
+  "gate_status": "PASS",
+  "gate_criterion": "p95 <= 200ms for all query types",
+  "sample_count": 20,
+  "results": [
+    {
+      "query_type": "active_conditions",
+      "samples": 20,
+      "p50_ms": 0.59,
+      "p95_ms": 0.83,
+      "max_ms": 1.07,
+      "passed": true
+    },
+    {
+      "query_type": "creatinine_labs_recent5",
+      "samples": 20,
+      "p50_ms": 0.46,
+      "p95_ms": 0.7,
+      "max_ms": 0.9,
+      "passed": true
+    },
+    {
+      "query_type": "active_medications",
+      "samples": 20,
+      "p50_ms": 0.64,
+      "p95_ms": 0.9,
+      "max_ms": 0.96,
+      "passed": true
+    }
+  ]
+}

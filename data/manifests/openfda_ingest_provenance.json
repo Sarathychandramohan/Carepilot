@@ -1,0 +1,1384 @@
+{
+  "ingested_at": "2026-10-09T14:15:00.923314+00:00",
+  "total_active_ingredients": 105,
+  "ingested_count": 105,
+  "documents": {
+    "KB-FDA0001": {
+      "drug": "Lisinopril",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Lisinopril%22+OR+openfda.brand_name.exact%3A%22Lisinopril%22+OR+openfda.substance_name.exact%3A%22Lisinopril%22&limit=1",
+      "set_id": "021831ab-dfeb-40fc-aede-4aa1fbb8d918",
+      "effective_time": "20230818",
+      "http_status": 200,
+      "raw_sha256": "467ad7091850a34602115e1d2e61b4a566af39ce4d00a9bc93a4334f507a40c1",
+      "clean_sha256": "7350538f19fed0f511f448dfa4899961183657e81662d2c205efb66ff058215c"
+    },
+    "KB-FDA0002": {
+      "drug": "Amlodipine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Amlodipine%22+OR+openfda.brand_name.exact%3A%22Amlodipine%22+OR+openfda.substance_name.exact%3A%22Amlodipine%22&limit=1",
+      "set_id": "003dd1ec-16f8-4f96-b6a8-c4689d35892a",
+      "effective_time": "20260420",
+      "http_status": 200,
+      "raw_sha256": "785fcc794962455c4422e74cd961ed4db680c1654b998ea50a8499034ec6aea5",
+      "clean_sha256": "24b117d8a6abdf45d31e371b15495b42264fed4dc53caddca389ce9c0ce5d788"
+    },
+    "KB-FDA0003": {
+      "drug": "Losartan",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Losartan%22+OR+openfda.brand_name.exact%3A%22Losartan%22+OR+openfda.substance_name.exact%3A%22Losartan%22&limit=1",
+      "set_id": "021cd76a-b093-4704-8410-5e7d01e20a54",
+      "effective_time": "20260827",
+      "http_status": 200,
+      "raw_sha256": "556aec2644ae140b776456045a4dba1b500c9a103dbbc9efc68377ccc59490ce",
+      "clean_sha256": "60bf28e9a9009037c4e17cc47bc0f6d25f52dfef3a556f22ce09963eded7125f"
+    },
+    "KB-FDA0004": {
+      "drug": "Hydrochlorothiazide",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Hydrochlorothiazide%22+OR+openfda.brand_name.exact%3A%22Hydrochlorothiazide%22+OR+openfda.substance_name.exact%3A%22Hydrochlorothiazide%22&limit=1",
+      "set_id": "01ad3531-5ed9-434c-b7d5-02d72aa82e46",
+      "effective_time": "20231225",
+      "http_status": 200,
+      "raw_sha256": "3002360b9fd6a09d8741584ce76b42d0941bf230a389c46dae7f7c203cbb801c",
+      "clean_sha256": "db38768867bc5f13153edc1648740d24769948cec9b120b171fe8c9111fde420"
+    },
+    "KB-FDA0005": {
+      "drug": "Metoprolol",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Metoprolol%22+OR+openfda.brand_name.exact%3A%22Metoprolol%22+OR+openfda.substance_name.exact%3A%22Metoprolol%22&limit=1",
+      "set_id": "09566368-f91d-43a3-b683-30c844fb125a",
+      "effective_time": "20240513",
+      "http_status": 200,
+      "raw_sha256": "fb49b58a47add0640dbdff56ace4439ba249a0bf3a1c60c605b0f99f27ac3ce5",
+      "clean_sha256": "e59f0ab9045219e00cb4449edb816949a603018f9ae2d6c5bcad10bb1d8b4923"
+    },
+    "KB-FDA0006": {
+      "drug": "Furosemide",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Furosemide%22+OR+openfda.brand_name.exact%3A%22Furosemide%22+OR+openfda.substance_name.exact%3A%22Furosemide%22&limit=1",
+      "set_id": "01a5f094-b473-4e46-9e61-69d5ec6dd766",
+      "effective_time": "20230301",
+      "http_status": 200,
+      "raw_sha256": "90a0e0a5c38fc27bfd78d816f24c2cd9bd37289201bdda13d97acacd57d4be4b",
+      "clean_sha256": "d86c6bfd38d84b96b7ea206e920da7c81d0953726708b4a17b9181a264b95dba"
+    },
+    "KB-FDA0007": {
+      "drug": "Atorvastatin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Atorvastatin%22+OR+openfda.brand_name.exact%3A%22Atorvastatin%22+OR+openfda.substance_name.exact%3A%22Atorvastatin%22&limit=1",
+      "set_id": "00afce9b-48c9-487a-a738-e359c005c707",
+      "effective_time": "20250828",
+      "http_status": 200,
+      "raw_sha256": "5b80400c0eab7e19be2eedb57c0ea449bbc719455229a91ce04ffdf10f4c6a2a",
+      "clean_sha256": "0b7e931588d9c3a22bb2555eafedc5a58c713c2bf332a2ecb1938699dd571507"
+    },
+    "KB-FDA0008": {
+      "drug": "Simvastatin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Simvastatin%22+OR+openfda.brand_name.exact%3A%22Simvastatin%22+OR+openfda.substance_name.exact%3A%22Simvastatin%22&limit=1",
+      "set_id": "02245025-218d-4297-aeb6-91fefa178291",
+      "effective_time": "20251125",
+      "http_status": 200,
+      "raw_sha256": "697f4a190301f9499f559f93c27dec974f4fae8ee759fb0a65f55d49deb73cc4",
+      "clean_sha256": "f7d19e8411e9a37e167c8ecf53a6d03a57c50b93053ff3eaa5216d8b03ed95e3"
+    },
+    "KB-FDA0009": {
+      "drug": "Rosuvastatin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Rosuvastatin%22+OR+openfda.brand_name.exact%3A%22Rosuvastatin%22+OR+openfda.substance_name.exact%3A%22Rosuvastatin%22&limit=1",
+      "set_id": "0ad5b7de-e97d-4989-91e4-edae73543896",
+      "effective_time": "20241030",
+      "http_status": 200,
+      "raw_sha256": "5740b87b91699450765f9bad1d9705010ea4422fe553321c26aec6fc3d8530f0",
+      "clean_sha256": "18be8a624c5f91719b65cd2cb233243bb8420d7ea73e3074f8f0a651e8a02ed6"
+    },
+    "KB-FDA0010": {
+      "drug": "Carvedilol",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Carvedilol%22+OR+openfda.brand_name.exact%3A%22Carvedilol%22+OR+openfda.substance_name.exact%3A%22Carvedilol%22&limit=1",
+      "set_id": "010290af-81f4-0037-e063-6394a90a4638",
+      "effective_time": "20260511",
+      "http_status": 200,
+      "raw_sha256": "166c9f5581ae72b6e6a858d1a2c55ca954ed1e0faf0421e13ed03e69cbb75936",
+      "clean_sha256": "8058fb5c3c9a890d59ec05907c9e7d50a3f66e6c68ca17019d2ab30138bdade6"
+    },
+    "KB-FDA0011": {
+      "drug": "Valsartan",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Valsartan%22+OR+openfda.brand_name.exact%3A%22Valsartan%22+OR+openfda.substance_name.exact%3A%22Valsartan%22&limit=1",
+      "set_id": "03af7d09-314a-fe85-e063-6294a90afa25",
+      "effective_time": "20260101",
+      "http_status": 200,
+      "raw_sha256": "6fcabcda947a70a6232720770d6b81ec5087f1c545055f3bfc5fdd947f7a9b83",
+      "clean_sha256": "43493fa98ca1e0574565e99e2031542cf425b44c42fc8f339ab866266b476074"
+    },
+    "KB-FDA0012": {
+      "drug": "Spironolactone",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Spironolactone%22+OR+openfda.brand_name.exact%3A%22Spironolactone%22+OR+openfda.substance_name.exact%3A%22Spironolactone%22&limit=1",
+      "set_id": "08738ad4-1607-4d55-af71-6790477353bd",
+      "effective_time": "20251119",
+      "http_status": 200,
+      "raw_sha256": "26a722cb51e17d22b6b2a2384beaa28e04927cc368e0ef925f8f58c475f4df48",
+      "clean_sha256": "3f33d7fe76b7557537366f6776b8137c752776df7a07af2acc5c7ae73740ae2e"
+    },
+    "KB-FDA0013": {
+      "drug": "Diltiazem",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Diltiazem%22+OR+openfda.brand_name.exact%3A%22Diltiazem%22+OR+openfda.substance_name.exact%3A%22Diltiazem%22&limit=1",
+      "set_id": "0089fc7a-a7aa-4873-b699-39a1b21616ca",
+      "effective_time": "20250820",
+      "http_status": 200,
+      "raw_sha256": "8d4c0cb7667001654b03de86cd6e3577df6f53df65f8c318b5e38f6db9ca33cd",
+      "clean_sha256": "c57a893a61a8bd2d6ea0f4f26a558b89a950c50382d5ad5bfb91aba092e044cb"
+    },
+    "KB-FDA0014": {
+      "drug": "Clonidine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Clonidine%22+OR+openfda.brand_name.exact%3A%22Clonidine%22+OR+openfda.substance_name.exact%3A%22Clonidine%22&limit=1",
+      "set_id": "2311836b-de63-4e8c-a021-600c40110024",
+      "effective_time": "20240111",
+      "http_status": 200,
+      "raw_sha256": "0e13fbf22153577f283f656399da2289984e766bdbd655a2d1752a3c5efabc20",
+      "clean_sha256": "b468f7e2d676082042e20097deaf5128da90090efb4602eed9fc07af61a8dfc5"
+    },
+    "KB-FDA0015": {
+      "drug": "Hydralazine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Hydralazine%22+OR+openfda.brand_name.exact%3A%22Hydralazine%22+OR+openfda.substance_name.exact%3A%22Hydralazine%22&limit=1",
+      "set_id": "024ac6b8-5ce0-4435-9b11-b1806c511d7b",
+      "effective_time": "20250701",
+      "http_status": 200,
+      "raw_sha256": "56ea8ed0d00e8d3a49d1b4481536634e94c1d34a1989346cba3a420000a9d5af",
+      "clean_sha256": "034e8e34b765ca5b7d811412b715d423fb31c81d4dd9ef51bbe6a227aa025425"
+    },
+    "KB-FDA0016": {
+      "drug": "Pravastatin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Pravastatin%22+OR+openfda.brand_name.exact%3A%22Pravastatin%22+OR+openfda.substance_name.exact%3A%22Pravastatin%22&limit=1",
+      "set_id": "01beb7e2-ba01-4f2f-8554-4a8ec0941c9f",
+      "effective_time": "20240814",
+      "http_status": 200,
+      "raw_sha256": "5cd9fbbe1bdc7719affd919a3f9dacb6d8e30ac13476ee9fb0113798b8948922",
+      "clean_sha256": "c3fde8faa7c150cf761e155bcc41bcf1d433806cdec87569ff956271c390ed68"
+    },
+    "KB-FDA0017": {
+      "drug": "Ezetimibe",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Ezetimibe%22+OR+openfda.brand_name.exact%3A%22Ezetimibe%22+OR+openfda.substance_name.exact%3A%22Ezetimibe%22&limit=1",
+      "set_id": "03609879-bad2-4e75-83fe-1e1a2fd300c3",
+      "effective_time": "20240403",
+      "http_status": 200,
+      "raw_sha256": "a769200da2a442819cbfbe0b927615439d68183460896424bee6ad2ea3a31c82",
+      "clean_sha256": "994756f393b5f2af441f0a570e2e04e02b11c95205f9586c93cd5489946d2249"
+    },
+    "KB-FDA0018": {
+      "drug": "Propranolol",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Propranolol%22+OR+openfda.brand_name.exact%3A%22Propranolol%22+OR+openfda.substance_name.exact%3A%22Propranolol%22&limit=1",
+      "set_id": "45b0aaf0-df6c-7db0-e063-6294a90a9135",
+      "effective_time": "20251211",
+      "http_status": 200,
+      "raw_sha256": "fc72ceefdde1a0c0bfc7f46d084b382f15fe8dc620441040d37f4c547765c7cf",
+      "clean_sha256": "9f32be69710186b06b81536bb7c4bdac76c202157df88c0aa3e1a63fb27c4cef"
+    },
+    "KB-FDA0019": {
+      "drug": "Atenolol",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Atenolol%22+OR+openfda.brand_name.exact%3A%22Atenolol%22+OR+openfda.substance_name.exact%3A%22Atenolol%22&limit=1",
+      "set_id": "09b21985-1818-449d-9b29-98f733cf7b9f",
+      "effective_time": "20241126",
+      "http_status": 200,
+      "raw_sha256": "a62d82e879b3fd515f3e5497eebf29e27f51c6a82e9acd19713e3fbf6079f0e3",
+      "clean_sha256": "7a71ad41351ae9fc684ef1df56eccc83517d982fcd65cbf3ae818fdf80feeda7"
+    },
+    "KB-FDA0020": {
+      "drug": "Ramipril",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Ramipril%22+OR+openfda.brand_name.exact%3A%22Ramipril%22+OR+openfda.substance_name.exact%3A%22Ramipril%22&limit=1",
+      "set_id": "01da05d8-e72e-4208-bf92-a5cd929f15ab",
+      "effective_time": "20220701",
+      "http_status": 200,
+      "raw_sha256": "60c617521705dc633cfbdd28b498d4ffab078ea556a5d4da3d9d305477569185",
+      "clean_sha256": "dadaef4056d5fb7e39da041c3ce83b03ec72a136c8289a2635ee03af0047fb99"
+    },
+    "KB-FDA0021": {
+      "drug": "Bumetanide",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Bumetanide%22+OR+openfda.brand_name.exact%3A%22Bumetanide%22+OR+openfda.substance_name.exact%3A%22Bumetanide%22&limit=1",
+      "set_id": "056be255-5880-48e9-b160-bd5b3d82c24a",
+      "effective_time": "20250108",
+      "http_status": 200,
+      "raw_sha256": "9fafb4c65e97d16227349016c6e287a66326557cb57b6a54953cf01f19c09f63",
+      "clean_sha256": "1903bb818dcd65d44ace5caf52b9eff3fe4eb61e80d13144bbb9e39c84c35bba"
+    },
+    "KB-FDA0022": {
+      "drug": "Torsemide",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Torsemide%22+OR+openfda.brand_name.exact%3A%22Torsemide%22+OR+openfda.substance_name.exact%3A%22Torsemide%22&limit=1",
+      "set_id": "03fbbb85-4e0f-4f3b-b4b0-87f84cb33d47",
+      "effective_time": "20230630",
+      "http_status": 200,
+      "raw_sha256": "42259945ada6dfb3a42906b3c5eaab0d8f1ff1b8023808329a26cb731059ad97",
+      "clean_sha256": "eeee01546f45cd2da22a34fa137abc5ddd0070983655f5dabcbb86290daf374d"
+    },
+    "KB-FDA0023": {
+      "drug": "Chlorthalidone",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Chlorthalidone%22+OR+openfda.brand_name.exact%3A%22Chlorthalidone%22+OR+openfda.substance_name.exact%3A%22Chlorthalidone%22&limit=1",
+      "set_id": "01065eda-7515-46bc-b858-a062c3aa35bd",
+      "effective_time": "20221124",
+      "http_status": 200,
+      "raw_sha256": "94b37d2ec0e82efe50ea33672f07aa9bb7a99ec3284fef759248b7b2e203cfb2",
+      "clean_sha256": "26a6c3ade481737fd62a86df5a706637bf442f3503ef608f81fce96d13897f18"
+    },
+    "KB-FDA0024": {
+      "drug": "Nifedipine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Nifedipine%22+OR+openfda.brand_name.exact%3A%22Nifedipine%22+OR+openfda.substance_name.exact%3A%22Nifedipine%22&limit=1",
+      "set_id": "09a04e5f-d3b0-4ee3-b12d-f74203262179",
+      "effective_time": "20190606",
+      "http_status": 200,
+      "raw_sha256": "46cd047f25942de9c77bcecf03b881325a4b734f71f1265733f922e2940c2f0c",
+      "clean_sha256": "0dded5676d64c6420f68c7683bad577b45325461c0565e10b4d87da0da593f28"
+    },
+    "KB-FDA0025": {
+      "drug": "Nitroglycerin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Nitroglycerin%22+OR+openfda.brand_name.exact%3A%22Nitroglycerin%22+OR+openfda.substance_name.exact%3A%22Nitroglycerin%22&limit=1",
+      "set_id": "2bad7976-4eb0-d064-e063-6394a90a75de",
+      "effective_time": "20250114",
+      "http_status": 200,
+      "raw_sha256": "80f00e04322b52fd87d601f0be10d49686f0465b00653230845824739f240522",
+      "clean_sha256": "ad137f807da5c264878fb954e4e6b7634008a79107d201f7393ec1ef38950b45"
+    },
+    "KB-FDA0026": {
+      "drug": "Metformin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Metformin%22+OR+openfda.brand_name.exact%3A%22Metformin%22+OR+openfda.substance_name.exact%3A%22Metformin%22&limit=1",
+      "set_id": "05999192-ebc6-4198-bd1e-f46abbfb4f8a",
+      "effective_time": "20260909",
+      "http_status": 200,
+      "raw_sha256": "5426adb9496427b1a9868f0f98150acce79ded18709aec3cbe317f56e3b58500",
+      "clean_sha256": "925bd789ff5f0188255e770687705221303fb3ea1e41eee9df5860a56ede36bf"
+    },
+    "KB-FDA0027": {
+      "drug": "Insulin Glargine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Insulin+Glargine%22+OR+openfda.brand_name.exact%3A%22Insulin+Glargine%22+OR+openfda.substance_name.exact%3A%22Insulin+Glargine%22&limit=1",
+      "set_id": "3ac85ebb-5594-59c8-77fd-df254329d151",
+      "effective_time": "20260123",
+      "http_status": 200,
+      "raw_sha256": "31325a56506ccc1327867945ac26c08b2fb73c1898449d4efb0c7b49bd140013",
+      "clean_sha256": "6408dcce39b0a778b4cba666052c6d0824968d108d5b4682033b032c3dfc7128"
+    },
+    "KB-FDA0028": {
+      "drug": "Empagliflozin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Empagliflozin%22+OR+openfda.brand_name.exact%3A%22Empagliflozin%22+OR+openfda.substance_name.exact%3A%22Empagliflozin%22&limit=1",
+      "set_id": "0fdd0255-0055-65f3-b2c0-db8fbb87beae",
+      "effective_time": "20260825",
+      "http_status": 200,
+      "raw_sha256": "21917757de8948c5db7b7bd2a3cd7fdd55d66d27f53698e6aec04af96999da8e",
+      "clean_sha256": "9417f0e8d4d57c2d61369d8962bf9d863f6177533511334f712abc9e6cd88ce1"
+    },
+    "KB-FDA0029": {
+      "drug": "Dapagliflozin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Dapagliflozin%22+OR+openfda.brand_name.exact%3A%22Dapagliflozin%22+OR+openfda.substance_name.exact%3A%22Dapagliflozin%22&limit=1",
+      "set_id": "08baca21-e39e-4e61-961f-d89432fe8007",
+      "effective_time": "20260626",
+      "http_status": 200,
+      "raw_sha256": "0ac15563fe0b1924c19af9410390ee97f7b532e52de7465854067ba788ebbe34",
+      "clean_sha256": "ab84b3c0557ec6ae5af6ebbf96b0eb21755fc48885c02c2835d8461c42db6413"
+    },
+    "KB-FDA0030": {
+      "drug": "Glipizide",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Glipizide%22+OR+openfda.brand_name.exact%3A%22Glipizide%22+OR+openfda.substance_name.exact%3A%22Glipizide%22&limit=1",
+      "set_id": "00729e82-150a-464a-abe7-a3319721fbdb",
+      "effective_time": "20260827",
+      "http_status": 200,
+      "raw_sha256": "157a6778f63c428ad3c58180f2f2d2a17fbd173695ee9e3dc153bcec92a97c81",
+      "clean_sha256": "3cab3470e28cc2a7947b9a85ca2b4389a73bf0226b35659a7948d499733143d1"
+    },
+    "KB-FDA0031": {
+      "drug": "Glimepiride",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Glimepiride%22+OR+openfda.brand_name.exact%3A%22Glimepiride%22+OR+openfda.substance_name.exact%3A%22Glimepiride%22&limit=1",
+      "set_id": "0003458f-352a-46fa-9d99-230daa76ae29",
+      "effective_time": "20241113",
+      "http_status": 200,
+      "raw_sha256": "2b4c6b4e3e01b63e1a82cdc7c5cfbd903fd8a816d9341dc560ca04a5030e7ab9",
+      "clean_sha256": "61a6083ff0f58facfd5e7b21c1a58f7cd2bbede840714bff834ec182b1d9d17e"
+    },
+    "KB-FDA0032": {
+      "drug": "Sitagliptin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Sitagliptin%22+OR+openfda.brand_name.exact%3A%22Sitagliptin%22+OR+openfda.substance_name.exact%3A%22Sitagliptin%22&limit=1",
+      "set_id": "58e23b30-451c-f451-e063-6394a90a35a7",
+      "effective_time": "20260812",
+      "http_status": 200,
+      "raw_sha256": "b294235ad6c10b1b21844fbef9132d5e55356128c7f2cfb9f2ecd241acc204cf",
+      "clean_sha256": "90307820d1fe3e1d1af036eff25aca7cce8c2b60839c8a21f8897999d0ce5c0b"
+    },
+    "KB-FDA0033": {
+      "drug": "Semaglutide",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Semaglutide%22+OR+openfda.brand_name.exact%3A%22Semaglutide%22+OR+openfda.substance_name.exact%3A%22Semaglutide%22&limit=1",
+      "set_id": "27f15fac-7d98-4114-a2ec-92494a91da98",
+      "effective_time": "20260130",
+      "http_status": 200,
+      "raw_sha256": "559971fadcf20fcfb35747865942d108a9a6b109bcc25b0821f2cc8ab351d274",
+      "clean_sha256": "5fddfa3933794e7d7d7120cfdf50fe58b128cf00d0e51aaeb9d064a9a7d4419c"
+    },
+    "KB-FDA0034": {
+      "drug": "Dulaglutide",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Dulaglutide%22+OR+openfda.brand_name.exact%3A%22Dulaglutide%22+OR+openfda.substance_name.exact%3A%22Dulaglutide%22&limit=1",
+      "set_id": "0a4716d0-9c9c-4bc3-a8f1-6784599aae89",
+      "effective_time": "20230805",
+      "http_status": 200,
+      "raw_sha256": "2a922bbde2b251a5ff0f271b1222f24baea7c37f7a5ca90c787ab5e421e50944",
+      "clean_sha256": "08c81a24d7ae009bc9eebee4105f4f158ee43f70be53791db36a78575a047fdb"
+    },
+    "KB-FDA0035": {
+      "drug": "Pioglitazone",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Pioglitazone%22+OR+openfda.brand_name.exact%3A%22Pioglitazone%22+OR+openfda.substance_name.exact%3A%22Pioglitazone%22&limit=1",
+      "set_id": "060e3169-46a7-419d-9acc-05586cb2406b",
+      "effective_time": "20260817",
+      "http_status": 200,
+      "raw_sha256": "5268e9ab22f4c4d4562b192204fcf67994e7e80e02d64c7833cb29482b5e56e7",
+      "clean_sha256": "3cf63d7093224a6ec59727ea04fb59a39c7530eb6d40d2a5ec2ee157c7358dc8"
+    },
+    "KB-FDA0036": {
+      "drug": "Levothyroxine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Levothyroxine%22+OR+openfda.brand_name.exact%3A%22Levothyroxine%22+OR+openfda.substance_name.exact%3A%22Levothyroxine%22&limit=1",
+      "set_id": "008de8fd-150f-4022-8ccb-c8bfa94875c7",
+      "effective_time": "20260324",
+      "http_status": 200,
+      "raw_sha256": "644154d6ff0a99da3e5fa27870c9b08e8660e113f686e40e577684f8bc6e138a",
+      "clean_sha256": "b5c24dadd5657b5eb46d89bed6e729f01ecca856cd04d09d8c7bab8b244bb0c3"
+    },
+    "KB-FDA0037": {
+      "drug": "Liraglutide",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Liraglutide%22+OR+openfda.brand_name.exact%3A%22Liraglutide%22+OR+openfda.substance_name.exact%3A%22Liraglutide%22&limit=1",
+      "set_id": "0450d8a2-a88e-4849-9788-ed4f5246f223",
+      "effective_time": "20251113",
+      "http_status": 200,
+      "raw_sha256": "4c070751f407a8854b1be92fe4d2d41785201dd5c58819ec60ddb25c0b8de354",
+      "clean_sha256": "e8db38f810fd57307fe01e08eb6344a346d016b26dcae92dc4f91241f8a62b8b"
+    },
+    "KB-FDA0038": {
+      "drug": "Canagliflozin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Canagliflozin%22+OR+openfda.brand_name.exact%3A%22Canagliflozin%22+OR+openfda.substance_name.exact%3A%22Canagliflozin%22&limit=1",
+      "set_id": "5f76e16f-0c24-454a-81af-4080b312c940",
+      "effective_time": "20260217",
+      "http_status": 200,
+      "raw_sha256": "03306910a4a71f00e420c8f205f4cbfe5982639624de1e35879859981976047b",
+      "clean_sha256": "b96a78ac45a371d76f4f3035a53b67e8c3de17281821fcb7e8b703f0d7e1daa2"
+    },
+    "KB-FDA0039": {
+      "drug": "Linagliptin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Linagliptin%22+OR+openfda.brand_name.exact%3A%22Linagliptin%22+OR+openfda.substance_name.exact%3A%22Linagliptin%22&limit=1",
+      "set_id": "3d02a4d4-d312-80b4-05c4-691b8f0aa7aa",
+      "effective_time": "20260819",
+      "http_status": 200,
+      "raw_sha256": "9593ad15b9a44f46790eb7b953d89bab6924456b429951e5e79a6e48b59b737c",
+      "clean_sha256": "2edbfc6c85d8c931a80cfcc28d0adecb9651e23642653d1d04bc8d4ec2960aa2"
+    },
+    "KB-FDA0040": {
+      "drug": "Repaglinide",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Repaglinide%22+OR+openfda.brand_name.exact%3A%22Repaglinide%22+OR+openfda.substance_name.exact%3A%22Repaglinide%22&limit=1",
+      "set_id": "3b150917-e2fd-4366-af83-ebc1d7297ca9",
+      "effective_time": "20250116",
+      "http_status": 200,
+      "raw_sha256": "19df5edc891ec9ccea298d52e2bb6dcc690ecbc8e1ed4cce82f9a401427af3e7",
+      "clean_sha256": "27470d56b298f89d5fd240f0171bb66be3e2a5862a474d0c6063a26b5840fc66"
+    },
+    "KB-FDA0041": {
+      "drug": "Potassium Chloride",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Potassium+Chloride%22+OR+openfda.brand_name.exact%3A%22Potassium+Chloride%22+OR+openfda.substance_name.exact%3A%22Potassium+Chloride%22&limit=1",
+      "set_id": "00615fad-ad3b-46e8-a89d-48290d937ae2",
+      "effective_time": "20250923",
+      "http_status": 200,
+      "raw_sha256": "e6f8244cf7ddba6943e58fbc53e5e540d324697dea8ee7b458fbb6ef5d5f9a16",
+      "clean_sha256": "642a89232cf37a9e4dced7490a61d9111b6c373b633a28e83f3ecf5b88a33fd5"
+    },
+    "KB-FDA0042": {
+      "drug": "Sodium Bicarbonate",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Sodium+Bicarbonate%22+OR+openfda.brand_name.exact%3A%22Sodium+Bicarbonate%22+OR+openfda.substance_name.exact%3A%22Sodium+Bicarbonate%22&limit=1",
+      "set_id": "09cf38c2-0b44-eca1-e063-6294a90a72d8",
+      "effective_time": "20231110",
+      "http_status": 200,
+      "raw_sha256": "dadda9431a2261460891058237c2456ff6633da320cecf17b8ef0664c725e106",
+      "clean_sha256": "9189b2f0943b10027f73fdc3d7b34cc078047521ceb94ce32080fb31f57af01b"
+    },
+    "KB-FDA0043": {
+      "drug": "Calcium Acetate",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Calcium+Acetate%22+OR+openfda.brand_name.exact%3A%22Calcium+Acetate%22+OR+openfda.substance_name.exact%3A%22Calcium+Acetate%22&limit=1",
+      "set_id": "000c044a-12ef-4484-942e-99552b777d58",
+      "effective_time": "20210601",
+      "http_status": 200,
+      "raw_sha256": "8cd0fb4282a471fe41230d0517dd66421332aee7c0e7b45fc1334d5f81930355",
+      "clean_sha256": "50968ae03c264a03253d4b64312dc1d7da859cf3a89a9ab91f46a808609cac8e"
+    },
+    "KB-FDA0044": {
+      "drug": "Sevelamer",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Sevelamer%22+OR+openfda.brand_name.exact%3A%22Sevelamer%22+OR+openfda.substance_name.exact%3A%22Sevelamer%22&limit=1",
+      "set_id": "0085356d-5fec-3cce-2bd3-108be70e515d",
+      "effective_time": "20250401",
+      "http_status": 200,
+      "raw_sha256": "50e74f35713b46c4b3d4f276e1bf01a78c7ff88246c85980f06f2ebd2bdc5024",
+      "clean_sha256": "e6f6a80728984206571634970869cecfa4af11eb2abe5310c3deac84dc3cf74f"
+    },
+    "KB-FDA0045": {
+      "drug": "Cinacalcet",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Cinacalcet%22+OR+openfda.brand_name.exact%3A%22Cinacalcet%22+OR+openfda.substance_name.exact%3A%22Cinacalcet%22&limit=1",
+      "set_id": "0692252e-4cc6-4f16-8a54-aeacd59c3143",
+      "effective_time": "20260218",
+      "http_status": 200,
+      "raw_sha256": "97d2a9c9c085402977f5acd2595c690e3896a4ed70079dc908155bdd1d137f36",
+      "clean_sha256": "6af79c64b7634505f4df65e61ddf9c03a1bea0726f053534f52e6f16223391ac"
+    },
+    "KB-FDA0046": {
+      "drug": "Allopurinol",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Allopurinol%22+OR+openfda.brand_name.exact%3A%22Allopurinol%22+OR+openfda.substance_name.exact%3A%22Allopurinol%22&limit=1",
+      "set_id": "005048dd-844f-468c-bf56-1a09727e3477",
+      "effective_time": "20240708",
+      "http_status": 200,
+      "raw_sha256": "803d5793613b0d20c89d30420322783f8dbfe3a5f5240c68b907ac26b4794837",
+      "clean_sha256": "b5f416f0577040bbd83dc6480945f74640ced843594b799f052d2dac7a646324"
+    },
+    "KB-FDA0047": {
+      "drug": "Febuxostat",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Febuxostat%22+OR+openfda.brand_name.exact%3A%22Febuxostat%22+OR+openfda.substance_name.exact%3A%22Febuxostat%22&limit=1",
+      "set_id": "04f80eb2-8171-4e18-93e4-514440e84b75",
+      "effective_time": "20240508",
+      "http_status": 200,
+      "raw_sha256": "21129bba629b0afd3bf6830886c6a0e9ef6a7216d25be20f8d5f0c74e6ecf3c8",
+      "clean_sha256": "f69f2c4d8317b539e56e15bb3fadfcbefdb5066645708cfb826336b8b931ce27"
+    },
+    "KB-FDA0048": {
+      "drug": "Colchicine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Colchicine%22+OR+openfda.brand_name.exact%3A%22Colchicine%22+OR+openfda.substance_name.exact%3A%22Colchicine%22&limit=1",
+      "set_id": "16d49c45-5b0a-a7fa-e063-6294a90a7320",
+      "effective_time": "20250623",
+      "http_status": 200,
+      "raw_sha256": "49c5d17f88ae4f93da2ceccc3feea18c6811fa219adec755219ef093245f0d37",
+      "clean_sha256": "bb085901614e541f4fd1456c6f8e9ab4d8ffaa8ce368249cbb70c9b3686e2ee5"
+    },
+    "KB-FDA0049": {
+      "drug": "Albuterol",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Albuterol%22+OR+openfda.brand_name.exact%3A%22Albuterol%22+OR+openfda.substance_name.exact%3A%22Albuterol%22&limit=1",
+      "set_id": "230d66fc-f62c-42a6-adb3-0a0f879c8ad4",
+      "effective_time": "20260414",
+      "http_status": 200,
+      "raw_sha256": "8c8af79e6c808e43833985436512446cc158d746082b617d5d43cb6f3dd7f4de",
+      "clean_sha256": "75665f243fa211c217dc732fc3cac43bf6f48ce4c83854bfe5095b2365532c79"
+    },
+    "KB-FDA0050": {
+      "drug": "Fluticasone",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Fluticasone%22+OR+openfda.brand_name.exact%3A%22Fluticasone%22+OR+openfda.substance_name.exact%3A%22Fluticasone%22&limit=1",
+      "set_id": "535b2575-8af8-d951-e063-6394a90ac72d",
+      "effective_time": "20260901",
+      "http_status": 200,
+      "raw_sha256": "459da0fcc0d4cabb77cb1b643152cb6ccac5cc3768d888115e89866a08c7aa3b",
+      "clean_sha256": "60ebdcf71c0ac1a45b986876d784a511bb6dbf28cb13a6d0a7996cd5e7a76a33"
+    },
+    "KB-FDA0051": {
+      "drug": "Montelukast",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Montelukast%22+OR+openfda.brand_name.exact%3A%22Montelukast%22+OR+openfda.substance_name.exact%3A%22Montelukast%22&limit=1",
+      "set_id": "365e1c5c-01b2-bf4e-e063-6394a90a0e43",
+      "effective_time": "20250530",
+      "http_status": 200,
+      "raw_sha256": "9c041b62cafc4924ac9ce72920d2abe5356caaba75cc841452ef009e3dc0ff18",
+      "clean_sha256": "995383073b8576a8ce7ff474d4aea69ac8f03fe44f905ea0a30025d75e76e046"
+    },
+    "KB-FDA0052": {
+      "drug": "Budesonide",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Budesonide%22+OR+openfda.brand_name.exact%3A%22Budesonide%22+OR+openfda.substance_name.exact%3A%22Budesonide%22&limit=1",
+      "set_id": "04eb9e98-1323-353f-3fd7-2d317dfac526",
+      "effective_time": "20260227",
+      "http_status": 200,
+      "raw_sha256": "b36bf942fbf32adb28dadb90f27d5653a2f1bd16820f444ab7edd6a36636c65a",
+      "clean_sha256": "0eecefad83cecbf18df60e8d85a12cefc669e067f1d9c84ae9f539d89a781574"
+    },
+    "KB-FDA0053": {
+      "drug": "Ipratropium",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Ipratropium%22+OR+openfda.brand_name.exact%3A%22Ipratropium%22+OR+openfda.substance_name.exact%3A%22Ipratropium%22&limit=1",
+      "set_id": "05c56190-e346-4674-a4f8-049ce632ce2d",
+      "effective_time": "20220701",
+      "http_status": 200,
+      "raw_sha256": "e54516cf467d9c98442e30d96099683fdbee0ab348e7281f0cb7625830be2f55",
+      "clean_sha256": "78906b9c44f64f74150a9bb01de1074217501b68c78cd951df10f5247284a743"
+    },
+    "KB-FDA0054": {
+      "drug": "Tiotropium",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Tiotropium%22+OR+openfda.brand_name.exact%3A%22Tiotropium%22+OR+openfda.substance_name.exact%3A%22Tiotropium%22&limit=1",
+      "set_id": "01e15aee-40e0-23f3-537f-c96dd63e2cb1",
+      "effective_time": "20250630",
+      "http_status": 200,
+      "raw_sha256": "d58b366a063db7671269b0e9fb8c802ca6df88a880b2c01ae2e13fc78b92c5f7",
+      "clean_sha256": "cc5ffdbfda2b9bbf6ea85a2d10eeb6780cc322b8183719157768c0415b6d06b9"
+    },
+    "KB-FDA0055": {
+      "drug": "Cetirizine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Cetirizine%22+OR+openfda.brand_name.exact%3A%22Cetirizine%22+OR+openfda.substance_name.exact%3A%22Cetirizine%22&limit=1",
+      "set_id": "37c6d1e4-dd88-42a2-a828-539b68aa5dad",
+      "effective_time": "20260416",
+      "http_status": 200,
+      "raw_sha256": "345fc195a894dfb72f62d76fe9cf74dd23e282ef20d31bbdd97792b96beb2a60",
+      "clean_sha256": "e40a2d2b1ecc952aa8f9cfba43b786b1e9ea4e9a0f8df410c461acfb6f269f38"
+    },
+    "KB-FDA0056": {
+      "drug": "Loratadine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Loratadine%22+OR+openfda.brand_name.exact%3A%22Loratadine%22+OR+openfda.substance_name.exact%3A%22Loratadine%22&limit=1",
+      "set_id": "01cb43cf-57a9-f189-e063-6294a90afd88",
+      "effective_time": "20241231",
+      "http_status": 200,
+      "raw_sha256": "269a5f96ee3504024d5121fe4a640126df9b1e4b1f291e354ae914ac4dc7484a",
+      "clean_sha256": "e7aaa9854f6f4719ff91756a085931a2fe2709b6e7ea7a7c3acfa882dbd8541c"
+    },
+    "KB-FDA0057": {
+      "drug": "Fexofenadine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Fexofenadine%22+OR+openfda.brand_name.exact%3A%22Fexofenadine%22+OR+openfda.substance_name.exact%3A%22Fexofenadine%22&limit=1",
+      "set_id": "579c7ff9-0c44-1d46-e063-6294a90aef34",
+      "effective_time": "20260727",
+      "http_status": 200,
+      "raw_sha256": "f57e00d7aedb536ff8d50372eb3a598f556206ed37fdce66e320b0f009f138df",
+      "clean_sha256": "2df627adc59ac59e69f73a8d49939acbf6b15707f30095b4940659706331c737"
+    },
+    "KB-FDA0058": {
+      "drug": "Diphenhydramine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Diphenhydramine%22+OR+openfda.brand_name.exact%3A%22Diphenhydramine%22+OR+openfda.substance_name.exact%3A%22Diphenhydramine%22&limit=1",
+      "set_id": "00f862aa-6917-45c7-b6aa-1bebb0a45e14",
+      "effective_time": "20250516",
+      "http_status": 200,
+      "raw_sha256": "6974dede8420aa06f883a9da30b977adcc69c0c680927e634ff422571613b86e",
+      "clean_sha256": "10dccfb51b4ccf9d161740880bd713058631622657be512bff234a7520876e15"
+    },
+    "KB-FDA0059": {
+      "drug": "Prednisone",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Prednisone%22+OR+openfda.brand_name.exact%3A%22Prednisone%22+OR+openfda.substance_name.exact%3A%22Prednisone%22&limit=1",
+      "set_id": "0062fcc7-aa08-4990-9d33-d798725907f1",
+      "effective_time": "20260908",
+      "http_status": 200,
+      "raw_sha256": "5de90f7ee8cd9c27bf274d00496d385d0b7fa0910f76efda51a745132497171c",
+      "clean_sha256": "d83b15ffd1432819d38a568c8f5ef0d7687839368b540c52eb88c7b78396c363"
+    },
+    "KB-FDA0060": {
+      "drug": "Methylprednisolone",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Methylprednisolone%22+OR+openfda.brand_name.exact%3A%22Methylprednisolone%22+OR+openfda.substance_name.exact%3A%22Methylprednisolone%22&limit=1",
+      "set_id": "22dd75d6-f89a-44f7-8ca6-b64c4e9806dd",
+      "effective_time": "20260622",
+      "http_status": 200,
+      "raw_sha256": "22440b2b9c64aa97ae706546d8455a793e3496b8b71fd73f78bf12a378076587",
+      "clean_sha256": "08668a463abf61bf335dce5f4f18c36247a6bbf9c9eff417b94de2f7a4b0d439"
+    },
+    "KB-FDA0061": {
+      "drug": "Dexamethasone",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Dexamethasone%22+OR+openfda.brand_name.exact%3A%22Dexamethasone%22+OR+openfda.substance_name.exact%3A%22Dexamethasone%22&limit=1",
+      "set_id": "01cfaa3e-5e30-18fa-e063-6394a90a084e",
+      "effective_time": "20251029",
+      "http_status": 200,
+      "raw_sha256": "3bd92ce8fd736ebb15a3a212fab667183b23095f9e0f6558af5357a31de57c5d",
+      "clean_sha256": "b1d74afcf56ca6ea41a46471deb1659a7f72b01737ad6b7c60371b81a9a8903b"
+    },
+    "KB-FDA0062": {
+      "drug": "Omeprazole",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Omeprazole%22+OR+openfda.brand_name.exact%3A%22Omeprazole%22+OR+openfda.substance_name.exact%3A%22Omeprazole%22&limit=1",
+      "set_id": "01bde9ca-0114-426d-8188-c55aefaa0961",
+      "effective_time": "20250305",
+      "http_status": 200,
+      "raw_sha256": "4dec812a34500aa494085e32fdbe509ce3f086255c5d3f4d91f55d9457d713b4",
+      "clean_sha256": "109e1b2937a377b72fb8940307cd7aecc95add5411469d6816d4cc4a2bacd7b3"
+    },
+    "KB-FDA0063": {
+      "drug": "Pantoprazole",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Pantoprazole%22+OR+openfda.brand_name.exact%3A%22Pantoprazole%22+OR+openfda.substance_name.exact%3A%22Pantoprazole%22&limit=1",
+      "set_id": "07ff83f9-7039-ac26-e063-6394a90a37ce",
+      "effective_time": "20250203",
+      "http_status": 200,
+      "raw_sha256": "326b878912b25e4b5ff1e59f22edba96e38d8ffe9019c3e013c2fb823af2350c",
+      "clean_sha256": "96508e220735dec581db16ff2e29525d1959e2c61f48ac37f97337fab04b2cd2"
+    },
+    "KB-FDA0064": {
+      "drug": "Famotidine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Famotidine%22+OR+openfda.brand_name.exact%3A%22Famotidine%22+OR+openfda.substance_name.exact%3A%22Famotidine%22&limit=1",
+      "set_id": "002875d2-8c30-2d2e-e063-6294a90ae01e",
+      "effective_time": "20251022",
+      "http_status": 200,
+      "raw_sha256": "d13a86f593f2eed67b9823dc442d9eeb00d21886de2c91ba0350fd980571668b",
+      "clean_sha256": "1c3a31094c4ec1e43c6cfd1a87610d2d6d932b5685e7ec97364424f5669fdee1"
+    },
+    "KB-FDA0065": {
+      "drug": "Esomeprazole",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Esomeprazole%22+OR+openfda.brand_name.exact%3A%22Esomeprazole%22+OR+openfda.substance_name.exact%3A%22Esomeprazole%22&limit=1",
+      "set_id": "0912d311-e26c-479d-9f13-ef0ac403e9b8",
+      "effective_time": "20251119",
+      "http_status": 200,
+      "raw_sha256": "cc854267951dd8a7f41da7a4fbd38702d6d9061b45270487fea1cdea7075e889",
+      "clean_sha256": "a97824f6f6fe6f6fa01185d647765653f4790f3920677e921a9cbff705f0797e"
+    },
+    "KB-FDA0066": {
+      "drug": "Lansoprazole",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Lansoprazole%22+OR+openfda.brand_name.exact%3A%22Lansoprazole%22+OR+openfda.substance_name.exact%3A%22Lansoprazole%22&limit=1",
+      "set_id": "00a574e0-bd03-deea-9f85-b108f78982ba",
+      "effective_time": "20220415",
+      "http_status": 200,
+      "raw_sha256": "7339415cbf1b95ac8bb0f8af39d58166c6002a19f14e8c5cbb628db291840d44",
+      "clean_sha256": "41d40be34c1922359cb7feb8ecb9823f969195aa6d7f32d20ce4ea2a7778828b"
+    },
+    "KB-FDA0067": {
+      "drug": "Metoclopramide",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Metoclopramide%22+OR+openfda.brand_name.exact%3A%22Metoclopramide%22+OR+openfda.substance_name.exact%3A%22Metoclopramide%22&limit=1",
+      "set_id": "0034a97a-fb05-418a-a234-de278907cd2a",
+      "effective_time": "20260724",
+      "http_status": 200,
+      "raw_sha256": "06a61307d3584d52c2bbcb33e22fc108679e0b9edf93104c16164abef34e6192",
+      "clean_sha256": "d369b9e0c89694ec2c4ec4cdd2ce92d3aa994c8e360eacc1493f758e5f37a7de"
+    },
+    "KB-FDA0068": {
+      "drug": "Ondansetron",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Ondansetron%22+OR+openfda.brand_name.exact%3A%22Ondansetron%22+OR+openfda.substance_name.exact%3A%22Ondansetron%22&limit=1",
+      "set_id": "02ddd5f5-76d3-4f1c-9af3-d39e05a19c29",
+      "effective_time": "20260729",
+      "http_status": 200,
+      "raw_sha256": "d8e29b8bcdf3a83c27a655ceb776bbc70dc12e1a4d5b286f56a0711d69d57fb2",
+      "clean_sha256": "04f76184277f23151ff72b6d21d287637183cda0dec18dffe5751cf1a17f2fd8"
+    },
+    "KB-FDA0069": {
+      "drug": "Sucralfate",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Sucralfate%22+OR+openfda.brand_name.exact%3A%22Sucralfate%22+OR+openfda.substance_name.exact%3A%22Sucralfate%22&limit=1",
+      "set_id": "0206d7fa-a1d5-35d9-e063-6294a90a5eb3",
+      "effective_time": "20250103",
+      "http_status": 200,
+      "raw_sha256": "2e522abaf38f46b75bf8c8b2d3f05c0f2ec1eef4b9c791b091e987f4e308afaa",
+      "clean_sha256": "ac572bdcbb53ee7ae731f5d1765d9f0e9796269b975051ba052aba8790a61762"
+    },
+    "KB-FDA0070": {
+      "drug": "Dicyclomine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Dicyclomine%22+OR+openfda.brand_name.exact%3A%22Dicyclomine%22+OR+openfda.substance_name.exact%3A%22Dicyclomine%22&limit=1",
+      "set_id": "2c656550-7e5b-445f-e063-6294a90a8f52",
+      "effective_time": "20250224",
+      "http_status": 200,
+      "raw_sha256": "7ce94f31a2239c592ee2345444902697c06f33ae44adf0aad288a3f5d2a9f080",
+      "clean_sha256": "545339b5f280085d96c8423a38bb459f47fc3076d32a62be83ceabe544a266fe"
+    },
+    "KB-FDA0071": {
+      "drug": "Gabapentin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Gabapentin%22+OR+openfda.brand_name.exact%3A%22Gabapentin%22+OR+openfda.substance_name.exact%3A%22Gabapentin%22&limit=1",
+      "set_id": "01b810b7-f4c8-4412-bbc5-b9220d8770d8",
+      "effective_time": "20240402",
+      "http_status": 200,
+      "raw_sha256": "6dde87e794d636e92e77751779685a6642efc4a7b447ee2fd6ac0603af211fcc",
+      "clean_sha256": "7c4dd933831b86f73b47c064ecca0ca12c4f740c898b26dd7dab720f75b0b683"
+    },
+    "KB-FDA0072": {
+      "drug": "Pregabalin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Pregabalin%22+OR+openfda.brand_name.exact%3A%22Pregabalin%22+OR+openfda.substance_name.exact%3A%22Pregabalin%22&limit=1",
+      "set_id": "025c3adb-5f6b-45f5-a4c6-cea8e57102e3",
+      "effective_time": "20260407",
+      "http_status": 200,
+      "raw_sha256": "50643c979eda936bc4b3823237f70237f8bba145942b2c4eac6a7ae81df13803",
+      "clean_sha256": "d360c8ddb07c9d4cd3f4ba56d7d9cefdad88fe8ef2a6d12d3d76250bd6b7d3e7"
+    },
+    "KB-FDA0073": {
+      "drug": "Duloxetine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Duloxetine%22+OR+openfda.brand_name.exact%3A%22Duloxetine%22+OR+openfda.substance_name.exact%3A%22Duloxetine%22&limit=1",
+      "set_id": "075fc7c9-7b4b-b9c3-e063-6394a90a926e",
+      "effective_time": "20260319",
+      "http_status": 200,
+      "raw_sha256": "d64a5f91fc828f23e5606a18bc0f8ae27c1de00ebf2c6be4be2df7d937f195ee",
+      "clean_sha256": "a6a4f51f9b5ade8c00b4df368d966e308605bdb642e44bc39771be8fd53702ac"
+    },
+    "KB-FDA0074": {
+      "drug": "Tramadol",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Tramadol%22+OR+openfda.brand_name.exact%3A%22Tramadol%22+OR+openfda.substance_name.exact%3A%22Tramadol%22&limit=1",
+      "set_id": "004de5a4-80f8-4040-a6ea-be5e99352a36",
+      "effective_time": "20251120",
+      "http_status": 200,
+      "raw_sha256": "de56c9ad9a2a2173282bf7e9c5c4021ff8b55502c43339b1ecd71643dafcde12",
+      "clean_sha256": "234df893e6a08c1b185262f9bd79a9f3235daf03f787516d056aad5b1be37517"
+    },
+    "KB-FDA0075": {
+      "drug": "Acetaminophen",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Acetaminophen%22+OR+openfda.brand_name.exact%3A%22Acetaminophen%22+OR+openfda.substance_name.exact%3A%22Acetaminophen%22&limit=1",
+      "set_id": "0035a4fd-8dd5-4534-a1b5-f510d637f721",
+      "effective_time": "20240124",
+      "http_status": 200,
+      "raw_sha256": "8bcc0113ff2455066343d448be8fd4fa7fa975c199418e4d69022f0e53c9115f",
+      "clean_sha256": "0feb2a4f10099e156400719993e1cc691126e1a14dedd3970cec16638e7e3081"
+    },
+    "KB-FDA0076": {
+      "drug": "Ibuprofen",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Ibuprofen%22+OR+openfda.brand_name.exact%3A%22Ibuprofen%22+OR+openfda.substance_name.exact%3A%22Ibuprofen%22&limit=1",
+      "set_id": "00872852-680a-41b3-901b-b991b12a176d",
+      "effective_time": "20250214",
+      "http_status": 200,
+      "raw_sha256": "9e48e3f86ce440f22bc2a780a2a4db9762e6a28db1db6877e9d3bd0732b783ca",
+      "clean_sha256": "5219ec15ae0c68ca8baaacf970fc73ee9774c8c7365d6af05901c7565cafa00f"
+    },
+    "KB-FDA0077": {
+      "drug": "Naproxen",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Naproxen%22+OR+openfda.brand_name.exact%3A%22Naproxen%22+OR+openfda.substance_name.exact%3A%22Naproxen%22&limit=1",
+      "set_id": "000155a8-709c-44e5-a75f-cd890f3a7caf",
+      "effective_time": "20260129",
+      "http_status": 200,
+      "raw_sha256": "7489458e145a02dea29fb9e5fd2a9522659a778688bbdf42ca49898443879755",
+      "clean_sha256": "676affd353bac5832a531ec4e44ae4a9da4319d45f3fbbf0d1d44e7feb951b38"
+    },
+    "KB-FDA0078": {
+      "drug": "Meloxicam",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Meloxicam%22+OR+openfda.brand_name.exact%3A%22Meloxicam%22+OR+openfda.substance_name.exact%3A%22Meloxicam%22&limit=1",
+      "set_id": "06a401f0-4380-4081-86ed-a309a25abf6b",
+      "effective_time": "20240808",
+      "http_status": 200,
+      "raw_sha256": "9d4e99f80a5fcf0d21106ee488816dc047c255234c2cf35c9ca91817190c68aa",
+      "clean_sha256": "5fbedf9d13cc702ac6e180d2af4eef0f9c4ed33000a90b4cf21291cf021a38f1"
+    },
+    "KB-FDA0079": {
+      "drug": "Celecoxib",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Celecoxib%22+OR+openfda.brand_name.exact%3A%22Celecoxib%22+OR+openfda.substance_name.exact%3A%22Celecoxib%22&limit=1",
+      "set_id": "05224473-27dc-4f6d-a52a-c40a7af2f2f4",
+      "effective_time": "20250430",
+      "http_status": 200,
+      "raw_sha256": "fb57d1bd029ec96e62296725d1d587129df7b6a7b752fe4ea589c80de563945d",
+      "clean_sha256": "698ca025ea483a6aa87b472064c90ec11e118480d4afe7e4b142f51741f5205d"
+    },
+    "KB-FDA0080": {
+      "drug": "Baclofen",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Baclofen%22+OR+openfda.brand_name.exact%3A%22Baclofen%22+OR+openfda.substance_name.exact%3A%22Baclofen%22&limit=1",
+      "set_id": "020632f4-5e8a-f4a0-e063-6294a90a6301",
+      "effective_time": "20250128",
+      "http_status": 200,
+      "raw_sha256": "d513ab206962610ce63feec6a6568f0adcd29c80c899f50f991623f9db93d37e",
+      "clean_sha256": "54da75c925d752b71a139f18aee026c9d36163b1dd76c9a2731fb88abcdb6e51"
+    },
+    "KB-FDA0081": {
+      "drug": "Cyclobenzaprine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Cyclobenzaprine%22+OR+openfda.brand_name.exact%3A%22Cyclobenzaprine%22+OR+openfda.substance_name.exact%3A%22Cyclobenzaprine%22&limit=1",
+      "set_id": "00b20a8c-debd-e930-e063-6394a90a7ed0",
+      "effective_time": "20260520",
+      "http_status": 200,
+      "raw_sha256": "a07ab5af0341c07341b3bc7235b2c05d4cada2d7a8e720248010e21ef8c9d0c5",
+      "clean_sha256": "65bc735c5f3bd157a8cf198c4239be4adc12a5d5299294d8514af54103734f9c"
+    },
+    "KB-FDA0082": {
+      "drug": "Tizanidine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Tizanidine%22+OR+openfda.brand_name.exact%3A%22Tizanidine%22+OR+openfda.substance_name.exact%3A%22Tizanidine%22&limit=1",
+      "set_id": "03fa03a6-fd05-4f17-872a-3c123330935d",
+      "effective_time": "20231109",
+      "http_status": 200,
+      "raw_sha256": "7c70f2f21d88b432b7bbd802fdd9d1f8b127c9a7fc098feb36e1dba05ec1d249",
+      "clean_sha256": "6695b2a401a7f16cfb54966c8e165f042c970d640bcdae5b999ade2671d63468"
+    },
+    "KB-FDA0083": {
+      "drug": "Sertraline",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Sertraline%22+OR+openfda.brand_name.exact%3A%22Sertraline%22+OR+openfda.substance_name.exact%3A%22Sertraline%22&limit=1",
+      "set_id": "03e1f274-fa9a-4461-b7c9-31ba6428c107",
+      "effective_time": "20260330",
+      "http_status": 200,
+      "raw_sha256": "5151024ac9badca97036431e12de063c8160ea3c79622f67666fde0956532dad",
+      "clean_sha256": "91ec8c624364516526c22f8d89c36ed746c9a83f21c011fc4c40d0f59000565f"
+    },
+    "KB-FDA0084": {
+      "drug": "Escitalopram",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Escitalopram%22+OR+openfda.brand_name.exact%3A%22Escitalopram%22+OR+openfda.substance_name.exact%3A%22Escitalopram%22&limit=1",
+      "set_id": "09945404-e4cf-6269-e063-6294a90a5b8d",
+      "effective_time": "20260602",
+      "http_status": 200,
+      "raw_sha256": "d80d54784c15f20f4488fe7cf868f87184e8995af11155c68ca3562e6a43f516",
+      "clean_sha256": "93a54b17600a43580c01af2b4cd15dc65f05e605e89efbccd77770bb01e0b1f4"
+    },
+    "KB-FDA0085": {
+      "drug": "Fluoxetine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Fluoxetine%22+OR+openfda.brand_name.exact%3A%22Fluoxetine%22+OR+openfda.substance_name.exact%3A%22Fluoxetine%22&limit=1",
+      "set_id": "02283de9-6087-45f7-a9ce-3b082ce860de",
+      "effective_time": "20190201",
+      "http_status": 200,
+      "raw_sha256": "0726ea0441792bf210a32fe871a25342f03cc2e2c2a21898fd01a6e2d26e0916",
+      "clean_sha256": "895772ceda96e036186673dbc508afc504a972a65b37a3294b7d7129c6b623ce"
+    },
+    "KB-FDA0086": {
+      "drug": "Amoxicillin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Amoxicillin%22+OR+openfda.brand_name.exact%3A%22Amoxicillin%22+OR+openfda.substance_name.exact%3A%22Amoxicillin%22&limit=1",
+      "set_id": "00fbd46e-05fd-4f8a-9f59-a7a4d01c8e54",
+      "effective_time": "20231218",
+      "http_status": 200,
+      "raw_sha256": "3287ed439206570ff03c2ad79e7186160a01d3bd50c2f5a5ee4d2b31db898325",
+      "clean_sha256": "6e9e141aaa0955e33f2019fb13dd4161f4d19a8e0605b6a7fee72ed8503cbb58"
+    },
+    "KB-FDA0087": {
+      "drug": "Azithromycin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Azithromycin%22+OR+openfda.brand_name.exact%3A%22Azithromycin%22+OR+openfda.substance_name.exact%3A%22Azithromycin%22&limit=1",
+      "set_id": "003307c5-3f73-4a5d-a704-bfdea3c656e8",
+      "effective_time": "20260316",
+      "http_status": 200,
+      "raw_sha256": "8bd5371435b91c6835bd69dadce08209c7441a015ad43be11733aae4050c1637",
+      "clean_sha256": "38c0bfbfd00a8be6ad33d8f54f763b5ca9bd5d0d8b3cc82ea9ffd493ccca2cd2"
+    },
+    "KB-FDA0088": {
+      "drug": "Ciprofloxacin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Ciprofloxacin%22+OR+openfda.brand_name.exact%3A%22Ciprofloxacin%22+OR+openfda.substance_name.exact%3A%22Ciprofloxacin%22&limit=1",
+      "set_id": "0ce2221d-940f-4c07-ba2e-fccb491f6b9b",
+      "effective_time": "20250401",
+      "http_status": 200,
+      "raw_sha256": "9eb33840e06310c491f08f049a374b8552cf7a18b6d71173e0b2149abe55b432",
+      "clean_sha256": "4c59eaadcc251f8e4ce6f1746f70d5a25548d75543f8590e6b665d18d7f47a5a"
+    },
+    "KB-FDA0089": {
+      "drug": "Levofloxacin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Levofloxacin%22+OR+openfda.brand_name.exact%3A%22Levofloxacin%22+OR+openfda.substance_name.exact%3A%22Levofloxacin%22&limit=1",
+      "set_id": "05d179f5-b200-8597-e063-6394a90a10cc",
+      "effective_time": "20250304",
+      "http_status": 200,
+      "raw_sha256": "5c8a928de5e3743769766aa770fb6b9a20b78cb69ddf62fb1d4e92a10e4d331d",
+      "clean_sha256": "48ab650be77e155284dd60fa76354d87107bb0475881ce40ce48b3aac34dfeee"
+    },
+    "KB-FDA0090": {
+      "drug": "Cephalexin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Cephalexin%22+OR+openfda.brand_name.exact%3A%22Cephalexin%22+OR+openfda.substance_name.exact%3A%22Cephalexin%22&limit=1",
+      "set_id": "02b5cd6f-3df8-43c1-879d-217fcf55231a",
+      "effective_time": "20250211",
+      "http_status": 200,
+      "raw_sha256": "3e08ada993de9238ca4ff18174fee25763a4f56476562626545aa9250465e899",
+      "clean_sha256": "b0f4b7ebb74fad3f6c6cfa2d2fcc7a012fe563988d2879618af6eda9aa92a3d1"
+    },
+    "KB-FDA0091": {
+      "drug": "Doxycycline",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Doxycycline%22+OR+openfda.brand_name.exact%3A%22Doxycycline%22+OR+openfda.substance_name.exact%3A%22Doxycycline%22&limit=1",
+      "set_id": "04de98f3-33a2-48ba-85b5-9fac867524b7",
+      "effective_time": "20260715",
+      "http_status": 200,
+      "raw_sha256": "ece16b24ae4aa2b2802adf45885498d2ad91b53b303081eacfc61808db30f748",
+      "clean_sha256": "7851df97d3a5a58e64a1c5f5f6e255e79309b2aa0872702421d72590d1656fba"
+    },
+    "KB-FDA0092": {
+      "drug": "Trimethoprim-Sulfamethoxazole",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Trimethoprim-Sulfamethoxazole%22+OR+openfda.brand_name.exact%3A%22Trimethoprim-Sulfamethoxazole%22+OR+openfda.substance_name.exact%3A%22Trimethoprim-Sulfamethoxazole%22&limit=1",
+      "set_id": "079c828c-148f-45b9-966e-d8906043b2a2",
+      "effective_time": "20241217",
+      "http_status": 200,
+      "raw_sha256": "7c9f8877dab9bca2778514bc5f72b39c367b2d2f3eac405419273174bfc9a2bf",
+      "clean_sha256": "b8e810652529ce47df47ccd70cf171ab417d8e54632f09e68efff7f15287479d"
+    },
+    "KB-FDA0093": {
+      "drug": "Nitrofurantoin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Nitrofurantoin%22+OR+openfda.brand_name.exact%3A%22Nitrofurantoin%22+OR+openfda.substance_name.exact%3A%22Nitrofurantoin%22&limit=1",
+      "set_id": "04af8b73-7e15-7da8-e063-6294a90af284",
+      "effective_time": "20240329",
+      "http_status": 200,
+      "raw_sha256": "1c060587ea04db8acb95f98b9b7b3b693d52157691c8e05c8b4356d931da2e08",
+      "clean_sha256": "96e4897078334f99844dabc16daafd0dcdc65e3d6fb37a390cb56799dbf73dd8"
+    },
+    "KB-FDA0094": {
+      "drug": "Fluconazole",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Fluconazole%22+OR+openfda.brand_name.exact%3A%22Fluconazole%22+OR+openfda.substance_name.exact%3A%22Fluconazole%22&limit=1",
+      "set_id": "01df20c4-7b94-044e-e063-6394a90a406a",
+      "effective_time": "20251117",
+      "http_status": 200,
+      "raw_sha256": "687805f96ef32e09f8f5884e01c4db7a05e8b91c30e6645b5d78a6942763706a",
+      "clean_sha256": "cbbe811015d4ba4d05e95069836c41876d7d702e9cda1a3aa22ece2d55ef3628"
+    },
+    "KB-FDA0095": {
+      "drug": "Clindamycin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Clindamycin%22+OR+openfda.brand_name.exact%3A%22Clindamycin%22+OR+openfda.substance_name.exact%3A%22Clindamycin%22&limit=1",
+      "set_id": "8a4e2ba4-90e6-48e8-a943-0c5d3f169780",
+      "effective_time": "20260218",
+      "http_status": 200,
+      "raw_sha256": "9e191cf79cb1326b33fa499de35e38b039849c68992a2d822f96b5d4c7edc3ba",
+      "clean_sha256": "c83b224aef87da041fec3b5eb60bd726951c1bc733eb47256426db798ee64b63"
+    },
+    "KB-FDA0096": {
+      "drug": "Metronidazole",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Metronidazole%22+OR+openfda.brand_name.exact%3A%22Metronidazole%22+OR+openfda.substance_name.exact%3A%22Metronidazole%22&limit=1",
+      "set_id": "02046a22-a5eb-4bb7-bec7-e5a2aa55e142",
+      "effective_time": "20260318",
+      "http_status": 200,
+      "raw_sha256": "f1f3dcfbf1add9c871e2275469a8a1d6de5c3794adf1803f715cb334be1b3ae2",
+      "clean_sha256": "e20bca1e9a8e6191ca53764edac064228c011a9a4845f4d9caa4d492c54d39b0"
+    },
+    "KB-FDA0097": {
+      "drug": "Cefdinir",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Cefdinir%22+OR+openfda.brand_name.exact%3A%22Cefdinir%22+OR+openfda.substance_name.exact%3A%22Cefdinir%22&limit=1",
+      "set_id": "06fbdb63-d32f-4212-9962-f1de15597dda",
+      "effective_time": "20240214",
+      "http_status": 200,
+      "raw_sha256": "8a1a1084bc9e1dabd6fbd20b854004d2801c4dd60cb4e9db52c77715a5e37bf8",
+      "clean_sha256": "0e595b0bc26f37f6f2ceff718cd43323f9ce30022a12553f7eb9cf831fc8a78a"
+    },
+    "KB-FDA0098": {
+      "drug": "Augmentin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Augmentin%22+OR+openfda.brand_name.exact%3A%22Augmentin%22+OR+openfda.substance_name.exact%3A%22Augmentin%22&limit=1",
+      "set_id": "04a31a42-d79e-bbb4-e063-6394a90a63ee",
+      "effective_time": "20240516",
+      "http_status": 200,
+      "raw_sha256": "dadfd165d805aec18f99e0536198f90afe29b712a98ebb9dff1755e04348e182",
+      "clean_sha256": "a87a4a76e31c1100e066bde2cac32b896732886c565ac4709797961a3e2c5be0"
+    },
+    "KB-FDA0099": {
+      "drug": "Aspirin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Aspirin%22+OR+openfda.brand_name.exact%3A%22Aspirin%22+OR+openfda.substance_name.exact%3A%22Aspirin%22&limit=1",
+      "set_id": "049ec1aa-66b3-9273-e063-6294a90a221b",
+      "effective_time": "20251211",
+      "http_status": 200,
+      "raw_sha256": "130dc20ab9294fee9d44a3a056d5c0c616fcc293190c8573bb20b52c0654c8c5",
+      "clean_sha256": "c7a8a939417d3c8432cc3789d7350d718270fb546eac5cdbf9ea22c9dee8e25e"
+    },
+    "KB-FDA0100": {
+      "drug": "Clopidogrel",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Clopidogrel%22+OR+openfda.brand_name.exact%3A%22Clopidogrel%22+OR+openfda.substance_name.exact%3A%22Clopidogrel%22&limit=1",
+      "set_id": "0078fb3d-3595-4ae1-a059-1d5e81c879cf",
+      "effective_time": "20240517",
+      "http_status": 200,
+      "raw_sha256": "8107d940adec4c13c0ecaa9ebe0ea327bcfac24a16b405c9167c27716803359b",
+      "clean_sha256": "e632c226dbd991c1c88b55e31f500e0e7f469d07dcf942664fd8aad68f0abe35"
+    },
+    "KB-FDA0101": {
+      "drug": "Apixaban",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Apixaban%22+OR+openfda.brand_name.exact%3A%22Apixaban%22+OR+openfda.substance_name.exact%3A%22Apixaban%22&limit=1",
+      "set_id": "19a60552-374d-4b8b-a8ce-ceae252ea5ba",
+      "effective_time": "20240523",
+      "http_status": 200,
+      "raw_sha256": "3a0fb3aff0ff62882e770578888f656c762ae35acd3938362f55eb3b440b05bd",
+      "clean_sha256": "d89b49d321f0936985b817efb125cf2d5d90a5907668d00a7c7c665a3fe91458"
+    },
+    "KB-FDA0102": {
+      "drug": "Rivaroxaban",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Rivaroxaban%22+OR+openfda.brand_name.exact%3A%22Rivaroxaban%22+OR+openfda.substance_name.exact%3A%22Rivaroxaban%22&limit=1",
+      "set_id": "122e6f78-067b-9065-adb2-ec7fec9f008e",
+      "effective_time": "20260429",
+      "http_status": 200,
+      "raw_sha256": "52505722b58dda60e95667a7ae99553659c9d30e1d7d8405f1d74bafe5e44e48",
+      "clean_sha256": "8ac39da95253cbc14e624ac94e7cffcc5a969707b014710de8ba893916a1858e"
+    },
+    "KB-FDA0103": {
+      "drug": "Warfarin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Warfarin%22+OR+openfda.brand_name.exact%3A%22Warfarin%22+OR+openfda.substance_name.exact%3A%22Warfarin%22&limit=1",
+      "set_id": "0cbce382-9c88-4f58-ae0f-532a841e8f95",
+      "effective_time": "20250617",
+      "http_status": 200,
+      "raw_sha256": "92ed2a4dd70c2b25a17881bf5e23431127659cfef156f89c60242c808149b41d",
+      "clean_sha256": "e337d80cb6eaa7dc0ca86a2ef5e6e979748afa3a4d2f565910a02a02d14303bb"
+    },
+    "KB-FDA0104": {
+      "drug": "Dabigatran",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Dabigatran%22+OR+openfda.brand_name.exact%3A%22Dabigatran%22+OR+openfda.substance_name.exact%3A%22Dabigatran%22&limit=1",
+      "set_id": "13649035-a498-4e31-a7ea-8b18cedceca7",
+      "effective_time": "20251120",
+      "http_status": 200,
+      "raw_sha256": "001c2d1b1438bc6a1583ac9cc01f975a92070a907c6f957018068977d2d74da8",
+      "clean_sha256": "c6b0923cb1fa59dba5c48223e03cc1b4b66f05f48af2ec574eb498c584957bcf"
+    },
+    "KB-FDA0105": {
+      "drug": "Enoxaparin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact%3A%22Enoxaparin%22+OR+openfda.brand_name.exact%3A%22Enoxaparin%22+OR+openfda.substance_name.exact%3A%22Enoxaparin%22&limit=1",
+      "set_id": "014c6710-f2c4-fd1e-e063-6394a90ae525",
+      "effective_time": "20240621",
+      "http_status": 200,
+      "raw_sha256": "95f493106b3215c8f6bdec66309febae7238f2a94820734ccaa21c304037caf4",
+      "clean_sha256": "74abd9b950befbfa3f2bb2b02c70d7e16cdba950d52258a7872b0a06d5bdd9a2"
+    },
+    "KB-FDA0106": {
+      "drug": "Ampicillin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22ampicillin%22+OR+openfda.brand_name.exact:%22ampicillin%22+OR+openfda.substance_name.exact:%22ampicillin%22&limit=1",
+      "set_id": "9d2aebe8-4f04-49dd-b1e5-80b962868dc3",
+      "effective_time": "20260727",
+      "http_status": 200,
+      "raw_sha256": "11272678a4cd4dd90117bc5973a42e0fe2a2b7b6909430a9aa81106fc134b181",
+      "retrieved_at": "2026-10-11T13:11:56.388304+00:00"
+    },
+    "KB-FDA0107": {
+      "drug": "Atropine Sulfate",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22atropine%20sulfate%22+OR+openfda.brand_name.exact:%22atropine%20sulfate%22+OR+openfda.substance_name.exact:%22atropine%20sulfate%22&limit=1",
+      "set_id": "80a31286-a741-4440-b200-290c08925d06",
+      "effective_time": "20251201",
+      "http_status": 200,
+      "raw_sha256": "33a8f324b0f48518ab21b428f33d74356c7cd340b5f4320e87593ceac3ac78cd",
+      "retrieved_at": "2026-10-11T13:12:11.063563+00:00"
+    },
+    "KB-FDA0108": {
+      "drug": "Bivalirudin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22bivalirudin%22+OR+openfda.brand_name.exact:%22bivalirudin%22+OR+openfda.substance_name.exact:%22bivalirudin%22&limit=1",
+      "set_id": "19a4afc5-151d-4d3c-bfef-48aa8797d695",
+      "effective_time": "20250910",
+      "http_status": 200,
+      "raw_sha256": "cd5cf96b5a224429ed30996f6a373fc8e59e7fa2148534127f4525126978e14e",
+      "retrieved_at": "2026-10-11T13:12:35.421798+00:00"
+    },
+    "KB-FDA0109": {
+      "drug": "Carbamazepine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22carbamazepine%22+OR+openfda.brand_name.exact:%22carbamazepine%22+OR+openfda.substance_name.exact:%22carbamazepine%22&limit=1",
+      "set_id": "c5e4a25a-0137-4327-96f5-15735891ad5c",
+      "effective_time": "20260804",
+      "http_status": 200,
+      "raw_sha256": "ac9588af6c12e1ffdd9d10fb45526ab36f8b6a9b0cc1509e53c45fbd3b4d82b9",
+      "retrieved_at": "2026-10-11T13:12:44.885449+00:00"
+    },
+    "KB-FDA0110": {
+      "drug": "Ceftriaxone",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22ceftriaxone%22+OR+openfda.brand_name.exact:%22ceftriaxone%22+OR+openfda.substance_name.exact:%22ceftriaxone%22&limit=1",
+      "set_id": "5cf93bc5-9e4c-4734-bc02-c7d0ac071022",
+      "effective_time": "20231108",
+      "http_status": 200,
+      "raw_sha256": "ecb855c2161249b8cb752e24ca8a5d019078ca25d5ba6f7c6cce271a9b8630fc",
+      "retrieved_at": "2026-10-11T13:13:00.402614+00:00"
+    },
+    "KB-FDA0111": {
+      "drug": "Cetirizine Hydrochloride",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22cetirizine%20hydrochloride%22+OR+openfda.brand_name.exact:%22cetirizine%20hydrochloride%22+OR+openfda.substance_name.exact:%22cetirizine%20hydrochloride%22&limit=1",
+      "set_id": "03c0a599-072a-10ef-e063-6394a90a9698",
+      "effective_time": "20251120",
+      "http_status": 200,
+      "raw_sha256": "22e0791ac4cbe5a3d7a46342554a8f5d7e0bbfa633280b194114e44a85da0b87",
+      "retrieved_at": "2026-10-11T13:13:06.191090+00:00"
+    },
+    "KB-FDA0112": {
+      "drug": "Clonazepam",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22clonazepam%22+OR+openfda.brand_name.exact:%22clonazepam%22+OR+openfda.substance_name.exact:%22clonazepam%22&limit=1",
+      "set_id": "19fc756c-72fe-4504-beaa-4fa2235af18c",
+      "effective_time": "20260527",
+      "http_status": 200,
+      "raw_sha256": "6559c0a85b69e861232033325a8812a3b2d84d252be0ca2125ad2a1078e678ae",
+      "retrieved_at": "2026-10-11T13:13:24.585231+00:00"
+    },
+    "KB-FDA0113": {
+      "drug": "Darunavir",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22darunavir%22+OR+openfda.brand_name.exact:%22darunavir%22+OR+openfda.substance_name.exact:%22darunavir%22&limit=1",
+      "set_id": "ed977166-7ac0-4a8c-a10c-4b19a69403c0",
+      "effective_time": "20240119",
+      "http_status": 200,
+      "raw_sha256": "903032c59bc07fe6b2b9b4c6445d4a6e720d054440992d8e3ad7a83d7bc1e3be",
+      "retrieved_at": "2026-10-11T13:13:40.996416+00:00"
+    },
+    "KB-FDA0114": {
+      "drug": "Diphenhydramine Hydrochloride",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22diphenhydramine%20hydrochloride%22+OR+openfda.brand_name.exact:%22diphenhydramine%20hydrochloride%22+OR+openfda.substance_name.exact:%22diphenhydramine%20hydrochloride%22&limit=1",
+      "set_id": "44217a8c-7656-a0f6-e063-6294a90af2ad",
+      "effective_time": "20260331",
+      "http_status": 200,
+      "raw_sha256": "28b86c4d86ac023c9912b3fa141b66ed3783f04896148dd2ff926ff71b9d8698",
+      "retrieved_at": "2026-10-11T13:14:04.693169+00:00"
+    },
+    "KB-FDA0115": {
+      "drug": "Donepezil Hydrochloride",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22donepezil%20hydrochloride%22+OR+openfda.brand_name.exact:%22donepezil%20hydrochloride%22+OR+openfda.substance_name.exact:%22donepezil%20hydrochloride%22&limit=1",
+      "set_id": "042a59ea-131a-4806-b0f4-2f791d4414e2",
+      "effective_time": "20250630",
+      "http_status": 200,
+      "raw_sha256": "781a712af9455cc4ae8d5f7829cf54e1e838970fd576fa27668bb2beb154b726",
+      "retrieved_at": "2026-10-11T13:14:14.877267+00:00"
+    },
+    "KB-FDA0116": {
+      "drug": "Doxorubicin Hydrochloride",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22doxorubicin%20hydrochloride%22+OR+openfda.brand_name.exact:%22doxorubicin%20hydrochloride%22+OR+openfda.substance_name.exact:%22doxorubicin%20hydrochloride%22&limit=1",
+      "set_id": "0885dddf-727e-4692-92dd-a26c69cc278d",
+      "effective_time": "20260327",
+      "http_status": 200,
+      "raw_sha256": "e16aca49b3b2e0abbf44c1af025f0792c643500b203ba8527806d2d2b83ff3e2",
+      "retrieved_at": "2026-10-11T13:14:19.072894+00:00"
+    },
+    "KB-FDA0117": {
+      "drug": "Doxycycline Hyclate",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22doxycycline%20hyclate%22+OR+openfda.brand_name.exact:%22doxycycline%20hyclate%22+OR+openfda.substance_name.exact:%22doxycycline%20hyclate%22&limit=1",
+      "set_id": "0aaa4ff7-7fba-4a40-9b49-82e4da68a48f",
+      "effective_time": "20260302",
+      "http_status": 200,
+      "raw_sha256": "dce230083fbe76d038afbb3a57cf14f56f65c5f2d3be22b58a0803c2dc9e4cb4",
+      "retrieved_at": "2026-10-11T13:14:22.585964+00:00"
+    },
+    "KB-FDA0118": {
+      "drug": "Emtricitabine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22emtricitabine%22+OR+openfda.brand_name.exact:%22emtricitabine%22+OR+openfda.substance_name.exact:%22emtricitabine%22&limit=1",
+      "set_id": "a229c922-58eb-4795-9219-6cebb1779e35",
+      "effective_time": "20260818",
+      "http_status": 200,
+      "raw_sha256": "56ac23699396bd59286e24c67bb7cf36ac3b53bddb32806ec85e804d3dbef0e8",
+      "retrieved_at": "2026-10-11T13:14:43.981813+00:00"
+    },
+    "KB-FDA0119": {
+      "drug": "Enoxaparin Sodium",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22enoxaparin%20sodium%22+OR+openfda.brand_name.exact:%22enoxaparin%20sodium%22+OR+openfda.substance_name.exact:%22enoxaparin%20sodium%22&limit=1",
+      "set_id": "7fa78f8d-92d9-434a-8e26-b886ab0ae77f",
+      "effective_time": "20260114",
+      "http_status": 200,
+      "raw_sha256": "44a7da8eb0f78b2c84112a07673d8bf605c881600d43f8b250f9f761a1582bbe",
+      "retrieved_at": "2026-10-11T13:14:55.840489+00:00"
+    },
+    "KB-FDA0120": {
+      "drug": "Eptifibatide",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22eptifibatide%22+OR+openfda.brand_name.exact:%22eptifibatide%22+OR+openfda.substance_name.exact:%22eptifibatide%22&limit=1",
+      "set_id": "a0d18778-0194-461a-a4ea-b2fca5df57c3",
+      "effective_time": "20240815",
+      "http_status": 200,
+      "raw_sha256": "e131f162a16962233e0f482cdd2a0ebe4a19a437e663aff29a6b098d1a33e79c",
+      "retrieved_at": "2026-10-11T13:15:06.028855+00:00"
+    },
+    "KB-FDA0121": {
+      "drug": "Fluticasone Propionate",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22fluticasone%20propionate%22+OR+openfda.brand_name.exact:%22fluticasone%20propionate%22+OR+openfda.substance_name.exact:%22fluticasone%20propionate%22&limit=1",
+      "set_id": "c4d361d4-d480-4fb2-8cc7-4cc3e57838dc",
+      "effective_time": "20240501",
+      "http_status": 200,
+      "raw_sha256": "1c18aca3762bb81564448158ef8eed22d258201541adbdabc6f3d7a3653376c8",
+      "retrieved_at": "2026-10-11T13:15:42.090512+00:00"
+    },
+    "KB-FDA0122": {
+      "drug": "Fulvestrant",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22fulvestrant%22+OR+openfda.brand_name.exact:%22fulvestrant%22+OR+openfda.substance_name.exact:%22fulvestrant%22&limit=1",
+      "set_id": "d5ae9e07-73b0-4063-a9e4-0ffc5614c2b8",
+      "effective_time": "20260305",
+      "http_status": 200,
+      "raw_sha256": "dc37fe1ece41ba46534661edef4b8d80469d25c289f2b3db8141ea222598ff78",
+      "retrieved_at": "2026-10-11T13:15:57.316310+00:00"
+    },
+    "KB-FDA0123": {
+      "drug": "Glycopyrrolate",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22glycopyrrolate%22+OR+openfda.brand_name.exact:%22glycopyrrolate%22+OR+openfda.substance_name.exact:%22glycopyrrolate%22&limit=1",
+      "set_id": "3e6f8091-d6fe-4c8f-b897-606a70bf74bc",
+      "effective_time": "20241112",
+      "http_status": 200,
+      "raw_sha256": "145fa9e6aa6fb1d6586d61282bf011f397ce7c111e1dcdcaf77034d2ce3dac53",
+      "retrieved_at": "2026-10-11T13:16:04.639198+00:00"
+    },
+    "KB-FDA0124": {
+      "drug": "Hydrocortisone",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22hydrocortisone%22+OR+openfda.brand_name.exact:%22hydrocortisone%22+OR+openfda.substance_name.exact:%22hydrocortisone%22&limit=1",
+      "set_id": "0174411c-1b10-4298-b820-87b24065b118",
+      "effective_time": "20260114",
+      "http_status": 200,
+      "raw_sha256": "3b274276b0850d5f69be1dc81f51f0bf4a051eab1b5a5e6c8a4b60451e1745ca",
+      "retrieved_at": "2026-10-11T13:16:24.366144+00:00"
+    },
+    "KB-FDA0125": {
+      "drug": "Labetalol Hydrochloride",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22labetalol%20hydrochloride%22+OR+openfda.brand_name.exact:%22labetalol%20hydrochloride%22+OR+openfda.substance_name.exact:%22labetalol%20hydrochloride%22&limit=1",
+      "set_id": "da8af6c2-d822-4ae5-9c2d-a1d161bdefd0",
+      "effective_time": "20220412",
+      "http_status": 200,
+      "raw_sha256": "a8dc40eab11a731b47da25b95b047a255d250dc8c181dd1371c5e3e6d551b9af",
+      "retrieved_at": "2026-10-11T13:16:45.022668+00:00"
+    },
+    "KB-FDA0126": {
+      "drug": "Lamivudine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22lamivudine%22+OR+openfda.brand_name.exact:%22lamivudine%22+OR+openfda.substance_name.exact:%22lamivudine%22&limit=1",
+      "set_id": "b23aea53-324b-4ff2-8736-639e4045e388",
+      "effective_time": "20260102",
+      "http_status": 200,
+      "raw_sha256": "16f8de84654c0a5d63f50987139c2146b308d45afcb6fb545e874fdee5b418fc",
+      "retrieved_at": "2026-10-11T13:16:49.011844+00:00"
+    },
+    "KB-FDA0127": {
+      "drug": "Leuprolide Acetate",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22leuprolide%20acetate%22+OR+openfda.brand_name.exact:%22leuprolide%20acetate%22+OR+openfda.substance_name.exact:%22leuprolide%20acetate%22&limit=1",
+      "set_id": "19be0b7f-e68a-4547-9e49-b51b12821907",
+      "effective_time": "20260116",
+      "http_status": 200,
+      "raw_sha256": "aa7929c31c7daa7fe851585149b5c9f1d1842b599525536e786f7f05f8fd3dde",
+      "retrieved_at": "2026-10-11T13:17:01.626596+00:00"
+    },
+    "KB-FDA0128": {
+      "drug": "Levothyroxine Sodium",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22levothyroxine%20sodium%22+OR+openfda.brand_name.exact:%22levothyroxine%20sodium%22+OR+openfda.substance_name.exact:%22levothyroxine%20sodium%22&limit=1",
+      "set_id": "00a4fc0b-7162-455e-8ed3-56efdbbe182e",
+      "effective_time": "20251001",
+      "http_status": 200,
+      "raw_sha256": "408dfa6647a5b47b08330080ceb0c0ee868ddbaff54296d85acb99111d1ce7d7",
+      "retrieved_at": "2026-10-11T13:17:08.283347+00:00"
+    },
+    "KB-FDA0129": {
+      "drug": "Medroxyprogesterone Acetate",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22medroxyprogesterone%20acetate%22+OR+openfda.brand_name.exact:%22medroxyprogesterone%20acetate%22+OR+openfda.substance_name.exact:%22medroxyprogesterone%20acetate%22&limit=1",
+      "set_id": "2627eb11-06bf-4a45-9172-094468e3ca07",
+      "effective_time": "20260521",
+      "http_status": 200,
+      "raw_sha256": "de0b72376b0639b680a11e4683eea84c56c18d78c9f8b118afd1aaca2706f127",
+      "retrieved_at": "2026-10-11T13:17:23.560225+00:00"
+    },
+    "KB-FDA0130": {
+      "drug": "Memantine Hydrochloride",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22memantine%20hydrochloride%22+OR+openfda.brand_name.exact:%22memantine%20hydrochloride%22+OR+openfda.substance_name.exact:%22memantine%20hydrochloride%22&limit=1",
+      "set_id": "24290655-47f3-4042-a977-a832c5161d2c",
+      "effective_time": "20260115",
+      "http_status": 200,
+      "raw_sha256": "58ae6ed084d929f9169ebf124077deeb73cf502a8c6f595a5d6b02bec7460af8",
+      "retrieved_at": "2026-10-11T13:17:27.166880+00:00"
+    },
+    "KB-FDA0131": {
+      "drug": "Metformin Hydrochloride",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22metformin%20hydrochloride%22+OR+openfda.brand_name.exact:%22metformin%20hydrochloride%22+OR+openfda.substance_name.exact:%22metformin%20hydrochloride%22&limit=1",
+      "set_id": "356b02d0-d239-4441-bb33-c4c54166fcd7",
+      "effective_time": "20260115",
+      "http_status": 200,
+      "raw_sha256": "65442e0951e6b98395a422ef5f4363bef95f0e0f9c041f34c64aef94ed2bf047",
+      "retrieved_at": "2026-10-11T13:17:39.949077+00:00"
+    },
+    "KB-FDA0132": {
+      "drug": "Methylphenidate Hydrochloride",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22methylphenidate%20hydrochloride%22+OR+openfda.brand_name.exact:%22methylphenidate%20hydrochloride%22+OR+openfda.substance_name.exact:%22methylphenidate%20hydrochloride%22&limit=1",
+      "set_id": "ecbb4a30-21ac-42e1-b4e9-6c35344ffc45",
+      "effective_time": "20251031",
+      "http_status": 200,
+      "raw_sha256": "3fb689c3f0dd082893c2a5a2de2dfcc825e7c5831ee3d1522b7046f6782d52e2",
+      "retrieved_at": "2026-10-11T13:17:50.455945+00:00"
+    },
+    "KB-FDA0133": {
+      "drug": "Metoprolol Succinate",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22metoprolol%20succinate%22+OR+openfda.brand_name.exact:%22metoprolol%20succinate%22+OR+openfda.substance_name.exact:%22metoprolol%20succinate%22&limit=1",
+      "set_id": "0a99ed82-2ee8-6f9c-e063-6394a90ac7ba",
+      "effective_time": "20260603",
+      "http_status": 200,
+      "raw_sha256": "9aef917fe8acb5a78c55097a3f8d09e34f0997ed1ce0c6090c272fc6002cac5b",
+      "retrieved_at": "2026-10-11T13:17:54.349180+00:00"
+    },
+    "KB-FDA0134": {
+      "drug": "Midazolam",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22midazolam%22+OR+openfda.brand_name.exact:%22midazolam%22+OR+openfda.substance_name.exact:%22midazolam%22&limit=1",
+      "set_id": "880cac48-5c0f-49a9-8aef-3c9770bf5d84",
+      "effective_time": "20231103",
+      "http_status": 200,
+      "raw_sha256": "3f98c30083a4487bfd9e5d96c32836f02aa53da5a36e26b783ad65965c7ddd98",
+      "retrieved_at": "2026-10-11T13:18:01.142115+00:00"
+    },
+    "KB-FDA0135": {
+      "drug": "Naproxen Sodium",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22naproxen%20sodium%22+OR+openfda.brand_name.exact:%22naproxen%20sodium%22+OR+openfda.substance_name.exact:%22naproxen%20sodium%22&limit=1",
+      "set_id": "2f9439bb-e808-4c54-ba61-f75f117c8b37",
+      "effective_time": "20260211",
+      "http_status": 200,
+      "raw_sha256": "56b1fbcdf5700da5e672079d8703502fb2b9e2fcced213987091f96c518e3f00",
+      "retrieved_at": "2026-10-11T13:18:36.006744+00:00"
+    },
+    "KB-FDA0136": {
+      "drug": "Nicotine",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22nicotine%22+OR+openfda.brand_name.exact:%22nicotine%22+OR+openfda.substance_name.exact:%22nicotine%22&limit=1",
+      "set_id": "00b40bb3-3785-4a53-804e-633795e87f71",
+      "effective_time": "20260720",
+      "http_status": 200,
+      "raw_sha256": "493ab7fd6dcfc491f44b5bb3906818bbab7af15b0256a79917e489226be423fb",
+      "retrieved_at": "2026-10-11T13:18:51.620848+00:00"
+    },
+    "KB-FDA0137": {
+      "drug": "Nitrofurantoin Macrocrystals",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22nitrofurantoin%20macrocrystals%22+OR+openfda.brand_name.exact:%22nitrofurantoin%20macrocrystals%22+OR+openfda.substance_name.exact:%22nitrofurantoin%20macrocrystals%22&limit=1",
+      "set_id": "075fe819-fc4f-2dce-e063-6294a90ad823",
+      "effective_time": "20251226",
+      "http_status": 200,
+      "raw_sha256": "5aef2f83d442bc4cf59972c7e2eda5d7e48035934cc8ccbbebc5bfaddea2e865",
+      "retrieved_at": "2026-10-11T13:18:55.239572+00:00"
+    },
+    "KB-FDA0138": {
+      "drug": "Oxaliplatin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22oxaliplatin%22+OR+openfda.brand_name.exact:%22oxaliplatin%22+OR+openfda.substance_name.exact:%22oxaliplatin%22&limit=1",
+      "set_id": "1ac38523-480b-4c0f-97a1-7dfa1432923c",
+      "effective_time": "20260414",
+      "http_status": 200,
+      "raw_sha256": "418e4d686bde6cabef9acf8bef4e4058ba1116d19b7965f9ea5d90841dc99e1c",
+      "retrieved_at": "2026-10-11T13:19:26.902826+00:00"
+    },
+    "KB-FDA0139": {
+      "drug": "Oxycodone Hydrochloride",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22oxycodone%20hydrochloride%22+OR+openfda.brand_name.exact:%22oxycodone%20hydrochloride%22+OR+openfda.substance_name.exact:%22oxycodone%20hydrochloride%22&limit=1",
+      "set_id": "d8e87c66-f872-4e1d-9ade-ef11490af63b",
+      "effective_time": "20260120",
+      "http_status": 200,
+      "raw_sha256": "d5a5f8dafecc558fbd8ea43ec555a5062a5fd7f73dfe55ccd6b34eb13695cb65",
+      "retrieved_at": "2026-10-11T13:19:31.001718+00:00"
+    },
+    "KB-FDA0140": {
+      "drug": "Proparacaine Hydrochloride",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22proparacaine%20hydrochloride%22+OR+openfda.brand_name.exact:%22proparacaine%20hydrochloride%22+OR+openfda.substance_name.exact:%22proparacaine%20hydrochloride%22&limit=1",
+      "set_id": "9a67a989-ec6b-4a26-e053-2a95a90a826d",
+      "effective_time": "20250102",
+      "http_status": 200,
+      "raw_sha256": "8e0d8b74b4e445ab767f955ed70db75e4207282cc4d3571d451e82b658822dfc",
+      "retrieved_at": "2026-10-11T13:19:57.516503+00:00"
+    },
+    "KB-FDA0141": {
+      "drug": "Propofol",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22propofol%22+OR+openfda.brand_name.exact:%22propofol%22+OR+openfda.substance_name.exact:%22propofol%22&limit=1",
+      "set_id": "548d5192-2e5e-4c1b-8f17-940b6e791ae5",
+      "effective_time": "20251212",
+      "http_status": 200,
+      "raw_sha256": "205c73d0cccf4d7ee5d34309437386662af09f71324ce37c31c5e3b6e40782f1",
+      "retrieved_at": "2026-10-11T13:20:01.603229+00:00"
+    },
+    "KB-FDA0142": {
+      "drug": "Propranolol Hydrochloride",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22propranolol%20hydrochloride%22+OR+openfda.brand_name.exact:%22propranolol%20hydrochloride%22+OR+openfda.substance_name.exact:%22propranolol%20hydrochloride%22&limit=1",
+      "set_id": "0e185e88-cea2-4d01-8711-67317247fd25",
+      "effective_time": "20241004",
+      "http_status": 200,
+      "raw_sha256": "c4d5705101360e95d6dd5c720638c15f4b7f8c0f1f5db320d837426a9c3975d8",
+      "retrieved_at": "2026-10-11T13:20:05.280626+00:00"
+    },
+    "KB-FDA0143": {
+      "drug": "Rocuronium Bromide",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22rocuronium%20bromide%22+OR+openfda.brand_name.exact:%22rocuronium%20bromide%22+OR+openfda.substance_name.exact:%22rocuronium%20bromide%22&limit=1",
+      "set_id": "0943a290-49e8-600f-e063-6294a90a3370",
+      "effective_time": "20231103",
+      "http_status": 200,
+      "raw_sha256": "02119947cc61fe81315c0437bae295b22b845e25f86c791a1619b76eefa9a4a8",
+      "retrieved_at": "2026-10-11T13:20:36.926310+00:00"
+    },
+    "KB-FDA0144": {
+      "drug": "Sodium Chloride",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22sodium%20chloride%22+OR+openfda.brand_name.exact:%22sodium%20chloride%22+OR+openfda.substance_name.exact:%22sodium%20chloride%22&limit=1",
+      "set_id": "8df7dcf6-8714-6caf-e053-2995a90ab8cc",
+      "effective_time": "20240715",
+      "http_status": 200,
+      "raw_sha256": "fc7f76aa95197dcbe48ce5c31624414944cfdd0e5de042c75b80412ae6526211",
+      "retrieved_at": "2026-10-11T13:20:52.115487+00:00"
+    },
+    "KB-FDA0145": {
+      "drug": "Tacrolimus",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22tacrolimus%22+OR+openfda.brand_name.exact:%22tacrolimus%22+OR+openfda.substance_name.exact:%22tacrolimus%22&limit=1",
+      "set_id": "08cf2861-2483-405d-a872-a88a5c235f9a",
+      "effective_time": "20240207",
+      "http_status": 200,
+      "raw_sha256": "fa3cdf727e9d4b6812b5f9f991febe277ce94b72de627a6ad69b17626aaf6d90",
+      "retrieved_at": "2026-10-11T13:21:08.714381+00:00"
+    },
+    "KB-FDA0146": {
+      "drug": "Tenofovir Disoproxil Fumarate",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22tenofovir%20disoproxil%20fumarate%22+OR+openfda.brand_name.exact:%22tenofovir%20disoproxil%20fumarate%22+OR+openfda.substance_name.exact:%22tenofovir%20disoproxil%20fumarate%22&limit=1",
+      "set_id": "532755cb-1cd3-4774-97af-05a53779b65f",
+      "effective_time": "20250303",
+      "http_status": 200,
+      "raw_sha256": "c4dd2312fe35e07c286ccbdf44bb157cb72e8dcc9d0f77d1dad2f82cab156aae",
+      "retrieved_at": "2026-10-11T13:21:28.985459+00:00"
+    },
+    "KB-FDA0147": {
+      "drug": "Ticagrelor",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22ticagrelor%22+OR+openfda.brand_name.exact:%22ticagrelor%22+OR+openfda.substance_name.exact:%22ticagrelor%22&limit=1",
+      "set_id": "40ac26dc-2570-de7e-e063-6294a90ade72",
+      "effective_time": "20260831",
+      "http_status": 200,
+      "raw_sha256": "151ef65c5a2a16f9ace21793a3b1b4d9880a7c843d01c96341e55e8be193758d",
+      "retrieved_at": "2026-10-11T13:21:36.390405+00:00"
+    },
+    "KB-FDA0148": {
+      "drug": "Tramadol Hydrochloride",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22tramadol%20hydrochloride%22+OR+openfda.brand_name.exact:%22tramadol%20hydrochloride%22+OR+openfda.substance_name.exact:%22tramadol%20hydrochloride%22&limit=1",
+      "set_id": "05f8e06b-f3eb-4cb2-aee5-bd0b03884178",
+      "effective_time": "20251001",
+      "http_status": 200,
+      "raw_sha256": "b0f234c32f4e5fd460289abc91da79fe61e21871f9e51909bd3c0c62a2dfeba6",
+      "retrieved_at": "2026-10-11T13:21:40.868260+00:00"
+    },
+    "KB-FDA0149": {
+      "drug": "Vasopressin",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22vasopressin%22+OR+openfda.brand_name.exact:%22vasopressin%22+OR+openfda.substance_name.exact:%22vasopressin%22&limit=1",
+      "set_id": "3532868c-ac1d-43c8-e063-6394a90a4fd1",
+      "effective_time": "20250515",
+      "http_status": 200,
+      "raw_sha256": "e26f82526f6453041d44ddf38c255435a8320a487f6739c1d916b508fb0606c3",
+      "retrieved_at": "2026-10-11T13:21:58.535057+00:00"
+    },
+    "KB-FDA0150": {
+      "drug": "Verapamil Hydrochloride",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22verapamil%20hydrochloride%22+OR+openfda.brand_name.exact:%22verapamil%20hydrochloride%22+OR+openfda.substance_name.exact:%22verapamil%20hydrochloride%22&limit=1",
+      "set_id": "19cb23bd-cc6d-45fc-a1fc-b4130ea460a6",
+      "effective_time": "20191101",
+      "http_status": 200,
+      "raw_sha256": "59034566d93137a344a3103473b300470a644fec81efc58929fd628b1215bf42",
+      "retrieved_at": "2026-10-11T13:22:02.399733+00:00"
+    },
+    "KB-FDA0151": {
+      "drug": "Zoledronic Acid",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name.exact:%22zoledronic%20acid%22+OR+openfda.brand_name.exact:%22zoledronic%20acid%22+OR+openfda.substance_name.exact:%22zoledronic%20acid%22&limit=1",
+      "set_id": "164500d7-51cf-438a-8bee-7a7dce76ad7a",
+      "effective_time": "20250311",
+      "http_status": 200,
+      "raw_sha256": "55fa4be1417200594b8af7ef6bc5f320fcaf240f74f7346db1a04ea74503ea2d",
+      "retrieved_at": "2026-10-11T13:22:15.535046+00:00"
+    },
+    "KB-FDA0152": {
+      "drug": "Alendronate Sodium",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.generic_name:\"alendronate\"&limit=1",
+      "set_id": "09765234-01bc-40f7-b9bb-c167056f3909",
+      "effective_time": "20260206",
+      "http_status": 200,
+      "raw_sha256": "d69dafc9a3fb244822e45c129da9a185cb9c26cb90bec6436d40d6198abc5b82",
+      "retrieved_at": "2026-10-11T15:40:25.619269+00:00"
+    },
+    "KB-FDA0153": {
+      "drug": "Etonogestrel",
+      "request_url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"nexplanon\"&limit=1",
+      "set_id": "487f8a62-e142-457c-97cc-2e398fde7594",
+      "effective_time": "20260528",
+      "http_status": 200,
+      "raw_sha256": "6f2d8e0e7412dfeab0073dbe4e48af89a3f63c9b0a965d7478aa5ea773e1b600",
+      "retrieved_at": "2026-10-11T15:40:27.642922+00:00"
+    }
+  }
+}

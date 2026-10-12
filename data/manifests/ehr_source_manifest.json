@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-10-11T02:48:00Z",
+  "phase": "Phase 1B",
+  "expected_rows_after_merge": {
+    "patients.csv": {
+      "scale_2k": 2290,
+      "demo_added": 40,
+      "expected_rows_after_merge": 2330
+    },
+    "encounters.csv": {
+      "scale_2k": 134833,
+      "demo_added": 2737,
+      "expected_rows_after_merge": 137570
+    },
+    "observations.csv": {
+      "scale_2k": 1698853,
+      "demo_added": 33252,
+      "expected_rows_after_merge": 1732105
+    },
+    "conditions.csv": {
+      "scale_2k": 82436,
+      "demo_added": 1647,
+      "expected_rows_after_merge": 84083
+    },
+    "medications.csv": {
+      "scale_2k": 113838,
+      "demo_added": 1817,
+      "expected_rows_after_merge": 115655
+    },
+    "allergies.csv": {
+      "scale_2k": 2421,
+      "demo_added": 42,
+      "expected_rows_after_merge": 2463
+    },
+    "procedures.csv": {
+      "scale_2k": 375511,
+      "demo_added": 6735,
+      "expected_rows_after_merge": 382246
+    },
+    "careplans.csv": {
+      "scale_2k": 7591,
+      "demo_added": 162,
+      "expected_rows_after_merge": 7753
+    },
+    "immunizations.csv": {
+      "scale_2k": 33638,
+      "demo_added": 589,
+      "expected_rows_after_merge": 34227
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 2050",
+    "vram_mb": 4096,
+    "host_ram_gb": 16
+  },
+  "benchmarks": {
+    "qwen_4b_q4": {
+      "median_seconds_per_draft": 6.3,
+      "p95_seconds_per_draft": 7.0,
+      "json_valid_rate": 1.0,
+      "vram_mb": 2450,
+      "host_ram_gb": 2.1
+    },
+    "qwen_8b_q4": {
+      "median_seconds_per_draft": 18.35,
+      "p95_seconds_per_draft": 20.4,
+      "json_valid_rate": 1.0,
+      "vram_mb": 3600,
+      "host_ram_gb": 3.2
+    }
+  },
+  "compute_budget_section_3_5": {
+    "total_eval_drafts": 3470,
+    "qwen_4b_total_gpu_hours": 6.1,
+    "qwen_8b_total_compute_hours": 17.7,
+    "recommended_fallback_ladder": [
+      "1. Qwen-4B (4-bit) on RTX 2050 for batch scale evaluation (6.3s/draft)",
+      "2. Qwen-8B (4-bit, CPU-offload) for RQ3 live doctor reviews (18.2s/draft)",
+      "3. Google Gemini 1.5 Flash / Pro API for emergency burst compute fallback"
+    ]
+  }
+}

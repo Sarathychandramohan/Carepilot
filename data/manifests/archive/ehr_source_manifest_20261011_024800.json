@@ -1,0 +1,266 @@
+{
+  "generated_at": "2026-10-09T10:38:40.420775+00:00",
+  "demo_dir": "synthea\\carepilot_output\\csv",
+  "scale_dir": "synthea\\carepilot_output_2k\\csv",
+  "demo_files": {
+    "allergies.csv": {
+      "rows": 42,
+      "sha256": "c0c60afd21f71c3fcc78aeababb50212c2c3092189b6d09c9c6c447e150f4899"
+    },
+    "careplans.csv": {
+      "rows": 162,
+      "sha256": "a43b0a4a45a58289afc78100fe312d76c4108e5069778909d94bbf1ed4a21ea5"
+    },
+    "claims.csv": {
+      "rows": 4554,
+      "sha256": "b067999181fcb60bc5969f9297532a9962b9f719c44baad695ff7ce511549b6f"
+    },
+    "claims_transactions.csv": {
+      "rows": 39663,
+      "sha256": "adad2bbf0c9afc74f5465d056c291b32e096e8785fedeb1961047cc2baa868e8"
+    },
+    "conditions.csv": {
+      "rows": 1647,
+      "sha256": "c63fc547c7c0eb0ed9e34c13910fbddaa17eb045f978b893bbb34458b6fa9743"
+    },
+    "devices.csv": {
+      "rows": 256,
+      "sha256": "ab28e1ac640962796203f292c457b3e65a7d20fc2418f2e475cc589439c1ecc2"
+    },
+    "encounters.csv": {
+      "rows": 2737,
+      "sha256": "4d9ce1e3dce03ad053b63db214639bb3692704bd4c673f0f82497c2fa1dabf80"
+    },
+    "imaging_studies.csv": {
+      "rows": 226,
+      "sha256": "1201acba833e36d1e4f056feb6c4ffd16b274464c99b31caac769fb5341bad86"
+    },
+    "immunizations.csv": {
+      "rows": 589,
+      "sha256": "666c8de8a4fc7f15fffbbe8e64dfe788862ffc8f765ea8f7dbd9d187cf6670ca"
+    },
+    "medications.csv": {
+      "rows": 1817,
+      "sha256": "8a7f0a7a32e9f9d6e95a1dbecb7aba6040a2bda292c8d440e1ed3f7a52b818c9"
+    },
+    "observations.csv": {
+      "rows": 33252,
+      "sha256": "9e09c496aec5e41258d6de554d589a455fc385878f4a1cdf87f2e554573e2ed2"
+    },
+    "organizations.csv": {
+      "rows": 119,
+      "sha256": "0be2503164442b367aeae73354e1a366fd64f85547f46fa8ef2aa59f38e8a761"
+    },
+    "patients.csv": {
+      "rows": 40,
+      "sha256": "9bc73e25af8e8ba3a3b76caacc8399680f518b79c824dd7f1e00f3f675e60a90"
+    },
+    "payer_transitions.csv": {
+      "rows": 1476,
+      "sha256": "472b1157d4c1cf0abed234ac411ebf5f39c689bd085d11b39a9cae85b6c6184d"
+    },
+    "payers.csv": {
+      "rows": 10,
+      "sha256": "1fd38128d35127ee38fee9e79893fe8739d17e674eaa80a093c4824d5ba7d91a"
+    },
+    "procedures.csv": {
+      "rows": 6735,
+      "sha256": "6645b58e77f79ba31ee6b0e470593579f4a43491fdf520c8d495d8e4103963b2"
+    },
+    "providers.csv": {
+      "rows": 119,
+      "sha256": "1005c9b9875b960c6092777b0500ee8c02f7423a486893debeaf80be27db1c05"
+    },
+    "supplies.csv": {
+      "rows": 1218,
+      "sha256": "2d5e865b4b84d79198da3f421d00c57e47f5fe0d306831a1b258e9357f833e54"
+    }
+  },
+  "scale_files": {
+    "allergies.csv": {
+      "rows": 2421,
+      "sha256": "b6593b6bac5fae2e6ada0c9903801cc9b6c4ff1d57ceba147f37419f66374306"
+    },
+    "careplans.csv": {
+      "rows": 7591,
+      "sha256": "3b7716fecb0d1d9ea5f31300e2af00806b4aeb86d81800430440b1c0f8f7c1e0"
+    },
+    "claims.csv": {
+      "rows": 248671,
+      "sha256": "69a081c3338228230928d224f462d6d4335fda29439f28aab17b0aa8951ace1a"
+    },
+    "claims_transactions.csv": {
+      "rows": 2230722,
+      "sha256": "c0047b4668420ae71eb36b0eabe2b3e6a1ab6873f15f0b538170b9a96c03d655"
+    },
+    "conditions.csv": {
+      "rows": 82436,
+      "sha256": "cbfe4e594a7ff0bd20fbe1f2819a2063de981f6e7f8de490451af928c212c49d"
+    },
+    "devices.csv": {
+      "rows": 13281,
+      "sha256": "ee2b3bfaa922d235ccc2dd9881215a0ef917b8e074fc72c6bfdb188257f5eab5"
+    },
+    "encounters.csv": {
+      "rows": 134833,
+      "sha256": "d07fc4118e7f17682dc363478db07a6db220e05482c1a26201f8dff8cc8748b9"
+    },
+    "imaging_studies.csv": {
+      "rows": 200349,
+      "sha256": "5edfefe48ade725f8b02cf3d42dda0fa512a5fe6d6194dc563e02c5cbdd069e7"
+    },
+    "immunizations.csv": {
+      "rows": 33638,
+      "sha256": "5b974d03d25e4b807a211f26ba51c3eb8e447490269271c28fef8260b5b351ee"
+    },
+    "medications.csv": {
+      "rows": 113838,
+      "sha256": "a6accf517331abaa87a913533177a59485911de3a6e298542580c5f93e102293"
+    },
+    "observations.csv": {
+      "rows": 1698853,
+      "sha256": "e682756f973b494636a337350e76788efdb80e90898ba169781897ec3b0432c2"
+    },
+    "organizations.csv": {
+      "rows": 966,
+      "sha256": "e0ada0065213061643bb0946f50d2687a08ecab9511f5baf2b6069f8b438f474"
+    },
+    "patients.csv": {
+      "rows": 2290,
+      "sha256": "6c33d550622e57a96998001a05347cfd89f993f18111e813eb631eb6d997c6a7"
+    },
+    "payer_transitions.csv": {
+      "rows": 83189,
+      "sha256": "6c4c16bfd35cd801b955e39ef927afdbe39f701440ee1ad34535b7c2ee0f2822"
+    },
+    "payers.csv": {
+      "rows": 10,
+      "sha256": "0fee75f729d26b41a84ec88440da9468de083b3ea55dd15d950c067c20ce7220"
+    },
+    "procedures.csv": {
+      "rows": 375511,
+      "sha256": "bf405aabfa90ef91fc7cdc22685c2e4e634af31d0396c86fab514c3503d954f8"
+    },
+    "providers.csv": {
+      "rows": 966,
+      "sha256": "66f94610c201a1335a4da5092da84948a8efa43fe019abdd8e8e699707008baf"
+    },
+    "supplies.csv": {
+      "rows": 59091,
+      "sha256": "fcdfebb60b7aefec73a72759fa98d636d14768d49a33cb9b60b0211104bccb64"
+    }
+  },
+  "shared_patient_ids": 31,
+  "same_demographics_different_id": 0,
+  "expected_unique_patients": 2299,
+  "expected_rows_after_merge": {
+    "allergies.csv": {
+      "scale_rows": 2421,
+      "demo_rows": 42,
+      "demo_rows_for_shared_patients_to_skip": 39,
+      "expected_rows_after_merge": 2424
+    },
+    "careplans.csv": {
+      "scale_rows": 7591,
+      "demo_rows": 162,
+      "demo_rows_for_shared_patients_to_skip": 115,
+      "expected_rows_after_merge": 7638
+    },
+    "claims.csv": {
+      "scale_rows": 248671,
+      "demo_rows": 4554,
+      "demo_rows_for_shared_patients_to_skip": 0,
+      "expected_rows_after_merge": 253225
+    },
+    "claims_transactions.csv": {
+      "scale_rows": 2230722,
+      "demo_rows": 39663,
+      "demo_rows_for_shared_patients_to_skip": 0,
+      "expected_rows_after_merge": 2270385
+    },
+    "conditions.csv": {
+      "scale_rows": 82436,
+      "demo_rows": 1647,
+      "demo_rows_for_shared_patients_to_skip": 962,
+      "expected_rows_after_merge": 83121
+    },
+    "devices.csv": {
+      "scale_rows": 13281,
+      "demo_rows": 256,
+      "demo_rows_for_shared_patients_to_skip": 140,
+      "expected_rows_after_merge": 13397
+    },
+    "encounters.csv": {
+      "scale_rows": 134833,
+      "demo_rows": 2737,
+      "demo_rows_for_shared_patients_to_skip": 1989,
+      "expected_rows_after_merge": 135581
+    },
+    "imaging_studies.csv": {
+      "scale_rows": 200349,
+      "demo_rows": 226,
+      "demo_rows_for_shared_patients_to_skip": 125,
+      "expected_rows_after_merge": 200450
+    },
+    "immunizations.csv": {
+      "scale_rows": 33638,
+      "demo_rows": 589,
+      "demo_rows_for_shared_patients_to_skip": 472,
+      "expected_rows_after_merge": 33755
+    },
+    "medications.csv": {
+      "scale_rows": 113838,
+      "demo_rows": 1817,
+      "demo_rows_for_shared_patients_to_skip": 878,
+      "expected_rows_after_merge": 114777
+    },
+    "observations.csv": {
+      "scale_rows": 1698853,
+      "demo_rows": 33252,
+      "demo_rows_for_shared_patients_to_skip": 17166,
+      "expected_rows_after_merge": 1714939
+    },
+    "organizations.csv": {
+      "scale_rows": 966,
+      "demo_rows": 119,
+      "demo_rows_for_shared_patients_to_skip": 0,
+      "expected_rows_after_merge": 1085
+    },
+    "patients.csv": {
+      "scale_rows": 2290,
+      "demo_rows": 40,
+      "demo_rows_for_shared_patients_to_skip": 31,
+      "expected_rows_after_merge": 2299
+    },
+    "payer_transitions.csv": {
+      "scale_rows": 83189,
+      "demo_rows": 1476,
+      "demo_rows_for_shared_patients_to_skip": 1034,
+      "expected_rows_after_merge": 83631
+    },
+    "payers.csv": {
+      "scale_rows": 10,
+      "demo_rows": 10,
+      "demo_rows_for_shared_patients_to_skip": 0,
+      "expected_rows_after_merge": 20
+    },
+    "procedures.csv": {
+      "scale_rows": 375511,
+      "demo_rows": 6735,
+      "demo_rows_for_shared_patients_to_skip": 4002,
+      "expected_rows_after_merge": 378244
+    },
+    "providers.csv": {
+      "scale_rows": 966,
+      "demo_rows": 119,
+      "demo_rows_for_shared_patients_to_skip": 0,
+      "expected_rows_after_merge": 1085
+    },
+    "supplies.csv": {
+      "scale_rows": 59091,
+      "demo_rows": 1218,
+      "demo_rows_for_shared_patients_to_skip": 598,
+      "expected_rows_after_merge": 59711
+    }
+  }
+}

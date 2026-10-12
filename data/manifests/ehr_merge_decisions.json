@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-10-11T02:48:00Z",
+  "policy": "Phase 1B: 31 shared IDs are different synthetic persons colliding on UUID. Demo version loaded as separate patient prefixed with demo40:",
+  "demo_patient_count": 40,
+  "scale_patient_count": 2290,
+  "shared_id_count": 31,
+  "expected_total_patients": 2330,
+  "expected_table_totals": {
+    "patients.csv": 2330,
+    "encounters.csv": 137570,
+    "observations.csv": 1732105,
+    "conditions.csv": 84083,
+    "medications.csv": 115655,
+    "allergies.csv": 2463,
+    "procedures.csv": 382246,
+    "careplans.csv": 7753,
+    "immunizations.csv": 34227
+  },
+  "shared_id_decisions": {
+    "080b069b-5108-46b6-ecef-6aacd3b9ef3f": "Separate patient (demo version prefixed with demo40:)",
+    "0f1067c3-9151-8829-56cd-2eff898db59c": "Separate patient (demo version prefixed with demo40:)",
+    "2c167999-289d-95fa-5c27-7d8b8d35348c": "Separate patient (demo version prefixed with demo40:)",
+    "2d68ad16-268a-478c-1f84-d0f1976e1a46": "Separate patient (demo version prefixed with demo40:)",
+    "35b353dd-402b-571a-d67a-af0a104d0854": "Separate patient (demo version prefixed with demo40:)"
+  }
+}

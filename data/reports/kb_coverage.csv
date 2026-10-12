@@ -1,0 +1,121 @@
+﻿kind,EHR description,patients,rows,search phrase,KB coverage
+condition,Medication review due (situation),2290,16302,medication,title
+condition,Gingivitis (disorder),1879,6288,gingivitis,text-only
+condition,Stress (finding),1780,6311,stress,title
+condition,Full-time employment (finding),1778,5845,full,text-only
+condition,Viral sinusitis (disorder),1447,2288,viral,title
+condition,Part-time employment (finding),1414,3610,part,title
+condition,Limited social contact (finding),1210,2263,limited,text-only
+condition,Social isolation (finding),1190,2206,social,text-only
+condition,Gingival disease (disorder),1104,1824,gingival,text-only
+condition,Received higher education (finding),1081,1081,received,text-only
+condition,Body mass index 30+ - obesity (finding),1041,1041,body,title
+condition,Not in labor force (finding),1033,2035,not,title
+condition,Primary dental caries (disorder),1013,1481,dental,title
+condition,Acute viral pharyngitis (disorder),1004,1340,viral,title
+condition,Victim of intimate partner abuse (finding),956,1436,victim,text-only
+condition,Acute bronchitis (disorder),909,1125,bronchitis,title
+condition,Prediabetes (finding),883,883,prediabetes,title
+condition,Anemia (disorder),801,801,anemia,title
+condition,Reports of violence in the environment (finding),744,1217,reports,text-only
+condition,Unemployed (finding),669,811,unemployed,MISSING
+condition,Chronic pain (finding),573,573,pain,title
+condition,Risk activity involvement (finding),570,614,risk,title
+condition,Educated to high school level (finding),497,497,educated,text-only
+condition,Essential hypertension (disorder),475,475,hypertension,title
+condition,Chronic sinusitis (disorder),461,461,sinusitis,text-only
+condition,Chronic low back pain (finding),439,439,low,title
+condition,Has a criminal record (finding),429,429,has,title
+condition,Past pregnancy history of miscarriage (situation),427,427,past,text-only
+condition,Normal pregnancy (finding),421,968,normal,text-only
+condition,Abnormal findings diagnostic imaging heart+coronary circulat (finding),385,385,abnormal,text-only
+condition,Ischemic heart disease (disorder),382,382,ischemic,title
+condition,Metabolic syndrome X (disorder),353,353,metabolic,title
+condition,Infection of tooth (disorder),340,400,infection,title
+condition,Unhealthy alcohol drinking behavior (finding),332,391,unhealthy,text-only
+condition,Sprain (morphologic abnormality),322,335,sprain,text-only
+condition,Loss of teeth (disorder),314,314,loss,title
+condition,Laceration - injury (disorder),301,327,laceration,text-only
+condition,Fracture of bone (disorder),300,328,fracture,text-only
+condition,Streptococcal sore throat (disorder),294,320,streptococcal,title
+condition,Otitis media (disorder),274,369,otitis,text-only
+medication,sodium fluoride 0.0272 MG/MG Oral Gel,1946,6351,fluoride,text-only
+medication,Acetaminophen 325 MG Oral Tablet,973,1239,acetaminophen,title
+medication,Amoxicillin 250 MG / Clavulanate 125 MG Oral Tablet,443,489,amoxicillin,title
+medication,Naproxen sodium 220 MG Oral Tablet,438,470,naproxen,title
+medication,Nitroglycerin 0.4 MG/ACTUAT Mucosal Spray,374,374,nitroglycerin,title
+medication,24 HR metoprolol succinate 100 MG Extended Release Oral Tablet,359,359,metoprolol,title
+medication,Simvastatin 20 MG Oral Tablet,335,335,simvastatin,title
+medication,Ibuprofen 200 MG Oral Tablet,324,351,ibuprofen,title
+medication,Clopidogrel 75 MG Oral Tablet,311,311,clopidogrel,title
+medication,lisinopril 10 MG Oral Tablet,310,9737,lisinopril,title
+medication,Hydrochlorothiazide 25 MG Oral Tablet,269,7084,hydrochlorothiazide,title
+medication,Acetaminophen 21.7 MG/ML / Dextromethorphan Hydrobromide 1 MG/ML / doxylamine succinate 0.417 MG/ML Oral Solution,264,275,acetaminophen,title
+medication,NDA020800 0.3 ML Epinephrine 1 MG/ML Auto-Injector,257,257,nda,title
+medication,Simvastatin 10 MG Oral Tablet,246,2160,simvastatin,title
+medication,amLODIPine 2.5 MG Oral Tablet,226,5707,amlodipine,title
+medication,Acetaminophen 160 MG Chewable Tablet,215,279,acetaminophen,title
+medication,{28 (norethindrone 0.35 MG Oral Tablet) } Pack [Jolivette 28 Day],198,272,norethindrone,text-only
+medication,Acetaminophen 300 MG / Hydrocodone Bitartrate 5 MG Oral Tablet,192,1500,acetaminophen,title
+medication,Ibuprofen 100 MG Oral Tablet,181,230,ibuprofen,title
+medication,insulin isophane  human 70 UNT/ML / insulin  regular  human 30 UNT/ML Injectable Suspension [Humulin],160,9506,insulin,title
+medication,{21 (ethinyl estradiol 0.03 MG / levonorgestrel 0.15 MG Oral Tablet) / 7 (inert ingredients 1 MG Oral Tablet) } Pack [Levora 0.15/30 28 Day],159,194,ethinyl,text-only
+medication,Amoxicillin 500 MG Oral Tablet,155,207,amoxicillin,title
+medication,tropicamide 5 MG/ML Ophthalmic Solution,148,1420,tropicamide,MISSING
+medication,{24 (drospirenone 3 MG / ethinyl estradiol 0.02 MG Oral Tablet) / 4 (inert ingredients 1 MG Oral Tablet) } Pack [Yaz 28 Day],145,182,drospirenone,text-only
+medication,{7 (ethinyl estradiol 0.01 MG Oral Tablet) / 84 (ethinyl estradiol 0.03 MG / levonorgestrel 0.15 MG Oral Tablet) } Pack [Seasonique],142,173,ethinyl,text-only
+medication,Penicillin V Potassium 500 MG Oral Tablet,141,146,penicillin,text-only
+medication,{5 (dienogest 2 MG / estradiol valerate 2 MG Oral Tablet) / 17 (dienogest 3 MG / estradiol valerate 2 MG Oral Tablet) / 2 (estradiol valerate 1 MG Oral Tablet) / 2 (estradiol valerate 3 MG Oral Tablet) / 2 (inert ingredients 1 MG Oral Tablet) } Pack [Natazia 28 Day],138,171,dienogest,MISSING
+medication,Penicillin V Potassium 250 MG Oral Tablet,136,157,penicillin,text-only
+medication,{7 (ethinyl estradiol 0.035 MG / norgestimate 0.18 MG Oral Tablet) / 7 (ethinyl estradiol 0.035 MG / norgestimate 0.215 MG Oral Tablet) / 7 (ethinyl estradiol 0.035 MG / norgestimate 0.25 MG Oral Tablet) / 7 (inert ingredients 1 MG Oral Tablet) } Pack [Trinessa 28 Day],131,157,ethinyl,text-only
+medication,1 ML medroxyprogesterone acetate 150 MG/ML Injection,128,156,medroxyprogesterone,title
+medication,Etonogestrel 68 MG Drug Implant,128,163,etonogestrel,title
+medication,Vitamin B12 5 MG/ML Injectable Solution,122,122,vitamin,title
+medication,{28 (norethindrone 0.35 MG Oral Tablet) } Pack [Errin 28 Day],121,156,norethindrone,text-only
+medication,{28 (norethindrone 0.35 MG Oral Tablet) } Pack [Camila 28 Day],116,148,norethindrone,text-only
+medication,ferrous sulfate 325 MG Oral Tablet,110,110,ferrous,text-only
+medication,Acetaminophen 325 MG Oral Tablet [Tylenol],100,1456,acetaminophen,title
+medication,aspirin 81 MG Oral Tablet,99,99,aspirin,title
+medication,Loratadine 5 MG Chewable Tablet,98,98,loratadine,title
+medication,Ibuprofen 400 MG Oral Tablet [Ibu],98,1799,ibuprofen,title
+medication,21 DAY ethinyl estradiol 0.000625 MG/HR / etonogestrel 0.005 MG/HR Vaginal System [NuvaRing],98,107,ethinyl,text-only
+lab,Leukocytes [#/volume] in Blood by Automated count,2290,7267,leukocytes,text-only
+lab,Erythrocytes [#/volume] in Blood by Automated count,2290,7267,erythrocytes,text-only
+lab,Hemoglobin [Mass/volume] in Blood,2290,7290,hemoglobin,title
+lab,Hematocrit [Volume Fraction] of Blood by Automated count,2290,7031,hematocrit,title
+lab,MCV [Entitic mean volume] in Red Blood Cells by Automated count,2290,7267,mcv,title
+lab,MCH [Entitic mass] by Automated count,2290,7267,mch,text-only
+lab,MCHC [Entitic Mass/volume] in Red Blood Cells by Automated count,2290,7267,mchc,text-only
+lab,Erythrocyte [DistWidth] in Blood by Automated count,2290,7267,erythrocyte,title
+lab,Platelets [#/volume] in Blood by Automated count,2290,7267,platelets,text-only
+lab,Platelet distribution width [Entitic volume] in Blood by Automated count,2290,5616,platelet,title
+lab,Platelet [Entitic mean volume] in Blood by Automated count,2290,5616,platelet,title
+lab,Cholesterol [Mass/volume] in Serum or Plasma,1413,11256,cholesterol,title
+lab,Triglyceride [Mass/volume] in Serum or Plasma,1413,11256,triglyceride,title
+lab,Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay,1413,11256,cholesterol,title
+lab,Cholesterol in HDL [Mass/volume] in Serum or Plasma,1413,11256,cholesterol,title
+lab,Glucose [Mass/volume] in Blood,1048,20240,glucose,title
+lab,Urea nitrogen [Mass/volume] in Blood,1048,19582,urea,title
+lab,Creatinine [Mass/volume] in Blood,1048,20240,creatinine,title
+lab,Calcium [Mass/volume] in Blood,1048,20240,calcium,title
+lab,Sodium [Moles/volume] in Blood,1048,20240,sodium,title
+lab,Potassium [Moles/volume] in Blood,1048,20240,potassium,title
+lab,Chloride [Moles/volume] in Blood,1048,20240,chloride,title
+lab,Carbon dioxide  total [Moles/volume] in Blood,1048,20240,carbon,title
+lab,Hemoglobin A1c/Hemoglobin.total in Blood,999,17342,a1c,title
+lab,Glomerular filtration rate [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)/1.73 sq M,652,22410,glomerular,title
+lab,Ketones [Presence] in Urine by Test strip,521,14869,ketones,title
+lab,Specific gravity of Urine by Test strip,521,14869,specific,title
+lab,pH of Urine by Test strip,521,14869,ph,title
+lab,Nitrite [Presence] in Urine by Test strip,521,14869,nitrite,title
+lab,Hemoglobin [Presence] in Urine by Test strip,521,14869,hemoglobin,title
+lab,Leukocyte esterase [Presence] in Urine by Test strip,521,14869,leukocyte,text-only
+lab,Protein [Mass/volume] in Serum or Plasma,489,7112,protein,title
+lab,Albumin [Mass/volume] in Serum or Plasma,489,7112,albumin,title
+lab,Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma,489,7112,alkaline,title
+lab,Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma,489,7112,alanine,text-only
+lab,Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma,489,7112,aspartate,text-only
+lab,Bilirubin.total [Mass/volume] in Serum or Plasma,487,7108,bilirubin,title
+lab,Glucose [Mass/volume] in Urine by Test strip,473,14548,glucose,title
+lab,Protein [Mass/volume] in Urine by Test strip,473,14548,protein,title
+lab,Glucose [Mass/volume] in Serum or Plasma,410,12406,glucose,title

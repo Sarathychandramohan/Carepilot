@@ -1,0 +1,636 @@
+{
+  "shared_count": 31,
+  "same_person_skip_demo": 0,
+  "different_person_keep_both": 31,
+  "decisions": [
+    {
+      "patient_id": "080b069b-5108-46b6-ecef-6aacd3b9ef3f",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "1966-11-04",
+        "FIRST": "Chester802",
+        "LAST": "Aufderhar910",
+        "GENDER": "M"
+      },
+      "scale": {
+        "BIRTHDATE": "1966-11-29",
+        "FIRST": "Chester802",
+        "LAST": "Aufderhar910",
+        "GENDER": "M"
+      }
+    },
+    {
+      "patient_id": "0f1067c3-9151-8829-56cd-2eff898db59c",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "2009-05-31",
+        "FIRST": "Virgie92",
+        "LAST": "Aufderhar910",
+        "GENDER": "F"
+      },
+      "scale": {
+        "BIRTHDATE": "2009-06-25",
+        "FIRST": "Virgie92",
+        "LAST": "Aufderhar910",
+        "GENDER": "F"
+      }
+    },
+    {
+      "patient_id": "2c167999-289d-95fa-5c27-7d8b8d35348c",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "1973-12-25",
+        "FIRST": "Eliseo499",
+        "LAST": "Nader710",
+        "GENDER": "M"
+      },
+      "scale": {
+        "BIRTHDATE": "1974-01-19",
+        "FIRST": "Eliseo499",
+        "LAST": "Nader710",
+        "GENDER": "M"
+      }
+    },
+    {
+      "patient_id": "2d68ad16-268a-478c-1f84-d0f1976e1a46",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "2020-02-03",
+        "FIRST": "Mauro926",
+        "LAST": "Braun514",
+        "GENDER": "M"
+      },
+      "scale": {
+        "BIRTHDATE": "2020-02-28",
+        "FIRST": "Mauro926",
+        "LAST": "Braun514",
+        "GENDER": "M"
+      }
+    },
+    {
+      "patient_id": "35b353dd-402b-571a-d67a-af0a104d0854",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "1943-08-31",
+        "FIRST": "Jody426",
+        "LAST": "Monahan736",
+        "GENDER": "M"
+      },
+      "scale": {
+        "BIRTHDATE": "1943-09-25",
+        "FIRST": "Jody426",
+        "LAST": "Monahan736",
+        "GENDER": "M"
+      }
+    },
+    {
+      "patient_id": "46976cf7-b0bf-be20-39a5-9f425a52886d",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "2007-08-27",
+        "FIRST": "Lindsay928",
+        "LAST": "Zieme486",
+        "GENDER": "F"
+      },
+      "scale": {
+        "BIRTHDATE": "2007-09-20",
+        "FIRST": "Lindsay928",
+        "LAST": "Zieme486",
+        "GENDER": "F"
+      }
+    },
+    {
+      "patient_id": "46ee9d82-b52c-856d-069b-5064ff052225",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE",
+        "LAST"
+      ],
+      "demo": {
+        "BIRTHDATE": "1996-05-31",
+        "FIRST": "Shalanda398",
+        "LAST": "Olson653",
+        "GENDER": "F"
+      },
+      "scale": {
+        "BIRTHDATE": "1996-06-25",
+        "FIRST": "Shalanda398",
+        "LAST": "Terry864",
+        "GENDER": "F"
+      }
+    },
+    {
+      "patient_id": "4f083ce3-f12b-bb4b-7353-e17f0cd55b0a",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "1998-12-25",
+        "FIRST": "Ezekiel373",
+        "LAST": "Walter473",
+        "GENDER": "M"
+      },
+      "scale": {
+        "BIRTHDATE": "1999-01-19",
+        "FIRST": "Ezekiel373",
+        "LAST": "Walter473",
+        "GENDER": "M"
+      }
+    },
+    {
+      "patient_id": "5ba0a3f3-32f7-02b1-ec6a-8f568923954c",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "1998-05-30",
+        "FIRST": "Faustino767",
+        "LAST": "Langworth352",
+        "GENDER": "M"
+      },
+      "scale": {
+        "BIRTHDATE": "1998-06-24",
+        "FIRST": "Faustino767",
+        "LAST": "Langworth352",
+        "GENDER": "M"
+      }
+    },
+    {
+      "patient_id": "5e688e99-61b3-5c88-3f60-21df8aaced27",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "2010-01-10",
+        "FIRST": "Wallace647",
+        "LAST": "Effertz744",
+        "GENDER": "M"
+      },
+      "scale": {
+        "BIRTHDATE": "2010-02-03",
+        "FIRST": "Wallace647",
+        "LAST": "Effertz744",
+        "GENDER": "M"
+      }
+    },
+    {
+      "patient_id": "62f60bdb-cc5c-8305-b98b-f2b229a55eca",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE",
+        "LAST"
+      ],
+      "demo": {
+        "BIRTHDATE": "1975-10-04",
+        "FIRST": "Angel97",
+        "LAST": "Homenick806",
+        "GENDER": "F"
+      },
+      "scale": {
+        "BIRTHDATE": "1975-10-29",
+        "FIRST": "Angel97",
+        "LAST": "Wehner319",
+        "GENDER": "F"
+      }
+    },
+    {
+      "patient_id": "6aed9210-c500-4375-b0fc-3374c40b8591",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "1965-06-20",
+        "FIRST": "Lyman173",
+        "LAST": "Runte676",
+        "GENDER": "M"
+      },
+      "scale": {
+        "BIRTHDATE": "1965-07-14",
+        "FIRST": "Lyman173",
+        "LAST": "Runte676",
+        "GENDER": "M"
+      }
+    },
+    {
+      "patient_id": "6fbddf55-7096-b883-7cd3-260f27953080",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "1981-06-12",
+        "FIRST": "Clarinda196",
+        "LAST": "Farrell962",
+        "GENDER": "F"
+      },
+      "scale": {
+        "BIRTHDATE": "1981-07-07",
+        "FIRST": "Clarinda196",
+        "LAST": "Farrell962",
+        "GENDER": "F"
+      }
+    },
+    {
+      "patient_id": "76b20010-c318-5754-8c85-983aa538522f",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "2018-03-01",
+        "FIRST": "Jody426",
+        "LAST": "Hickle134",
+        "GENDER": "M"
+      },
+      "scale": {
+        "BIRTHDATE": "2018-03-25",
+        "FIRST": "Jody426",
+        "LAST": "Hickle134",
+        "GENDER": "M"
+      }
+    },
+    {
+      "patient_id": "922fb35e-148d-9e82-7e65-bfa05e3b3515",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE",
+        "LAST"
+      ],
+      "demo": {
+        "BIRTHDATE": "1986-11-30",
+        "FIRST": "Agnes294",
+        "LAST": "Gutmann970",
+        "GENDER": "F"
+      },
+      "scale": {
+        "BIRTHDATE": "1986-12-25",
+        "FIRST": "Agnes294",
+        "LAST": "Weber641",
+        "GENDER": "F"
+      }
+    },
+    {
+      "patient_id": "947c82ee-1735-c9ed-8210-38cb93d8070c",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "2016-04-29",
+        "FIRST": "Marcell728",
+        "LAST": "Hammes673",
+        "GENDER": "F"
+      },
+      "scale": {
+        "BIRTHDATE": "2016-05-24",
+        "FIRST": "Marcell728",
+        "LAST": "Hammes673",
+        "GENDER": "F"
+      }
+    },
+    {
+      "patient_id": "9661a432-4630-2cd9-142c-386845fae837",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "1978-01-27",
+        "FIRST": "Paul232",
+        "LAST": "Tremblay80",
+        "GENDER": "M"
+      },
+      "scale": {
+        "BIRTHDATE": "1978-02-21",
+        "FIRST": "Paul232",
+        "LAST": "Tremblay80",
+        "GENDER": "M"
+      }
+    },
+    {
+      "patient_id": "982750f4-569b-5949-196b-60699bdda3fb",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE",
+        "LAST"
+      ],
+      "demo": {
+        "BIRTHDATE": "1986-10-25",
+        "FIRST": "Dwana281",
+        "LAST": "Hermann103",
+        "GENDER": "F"
+      },
+      "scale": {
+        "BIRTHDATE": "1986-11-18",
+        "FIRST": "Dwana281",
+        "LAST": "Wolf938",
+        "GENDER": "F"
+      }
+    },
+    {
+      "patient_id": "aa616abe-1761-0c9a-7959-07544679dafd",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE",
+        "LAST"
+      ],
+      "demo": {
+        "BIRTHDATE": "1958-10-27",
+        "FIRST": "Jona712",
+        "LAST": "Lang846",
+        "GENDER": "F"
+      },
+      "scale": {
+        "BIRTHDATE": "1958-11-21",
+        "FIRST": "Jona712",
+        "LAST": "Veum823",
+        "GENDER": "F"
+      }
+    },
+    {
+      "patient_id": "aee7bbe1-0c45-c028-1e62-1f4cdb30c273",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "2010-12-05",
+        "FIRST": "Wilfredo622",
+        "LAST": "Fritsch593",
+        "GENDER": "M"
+      },
+      "scale": {
+        "BIRTHDATE": "2010-12-30",
+        "FIRST": "Wilfredo622",
+        "LAST": "Fritsch593",
+        "GENDER": "M"
+      }
+    },
+    {
+      "patient_id": "b6a1cac9-8873-36a7-e726-4aad8a07d44d",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "1993-03-26",
+        "FIRST": "Renaldo199",
+        "LAST": "Crist667",
+        "GENDER": "M"
+      },
+      "scale": {
+        "BIRTHDATE": "1993-04-20",
+        "FIRST": "Renaldo199",
+        "LAST": "Crist667",
+        "GENDER": "M"
+      }
+    },
+    {
+      "patient_id": "ba419d35-0dfe-8af7-347c-eebf02485a56",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE",
+        "LAST"
+      ],
+      "demo": {
+        "BIRTHDATE": "1925-08-31",
+        "FIRST": "Corie618",
+        "LAST": "Beahan375",
+        "GENDER": "F"
+      },
+      "scale": {
+        "BIRTHDATE": "1925-09-25",
+        "FIRST": "Corie618",
+        "LAST": "Kohler843",
+        "GENDER": "F"
+      }
+    },
+    {
+      "patient_id": "bff9d9d5-ee3d-d852-9c67-36d8361a4a4a",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "1945-01-10",
+        "FIRST": "Rosario163",
+        "LAST": "Ortiz186",
+        "GENDER": "M"
+      },
+      "scale": {
+        "BIRTHDATE": "1945-02-03",
+        "FIRST": "Rosario163",
+        "LAST": "Ortiz186",
+        "GENDER": "M"
+      }
+    },
+    {
+      "patient_id": "c053e996-a4c4-6c02-e2b6-284227156c67",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "2023-08-28",
+        "FIRST": "Sharyn437",
+        "LAST": "Hagenes547",
+        "GENDER": "F"
+      },
+      "scale": {
+        "BIRTHDATE": "2023-09-21",
+        "FIRST": "Sharyn437",
+        "LAST": "Hagenes547",
+        "GENDER": "F"
+      }
+    },
+    {
+      "patient_id": "c0a47dee-cc72-29ce-df5a-ea6d306c36a4",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "1987-02-05",
+        "FIRST": "Jonathan639",
+        "LAST": "Carroll471",
+        "GENDER": "M"
+      },
+      "scale": {
+        "BIRTHDATE": "1987-03-01",
+        "FIRST": "Jonathan639",
+        "LAST": "Carroll471",
+        "GENDER": "M"
+      }
+    },
+    {
+      "patient_id": "c86c400e-ff88-a1e3-2e23-caa4d8311f47",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "1947-02-12",
+        "FIRST": "Cristobal567",
+        "LAST": "Montero62",
+        "GENDER": "M"
+      },
+      "scale": {
+        "BIRTHDATE": "1947-03-09",
+        "FIRST": "Cristobal567",
+        "LAST": "Montero62",
+        "GENDER": "M"
+      }
+    },
+    {
+      "patient_id": "d15b23ed-02d5-3e28-efbd-2604425317c5",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "2026-04-25",
+        "FIRST": "Ivan258",
+        "LAST": "Goodwin327",
+        "GENDER": "M"
+      },
+      "scale": {
+        "BIRTHDATE": "2026-05-20",
+        "FIRST": "Ivan258",
+        "LAST": "Goodwin327",
+        "GENDER": "M"
+      }
+    },
+    {
+      "patient_id": "d3727ff2-5d7b-347f-d78c-edc4323cf890",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE"
+      ],
+      "demo": {
+        "BIRTHDATE": "2009-05-31",
+        "FIRST": "Eunice461",
+        "LAST": "Fay398",
+        "GENDER": "F"
+      },
+      "scale": {
+        "BIRTHDATE": "2009-06-25",
+        "FIRST": "Eunice461",
+        "LAST": "Fay398",
+        "GENDER": "F"
+      }
+    },
+    {
+      "patient_id": "e74367bd-7385-97dc-2c7f-251b4cd9fe29",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE",
+        "LAST"
+      ],
+      "demo": {
+        "BIRTHDATE": "1960-09-05",
+        "FIRST": "Tennille443",
+        "LAST": "Gerhold939",
+        "GENDER": "F"
+      },
+      "scale": {
+        "BIRTHDATE": "1960-09-30",
+        "FIRST": "Tennille443",
+        "LAST": "Christiansen251",
+        "GENDER": "F"
+      }
+    },
+    {
+      "patient_id": "eb5910f1-26e6-bc6f-b300-716eae678d6f",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE",
+        "LAST"
+      ],
+      "demo": {
+        "BIRTHDATE": "1995-04-07",
+        "FIRST": "Larissa293",
+        "LAST": "Morissette863",
+        "GENDER": "F"
+      },
+      "scale": {
+        "BIRTHDATE": "1995-05-02",
+        "FIRST": "Larissa293",
+        "LAST": "Windler79",
+        "GENDER": "F"
+      }
+    },
+    {
+      "patient_id": "f95a6723-14a5-c4b6-78df-fa97f7ab361c",
+      "decision": "DIFFERENT_PERSON_KEEP_BOTH",
+      "identity_match": false,
+      "identity_diff_fields": [
+        "BIRTHDATE",
+        "LAST"
+      ],
+      "demo": {
+        "BIRTHDATE": "1986-08-05",
+        "FIRST": "Roxann426",
+        "LAST": "Maggio310",
+        "GENDER": "F"
+      },
+      "scale": {
+        "BIRTHDATE": "1986-08-29",
+        "FIRST": "Roxann426",
+        "LAST": "Sauer652",
+        "GENDER": "F"
+      }
+    }
+  ]
+}

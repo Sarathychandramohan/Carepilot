@@ -1,0 +1,123 @@
+# =============================================================================
+# CarePilot AI — .gitignore
+# Security-first: Never commit credentials, large binaries, or patient data
+# =============================================================================
+
+# ─── Environment & Secrets (NEVER COMMIT) ────────────────────────────────────
+.env
+.env.*
+*.env
+backend/.env
+!.env.example           # Keep the example template (no real values)
+!backend/.env.example   # Keep the example template (no real values)
+
+# ─── LLM Model Weights (large binaries, not for git) ─────────────────────────
+*.gguf
+*.ggml
+*.ggmf
+*.bin
+models/
+backend/models/
+llm_models/
+
+# ─── Database (credentials + large dumps) ────────────────────────────────────
+*.dump
+*.sql.gz
+*.pg_dump
+carepilot_db_demo_backup.dump
+
+# ─── ChromaDB Vector Store (large binary index) ───────────────────────────────
+rag_knowledge/chroma_db/
+chroma_db/
+
+# ─── BM25 Pickle Indexes (large binary, regenerable from KB) ─────────────────
+rag_knowledge/bm25_index_*.pkl
+
+# ─── Synthea EHR Outputs (synthetic patient data, large) ─────────────────────
+synthea/carepilot_output*/
+synthea/.venv/
+synthea/build/
+
+# ─── Knowledge Base Large Exports ────────────────────────────────────────────
+rag_knowledge/raw/
+rag_knowledge/kb_export/
+rag_knowledge/kb_export_v*/
+rag_knowledge/__pycache__/
+
+# ─── Python ──────────────────────────────────────────────────────────────────
+.venv/
+.Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+.eggs/
+dist/
+build/
+.pytest_cache/
+htmlcov/
+.coverage
+.coverage.*
+
+# ─── Node.js ─────────────────────────────────────────────────────────────────
+node_modules/
+patient-app/node_modules/
+doctor-dashboard/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ─── Expo / React Native ─────────────────────────────────────────────────────
+patient-app/.expo/
+patient-app/dist/
+patient-app/.metro-health-check*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+
+# ─── Frontend Build Artifacts ─────────────────────────────────────────────────
+doctor-dashboard/dist/
+doctor-dashboard/node_modules/
+tsconfig.tsbuildinfo
+tsconfig.node.tsbuildinfo
+
+# ─── IDE ─────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── OS ──────────────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ─── Logs ────────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ─── Backups ─────────────────────────────────────────────────────────────────
+backups/
+*.backup
+*.bak
+
+# ─── Large Data Files ────────────────────────────────────────────────────────
+*.zip
+kb_and_data_*.zip
+
+# ─── Java (Synthea build) ────────────────────────────────────────────────────
+synthea/build/
+synthea/gradle/wrapper/gradle-wrapper.jar
+synthea/.gradle/
+synthea/out/
