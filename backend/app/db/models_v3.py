@@ -390,11 +390,23 @@ class Consultation(Base):
     urgency_probs_json = Column(JSON)
     urgency_final = Column(String(10))             # after red-flag override
 
+    # B2 addition: urgency agreement log
+    urgency_agreement = Column(String(20))
+    # "agree" | "redflag_upgraded" | "self_reported" (no_classifier arm)
+
     # P5: Retrieval
     ehr_chunks_json = Column(JSON)                 # list of retrieved EHR fact snippets
     kb_chunks_json = Column(JSON)                  # list of retrieved KB chunks
-    retrieval_config = Column(String(20))          # "full", "no_ehr", "no_kb", "unified"
-    ablation_arm = Column(String(30))              # for scale experiments
+    retrieval_config = Column(String(30))          # "ehr_and_kb", "kb_only", "unified_ehr_kb"
+    ablation_arm = Column(String(30))              # full | no_ehr | no_classifier | unified_context
+
+    # B3 additions: retrieval provenance + D17 flags
+    retrieval_trace_json = Column(JSON)
+    # {ehr_query_loinc_codes, ehr_rows_returned, ehr_outlier_count,
+    #  ehr_chunk_ids, kb_rrf_top_chunks}
+    patient_ehr_mismatch_flag = Column(Boolean, default=False)   # D17a
+    missing_context_flag = Column(Boolean, default=False)        # D17b
+    outlier_chunk_count = Column(Integer, default=0)
 
     # P6: Generation
     ai_draft_json = Column(JSON)                   # {sentences: [{text, citations}]}
@@ -402,12 +414,22 @@ class Consultation(Base):
     prompt_version = Column(String(20))
     generation_latency_ms = Column(Integer)
 
+    # B4 additions: LLM self-report + edit memory (D6)
+    llm_urgency_self_reported = Column(String(10))
+    # LLM's own urgency output — always logged; authoritative only in no_classifier arm
+    edit_memory_used = Column(Boolean, default=False)
+    edit_memory_json = Column(JSON)
+
     # P7: Validation
     faithfulness_score = Column(Float)
     faithfulness_details = Column(JSON)
     citation_validity_score = Column(Float)
     citation_entailment_score = Column(Float)
-    validation_status = Column(String(30))         # "passed", "manual_required"
+    validation_status = Column(String(40))
+    # "passed" | "passed_with_warning" | "passed_with_outlier_caveat" | "manual_required"
+
+    # B5 addition: outlier validation flag
+    has_outlier_only_sentence = Column(Boolean, default=False)
 
     # P8: Doctor queue
     thread_status = Column(String(30), default="awaiting_doctor")
@@ -421,10 +443,20 @@ class Consultation(Base):
     messages_json = Column(JSON)                   # multi-turn thread
     edit_distance_chars = Column(Integer)
     edit_distance_words = Column(Integer)
-    edit_burden_weighted = Column(Float)
-    edit_categories_json = Column(JSON)            # {factual_correction: 1, tone_change: 0, ...}
+    # Per-consultation raw weighted sum W_k = Σ w_i * c_{k,i}
+    # NOT the Section S9 aggregate (that is computed across reviews at analysis time)
+    consultation_edit_weight = Column(Float)
+    edit_categories_json = Column(JSON)
+    # All 12 keys always present:
+    # {factual_correction, missing_ehr_fact, wrong_ehr_fact, unsupported_medical_claim,
+    #  citation_error, urgency_correction, missing_caution, tone_change,
+    #  unnecessary_content, retrieval_error, no_change, other}
     doctor_review_seconds = Column(Integer)
     doctor_reviewed_at = Column(DateTime)
+
+    # Pillar C: supplementary edit distance ratios
+    edr_char = Column(Float)   # edit_distance_chars / max(|draft|, |final|)
+    edr_word = Column(Float)   # word-level EDR
 
     # P10: Patient delivery
     patient_notified_at = Column(DateTime)
@@ -434,3 +466,4 @@ class Consultation(Base):
     updated_at = Column(DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
 
     patient = relationship("Patient")
+

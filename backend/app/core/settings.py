@@ -14,11 +14,13 @@ ENV_FILE = Path(__file__).resolve().parents[3] / "backend" / ".env"
 
 class Settings(BaseSettings):
     # ── Database ─────────────────────────────────────────────────────────────
+    database_url: str = ""       # If provided in backend/.env, takes precedence
     db_host: str = "localhost"
     db_port: int = 5432
-    db_name: str = "carepilot_db"
+    db_name: str = "carepilot_v3"
     db_user: str = "postgres"
     db_password: str = ""       # Must be set in backend/.env — never hardcode
+
 
     # ── Synthea ───────────────────────────────────────────────────────────────
     synthea_seed: int = 42
@@ -58,10 +60,13 @@ class Settings(BaseSettings):
 
     @property
     def db_url(self) -> str:
+        if self.database_url:
+            return self.database_url
         return (
-            f"postgresql+psycopg://{self.db_user}:{self.db_password}"
+            f"postgresql+psycopg2://{self.db_user}:{self.db_password}"
             f"@{self.db_host}:{self.db_port}/{self.db_name}"
         )
+
 
     @property
     def db_url_sync(self) -> str:

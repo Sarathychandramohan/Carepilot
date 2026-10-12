@@ -4,6 +4,9 @@ from typing import List, Optional
 import datetime
 import uuid
 
+from backend.app.api.consult import router as consult_router
+from backend.app.api.queue import router as queue_router
+
 # Stand-in FastAPI router implementation for CarePilot AI Modules 1-4
 app = FastAPI(
     title="CarePilot AI Backend Pipeline",
@@ -19,7 +22,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Pillar B Routers
+app.include_router(consult_router)
+app.include_router(queue_router)
+
 # -----------------------------------------------------------------------------
+
 # MODULE 1 — CONVERSATION & MULTI-TURN THREADING ENDPOINTS
 # -----------------------------------------------------------------------------
 
