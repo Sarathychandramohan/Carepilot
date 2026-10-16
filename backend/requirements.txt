@@ -1,0 +1,37 @@
+# CarePilot AI — Python Backend & Evaluation Dependencies
+# Python version: 3.11 - 3.13 (Tested on Python 3.13.1 win32)
+
+# Web Framework & API Server
+fastapi>=0.115.0,<0.145.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.8.0,<3.0.0
+pydantic-settings>=2.4.0
+
+# Database & ORM
+SQLAlchemy>=2.0.30
+psycopg[binary]>=3.2.0
+alembic>=1.13.0
+
+# NLP, Embeddings & RAG
+sentence-transformers>=3.0.0
+transformers>=4.40.0
+torch>=2.2.0
+chromadb>=0.5.0
+rank-bm25>=0.2.2
+
+# Machine Learning & Statistics
+scikit-learn>=1.5.0
+scipy>=1.13.0
+numpy>=1.26.0
+
+# Knowledge Ingestion & Utilities
+beautifulsoup4>=4.12.0
+requests>=2.32.0
+httpx>=0.27.0
+python-dotenv>=1.0.0
+rich>=13.7.0
+typer>=0.12.0
+
+# Testing & Evaluation
+pytest>=8.2.0
+anyio>=4.4.0

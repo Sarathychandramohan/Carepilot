@@ -100,6 +100,7 @@ def _get_patient_context(patient_id: str, db: Session) -> dict:
 def _finalize_manual_required(
     consultation: Consultation, reason: str, db: Session
 ) -> Consultation:
+    consultation.skip_reason = reason
     consultation.thread_status = "awaiting_doctor"
     consultation.validation_status = "manual_required"
     consultation.is_high_priority = consultation.urgency_final == "urgent"
@@ -114,6 +115,7 @@ def _finalize_emergency(
     consultation: Consultation, redflag: dict, db: Session
 ) -> Consultation:
     """Firm red-flag: route to priority queue without draft."""
+    consultation.skip_reason = "emergency"
     consultation.thread_status = "awaiting_doctor"
     consultation.is_high_priority = True
     consultation.is_red_flag_override = True

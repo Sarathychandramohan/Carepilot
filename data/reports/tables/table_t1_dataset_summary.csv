@@ -1,6 +1,6 @@
 Split Name,Total Queries,Medication,Lab Result,Symptom,Followup,General Health,Admin/Other,Routine Urgency,Soon Urgency,Urgent Urgency,Patient-Specific (%)
 gold-dev,150,24,40,26,27,33,0,114,36,0,64.7%
-gold-test,350,63,72,70,40,55,0,286,55,9,58.3%
+gold-test,350,63,72,70,40,55,50,286,55,9,58.3%
 silver-dev,1040,130,130,260,260,260,0,520,390,130,62.5%
 silver-test,1040,130,130,260,260,260,0,650,260,130,62.5%
 rq3,60,12,12,12,12,12,0,45,12,3,95.0%

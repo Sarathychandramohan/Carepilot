@@ -504,6 +504,10 @@ class Consultation(Base):
     # NULL for all pre-harness consultations; set by the eval harness at row creation.
     eval_run_id = Column(Integer, ForeignKey("eval_runs.id"), nullable=True, index=True)
 
+    # ── Migration 003: Pipeline skip reason ──────────────────────────────────
+    # 'emergency' | 'unsupported_intent' | 'generation_parse_failed' | 'validation_failed' | ...
+    skip_reason = Column(String(50), nullable=True)
+
     patient  = relationship("Patient")
     eval_run = relationship("EvalRun", back_populates="consultations")
 

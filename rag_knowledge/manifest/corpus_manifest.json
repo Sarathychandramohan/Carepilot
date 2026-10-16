@@ -1,0 +1,193 @@
+﻿{
+  "corpus_version": "1.0",
+  "created_date": "2026-09-18",
+  "description": "CarePilot AI curated medical knowledge corpus",
+  "document_count": 18,
+  "documents": [
+    {
+      "document_id": "KB-D01",
+      "title": "The A1C Test & Diabetes",
+      "source": "NIDDK",
+      "source_url": "https://www.niddk.nih.gov/health-information/diagnostic-tests/a1c-test",
+      "document_type": "web_page",
+      "topic": "diabetes",
+      "folder": "raw/KB-D01_niddk_a1c_test",
+      "gold_questions": ["R01", "G01"]
+    },
+    {
+      "document_id": "KB-D02",
+      "title": "Managing Diabetes",
+      "source": "NIDDK",
+      "source_url": "https://www.niddk.nih.gov/health-information/diabetes/overview/managing-diabetes",
+      "document_type": "web_page",
+      "topic": "diabetes",
+      "folder": "raw/KB-D02_niddk_managing_diabetes",
+      "gold_questions": ["R01", "M01", "M02"]
+    },
+    {
+      "document_id": "KB-D03",
+      "title": "Diabetes Tests & Diagnosis",
+      "source": "NIDDK",
+      "source_url": "https://www.niddk.nih.gov/health-information/diabetes/overview/tests-diagnosis",
+      "document_type": "web_page",
+      "topic": "diabetes",
+      "folder": "raw/KB-D03_niddk_diabetes_tests",
+      "gold_questions": ["R01", "G01"]
+    },
+    {
+      "document_id": "KB-D04",
+      "title": "Diabetes",
+      "source": "WHO",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/diabetes",
+      "document_type": "web_page",
+      "topic": "diabetes",
+      "folder": "raw/KB-D04_who_diabetes",
+      "gold_questions": ["G01"]
+    },
+
+    {
+      "document_id": "KB-K01",
+      "title": "Chronic Kidney Disease Tests & Diagnosis",
+      "source": "NIDDK",
+      "source_url": "https://www.niddk.nih.gov/health-information/kidney-disease/chronic-kidney-disease-ckd/tests-diagnosis",
+      "document_type": "web_page",
+      "topic": "kidney",
+      "folder": "raw/KB-K01_niddk_ckd_tests",
+      "gold_questions": ["R02", "R03", "R04"]
+    },
+    {
+      "document_id": "KB-K02",
+      "title": "Albuminuria: Albumin in the Urine",
+      "source": "NIDDK",
+      "source_url": "https://www.niddk.nih.gov/health-information/kidney-disease/chronic-kidney-disease-ckd/tests-diagnosis/albuminuria-albumin-urine",
+      "document_type": "web_page",
+      "topic": "kidney",
+      "folder": "raw/KB-K02_niddk_albuminuria",
+      "gold_questions": ["R05"]
+    },
+    {
+      "document_id": "KB-K03",
+      "title": "Identify & Evaluate Patients with Chronic Kidney Disease",
+      "source": "NIDDK",
+      "source_url": "https://www.niddk.nih.gov/health-information/professionals/clinical-tools-patient-management/kidney-disease/identify-manage-patients/evaluate-ckd",
+      "document_type": "web_page",
+      "topic": "kidney",
+      "folder": "raw/KB-K03_niddk_evaluate_ckd",
+      "gold_questions": ["R02", "R03", "R04", "R05"]
+    },
+    {
+      "document_id": "KB-K04",
+      "title": "Diabetic Kidney Disease",
+      "source": "NIDDK",
+      "source_url": "https://www.niddk.nih.gov/health-information/diabetes/overview/preventing-problems/diabetic-kidney-disease",
+      "document_type": "web_page",
+      "topic": "kidney",
+      "folder": "raw/KB-K04_niddk_diabetic_kidney",
+      "gold_questions": ["R03", "R04", "R05"]
+    },
+
+    {
+      "document_id": "KB-C01",
+      "title": "Hypertension",
+      "source": "WHO",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/hypertension",
+      "document_type": "web_page",
+      "topic": "cardiovascular",
+      "folder": "raw/KB-C01_who_hypertension",
+      "gold_questions": ["G06", "S01"]
+    },
+    {
+      "document_id": "KB-C02",
+      "title": "High Blood Pressure",
+      "source": "MedlinePlus",
+      "source_url": "https://medlineplus.gov/highbloodpressure.html",
+      "document_type": "web_page",
+      "topic": "cardiovascular",
+      "folder": "raw/KB-C02_medlineplus_high_bp",
+      "gold_questions": ["G06", "S01"]
+    },
+    {
+      "document_id": "KB-C03",
+      "title": "Blood Pressure Medicines",
+      "source": "MedlinePlus",
+      "source_url": "https://medlineplus.gov/bloodpressuremedicines.html",
+      "document_type": "web_page",
+      "topic": "medication",
+      "folder": "raw/KB-C03_medlineplus_bp_medicines",
+      "gold_questions": ["M01", "M02", "M06"]
+    },
+
+    {
+      "document_id": "KB-L01",
+      "title": "Cholesterol Levels",
+      "source": "MedlinePlus",
+      "source_url": "https://medlineplus.gov/lab-tests/cholesterol-levels/",
+      "document_type": "web_page",
+      "topic": "lipids",
+      "folder": "raw/KB-L01_medlineplus_cholesterol",
+      "gold_questions": ["R06", "R07", "G04"]
+    },
+
+    {
+      "document_id": "KB-B01",
+      "title": "Hemoglobin Test",
+      "source": "MedlinePlus",
+      "source_url": "https://medlineplus.gov/lab-tests/hemoglobin-test/",
+      "document_type": "web_page",
+      "topic": "blood",
+      "folder": "raw/KB-B01_medlineplus_hemoglobin",
+      "gold_questions": ["R08", "G02"]
+    },
+    {
+      "document_id": "KB-B02",
+      "title": "Complete Blood Count (CBC)",
+      "source": "MedlinePlus",
+      "source_url": "https://www.medlineplus.gov/lab-tests/complete-blood-count-cbc/",
+      "document_type": "web_page",
+      "topic": "blood",
+      "folder": "raw/KB-B02_medlineplus_cbc",
+      "gold_questions": ["R08"]
+    },
+
+    {
+      "document_id": "KB-M01",
+      "title": "Taking Multiple Medicines Safely",
+      "source": "MedlinePlus",
+      "source_url": "https://www.medlineplus.gov/ency/patientinstructions/000883.htm",
+      "document_type": "web_page",
+      "topic": "medication_safety",
+      "folder": "raw/KB-M01_medlineplus_multiple_medicines",
+      "gold_questions": ["M03", "M06"]
+    },
+    {
+      "document_id": "KB-M02",
+      "title": "Medicine Safety - Filling Your Prescription",
+      "source": "MedlinePlus",
+      "source_url": "https://medlineplus.gov/ency/patientinstructions/000766.htm",
+      "document_type": "web_page",
+      "topic": "medication_safety",
+      "folder": "raw/KB-M02_medlineplus_prescription_safety",
+      "gold_questions": ["M01", "M06"]
+    },
+    {
+      "document_id": "KB-M03",
+      "title": "Drug Reactions",
+      "source": "MedlinePlus",
+      "source_url": "https://medlineplus.gov/drugreactions.html",
+      "document_type": "web_page",
+      "topic": "medication_safety",
+      "folder": "raw/KB-M03_medlineplus_drug_reactions",
+      "gold_questions": ["M03", "M06", "S04"]
+    },
+    {
+      "document_id": "KB-M04",
+      "title": "High Blood Pressure Medications",
+      "source": "MedlinePlus",
+      "source_url": "https://www.medlineplus.gov/ency/article/007484.htm",
+      "document_type": "web_page",
+      "topic": "medication",
+      "folder": "raw/KB-M04_medlineplus_bp_medications",
+      "gold_questions": ["M01", "M02", "M03"]
+    }
+  ]
+}
