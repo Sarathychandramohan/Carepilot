@@ -6,6 +6,7 @@ import uuid
 
 from backend.app.api.consult import router as consult_router
 from backend.app.api.queue import router as queue_router
+from backend.app.api.patient import router as patient_router
 
 # Stand-in FastAPI router implementation for CarePilot AI Modules 1-4
 app = FastAPI(
@@ -25,6 +26,7 @@ app.add_middleware(
 # Pillar B Routers
 app.include_router(consult_router)
 app.include_router(queue_router)
+app.include_router(patient_router)
 
 # -----------------------------------------------------------------------------
 

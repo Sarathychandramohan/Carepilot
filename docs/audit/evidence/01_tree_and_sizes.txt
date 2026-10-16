@@ -1,0 +1,14 @@
+=== TOP-LEVEL FOLDER SIZES (excluding .venv, node_modules, .git) ===
+synthea                        :    3058.42 MB (3,206,982,869 bytes)
+rag_knowledge                  :     525.58 MB (551,109,628 bytes)
+data                           :      25.34 MB (26,571,730 bytes)
+backups                        :      11.49 MB (12,052,651 bytes)
+patient-app                    :       2.77 MB (2,901,772 bytes)
+doctor-dashboard               :       1.12 MB (1,172,275 bytes)
+docs                           :       0.94 MB (983,627 bytes)
+backend                        :       0.89 MB (933,339 bytes)
+
+=== TOP-LEVEL ROOT FILES ===
+builtplan.md                   :      20.22 KB (20,706 bytes)
+.gitignore                     :       4.53 KB (4,634 bytes)
+.env.example                   :       2.31 KB (2,363 bytes)

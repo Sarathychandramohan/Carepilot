@@ -93,6 +93,8 @@ def retrieve_ehr(
     intent: str,
     db: Session,
     k: int = EHR_RETRIEVAL_K,
+    secondary_intent: str | None = None,
+    is_dual_intent: bool = False,
 ) -> list[EHRChunk]:
     """
     Main entry point for B3.1 EHR retrieval.
@@ -103,6 +105,8 @@ def retrieve_ehr(
         intent:              Classified intent string
         db:                  SQLAlchemy session
         k:                   Max rows per category
+        secondary_intent:    Optional secondary intent for dual-intent routing (D-007)
+        is_dual_intent:      Flag indicating adverse reaction / multi-intent ambiguity
 
     Returns:
         List of EHRChunk objects sorted by date descending.
@@ -110,28 +114,40 @@ def retrieve_ehr(
     """
     chunks: list[EHRChunk] = []
 
+    active_intents = {intent}
+    if is_dual_intent and secondary_intent:
+        active_intents.add(secondary_intent)
+
     # Extract LOINC codes from normalized concepts
-    concept_loinc = [
-        c["loinc_code"]
-        for c in normalized_concepts
-        if c.get("loinc_code") and c.get("domain") in ("lab", "condition", "medication")
-    ]
+    concept_loinc = []
+    for c in normalized_concepts:
+        if c.get("domain") in ("lab", "condition", "medication"):
+            if c.get("loinc_code"):
+                concept_loinc.append(c["loinc_code"])
+            elif c.get("concept_id") and "LOINC:" in c["concept_id"]:
+                concept_loinc.append(c["concept_id"].split("LOINC:")[1])
+            elif c.get("code"):
+                concept_loinc.append(c["code"])
+
     # Add intent-driven base codes
-    extra_codes = LAB_INTENT_CODES.get(intent, [])
+    extra_codes: list[str] = []
+    for it in active_intents:
+        extra_codes.extend(LAB_INTENT_CODES.get(it, []))
     all_loinc = list(dict.fromkeys(concept_loinc + extra_codes))  # dedupe, preserve order
 
     # ── Lab Results ─────────────────────────────────────────────────────────
-    if intent in ("lab_result_query", "medication_query", "symptom_report") and all_loinc:
+    if any(it in ("lab_result_query", "medication_query", "symptom_report") for it in active_intents) and all_loinc:
         rows = db.execute(
             text("""
                 SELECT
                     lr.id, lr.stable_eid, lr.code, lr.description,
                     lr.numeric_value, lr.value, lr.units,
                     lr.observed_at, lr.is_abnormal, lr.is_outlier,
-                    rr.ref_range_low, rr.ref_range_high
+                    COALESCE(lr.ref_min, rr.ref_min) AS ref_min,
+                    COALESCE(lr.ref_max, rr.ref_max) AS ref_max
                 FROM lab_results lr
                 LEFT JOIN reference_ranges rr
-                    ON rr.loinc_code = lr.code
+                    ON rr.code = lr.code
                 WHERE lr.patient_id = :pid
                   AND lr.code = ANY(:codes)
                 ORDER BY lr.observed_at DESC
@@ -144,7 +160,7 @@ def retrieve_ehr(
             is_out = bool(row.is_outlier)
             display = _format_display_value(
                 row.value, row.numeric_value, row.units,
-                row.ref_range_low, row.ref_range_high, bool(row.is_abnormal)
+                row.ref_min, row.ref_max, bool(row.is_abnormal)
             )
             chunks.append(EHRChunk(
                 stable_eid=row.stable_eid or f"ehr:lab:{row.id}",
@@ -162,14 +178,14 @@ def retrieve_ehr(
             ))
 
     # ── Active Conditions ────────────────────────────────────────────────────
-    if intent in ("symptom_report", "general_health_info", "followup_appointment"):
+    if any(it in ("symptom_report", "general_health_info", "followup_appointment") for it in active_intents):
         rows = db.execute(
             text("""
-                SELECT id, stable_eid, code, description, onset_date, stop_date
+                SELECT id, stable_eid, code, description, start_date, stop_date
                 FROM conditions
                 WHERE patient_id = :pid
                   AND stop_date IS NULL
-                ORDER BY onset_date DESC
+                ORDER BY start_date DESC
                 LIMIT :k
             """),
             {"pid": patient_id, "k": k},
@@ -180,8 +196,8 @@ def retrieve_ehr(
                 stable_eid=row.stable_eid or f"ehr:condition:{row.id}",
                 source_type="condition",
                 label=row.description or row.code,
-                display_value=f"Active since {str(row.onset_date)[:10] if row.onset_date else 'unknown'}",
-                date_str=str(row.onset_date)[:10] if row.onset_date else "unknown",
+                display_value=f"Active since {str(row.start_date)[:10] if row.start_date else 'unknown'}",
+                date_str=str(row.start_date)[:10] if row.start_date else "unknown",
                 is_abnormal=False,
                 is_outlier=False,
                 outlier_annotation=None,
@@ -189,7 +205,7 @@ def retrieve_ehr(
             ))
 
     # ── Active Prescriptions ─────────────────────────────────────────────────
-    if intent in ("medication_query", "general_health_info"):
+    if any(it in ("medication_query", "general_health_info") for it in active_intents):
         rows = db.execute(
             text("""
                 SELECT id, stable_eid, code, description, start_date, stop_date
@@ -216,13 +232,13 @@ def retrieve_ehr(
             ))
 
     # ── Recent Encounters ────────────────────────────────────────────────────
-    if intent == "followup_appointment":
+    if any(it == "followup_appointment" for it in active_intents):
         rows = db.execute(
             text("""
-                SELECT id, stable_eid, encounter_class, description, start_date, stop_date
+                SELECT id, stable_eid, encounter_class, description, start_time, stop_time
                 FROM encounters
                 WHERE patient_id = :pid
-                ORDER BY start_date DESC
+                ORDER BY start_time DESC
                 LIMIT 3
             """),
             {"pid": patient_id},
@@ -233,8 +249,8 @@ def retrieve_ehr(
                 stable_eid=row.stable_eid or f"ehr:encounter:{row.id}",
                 source_type="encounter",
                 label=row.description or row.encounter_class or "Encounter",
-                display_value=f"Visit on {str(row.start_date)[:10] if row.start_date else 'unknown'}",
-                date_str=str(row.start_date)[:10] if row.start_date else "unknown",
+                display_value=f"Visit on {str(row.start_time)[:10] if row.start_time else 'unknown'}",
+                date_str=str(row.start_time)[:10] if row.start_time else "unknown",
                 is_abnormal=False,
                 is_outlier=False,
                 outlier_annotation=None,

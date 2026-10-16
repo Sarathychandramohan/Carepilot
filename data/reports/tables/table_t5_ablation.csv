@@ -1,0 +1,4 @@
+Ablation Arm,Run ID,Consultations Evaluated,Mean Citation Validity,Mean Citation Coverage,Validation Pass Rate,EHR-Fact Accuracy (%),LOINC Ref-Range Caveat
+full,5,150,NOT COMPUTED,NOT COMPUTED,NOT COMPUTED,NOT COMPUTED,"NOT COMPUTED (T5 arm=full run=5): only 0/150 real (non-mock) rows (mock=86, generation_skipped=64). Minimum required: 30. Re-run with real LLM generation."
+no_ehr,6,150,NOT COMPUTED,NOT COMPUTED,NOT COMPUTED,NOT COMPUTED,"NOT COMPUTED (T5 arm=no_ehr run=6): only 0/150 real (non-mock) rows (mock=86, generation_skipped=64). Minimum required: 30. Re-run with real LLM generation."
+no_classifier,7,150,NOT COMPUTED,NOT COMPUTED,NOT COMPUTED,NOT COMPUTED,"NOT COMPUTED (T5 arm=no_classifier run=7): only 0/150 real (non-mock) rows (mock=86, generation_skipped=64). Minimum required: 30. Re-run with real LLM generation."

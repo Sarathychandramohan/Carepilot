@@ -17,6 +17,7 @@ Key behaviours:
 from __future__ import annotations
 
 import json
+import re
 import time
 from dataclasses import dataclass, field, asdict
 from typing import Any
@@ -97,7 +98,7 @@ def _format_ehr_context(ehr_chunks: list[EHRChunk]) -> str:
         return "No patient EHR data retrieved for this query."
     lines = []
     for chunk in ehr_chunks:
-        lines.append(f"  • [{chunk.source_type.upper()}] {chunk.label}: {chunk.display_value} ({chunk.date_str})")
+        lines.append(f"  • [{chunk.stable_eid}] [{chunk.source_type.upper()}] {chunk.label}: {chunk.display_value} ({chunk.date_str})")
         if chunk.is_outlier and chunk.outlier_annotation:
             lines.append(f"    ⚠ {chunk.outlier_annotation}")
     return "\n".join(lines)
@@ -107,8 +108,8 @@ def _format_kb_context(kb_chunks: list[KBChunk]) -> str:
     if not kb_chunks:
         return "No knowledge base articles retrieved."
     lines = []
-    for i, chunk in enumerate(kb_chunks, start=1):
-        lines.append(f"  [{i}] {chunk.source_name} — {chunk.title}")
+    for chunk in kb_chunks:
+        lines.append(f"  • [{chunk.chunk_id}] {chunk.source_name} — {chunk.title}")
         lines.append(f"      {chunk.text[:600].strip()}")  # truncate very long chunks
     return "\n".join(lines)
 
@@ -182,7 +183,7 @@ PATIENT QUERY (Intent: {intent}, {urgency_line}):
 Respond with ONLY a valid JSON object matching this exact schema:
 {{
   "sentences": [
-    {{"text": "<sentence text>", "citations": ["<stable_eid or chunk_id>"]}}
+    {{"text": "<sentence text>", "citations": ["<exact source ID from brackets above, e.g. ehr:... or kb:...>"]}}
   ],
   "overall_tone": "reassuring|informative|urgent",
   "recommended_followup": "<optional recommendation or null>",
@@ -190,7 +191,8 @@ Respond with ONLY a valid JSON object matching this exact schema:
 }}
 
 Rules:
-- Every sentence MUST cite at least one source ID from the context above.
+- Every sentence MUST cite at least one exact source ID from the bracketed tokens above (e.g. "ehr:condition:..." or "kb:...").
+- Only cite IDs that are explicitly listed above.
 - Do not include any text outside the JSON object.
 - urgency_assessment is always required in the output."""
 
@@ -341,3 +343,114 @@ def compute_consultation_edit_weight(edit_categories: dict[str, int]) -> float:
         EDIT_WEIGHTS.get(cat, 0) * int(bool(ticked))
         for cat, ticked in edit_categories.items()
     ))
+
+
+def compute_edit_distances(draft_text: str, final_text: str) -> dict[str, Any]:
+    """
+    Compute character-level and word-level Levenshtein edit distance and EDR ratios.
+    """
+    s1 = (draft_text or "").strip()
+    s2 = (final_text or "").strip()
+
+    # Char-level Levenshtein
+    if s1 == s2:
+        char_dist = 0
+    elif not s1:
+        char_dist = len(s2)
+    elif not s2:
+        char_dist = len(s1)
+    else:
+        v0 = list(range(len(s2) + 1))
+        v1 = [0] * (len(s2) + 1)
+        for i, c1 in enumerate(s1):
+            v1[0] = i + 1
+            for j, c2 in enumerate(s2):
+                cost = 0 if c1 == c2 else 1
+                v1[j + 1] = min(v1[j] + 1, v0[j + 1] + 1, v0[j] + cost)
+            v0[:] = v1
+        char_dist = v0[len(s2)]
+
+    # Word-level Levenshtein
+    w1 = s1.split()
+    w2 = s2.split()
+    if w1 == w2:
+        word_dist = 0
+    elif not w1:
+        word_dist = len(w2)
+    elif not w2:
+        word_dist = len(w1)
+    else:
+        v0 = list(range(len(w2) + 1))
+        v1 = [0] * (len(w2) + 1)
+        for i, item1 in enumerate(w1):
+            v1[0] = i + 1
+            for j, item2 in enumerate(w2):
+                cost = 0 if item1 == item2 else 1
+                v1[j + 1] = min(v1[j] + 1, v0[j + 1] + 1, v0[j] + cost)
+            v0[:] = v1
+        word_dist = v0[len(w2)]
+
+    max_chars = max(len(s1), len(s2), 1)
+    max_words = max(len(w1), len(w2), 1)
+
+    return {
+        "edit_distance_chars": char_dist,
+        "edit_distance_words": word_dist,
+        "edr_char": round(char_dist / max_chars, 4),
+        "edr_word": round(word_dist / max_words, 4),
+    }
+
+
+def sanitize_delivery_text(text: str) -> str:
+    """
+    Sanitize approved consultation text before delivery to the patient (P10).
+    Strips internal tokens, citations, context markers, and code fences.
+    
+    1. Removes citation tokens: [kb:...], [ehr:...], [kb:..., ehr:...]
+    2. Removes internal prompt/context tags: [EHR_CONTEXT], [KNOWLEDGE_CONTEXT], etc.
+    3. Removes markdown code block markers: ```json, ```
+    4. Normalizes whitespace and fixes orphaned punctuation spacing.
+    """
+    if not text:
+        return ""
+
+    # 1. Strip markdown fences
+    clean = re.sub(r"```(?:json)?\s*", "", text)
+    clean = re.sub(r"\s*```", "", clean)
+
+    # 2. Strip internal context/prompt markers and any bracketed internal tokens
+    clean = re.sub(
+        r"\[/?(?:EHR_CONTEXT|KNOWLEDGE_CONTEXT|PATIENT_CONTEXT|SYSTEM_NOTE|SYSTEM_INSTRUCTION|INTERNAL_NOTE|DOCTOR_NOTE)[^\]]*\]",
+        "",
+        clean,
+        flags=re.IGNORECASE,
+    )
+    clean = re.sub(r"\[(?:INTERNAL|SYSTEM|EHR|KB)_[^\]]+\]", "", clean, flags=re.IGNORECASE)
+
+    # 3. Strip citation tokens [kb:...], [ehr:...], grouped [kb:..., kb:...]
+    clean = re.sub(r"\[\s*(?:(?:kb|ehr):[^\],]+(?:\s*,\s*)?)+\s*\]", "", clean, flags=re.IGNORECASE)
+    # Catch any remaining single bracketed citation
+    clean = re.sub(r"\[(?:kb|ehr):[^\]]+\]", "", clean, flags=re.IGNORECASE)
+
+    # 4. Cleanup spacing and punctuation
+    # Collapse multiple inline spaces/tabs to a single space
+    clean = re.sub(r"[ \t]+", " ", clean)
+    # Remove space before punctuation marks (. , ; : ! ?)
+    clean = re.sub(r"\s+([.,;:!?])", r"\1", clean)
+    # Remove trailing/leading spaces on lines
+    lines = [line.strip() for line in clean.splitlines()]
+    # Remove excessive blank lines
+    cleaned_lines: list[str] = []
+    prev_blank = False
+    for line in lines:
+        if not line:
+            if not prev_blank:
+                cleaned_lines.append("")
+                prev_blank = True
+        else:
+            cleaned_lines.append(line)
+            prev_blank = False
+
+    return "\n".join(cleaned_lines).strip()
+
+

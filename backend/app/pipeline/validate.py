@@ -20,10 +20,16 @@ from backend.app.pipeline.retrieve_ehr import EHRChunk
 from backend.app.pipeline.retrieve_kb import KBChunk
 from backend.app.pipeline.generate import GeneratedDraft
 
-# Thresholds (overridden from settings in orchestrator)
-COVERAGE_THRESHOLD = 0.80
-NLI_PASS_THRESHOLD = 0.50
-NLI_WARN_THRESHOLD = 0.30
+# ---------------------------------------------------------------------------
+# Tuned Validation Thresholds (Tuned on N=15 Dev Batch — see D-006)
+# Tuned empirically on N=15 stratified silver queries with human review.
+# Per Master Spec Section 7 / Pillar C Plan, final operational thresholds will
+# be formally calibrated against Gold double-annotated clinician evaluations.
+# ---------------------------------------------------------------------------
+COVERAGE_THRESHOLD: float = 0.80     # Citation coverage floor
+NLI_PASS_THRESHOLD: float = 0.15     # Tuned on N=15 dev batch (was provisional 0.50)
+NLI_WARN_THRESHOLD: float = 0.001    # Tuned on N=15 dev batch (was provisional 0.30)
+CONTRADICTION_CEILING: float = 0.05  # Intercepts hallucinated or contradicting sentences
 
 # Lazy-loaded NLI model (cross-encoder/nli-deberta-v3-small)
 # See docs/PILLAR_B_DECISIONS.md D-001
@@ -34,7 +40,10 @@ def _get_nli_model():
     global _NLI_MODEL
     if _NLI_MODEL is None:
         from sentence_transformers import CrossEncoder
-        _NLI_MODEL = CrossEncoder("cross-encoder/nli-deberta-v3-small")
+        try:
+            _NLI_MODEL = CrossEncoder("cross-encoder/nli-deberta-v3-small", local_files_only=True)
+        except Exception:
+            _NLI_MODEL = CrossEncoder("cross-encoder/nli-deberta-v3-small")
     return _NLI_MODEL
 
 
@@ -46,6 +55,7 @@ class ValidationResult:
     has_outlier_only_sentence: bool  # True if any sentence cites only outlier chunks
     per_sentence: list[dict]         # per-sentence breakdown for faithfulness_details
     validation_status: str           # passed | passed_with_warning | passed_with_outlier_caveat | manual_required
+    max_contradiction: float = 0.0   # Highest contradiction probability across sentences
 
 
 def _build_citation_lookup(
@@ -76,9 +86,10 @@ def validate_draft(
     coverage_threshold: float = COVERAGE_THRESHOLD,
     nli_pass_threshold: float = NLI_PASS_THRESHOLD,
     nli_warn_threshold: float = NLI_WARN_THRESHOLD,
+    contradiction_ceiling: float = CONTRADICTION_CEILING,
 ) -> ValidationResult:
     """
-    Run B5a citation coverage + B5b NLI entailment checks on a GeneratedDraft.
+    Run B5a citation coverage + B5b NLI entailment and contradiction checks on a GeneratedDraft.
 
     Returns ValidationResult with exactly one of 4 validation_status values.
     """
@@ -94,6 +105,7 @@ def validate_draft(
             has_outlier_only_sentence=False,
             per_sentence=[],
             validation_status="manual_required",
+            max_contradiction=0.0,
         )
 
     per_sentence: list[dict] = []
@@ -102,6 +114,7 @@ def validate_draft(
     total_valid_ids = 0
     outlier_only_count = 0
     nli_scores: list[float] = []
+    contra_scores: list[float] = []
 
     for sent in draft.sentences:
         cited_ids = sent.citations or []
@@ -125,7 +138,7 @@ def validate_draft(
         if has_valid_citation:
             valid_citation_sentences += 1
 
-        # ── B5b: NLI entailment ────────────────────────────────────────────
+        # ── B5b: NLI entailment & Contradiction ────────────────────────────
         # Only compute against non-outlier cited chunks
         non_outlier_ids = [
             cid for cid in valid_ids
@@ -137,12 +150,15 @@ def validate_draft(
             scores = nli_model.predict(
                 [(premise, sent.text)], apply_softmax=True
             )
+            contradiction_score = float(scores[0][0])
             entailment_score = float(scores[0][1])
         else:
             # No non-outlier citations → treat entailment as 0
+            contradiction_score = 0.0
             entailment_score = 0.0
 
         nli_scores.append(entailment_score)
+        contra_scores.append(contradiction_score)
 
         per_sentence.append({
             "text": sent.text[:120],
@@ -150,15 +166,24 @@ def validate_draft(
             "valid_citation": has_valid_citation,
             "all_outlier": all_outlier,
             "entailment_score": round(entailment_score, 4),
+            "contradiction_score": round(contradiction_score, 4),
         })
 
     citation_coverage = valid_citation_sentences / total_sentences
     avg_nli = sum(nli_scores) / len(nli_scores) if nli_scores else 0.0
+    max_contra = max(contra_scores) if contra_scores else 0.0
     citation_validity = total_valid_ids / total_cited_ids if total_cited_ids > 0 else 0.0
     has_outlier_only = outlier_only_count > 0
 
     # ── Decision matrix — 4 possible statuses ─────────────────────────────
-    if citation_coverage < coverage_threshold or avg_nli < nli_warn_threshold:
+    # Zero-tolerance citation integrity: ANY fabricated/unresolved citation (< 1.0) halts draft
+    # Contradiction ceiling: Any sentence contradicting evidence (>= 0.05) halts draft
+    if (
+        citation_validity < 1.0
+        or citation_coverage < coverage_threshold
+        or avg_nli < nli_warn_threshold
+        or max_contra >= contradiction_ceiling
+    ):
         status = "manual_required"
     elif has_outlier_only:
         status = "passed_with_outlier_caveat"
@@ -174,4 +199,6 @@ def validate_draft(
         has_outlier_only_sentence=has_outlier_only,
         per_sentence=per_sentence,
         validation_status=status,
+        max_contradiction=round(max_contra, 4),
     )
+

@@ -121,3 +121,10 @@ synthea/build/
 synthea/gradle/wrapper/gradle-wrapper.jar
 synthea/.gradle/
 synthea/out/
+
+# Data Dumps & Raw KB
+data/kb_raw/
+data/kb_clean/
+data/kb_chunks/
+synthea/
+rag_knowledge/

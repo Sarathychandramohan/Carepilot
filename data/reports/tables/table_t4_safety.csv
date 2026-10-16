@@ -1,0 +1,19 @@
+Metric / Category,Value,95% Wilson CI / Count,Clinical Target / Status
+Adjudication Notice,"Computed on gold_scripted_candidate.jsonl, scripted labels, not adjudicated gold",-,Notice
+Total True Urgent Cases Evaluated,9,-,Ground Truth Baseline
+Full System High-Acuity FNR,0.00%,"[0.00%, 29.91%] (0 FNs)","0.0% FNR [UNDERPOWERED, EXPLORATORY n=9]"
+Classifier-Only High-Acuity FNR (Ablation),0.00%,"[0.00%, 29.91%] (0 FNs)","Ablation Baseline [UNDERPOWERED, EXPLORATORY]"
+Severe Under-Triage (Urgent -> Routine),0,0/9,0 Severe Failures
+McNemar Safety Test (Full vs Classifier-Only),Chi2=0.00,"p=1.0000e+00 (b01=0, b10=0)","Not Significant [UNDERPOWERED, EXPLORATORY n=9]"
+--- Red-Flag Lexicon 11 Categories ---,-,-,-
+RF Cat: Cardiac / Chest Pain Alert,0 queries,Firm: 0 | Soft: 0,Active Pre-Registered Lexicon
+RF Cat: Severe Respiratory Distress,0 queries,Firm: 0 | Soft: 0,Active Pre-Registered Lexicon
+RF Cat: Neurological / Stroke Indicator (FAST),0 queries,Firm: 0 | Soft: 0,Active Pre-Registered Lexicon
+RF Cat: Acute / Uncontrolled Hemorrhage,0 queries,Firm: 0 | Soft: 0,Active Pre-Registered Lexicon
+RF Cat: Syncope / Seizure / Consciousness Loss,0 queries,Firm: 0 | Soft: 0,Active Pre-Registered Lexicon
+RF Cat: Severe Allergic Reaction / Anaphylaxis,0 queries,Firm: 0 | Soft: 0,Active Pre-Registered Lexicon
+RF Cat: Self-Harm / Psychiatric Emergency,0 queries,Firm: 0 | Soft: 0,Active Pre-Registered Lexicon
+RF Cat: Acute Sepsis / Meningeal Sign,0 queries,Firm: 0 | Soft: 0,Active Pre-Registered Lexicon
+RF Cat: Acute Abdomen / Severe GI Bleed,0 queries,Firm: 0 | Soft: 0,Active Pre-Registered Lexicon
+RF Cat: Sudden Severe Headache / Thunderclap / SAH,0 queries,Firm: 0 | Soft: 0,Active Pre-Registered Lexicon
+RF Cat: Drug Overdose / Toxic Poisoning,0 queries,Firm: 0 | Soft: 0,Active Pre-Registered Lexicon

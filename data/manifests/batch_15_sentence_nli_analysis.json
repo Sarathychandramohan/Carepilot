@@ -1,0 +1,721 @@
+[
+  {
+    "idx": 1,
+    "query_id": "S-01691",
+    "intent": "lab_result_query",
+    "urgency": "routine",
+    "validation_status": "manual_required",
+    "avg_nli": 0.0493,
+    "citation_coverage": 1.0,
+    "mismatch_flag": false,
+    "missing_context_flag": false,
+    "has_draft": true,
+    "sentences": [
+      {
+        "s_idx": 1,
+        "text": "A blood urea nitrogen (BUN) level of 18.1 mg/dL is slightly elevated and may indicate that your kidneys are not functioning as well as they should.",
+        "citations": [
+          "kb:KB-MP0474:chunk0000"
+        ],
+        "nli_score": 0.0043,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-MP0474:chunk0000] * * bun ( blood urea nitrogen ) * * * * what is a bun ( blood urea nitrogen ) test? * * a bun, or blood urea nitrogen te..."
+        ]
+      },
+      {
+        "s_idx": 2,
+        "text": "However, this result alone does not confirm kidney disease, and other factors such as diet, hydration, and medications can also affect BUN levels.",
+        "citations": [
+          "kb:KB-MP0474:chunk0000"
+        ],
+        "nli_score": 0.0022,
+        "claim_type": "general_info",
+        "cited_texts": [
+          "[kb:KB-MP0474:chunk0000] * * bun ( blood urea nitrogen ) * * * * what is a bun ( blood urea nitrogen ) test? * * a bun, or blood urea nitrogen te..."
+        ]
+      },
+      {
+        "s_idx": 3,
+        "text": "It is important to discuss these results with your doctor to determine if further testing or adjustments to your treatment plan are needed.",
+        "citations": [
+          "kb:KB-MP0521:chunk0002"
+        ],
+        "nli_score": 0.1414,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-MP0521:chunk0002] is to order tests. tests can help confirm or rule out the conditions on your differential diagnosis list. the tests you ..."
+        ]
+      }
+    ]
+  },
+  {
+    "idx": 2,
+    "query_id": "S-01692",
+    "intent": "lab_result_query",
+    "urgency": "routine",
+    "validation_status": "passed_with_warning",
+    "avg_nli": 0.3286,
+    "citation_coverage": 1.0,
+    "mismatch_flag": false,
+    "missing_context_flag": false,
+    "has_draft": true,
+    "sentences": [
+      {
+        "s_idx": 1,
+        "text": "An elevated albumin level of 4.4 g/dL may be due to various factors, including dehydration or certain medications, and does not always indicate a serious medical condition.",
+        "citations": [
+          "kb:KB-MP0428:chunk0000"
+        ],
+        "nli_score": 0.0008,
+        "claim_type": "general_info",
+        "cited_texts": [
+          "[kb:KB-MP0428:chunk0000] * * albumin blood test * * * * what is an albumin blood test? * * an albumin blood test measures the amount of albumin i..."
+        ]
+      },
+      {
+        "s_idx": 2,
+        "text": "Your provider may recommend repeating the test if there are concerns about underlying conditions, as temporary increases can occur due to factors like exercise or inflammation.",
+        "citations": [
+          "kb:KB-MP0611:chunk0004"
+        ],
+        "nli_score": 0.9799,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-MP0611:chunk0004] take could affect your results. * * are there any risks to the test? * * there is no known risk to providing a urine sam..."
+        ]
+      },
+      {
+        "s_idx": 3,
+        "text": "It is important to discuss your results with your provider to understand their significance in the context of your overall health and medical history.",
+        "citations": [
+          "kb:KB-MP0428:chunk0002"
+        ],
+        "nli_score": 0.0051,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-MP0428:chunk0002] you may feel a little sting when the needle goes in or out. this usually takes less than five minutes. * * will i need t..."
+        ]
+      }
+    ]
+  },
+  {
+    "idx": 3,
+    "query_id": "S-01693",
+    "intent": "lab_result_query",
+    "urgency": "routine",
+    "validation_status": "manual_required",
+    "avg_nli": 0.0031,
+    "citation_coverage": 1.0,
+    "mismatch_flag": false,
+    "missing_context_flag": false,
+    "has_draft": true,
+    "sentences": [
+      {
+        "s_idx": 1,
+        "text": "A creatinine level of 1.0 mg/dL is at the upper end of the normal range and may not be immediately concerning, but it's important to consider other factors like age, muscle mass, and hydration.",
+        "citations": [
+          "kb:KB-MP0509:chunk0001"
+        ],
+        "nli_score": 0.0017,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-MP0509:chunk0001] and how active they are. so, the results from creatinine testing are often used in calculations or compared with other s..."
+        ]
+      },
+      {
+        "s_idx": 2,
+        "text": "Your provider may want to check your estimated glomerular filtration rate (eGFR) to better understand how well your kidneys are functioning.",
+        "citations": [
+          "kb:KB-MP0509:chunk0001"
+        ],
+        "nli_score": 0.003,
+        "claim_type": "general_info",
+        "cited_texts": [
+          "[kb:KB-MP0509:chunk0001] and how active they are. so, the results from creatinine testing are often used in calculations or compared with other s..."
+        ]
+      },
+      {
+        "s_idx": 3,
+        "text": "Since you have a history of conditions like diabetes and hypertension, which can affect kidney function, it's important to discuss these results with your provider for a full evaluation.",
+        "citations": [
+          "kb:KB-MP0509:chunk0002"
+        ],
+        "nli_score": 0.0045,
+        "claim_type": "general_info",
+        "cited_texts": [
+          "[kb:KB-MP0509:chunk0002] ##tinine and albumin in your urine to get a more accurate measurement of how much albumin is in your urine. - creatinine..."
+        ]
+      }
+    ]
+  },
+  {
+    "idx": 4,
+    "query_id": "S-01821",
+    "intent": "medication_query",
+    "urgency": "routine",
+    "validation_status": "manual_required",
+    "avg_nli": 0.0325,
+    "citation_coverage": 1.0,
+    "mismatch_flag": false,
+    "missing_context_flag": false,
+    "has_draft": true,
+    "sentences": [
+      {
+        "s_idx": 1,
+        "text": "If you missed your morning dose of metoprolol succinate, take it now if it is almost time for your next dose, but do not double the dose.",
+        "citations": [
+          "kb:KB-FDA0133:chunk0003"
+        ],
+        "nli_score": 0.0051,
+        "claim_type": "general_info",
+        "cited_texts": [
+          "[kb:KB-FDA0133:chunk0003] 4 ) and clinical pharmacology ( 12. 3 ) ]. metoprolol succinate extended - release tablets has not been studied in pedia..."
+        ]
+      },
+      {
+        "s_idx": 2,
+        "text": "It is important to take metoprolol succinate regularly and continuously as directed to manage your heart condition effectively.",
+        "citations": [
+          "kb:KB-FDA0133:chunk0037"
+        ],
+        "nli_score": 0.0738,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-FDA0133:chunk0037] 17 PATIENT COUNSELING INFORMATION Advise patients to take metoprolol succinate extended-release tablets regularly and co..."
+        ]
+      },
+      {
+        "s_idx": 3,
+        "text": "If you are unsure about what to do, contact your healthcare provider for further guidance.",
+        "citations": [
+          "kb:KB-FDA0133:chunk0008"
+        ],
+        "nli_score": 0.0187,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-FDA0133:chunk0008] release tablets, particularly in patients with ischemic heart disease, gradually reduce the dosage over a period of 1 to..."
+        ]
+      }
+    ]
+  },
+  {
+    "idx": 5,
+    "query_id": "S-01822",
+    "intent": "medication_query",
+    "urgency": "routine",
+    "validation_status": "manual_required",
+    "avg_nli": 0.0102,
+    "citation_coverage": 1.0,
+    "mismatch_flag": false,
+    "missing_context_flag": false,
+    "has_draft": true,
+    "sentences": [
+      {
+        "s_idx": 1,
+        "text": "If you missed your morning dose of Hydrocodone Bitartrate, you can take it now if it is not close to the time for your next dose.",
+        "citations": [
+          "kb:KB-FDA0145:chunk0003"
+        ],
+        "nli_score": 0.0069,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-FDA0145:chunk0003] ml to 10 ng / ml 2. 1 important administration instructions tacrolimus extended - release capsules should not be used wi..."
+        ]
+      },
+      {
+        "s_idx": 2,
+        "text": "It is important to follow your prescribed dosing schedule to manage your pain effectively and avoid potential side effects.",
+        "citations": [
+          "kb:KB-FDA0145:chunk0003"
+        ],
+        "nli_score": 0.0161,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-FDA0145:chunk0003] ml to 10 ng / ml 2. 1 important administration instructions tacrolimus extended - release capsules should not be used wi..."
+        ]
+      },
+      {
+        "s_idx": 3,
+        "text": "If you are unsure about whether to take the missed dose, contact your healthcare provider for guidance.",
+        "citations": [
+          "kb:KB-FDA0145:chunk0003"
+        ],
+        "nli_score": 0.0075,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-FDA0145:chunk0003] ml to 10 ng / ml 2. 1 important administration instructions tacrolimus extended - release capsules should not be used wi..."
+        ]
+      }
+    ]
+  },
+  {
+    "idx": 6,
+    "query_id": "S-01823",
+    "intent": "medication_query",
+    "urgency": "routine",
+    "validation_status": "manual_required",
+    "avg_nli": 0.0052,
+    "citation_coverage": 1.0,
+    "mismatch_flag": false,
+    "missing_context_flag": false,
+    "has_draft": true,
+    "sentences": [
+      {
+        "s_idx": 1,
+        "text": "If you missed your morning dose of Levothyroxine Sodium, take it now if it is still within 4 hours of your usual time, as directed by your healthcare provider.",
+        "citations": [
+          "kb:KB-FDA0036:chunk0003"
+        ],
+        "nli_score": 0.0019,
+        "claim_type": "general_info",
+        "cited_texts": [
+          "[kb:KB-FDA0036:chunk0003] 2 dosage and administration administer once daily, preferably on an empty stomach, one - half to one hour before breakfa..."
+        ]
+      },
+      {
+        "s_idx": 2,
+        "text": "If it is more than 4 hours past your usual time, skip the missed dose and take your next dose at the regular time to avoid overdosing.",
+        "citations": [
+          "kb:KB-FDA0128:chunk0002"
+        ],
+        "nli_score": 0.0005,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-FDA0128:chunk0002] 2 dosage and administration \u2022 administer once daily, preferably on an empty stomach, one - half to one hour before break..."
+        ]
+      },
+      {
+        "s_idx": 3,
+        "text": "Make sure to take Levothyroxine Sodium on an empty stomach, one-half to one hour before breakfast, with a full glass of water.",
+        "citations": [
+          "kb:KB-FDA0036:chunk0003"
+        ],
+        "nli_score": 0.013,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-FDA0036:chunk0003] 2 dosage and administration administer once daily, preferably on an empty stomach, one - half to one hour before breakfa..."
+        ]
+      }
+    ]
+  },
+  {
+    "idx": 7,
+    "query_id": "S-01951",
+    "intent": "symptom_report",
+    "urgency": "routine",
+    "validation_status": "manual_required",
+    "avg_nli": 0.0054,
+    "citation_coverage": 1.0,
+    "mismatch_flag": false,
+    "missing_context_flag": false,
+    "has_draft": true,
+    "sentences": [
+      {
+        "s_idx": 1,
+        "text": "Your constant headache could be related to your abnormal findings on diagnostic imaging of the heart and coronary circulation, as these conditions can sometimes cause referred pain or systemic symptoms.",
+        "citations": [
+          "kb:KB-MP0032:chunk0001"
+        ],
+        "nli_score": 0.0052,
+        "claim_type": "general_info",
+        "cited_texts": [
+          "[kb:KB-MP0032:chunk0001] high blood pressure, high cholesterol, or high blood glucose ( diabetes ) - have a family history of heart disease, espe..."
+        ]
+      },
+      {
+        "s_idx": 2,
+        "text": "However, headaches are often caused by other factors such as stress, which is also listed in your medical records.",
+        "citations": [
+          "ehr:condition:58474"
+        ],
+        "nli_score": 0.0003,
+        "claim_type": "patient_fact",
+        "cited_texts": [
+          "[ehr:condition:58474] (source text not in top ehr/kb json)"
+        ]
+      },
+      {
+        "s_idx": 3,
+        "text": "It is important to monitor your symptoms and consult your doctor if the headache persists or worsens, as it could be a sign of a more serious condition.",
+        "citations": [
+          "kb:KB-MP0686:chunk0006"
+        ],
+        "nli_score": 0.0108,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-MP0686:chunk0006] . medicines that make your heart work harder sometimes cause symptoms such as chest pain, dizziness, or nausea. an iv ma..."
+        ]
+      }
+    ]
+  },
+  {
+    "idx": 8,
+    "query_id": "S-01952",
+    "intent": "symptom_report",
+    "urgency": "routine",
+    "validation_status": "manual_required",
+    "avg_nli": 0.0033,
+    "citation_coverage": 1.0,
+    "mismatch_flag": false,
+    "missing_context_flag": false,
+    "has_draft": true,
+    "sentences": [
+      {
+        "s_idx": 1,
+        "text": "Your constant headache could be related to your ischemic heart disease, as both conditions can be linked to stress and other systemic factors.",
+        "citations": [
+          "ehr:condition:3392",
+          "kb:KB-MP0032:chunk0001"
+        ],
+        "nli_score": 0.003,
+        "claim_type": "patient_fact",
+        "cited_texts": [
+          "[ehr:condition:3392] (source text not in top ehr/kb json)",
+          "[kb:KB-MP0032:chunk0001] high blood pressure, high cholesterol, or high blood glucose ( diabetes ) - have a family history of heart disease, espe..."
+        ]
+      },
+      {
+        "s_idx": 2,
+        "text": "However, headaches are not a typical symptom of ischemic heart disease, and it's important to consider other potential causes such as stress or medication side effects.",
+        "citations": [
+          "kb:KB-MP0032:chunk0001",
+          "ehr:condition:3392"
+        ],
+        "nli_score": 0.0008,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-MP0032:chunk0001] high blood pressure, high cholesterol, or high blood glucose ( diabetes ) - have a family history of heart disease, espe...",
+          "[ehr:condition:3392] (source text not in top ehr/kb json)"
+        ]
+      },
+      {
+        "s_idx": 3,
+        "text": "It's recommended to monitor your symptoms and consult your doctor if the headache persists or worsens, as they can assess for other contributing factors.",
+        "citations": [
+          "kb:KB-MP0032:chunk0001",
+          "ehr:condition:3392"
+        ],
+        "nli_score": 0.0062,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-MP0032:chunk0001] high blood pressure, high cholesterol, or high blood glucose ( diabetes ) - have a family history of heart disease, espe...",
+          "[ehr:condition:3392] (source text not in top ehr/kb json)"
+        ]
+      }
+    ]
+  },
+  {
+    "idx": 9,
+    "query_id": "S-01953",
+    "intent": "symptom_report",
+    "urgency": "routine",
+    "validation_status": "manual_required",
+    "avg_nli": 0.0084,
+    "citation_coverage": 1.0,
+    "mismatch_flag": false,
+    "missing_context_flag": false,
+    "has_draft": true,
+    "sentences": [
+      {
+        "s_idx": 1,
+        "text": "Your persistent throbbing headache could be related to stress, which is an active finding in your medical record.",
+        "citations": [
+          "ehr:condition:58474"
+        ],
+        "nli_score": 0.0006,
+        "claim_type": "patient_fact",
+        "cited_texts": [
+          "[ehr:condition:58474] (source text not in top ehr/kb json)"
+        ]
+      },
+      {
+        "s_idx": 2,
+        "text": "The abnormal findings from your diagnostic imaging of the heart and coronary circulation may contribute to headaches, especially if there are underlying cardiovascular issues.",
+        "citations": [
+          "ehr:condition:58441"
+        ],
+        "nli_score": 0.0006,
+        "claim_type": "patient_fact",
+        "cited_texts": [
+          "[ehr:condition:58441] (source text not in top ehr/kb json)"
+        ]
+      },
+      {
+        "s_idx": 3,
+        "text": "It is important to monitor your symptoms and consider discussing them with your doctor, as they may be related to your existing conditions or medications.",
+        "citations": [
+          "kb:KB-MP0190:chunk0001"
+        ],
+        "nli_score": 0.0239,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-MP0190:chunk0001] health conditions, which can include heart and blood vessel diseases, lung diseases, kidney diseases, obesity, and sleep..."
+        ]
+      }
+    ]
+  },
+  {
+    "idx": 10,
+    "query_id": "S-02471",
+    "intent": "followup_appointment",
+    "urgency": "routine",
+    "validation_status": "manual_required",
+    "avg_nli": 0.0017,
+    "citation_coverage": 1.0,
+    "mismatch_flag": false,
+    "missing_context_flag": false,
+    "has_draft": true,
+    "sentences": [
+      {
+        "s_idx": 1,
+        "text": "To schedule your follow-up visit for essential hypertension, you should contact your healthcare provider's office directly.",
+        "citations": [
+          "kb:KB-MP0607:chunk0004"
+        ],
+        "nli_score": 0.0005,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-MP0607:chunk0004] 1 | 130 - 139 | or | 80 - 89 high blood pressure stage 2 | 140 or higher | or | 90 or higher hypertensive crisis ( dange..."
+        ]
+      },
+      {
+        "s_idx": 2,
+        "text": "Your provider may want to monitor your blood pressure and adjust your treatment plan as needed.",
+        "citations": [
+          "kb:KB-FDA0015:chunk0002"
+        ],
+        "nli_score": 0.0046,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-FDA0015:chunk0002] INDICATIONS AND USAGE Essential hypertension, alone or as an adjunct...."
+        ]
+      },
+      {
+        "s_idx": 3,
+        "text": "Make sure to bring any medications you are taking, including Hydrochlorothiazide, lisinopril, and amlodipine, to your appointment.",
+        "citations": [
+          "ehr:condition:74024"
+        ],
+        "nli_score": 0.0001,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[ehr:condition:74024] (source text not in top ehr/kb json)"
+        ]
+      }
+    ]
+  },
+  {
+    "idx": 11,
+    "query_id": "S-02472",
+    "intent": "followup_appointment",
+    "urgency": "routine",
+    "validation_status": "manual_required",
+    "avg_nli": 0.0044,
+    "citation_coverage": 1.0,
+    "mismatch_flag": false,
+    "missing_context_flag": false,
+    "has_draft": true,
+    "sentences": [
+      {
+        "s_idx": 1,
+        "text": "To schedule your follow-up visit for the Polyp of colon, you should contact your healthcare provider's office directly.",
+        "citations": [
+          "ehr:condition:76381"
+        ],
+        "nli_score": 0.0047,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[ehr:condition:76381] (source text not in top ehr/kb json)"
+        ]
+      },
+      {
+        "s_idx": 2,
+        "text": "Your provider will be able to help you find a convenient time based on their availability and your needs.",
+        "citations": [
+          "ehr:encounter:0cb24d24-cb62-5e83-5e3b-96caf5e65832"
+        ],
+        "nli_score": 0.0008,
+        "claim_type": "patient_fact",
+        "cited_texts": [
+          "[ehr:encounter:0cb24d24-cb62-5e83-5e3b-96caf5e65832] (source text not in top ehr/kb json)"
+        ]
+      },
+      {
+        "s_idx": 3,
+        "text": "Make sure to mention that this is a follow-up for your colon polyp, so they can prepare accordingly.",
+        "citations": [
+          "kb:KB-MP0295:chunk0001"
+        ],
+        "nli_score": 0.0078,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-MP0295:chunk0001] early stage, when they are easier to treat. if aren't at higher risk for colorectal cancer, your health care provider wi..."
+        ]
+      }
+    ]
+  },
+  {
+    "idx": 12,
+    "query_id": "S-02473",
+    "intent": "followup_appointment",
+    "urgency": "routine",
+    "validation_status": "manual_required",
+    "avg_nli": 0.0021,
+    "citation_coverage": 1.0,
+    "mismatch_flag": false,
+    "missing_context_flag": false,
+    "has_draft": true,
+    "sentences": [
+      {
+        "s_idx": 1,
+        "text": "To schedule your follow-up visit for osteoarthritis of the knee, contact your healthcare provider's office directly using the contact information they provided.",
+        "citations": [
+          "ehr:condition:658"
+        ],
+        "nli_score": 0.004,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[ehr:condition:658] (source text not in top ehr/kb json)"
+        ]
+      },
+      {
+        "s_idx": 2,
+        "text": "Your provider may need to review your current symptoms and treatment plan to ensure your care remains effective and up-to-date.",
+        "citations": [
+          "ehr:condition:658"
+        ],
+        "nli_score": 0.0012,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[ehr:condition:658] (source text not in top ehr/kb json)"
+        ]
+      },
+      {
+        "s_idx": 3,
+        "text": "You can also ask about any additional tests or referrals that may be needed to manage your condition better.",
+        "citations": [
+          "kb:KB-MP0374:chunk0002"
+        ],
+        "nli_score": 0.0012,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-MP0374:chunk0002] exercises to improve strength, flexibility and balance - weight loss, if needed, to improve pain, especially in your hip..."
+        ]
+      }
+    ]
+  },
+  {
+    "idx": 13,
+    "query_id": "S-00261",
+    "intent": "general_health_info",
+    "urgency": "routine",
+    "validation_status": "manual_required",
+    "avg_nli": 0.0007,
+    "citation_coverage": 1.0,
+    "mismatch_flag": false,
+    "missing_context_flag": false,
+    "has_draft": true,
+    "sentences": [
+      {
+        "s_idx": 1,
+        "text": "To help manage your anemia, it's important to ensure you're getting enough iron in your diet, as iron deficiency is a common cause of anemia.",
+        "citations": [
+          "kb:KB-MP0057:chunk0003"
+        ],
+        "nli_score": 0.0007,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-MP0057:chunk0003] don't start. if you do smoke, talk to yourprovider for help in finding the best way for you to quit. - managing stress. ..."
+        ]
+      },
+      {
+        "s_idx": 2,
+        "text": "You should also avoid excessive blood loss, which can worsen anemia, and consider discussing any potential causes like heavy periods or other conditions with your healthcare provider.",
+        "citations": [
+          "kb:KB-MP0057:chunk0003"
+        ],
+        "nli_score": 0.001,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-MP0057:chunk0003] don't start. if you do smoke, talk to yourprovider for help in finding the best way for you to quit. - managing stress. ..."
+        ]
+      },
+      {
+        "s_idx": 3,
+        "text": "Maintaining a healthy lifestyle, including regular physical activity and managing stress, can also support your overall health and help manage anemia.",
+        "citations": [
+          "kb:KB-MP0746:chunk0002"
+        ],
+        "nli_score": 0.0003,
+        "claim_type": "general_info",
+        "cited_texts": [
+          "[kb:KB-MP0746:chunk0002] but changing certain lifestyle factors may promote your brain health and help you live a healthier lifestyle overall. th..."
+        ]
+      }
+    ]
+  },
+  {
+    "idx": 14,
+    "query_id": "S-00262",
+    "intent": "general_health_info",
+    "urgency": "routine",
+    "validation_status": "manual_required",
+    "avg_nli": 0.0014,
+    "citation_coverage": 1.0,
+    "mismatch_flag": false,
+    "missing_context_flag": false,
+    "has_draft": true,
+    "sentences": [
+      {
+        "s_idx": 1,
+        "text": "To manage your Acute ST segment elevation myocardial infarction, it is important to be more physically active, which can include walking, running, swimming, dancing, or activities that build strength, like lifting weights.",
+        "citations": [
+          "kb:KB-C01:chunk0003"
+        ],
+        "nli_score": 0.0011,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-C01:chunk0003] . - be more physically active, which can include walking, running, swimming, dancing or activities that build strength, ..."
+        ]
+      },
+      {
+        "s_idx": 2,
+        "text": "You should also take your medicines as prescribed by your health care professional and keep all your appointments with your health care professional.",
+        "citations": [
+          "kb:KB-C01:chunk0003"
+        ],
+        "nli_score": 0.0015,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-C01:chunk0003] . - be more physically active, which can include walking, running, swimming, dancing or activities that build strength, ..."
+        ]
+      },
+      {
+        "s_idx": 3,
+        "text": "Avoid eating too much salty food and try to stay under 2 grams per day of sodium intake.",
+        "citations": [
+          "kb:KB-C01:chunk0003"
+        ],
+        "nli_score": 0.0016,
+        "claim_type": "advice_lifestyle",
+        "cited_texts": [
+          "[kb:KB-C01:chunk0003] . - be more physically active, which can include walking, running, swimming, dancing or activities that build strength, ..."
+        ]
+      }
+    ]
+  },
+  {
+    "idx": 15,
+    "query_id": "S-00263",
+    "intent": "general_health_info",
+    "urgency": "routine",
+    "validation_status": "manual_required",
+    "avg_nli": null,
+    "citation_coverage": null,
+    "mismatch_flag": true,
+    "missing_context_flag": false,
+    "has_draft": false,
+    "sentences": []
+  }
+]

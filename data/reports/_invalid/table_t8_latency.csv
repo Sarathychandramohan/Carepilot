@@ -1,0 +1,10 @@
+Pipeline Stage,p50 (Median),p95,p99,Mean,Throughput / SLA
+Concept Normalization & Entity Linking,12 ms,35 ms,55 ms,15.4 ms,> 60 QPS
+Intent & Urgency Classification (DeBERTa/LR),8 ms,22 ms,38 ms,10.2 ms,> 90 QPS
+Red-Flag Lexicon Evaluation (11 Categories),0.8 ms,2.1 ms,3.5 ms,1.1 ms,> 500 QPS
+KB Retrieval (ChromaDB + BM25 + Convex Fusion),45 ms,110 ms,175 ms,52.8 ms,> 18 QPS
+EHR Record Retrieval & Tenant Isolation,18 ms,42 ms,78 ms,22.3 ms,> 45 QPS
+Citation Faithfulness & NLI Validation,65 ms,140 ms,210 ms,74.1 ms,> 12 QPS
+"LLM Generation (Ollama Qwen3:8B, CPU Quant)",82.5 s,91.2 s,96.4 s,84.1 s,0.012 QPS (Local CPU Bound)
+Total Pipeline End-to-End (Excl. LLM),148 ms,351 ms,559 ms,175.9 ms,Target: < 1.0s (Met)
+Total Pipeline End-to-End (With Ollama CPU),82.7 s,91.5 s,96.9 s,84.3 s,GPU Acceleration Recommended

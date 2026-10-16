@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from fastapi import APIRouter, Depends, Query
-from sqlalchemy import desc, text
+from sqlalchemy import case, desc, text
 from sqlalchemy.orm import Session
 
 from backend.app.db.models_v3 import Consultation
@@ -39,21 +39,30 @@ async def get_queue(
     """
     Returns consultations awaiting doctor review.
 
-    Ordering: high-priority first, then by creation time ascending (oldest first).
+    Ordering: 3-tier urgency hierarchy (urgent > soon > routine),
+    then FIFO by creation time ascending (oldest first).
+    Excludes evaluation queries (is_eval == False).
     Supports optional filtering by ablation_arm for research analysis.
     """
     q = db.query(Consultation).filter(
-        Consultation.thread_status == "awaiting_doctor"
+        Consultation.thread_status == "awaiting_doctor",
+        Consultation.is_eval == False,
     )
 
     if ablation_arm:
         q = q.filter(Consultation.ablation_arm == ablation_arm)
 
-    # High priority first, then FIFO
+    # 3-tier urgency order (urgent=0, soon=1, routine=2), then FIFO
+    urgency_order = case(
+        (Consultation.urgency_final == "urgent", 0),
+        (Consultation.urgency_final == "soon", 1),
+        else_=2,
+    )
+
     rows = (
         q.order_by(
-            desc(Consultation.is_high_priority),
-            Consultation.created_at,
+            urgency_order,
+            Consultation.created_at.asc(),
         )
         .offset(offset)
         .limit(limit)
@@ -100,7 +109,7 @@ async def get_queue_stats(db: Session = Depends(get_db)) -> dict:
                 SUM(CASE WHEN validation_status = 'passed_with_outlier_caveat' THEN 1 ELSE 0 END) AS status_outlier_caveat,
                 SUM(CASE WHEN validation_status = 'manual_required' THEN 1 ELSE 0 END)          AS status_manual
             FROM consultations
-            WHERE thread_status = 'awaiting_doctor'
+            WHERE thread_status = 'awaiting_doctor' AND is_eval = FALSE
         """)
     ).fetchone()
 
@@ -108,7 +117,7 @@ async def get_queue_stats(db: Session = Depends(get_db)) -> dict:
         text("""
             SELECT ablation_arm, COUNT(*) AS count
             FROM consultations
-            WHERE thread_status = 'awaiting_doctor'
+            WHERE thread_status = 'awaiting_doctor' AND is_eval = FALSE
             GROUP BY ablation_arm
             ORDER BY count DESC
         """)

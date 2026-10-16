@@ -1,0 +1,3 @@
+Metric,Value,95% Bootstrap CI,Spec Reference / Status
+T7 Table Status,NOT COMPUTED,NOT COMPUTED — no real doctor review data present. rq3_stream.jsonl has 60 queries but 0 reviewed consultations exist in the database (doctor_action IS NULL for all eval_run_id rows 3-7). Synthetic formula removed per Block A quarantine 2026-10-16.,Block A Quarantine
+T7 Figure F3 Status,NOT COMPUTED,NOT COMPUTED — no real doctor review data present. rq3_stream.jsonl has 60 queries but 0 reviewed consultations exist in the database (doctor_action IS NULL for all eval_run_id rows 3-7). Synthetic formula removed per Block A quarantine 2026-10-16.,Block A Quarantine

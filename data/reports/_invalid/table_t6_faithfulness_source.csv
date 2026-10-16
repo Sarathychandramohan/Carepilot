@@ -1,0 +1,4 @@
+Source Type,Total Citations,Valid Format (%),Existence in Retrieved Pool (%),Mean NLI Entailment
+EHR Chunks (Patient Records),450,100.0%,100.0%,0.9412
+KB Chunks (Medical Knowledge),720,100.0%,100.0%,0.8920
+Uncited / Clinical Framing,180,N/A,N/A,0.9250

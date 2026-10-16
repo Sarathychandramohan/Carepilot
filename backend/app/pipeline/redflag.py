@@ -51,8 +51,10 @@ REDFLAG_CATEGORIES: dict[str, dict[str, Any]] = {
     "stroke_indicators": {
         "label": "Neurological / Stroke Indicator (FAST)",
         "triggers": [
+            r"\b(face|facial)\\s+(is\\s+)?(droop|drooping|numbness|drooped)\b",
             r"\b(face|facial)\s+(is\s+)?(droop|drooping|numbness|drooped)\b",
-            r"\b(sudden\s+)?(weakness|numbness|paralysis)\s+(in\s+)?(my\s+)?(arm|leg|side|face)\b",
+            # Weakness/numbness/paralysis — allow an optional descriptor word before limb (e.g. "left arm", "right side")
+            r"\b(sudden\s+)?(weakness|numbness|paralysis)\s+(in\s+)?(my\s+)?(\w+\s+)?(arm|leg|side|face)\b",
             r"\b(arm|leg|face)\s+(suddenly\s+)?(went\s+)?(numb|weak|paralyzed)\b",
             r"\b(slurred\s+speech|inability\s+to\s+speak|difficulty\s+speaking)\b",
             r"\bsudden\s+(vision\s+loss|blindness|double\s+vision)\b",
@@ -80,7 +82,9 @@ REDFLAG_CATEGORIES: dict[str, dict[str, Any]] = {
     "anaphylaxis": {
         "label": "Severe Allergic Reaction / Anaphylaxis",
         "triggers": [
-            r"\b(throat|tongue|lip|airway)\s+(swelling|closing|swollen)\b",
+            # Throat/airway closing/swelling — allow extra words between noun and verb (e.g. "swelling and closing")
+            r"\b(throat|tongue|lip|airway)\s+(is\s+)?(swelling|closing|swollen)\b",
+            r"\b(throat|tongue|lip|airway)\s+\w+\s*(and\s+)?(swelling|closing|swollen)\b",
             r"\bswelling\s+shut\b",
             r"\banaphylaxis\b",
             r"\bhives\s+and\s+(difficulty\s+breathing|swelling)\b",
@@ -89,9 +93,14 @@ REDFLAG_CATEGORIES: dict[str, dict[str, Any]] = {
     "self_harm": {
         "label": "Self-Harm / Psychiatric Emergency",
         "triggers": [
-            r"\b(kill\s+myself|end\s+my\s+life|suicide|suicidal|dark\s+thoughts)\b",
+            # Cover base and gerund: kill/killing myself/yourself/themselves
+            r"\b(kill|killing)\s+(my|your)self\b",
+            r"\b(kill|killing)\s+themselves\b",
+            r"\bend\s+my\s+life\b",
+            r"\b(suicide|suicidal|dark\s+thoughts)\b",
             r"\b(hurt\s+myself|harm\s+myself|want\s+to\s+die)\b",
             r"\bno\s+reason\s+to\s+(live|keep\s+living)\b",
+            r"\b(overdose|swallow(?:ing|ed|s)?\s+.{0,30}pill\s*bottle)\b",
         ],
     },
     "meningitis_sepsis": {
@@ -100,6 +109,8 @@ REDFLAG_CATEGORIES: dict[str, dict[str, Any]] = {
             r"\b(high\s+fever|fever\s+of\s+10[3-9])\s+.*(stiff\s+neck|confusion)\b",
             r"\bstiff\s+neck\s+.*(high\s+fever|fever\s+of\s+10[3-9])\b",
             r"\b(severe\s+)?stiff\s+neck\b",
+            # Also match "neck stiffness" phrasing
+            r"\bneck\s+stiffness\b",
         ],
     },
     "acute_abdomen_gi_bleed": {
@@ -107,6 +118,35 @@ REDFLAG_CATEGORIES: dict[str, dict[str, Any]] = {
         "triggers": [
             r"\b(severe\s+abdominal\s+pain|acute\s+belly\s+pain|stomach\s+pain\s+and\s+vomiting)\b",
             r"\bupset\s+stomach\s+with\s+mild\s+reflux\b",
+        ],
+    },
+    "sudden_severe_headache": {
+        "label": "Sudden Severe Headache / Thunderclap / SAH",
+        "triggers": [
+            r"\b(worst\s+headache\s+of\s+my\s+life|worst\s+headache\s+i('?ve)?\s+(ever\s+)?had)\b",
+            r"\bthunderclap\s+headache\b",
+            r"\b(sudden(ly)?|out\s+of\s+nowhere|came\s+on\s+suddenly|hit\s+me\s+suddenly)\s+.{0,30}(severe\s+)?headache\b",
+            r"\b(severe\s+|splitting\s+|excruciating\s+|blinding\s+)headache\s+(that\s+)?(came\s+on\s+suddenly|started\s+suddenly|out\s+of\s+nowhere)\b",
+            r"\b(subarachnoid|sah|brain\s+aneurysm)\b",
+            r"\bheadache\s+(with|and)\s+(stiff\s+neck|neck\s+stiffness|light\s+sensitivity|photophobia|nausea\s+and\s+vomiting|confusion|vision\s+(changes|loss))\b",
+            r"\bmy\s+head\s+(is\s+)?(exploding|about\s+to\s+explode|splitting\s+open|feels?\s+like\s+it'?s?\s+going\s+to\s+explode)\b",
+        ],
+    },
+    "overdose_poisoning": {
+        "label": "Drug Overdose / Toxic Poisoning",
+        "triggers": [
+            # overdose / OD — cover conjugations and colloquial "OD'd"
+            r"\b(accidental\s+)?overdoses?\b",
+            r"\bOD'?d?\b",
+            r"\btook\s+(too\s+many|too\s+much)\s+.{0,30}(pills?|tablets?|capsules?|medication|medicine|mg)\b",
+            r"\b(swallowed?|ingested?|took)\s+.{0,25}(entire\s+bottle|whole\s+bottle|all\s+(the\s+)?pills?|all\s+(the\s+)?tablets?)\b",
+            r"\b(suspected\s+|possible\s+)?poisoning\b",
+            r"\btoxic\s+(exposure|ingestion|reaction|dose)\b",
+            r"\b(carbon\s+monoxide|CO)\s+(poisoning|exposure|leak)\b",
+            r"\bfood\s+poisoning\s+.*(severe|can'?t\s+(breathe|move|stand))\b",
+            r"\b(naloxone|narcan)\s+(needed|used|given)\b",
+            r"\b(not\s+breathing|stopped\s+breathing|blue\s+lips|unresponsive)\s+.{0,30}(pill|drug|opioid|heroin|fentanyl|morphine|methadone)\b",
+            r"\b(heroin|fentanyl|opioid)\s+(overdose|OD)\b",
         ],
     },
 }

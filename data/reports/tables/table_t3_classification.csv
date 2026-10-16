@@ -1,0 +1,5 @@
+Dataset Split,Task,Total Evaluated,Accuracy (%),Macro-Precision,Macro-Recall,Macro-F1
+Gold (All 500),Intent Classification,500,71.20%,0.6743,0.6606,0.6467
+Gold (All 500),Urgency Classification,500,81.80%,0.7955,0.6865,0.5864
+Silver (1000),Intent Classification,1000,100.00%,1.0000,1.0000,1.0000
+Silver (1000),Urgency Classification,1000,100.00%,1.0000,1.0000,1.0000

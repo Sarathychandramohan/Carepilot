@@ -45,6 +45,8 @@ def _build_retrieval_trace(
     ehr_chunks: list[EHRChunk],
     kb_chunks: list[KBChunk],
     ehr_loinc_codes: list[str],
+    is_dual_intent: bool = False,
+    secondary_intent: str | None = None,
 ) -> dict:
     """Build retrieval_trace_json logged to the consultations table."""
     return {
@@ -52,6 +54,8 @@ def _build_retrieval_trace(
         "ehr_rows_returned": len(ehr_chunks),
         "ehr_outlier_count": sum(1 for c in ehr_chunks if c.is_outlier),
         "ehr_chunk_ids": [c.stable_eid for c in ehr_chunks],
+        "is_dual_intent": is_dual_intent,
+        "secondary_intent": secondary_intent,
         "kb_rrf_top_chunks": [
             {"chunk_id": c.chunk_id, "score_rrf": c.score_rrf} for c in kb_chunks
         ],
@@ -132,6 +136,8 @@ def run_pipeline(
     db: Session,
     ablation_config: str = "full",
     edit_memory: bool = False,
+    is_eval: bool = False,
+    eval_run_id: int | None = None,
 ) -> Consultation:
     """
     Full B1→B6 pipeline orchestrator.
@@ -142,10 +148,18 @@ def run_pipeline(
         db:              SQLAlchemy session
         ablation_config: One of: full | no_ehr | no_classifier | unified_context
         edit_memory:     If True, inject D6 prior approved responses into B4 prompt
+        is_eval:         Authorization flag required for eval-only ablations like no_classifier
+        eval_run_id:     Optional FK linking row to eval_runs table for Pillar C harness
 
     Returns:
         Consultation ORM object (committed to DB)
     """
+    # Authorization Gate: no_classifier arm is strictly restricted to eval runs
+    if ablation_config == "no_classifier" and not is_eval:
+        raise PermissionError(
+            "Ablation arm 'no_classifier' requires explicit evaluation authorization (is_eval=True)."
+        )
+
     now = datetime.datetime.utcnow()
 
     # ── B1: Create consultation record ────────────────────────────────────────
@@ -157,9 +171,12 @@ def run_pipeline(
         ablation_arm=ablation_config,
         retrieval_config=ablation_config,
         prompt_version="v1",
+        is_eval=is_eval,
+        eval_run_id=eval_run_id,
         created_at=now,
         updated_at=now,
     )
+
 
     # ── B2: Red-flag check ────────────────────────────────────────────────────
     redflag = evaluate_red_flags(query_text)
@@ -230,7 +247,12 @@ def run_pipeline(
         consultation.retrieval_config = "kb_only"
     else:
         ehr_chunks = retrieve_ehr(
-            patient_id, resolved_concepts, consultation.intent, db
+            patient_id=patient_id,
+            normalized_concepts=resolved_concepts,
+            intent=consultation.intent,
+            db=db,
+            secondary_intent=intent_result.get("secondary_intent"),
+            is_dual_intent=intent_result.get("is_dual_intent", False),
         )
         consultation.retrieval_config = (
             "unified_ehr_kb" if ablation_config == "unified_context" else "ehr_and_kb"
@@ -241,11 +263,17 @@ def run_pipeline(
     # Log retrieval trace
     consultation.ehr_chunks_json = [c.to_dict() for c in ehr_chunks]
     consultation.kb_chunks_json = [c.to_dict() for c in kb_chunks]
-    consultation.retrieval_trace_json = _build_retrieval_trace(ehr_chunks, kb_chunks, ehr_loinc)
+    consultation.retrieval_trace_json = _build_retrieval_trace(
+        ehr_chunks,
+        kb_chunks,
+        ehr_loinc,
+        is_dual_intent=intent_result.get("is_dual_intent", False),
+        secondary_intent=intent_result.get("secondary_intent"),
+    )
     consultation.outlier_chunk_count = sum(1 for c in ehr_chunks if c.is_outlier)
 
     # ── B3.3: D17 conflict / missing-context detection ────────────────────────
-    d17 = run_d17_checks(resolved_concepts, ehr_chunks, kb_chunks)
+    d17 = run_d17_checks(resolved_concepts, ehr_chunks, kb_chunks, intent=consultation.intent)
     consultation.patient_ehr_mismatch_flag = d17["patient_ehr_mismatch"]
     consultation.missing_context_flag = d17["missing_context"]
 

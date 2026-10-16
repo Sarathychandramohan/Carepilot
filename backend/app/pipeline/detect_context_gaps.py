@@ -22,6 +22,7 @@ KB_RRF_THRESHOLD = 0.25
 def detect_ehr_mismatch(
     normalized_concepts: list[dict],
     ehr_chunks: list[EHRChunk],
+    intent: str | None = None,
 ) -> bool:
     """
     D17a: Returns True when the patient's query references a clinical concept
@@ -31,28 +32,30 @@ def detect_ehr_mismatch(
     prescription appears in ehr_chunks → mismatch → manual_required.
 
     Only triggers for concepts with domain in {lab, medication, condition}.
-    Concepts from general_health_info queries (domain=general) are excluded
+    Concepts from general_health_info queries (intent=general_health_info) are excluded
     because those are knowledge questions, not EHR-grounded.
     """
-    if not ehr_chunks:
-        # No EHR data at all — handled by D17b, not D17a
+    if intent == "general_health_info":
         return False
+
+    clinical_concepts = [
+        c for c in normalized_concepts
+        if c.get("domain") in ("lab", "medication", "condition")
+        and (c.get("canonical_label") or "").strip()
+    ]
+    if not clinical_concepts:
+        return False
+
+    if not ehr_chunks:
+        # Patient asked an EHR-oriented question with a specific clinical concept,
+        # but has zero matching EHR records for it → mismatch
+        return True
 
     # Build a set of labels from retrieved chunks (case-insensitive)
     retrieved_labels = {c.label.lower().strip() for c in ehr_chunks}
-    retrieved_types = {c.source_type for c in ehr_chunks}
 
-    for concept in normalized_concepts:
-        domain = concept.get("domain", "")
-        if domain not in ("lab", "medication", "condition"):
-            continue
-
+    for concept in clinical_concepts:
         canonical = (concept.get("canonical_label") or "").lower().strip()
-        if not canonical:
-            continue
-
-        # Check if this concept appears anywhere in retrieved chunks
-        # Allow partial match (e.g. "lisinopril" in "Lisinopril 10 MG Oral Tablet")
         matched = any(canonical in label or label in canonical for label in retrieved_labels)
         if not matched:
             return True
@@ -92,6 +95,7 @@ def run_d17_checks(
     normalized_concepts: list[dict],
     ehr_chunks: list[EHRChunk],
     kb_chunks: list[KBChunk],
+    intent: str | None = None,
 ) -> dict:
     """
     Runs both D17 checks and returns a summary dict for logging.
@@ -104,7 +108,7 @@ def run_d17_checks(
             "reason": str | None,      # "ehr_mismatch" | "missing_context" | None
         }
     """
-    mismatch = detect_ehr_mismatch(normalized_concepts, ehr_chunks)
+    mismatch = detect_ehr_mismatch(normalized_concepts, ehr_chunks, intent=intent)
     missing = detect_missing_context(ehr_chunks, kb_chunks)
 
     if mismatch:

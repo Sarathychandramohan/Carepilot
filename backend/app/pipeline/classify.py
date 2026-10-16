@@ -39,7 +39,10 @@ _URGENCY_DATA = None
 def get_embedder() -> SentenceTransformer:
     global _EMBEDDER
     if _EMBEDDER is None:
-        _EMBEDDER = SentenceTransformer(EMBEDDING_MODEL_NAME)
+        try:
+            _EMBEDDER = SentenceTransformer(EMBEDDING_MODEL_NAME, local_files_only=True)
+        except Exception:
+            _EMBEDDER = SentenceTransformer(EMBEDDING_MODEL_NAME)
     return _EMBEDDER
 
 
@@ -106,11 +109,28 @@ def classify_intent(query_text: str) -> dict[str, Any]:
 
     route = "unsupported" if intent_conf < tau_intent else "draft"
 
+    # ── Dual-Intent Ambiguity Detection (Decision D-007) ──────────────────────
+    # For Adverse Drug Reactions (ADRs) or symptoms after taking medications,
+    # posterior mass often splits between symptom_report and medication_query.
+    is_dual_intent = False
+    secondary_intent = None
+    p_symptom = float(intent_prob_dict.get("symptom_report", 0.0))
+    p_medication = float(intent_prob_dict.get("medication_query", 0.0))
+
+    if pred_intent in ("symptom_report", "medication_query"):
+        other_intent = "medication_query" if pred_intent == "symptom_report" else "symptom_report"
+        other_prob = p_medication if pred_intent == "symptom_report" else p_symptom
+        if other_prob >= 0.02 or abs(p_symptom - p_medication) <= 0.35:
+            is_dual_intent = True
+            secondary_intent = other_intent
+
     return {
         "intent": pred_intent,
         "intent_confidence": round(intent_conf, 4),
         "intent_probs": intent_prob_dict,
         "route": route,
+        "is_dual_intent": is_dual_intent,
+        "secondary_intent": secondary_intent,
         "embedding": emb,  # pass this to classify_urgency() to skip re-encoding
     }
 

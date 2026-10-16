@@ -1,0 +1,19 @@
+Configuration,Split,Metric,Value
+Dense-Only (ChromaDB),gold-dev,Hit@3,26.0
+Dense-Only (ChromaDB),gold-dev,Hit@5,31.33
+Dense-Only (ChromaDB),gold-dev,MRR,0.2166
+BM25-Only (Sparse),gold-dev,Hit@3,35.33
+BM25-Only (Sparse),gold-dev,Hit@5,49.33
+BM25-Only (Sparse),gold-dev,MRR,0.3374
+Hybrid Fusion (alpha=0.5),gold-dev,Hit@3,45.33
+Hybrid Fusion (alpha=0.5),gold-dev,Hit@5,49.33
+Hybrid Fusion (alpha=0.5),gold-dev,MRR,0.3764
+Dense-Only (ChromaDB),gold-test,Hit@3,19.67
+Dense-Only (ChromaDB),gold-test,Hit@5,24.0
+Dense-Only (ChromaDB),gold-test,MRR,0.1642
+BM25-Only (Sparse),gold-test,Hit@3,27.0
+BM25-Only (Sparse),gold-test,Hit@5,35.67
+BM25-Only (Sparse),gold-test,MRR,0.2477
+Hybrid Fusion (alpha=0.5),gold-test,Hit@3,32.33
+Hybrid Fusion (alpha=0.5),gold-test,Hit@5,35.0
+Hybrid Fusion (alpha=0.5),gold-test,MRR,0.2702

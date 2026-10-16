@@ -1,0 +1,160 @@
+{
+  "Gold (All 500)": {
+    "intent": {
+      "labels": [
+        "followup_appointment",
+        "general_health_info",
+        "lab_result_query",
+        "medication_query",
+        "symptom_report",
+        "unsupported"
+      ],
+      "matrix": [
+        [
+          52,
+          15,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          78,
+          0,
+          0,
+          10,
+          0
+        ],
+        [
+          0,
+          22,
+          90,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          0,
+          75,
+          0,
+          0
+        ],
+        [
+          0,
+          15,
+          7,
+          13,
+          61,
+          0
+        ],
+        [
+          0,
+          50,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "urgency": {
+      "labels": [
+        "routine",
+        "soon",
+        "urgent"
+      ],
+      "matrix": [
+        [
+          393,
+          0,
+          7
+        ],
+        [
+          84,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          9
+        ]
+      ]
+    }
+  },
+  "Silver (1000)": {
+    "intent": {
+      "labels": [
+        "followup_appointment",
+        "general_health_info",
+        "lab_result_query",
+        "medication_query",
+        "symptom_report"
+      ],
+      "matrix": [
+        [
+          130,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          130,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          130,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          390,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          220
+        ]
+      ]
+    },
+    "urgency": {
+      "labels": [
+        "routine",
+        "soon",
+        "urgent"
+      ],
+      "matrix": [
+        [
+          780,
+          0,
+          0
+        ],
+        [
+          0,
+          130,
+          0
+        ],
+        [
+          0,
+          0,
+          90
+        ]
+      ]
+    }
+  }
+}

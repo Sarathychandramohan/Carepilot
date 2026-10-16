@@ -1,0 +1,2 @@
+Pipeline Stage,p50 (Median),p95,p99,Mean,Throughput / SLA
+LLM Generation Latency (ms),57777.0,88719.5,102095.0,60720.6,n=51

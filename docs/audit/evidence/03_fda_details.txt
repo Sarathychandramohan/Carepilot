@@ -1,0 +1,39 @@
+=== OPENFDA AND EHR DRUG COUNT ANALYSIS ===
+
+openfda_to_ehr_mapping.json claims:
+  total_drugs: 105
+  in_ehr_count: 51
+  not_in_ehr_count: 54
+
+Duplicate set_ids in openfda_to_ehr_mapping.json: 0
+
+Last 12-char suffix collisions in set_ids: 0
+
+Raw openFDA JSON files found in D:\CarePilotAI\rag_knowledge\raw: 153
+
+Mismatches between raw JSON and openfda_to_ehr_mapping.json: 0
+
+Analyzing EHR medications from: D:\CarePilotAI\synthea\carepilot_output_2k\csv\medications.csv
+Total rows in medications.csv: 113,838
+
+Sum of per-drug recomputed counts: 54,531
+Total rows in medications.csv:     113,838
+Does sum exceed total rows?        NO
+Sum of ehr_rx_count in mapping:    54,594
+
+Top 15 Drugs by count (Mapping vs Recomputed):
+  Lisinopril                : mapping= 9,929 | recomputed= 9,929
+  Acetaminophen             : mapping= 7,607 | recomputed= 7,607
+  Hydrochlorothiazide       : mapping= 7,099 | recomputed= 7,099
+  Amlodipine                : mapping= 5,710 | recomputed= 5,710
+  Albuterol                 : mapping= 4,409 | recomputed= 4,409
+  Fluticasone               : mapping= 3,038 | recomputed= 3,038
+  Metformin                 : mapping= 2,793 | recomputed= 2,793
+  Simvastatin               : mapping= 2,516 | recomputed= 2,516
+  Ibuprofen                 : mapping= 2,380 | recomputed= 2,380
+  Furosemide                : mapping= 1,317 | recomputed= 1,317
+  Budesonide                : mapping= 1,174 | recomputed= 1,174
+  Tramadol                  : mapping=   858 | recomputed=   858
+  Amoxicillin               : mapping=   771 | recomputed=   771
+  Losartan                  : mapping=   661 | recomputed=   661
+  Warfarin                  : mapping=   600 | recomputed=   600

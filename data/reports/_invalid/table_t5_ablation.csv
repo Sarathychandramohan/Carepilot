@@ -1,0 +1,4 @@
+Ablation Arm,Run ID,Consultations Evaluated,Mean Citation Validity,Mean Citation Coverage,Validation Pass Rate,EHR-Fact Accuracy (%),LOINC Ref-Range Caveat
+full,5,150,0.0000,0.0000,0.0%,100.0%,Stated Caveat: 16/40 LOINC Coverage (40%)
+no_ehr,6,150,0.0000,0.0000,0.0%,N/A (No EHR Context),Stated Caveat: 16/40 LOINC Coverage (40%)
+no_classifier,7,150,0.0000,0.0000,0.0%,100.0%,Stated Caveat: 16/40 LOINC Coverage (40%)

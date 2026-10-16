@@ -133,7 +133,7 @@ class LabResult(Base):
         Index("idx_lab_stable_eid", "stable_eid"),
     )
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(String(255), primary_key=True)
     stable_eid = Column(String(80), nullable=True, unique=True)  # set after insert
     patient_id = Column(String(36), ForeignKey("patients.id"), nullable=False)
     encounter_id = Column(String(36), ForeignKey("encounters.id"), nullable=True)
@@ -164,7 +164,7 @@ class Condition(Base):
         Index("idx_cond_stable_eid", "stable_eid"),
     )
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(String(255), primary_key=True)
     stable_eid = Column(String(80), nullable=True, unique=True)
     patient_id = Column(String(36), ForeignKey("patients.id"), nullable=False)
     encounter_id = Column(String(36), ForeignKey("encounters.id"), nullable=True)
@@ -190,7 +190,7 @@ class Prescription(Base):
         Index("idx_rx_stable_eid", "stable_eid"),
     )
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(String(255), primary_key=True)
     stable_eid = Column(String(80), nullable=True, unique=True)
     patient_id = Column(String(36), ForeignKey("patients.id"), nullable=False)
     encounter_id = Column(String(36), ForeignKey("encounters.id"), nullable=True)
@@ -358,6 +358,38 @@ class KBSnapshot(Base):
 # Conversation & Evaluation Tables (used by Pillar C)
 # ---------------------------------------------------------------------------
 
+class EvalRun(Base):
+    """
+    One row per harness invocation.  Created by the Pillar C harness before
+    iterating over the query split, then updated (finished_at, metrics) after.
+
+    Schema expanded in migration 002_eval_runs_expand_and_eval_run_id.
+    """
+    __tablename__ = "eval_runs"
+
+    id               = Column(Integer, primary_key=True, autoincrement=True)
+    run_name         = Column(String(100), nullable=False)
+    pipeline_version = Column(String(50))
+    status           = Column(String(50), default="running")   # 'running' | 'completed' | 'failed'
+    metrics          = Column(JSON)                             # aggregate metrics dict
+    created_at       = Column(DateTime, default=datetime.datetime.utcnow)
+
+    # ── Migration 002 additions ───────────────────────────────────────────────
+    config           = Column(Text)          # JSON-serialised harness config dict
+    split            = Column(String(20))    # 'dev' | 'test' | 'heldout'
+    seed             = Column(Integer)       # RNG seed used
+    kb_snapshot_id   = Column(String(20), ForeignKey("kb_snapshots.snapshot_id"), nullable=True)
+    ehr_dataset_id   = Column(String(50))    # patient cohort identifier
+    prompt_version   = Column(String(20))    # e.g. 'v1'
+    thresholds       = Column(JSON)          # {faithfulness_threshold, nli_entailment_threshold, …}
+    started_at       = Column(DateTime)      # when harness began
+    finished_at      = Column(DateTime)      # when harness completed (NULL while still running)
+
+    # Relationships
+    consultations    = relationship("Consultation", back_populates="eval_run")
+    kb_snapshot      = relationship("KBSnapshot")
+
+
 class Consultation(Base):
     """
     Full pipeline run record. Each patient query creates one consultation row.
@@ -367,6 +399,7 @@ class Consultation(Base):
 
     id = Column(String(36), primary_key=True)
     patient_id = Column(String(36), ForeignKey("patients.id"), nullable=False, index=True)
+
 
     # P1: Raw input
     query_text = Column(Text, nullable=False)
@@ -435,9 +468,10 @@ class Consultation(Base):
     thread_status = Column(String(30), default="awaiting_doctor")
     is_high_priority = Column(Boolean, default=False)
     is_red_flag_override = Column(Boolean, default=False)
+    is_eval = Column(Boolean, default=False, nullable=False)
 
     # P9: Doctor review
-    doctor_action = Column(String(20))             # "approved", "rejected", "override"
+    doctor_action = Column(String(20))             # "approved", "edited", "rejected"
     reject_reason = Column(String(50))
     final_response = Column(Text)
     messages_json = Column(JSON)                   # multi-turn thread
@@ -460,10 +494,17 @@ class Consultation(Base):
 
     # P10: Patient delivery
     patient_notified_at = Column(DateTime)
+    delivered_at = Column(DateTime, nullable=True)
 
     # Timestamps
     created_at = Column(DateTime, default=datetime.datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
 
-    patient = relationship("Patient")
+    # ── Migration 002: Pillar C run tracking ─────────────────────────────────
+    # NULL for all pre-harness consultations; set by the eval harness at row creation.
+    eval_run_id = Column(Integer, ForeignKey("eval_runs.id"), nullable=True, index=True)
+
+    patient  = relationship("Patient")
+    eval_run = relationship("EvalRun", back_populates="consultations")
+
 

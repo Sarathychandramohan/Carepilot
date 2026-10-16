@@ -1,0 +1,6 @@
+Metric,Value,95% Bootstrap CI,Spec Reference / Status
+Mean Weighted Edit Burden (W_bar),2.11,"[1.98, 2.24]",Section 9 Spec Weights
+Median Weighted Edit Burden,2.48,-,Robust Central Tendency
+Mean Edit Distance Ratio (EDR Char),0.2535,-,Character-Level Levenshtein Ratio
+Spearman Correlation (Burden vs Interaction),rho=-0.2938,p=2.2723e-02,Negative rho demonstrates learning loop
+Total RQ3 Stream Reviews,60,-,60-case Clinical Stream

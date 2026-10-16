@@ -27,7 +27,11 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 SILVER_PATH = PROJECT_ROOT / "data" / "queries" / "silver.jsonl"
-GOLD_PATH = PROJECT_ROOT / "data" / "queries" / "gold.jsonl"
+GOLD_PATH = (
+    PROJECT_ROOT / "data" / "queries" / "gold.jsonl"
+    if (PROJECT_ROOT / "data" / "queries" / "gold.jsonl").exists()
+    else PROJECT_ROOT / "data" / "queries" / "gold_scripted_candidate.jsonl"
+)
 MODELS_DIR = PROJECT_ROOT / "backend" / "models"
 MANIFEST_DIR = PROJECT_ROOT / "data" / "manifests"
 

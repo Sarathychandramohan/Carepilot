@@ -301,9 +301,32 @@ SCENARIO_FAMILIES = {
             "What mindfulness techniques can help reduce physical stress responses?",
         ],
     },
+    "SF-DEV-APPT-ROUTINE": {
+        "intent": "followup_appointment",
+        "urgency": "routine",
+        "split": "dev",
+        "requires_ehr": True,
+        "concept_type": "condition",
+        "templates": [
+            "When should I schedule my next follow-up appointment for my {condition}?",
+            "Do I need to come in for a routine follow-up visit to monitor my {condition}?",
+            "My doctor asked me to follow up about my {condition}. How do I schedule that visit?",
+        ],
+    },
+    "SF-DEV-APPT-SYMPTOM-REVIEW": {
+        "intent": "followup_appointment",
+        "urgency": "soon",
+        "split": "dev",
+        "requires_ehr": True,
+        "concept_type": "condition",
+        "templates": [
+            "I need to schedule a follow-up consultation soon to review my ongoing symptoms from {condition}.",
+            "Can I book a follow-up appointment next week to discuss my treatment plan for {condition}?",
+        ],
+    },
 
     # -----------------------------------------------------------------------
-    # TEST FAMILIES (6 families)
+    # TEST FAMILIES (8 families)
     # -----------------------------------------------------------------------
     "SF-TEST-LAB-TREND": {
         "intent": "lab_result_query",
@@ -370,6 +393,29 @@ SCENARIO_FAMILIES = {
         "templates": [
             "What are the early clinical signs of mild dehydration?",
             "How does adequate daily hydration protect renal function and prevent kidney stones?",
+        ],
+    },
+    "SF-TEST-APPT-CHRONIC-CHECK": {
+        "intent": "followup_appointment",
+        "urgency": "routine",
+        "split": "test",
+        "requires_ehr": True,
+        "concept_type": "condition",
+        "templates": [
+            "How far in advance should I book my follow-up checkup for my {condition}?",
+            "Is it time for me to schedule my routine follow-up consultation for my {condition}?",
+            "When is my next recommended follow-up visit regarding my {condition}?",
+        ],
+    },
+    "SF-TEST-APPT-CLINIC-VISIT": {
+        "intent": "followup_appointment",
+        "urgency": "soon",
+        "split": "test",
+        "requires_ehr": True,
+        "concept_type": "condition",
+        "templates": [
+            "I was advised to make a follow-up appointment within two weeks for my {condition}.",
+            "Could I schedule a follow-up appointment soon to check in on my {condition}?",
         ],
     },
 }
@@ -530,6 +576,6 @@ def generate_silver_dataset(target_count: int = 3250) -> list[dict[str, Any]]:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate Silver dataset")
-    parser.add_argument("--count", type=int, default=3250, help="Target total query count")
+    parser.add_argument("--count", type=int, default=3770, help="Target total query count")
     args = parser.parse_args()
     generate_silver_dataset(target_count=args.count)

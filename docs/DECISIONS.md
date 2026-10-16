@@ -21,3 +21,24 @@ To protect downstream clinical reasoning prompts and retrieval components from s
    - `tropicamide 5 MG/ML Ophthalmic Solution` (148 patients): Diagnostic pupil-dilation drops used during routine eye exams; low clinical reasoning complexity.
    - `Natazia 28 Day Pack` (138 patients): Complex quadriphasic oral contraceptive pack containing dienogest and estradiol valerate; progestin and estrogen class actions are already comprehensively represented across numerous oral contraceptive labels (e.g. Levora, Seasonique, Yaz, Trinessa, Jolivette).
    - `Unemployed (finding)` (669 patients): Non-clinical social determinant of health with no dedicated standalone clinical monograph on MedlinePlus.
+
+
+## Safety & Governance: Red-Flag Lexicon Freezing
+
+### Expansion from 9 to 11 Categories (Pillar C Pre-Flight)
+Per Appendix C and Master Spec Section 6, the rule-based red-flag engine in `backend/app/pipeline/redflag.py` was expanded from 9 categories to all 11 clinical emergency categories:
+1. `chest_pain` (Cardiac / Chest Pain Alert)
+2. `respiratory_distress` (Severe Respiratory Distress)
+3. `stroke_indicators` (Neurological / Stroke Indicator)
+4. `acute_hemorrhage` (Acute / Uncontrolled Hemorrhage)
+5. `syncope_seizure` (Syncope / Seizure / Consciousness Loss)
+6. `anaphylaxis` (Severe Allergic Reaction / Anaphylaxis)
+7. `self_harm` (Self-Harm / Psychiatric Emergency)
+8. `meningitis_sepsis` (Acute Sepsis / Meningeal Sign)
+9. `acute_abdomen_gi_bleed` (Acute Abdomen / Severe GI Bleed)
+10. `sudden_severe_headache` (Sudden Severe Headache / Thunderclap / SAH) [Added 2026-10-15]
+11. `overdose_poisoning` (Drug Overdose / Toxic Poisoning) [Added 2026-10-15]
+
+- **Frozen SHA-256 (`redflag.py`)**: `525f2acd5159254c53716af4cc6dacd952f5e451fec8205c3699186e6b338126`
+- **Validation**: Verified against 88-test matrix in `backend/tests/test_redflag_11_categories.py` covering positive, negated, historical, hypothetical, and typo/variant queries across all 11 categories (100% pass).
+
