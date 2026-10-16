@@ -23,12 +23,12 @@
 | :--- | :--- | :--- | :--- |
 | **C1: Clinical Frontend Interfaces** | Doctor Review Dashboard (React/Vite) and Patient Mobile App (Expo SDK 57). | `IN PROGRESS (SCAFFOLDED)` | Demo UI exists; Live API swap pending |
 | **C2: Full System Integration** | Live API integration, role-based JWT auth, concurrency & IDOR security testing. | `IN PROGRESS` | API endpoints wired; security test suite exists |
-| **C3: Automated Evaluation Harness** | `python -m eval.run`, `eval_runs` PostgreSQL logging, metrics engine. | `VERIFIED & OPERATIONAL` | Fully built, 167 regression tests passing |
-| **C4: Experimental Ablation Runs** | Primary ablations (`full`, `no_ehr`, `no_classifier`) on Gold & Silver. | `COMPLETED` | Runs 4–7 recorded in `eval_runs` & `consultations` |
-| **C5: Human Clinician Evaluation** | Double-rater evaluation of 40 gold-test consultations across relevance, safety, and factuality. | `PENDING [BLOCKED-HUMAN]` | Templates created; awaiting human double annotation |
-| **C6: Live Doctor-Edit Study (RQ3)** | 60-query clinician review sessions with typed edit memory toggling (memory ON vs OFF). | `COMPLETED (STREAM ANALYZED)` | Spearman $\rho = -0.2938, p = 0.0227$, Figure F3 generated |
-| **C7: Scale Sweeps (SA1 & SA2)** | KB distractor scale sweep (18 to 10k chunks) and patient record-length bucket analysis. | `VERIFIED ON 10K KB` | Hybrid retrieval benchmarked across full 10,074 chunk KB |
-| **Overall Pillar C Status** | Evaluation, Research Instrumentation, and Clinical HITL Review. | **EVALUATION & HARNESS COMPLETE** | Tables T1–T8 & Figures F1–F4 generated in `data/reports/` |
+| **C3: Automated Evaluation Harness** | `python -m eval.run`, `eval_runs` PostgreSQL logging, metrics engine. | `VERIFIED & OPERATIONAL` | Fully built, regression tests passing |
+| **C4: Experimental Ablation Runs** | Primary ablations (`full`, `no_ehr`, `no_classifier`) on Gold & Silver. | `dry-run only` | Dry-runs verified (Runs 10, 11); non-dry-run evaluation not run |
+| **C5: Human Clinician Evaluation** | Double-rater evaluation of 40 gold-test consultations across relevance, safety, and factuality. | `NOT STARTED` | Templates created; awaiting human double annotation |
+| **C6: Live Doctor-Edit Study (RQ3)** | 60-query clinician review sessions with typed edit memory toggling (memory ON vs OFF). | `NOT STARTED` | Stream queries prepared; no doctor reviews conducted |
+| **C7: Scale Sweeps (SA1 & SA2)** | KB distractor scale sweep (18 to 10k chunks) and patient record-length bucket analysis. | `NOT STARTED` | Sweep definitions drafted; execution not started |
+| **Overall Pillar C Status** | Evaluation, Research Instrumentation, and Clinical HITL Review. | `IN PROGRESS (HARNESS & DRY-RUNS VERIFIED)` | Harness, metrics & skip guards built; real evaluation pending |
 
 ---
 

@@ -176,3 +176,62 @@ def bootstrap_ci(
     lower = np.percentile(boot_stats, 100.0 * (alpha / 2.0))
     upper = np.percentile(boot_stats, 100.0 * (1.0 - alpha / 2.0))
     return (float(lower), float(upper))
+
+
+def cluster_bootstrap_ci(
+    data: Sequence[float],
+    cluster_ids: Sequence[Any],
+    statistic_fn=np.mean,
+    n_boot: int = 2000,
+    confidence: float = 0.95,
+    seed: int = 42,
+) -> tuple[float, float]:
+    """
+    Calculates non-parametric cluster bootstrap percentile confidence interval.
+    Resamples whole clusters (e.g. scenario_family) with replacement to account
+    for intra-cluster correlation across queries within the same scenario.
+
+    Args:
+        data: Sequence of numeric observations.
+        cluster_ids: Sequence of cluster identifiers corresponding to data.
+        statistic_fn: Estimator function applied to concatenated cluster values.
+        n_boot: Number of bootstrap resamples (default 2000).
+        confidence: Confidence level (default 0.95).
+        seed: Random seed for reproducibility (default 42).
+
+    Returns:
+        (ci_lower, ci_upper) tuple.
+    """
+    if len(data) != len(cluster_ids):
+        raise ValueError("data and cluster_ids must have identical length")
+
+    arr_data = np.asarray(data, dtype=float)
+    if len(arr_data) == 0:
+        return (0.0, 0.0)
+
+    # Group data by cluster
+    cluster_map: dict[Any, list[float]] = {}
+    for val, cid in zip(arr_data, cluster_ids):
+        cluster_map.setdefault(cid, []).append(val)
+
+    unique_clusters = list(cluster_map.keys())
+    k_clusters = len(unique_clusters)
+
+    if k_clusters <= 1:
+        val = float(statistic_fn(arr_data))
+        return (val, val)
+
+    rng = np.random.default_rng(seed)
+    boot_stats = np.empty(n_boot)
+
+    for i in range(n_boot):
+        sampled_cids = rng.choice(unique_clusters, size=k_clusters, replace=True)
+        sample_vals = []
+        for cid in sampled_cids:
+            sample_vals.extend(cluster_map[cid])
+        boot_stats[i] = statistic_fn(sample_vals)
+
+    alpha = 1.0 - confidence
+    lower = np.percentile(boot_stats, 100.0 * (alpha / 2.0))
+    upper = np.percentile(boot_stats, 100.0 * (1.0 - alpha / 2.0))
+    return (float(lower), float(upper))

@@ -23,17 +23,37 @@ ACTIVE_ABLATION_ARMS: list[str] = [
     "no_classifier",
 ]
 
+from backend.app.pipeline.classify import load_urgency_model
+from backend.app.pipeline.validate import (
+    CONTRADICTION_CEILING,
+    COVERAGE_THRESHOLD,
+    NLI_PASS_THRESHOLD,
+    NLI_WARN_THRESHOLD,
+)
+
 # ---------------------------------------------------------------------------
 # Evaluation Thresholds & Hyperparameters
+# Imported directly from pipeline modules to guarantee provenance consistency.
 # ---------------------------------------------------------------------------
+try:
+    tau_high: float = float(load_urgency_model().get("tau_high", 0.25))
+except Exception:
+    tau_high = 0.25
+
 THRESHOLDS: dict[str, Any] = {
-    "faithfulness_threshold": 0.80,      # Citation coverage floor
-    "nli_entailment_threshold": 0.40,    # NLI sentence entailment floor
-    "retrieval_alpha": 0.50,             # Dense / BM25 convex combination weight
-    "urgency_tau_high": 0.65,            # High urgency classification cutoff
-    "lab_tolerance_relative": 0.15,      # EHR-fact relative numeric tolerance
-    "lab_date_window_days": 90,          # EHR-fact approximate date window
+    "coverage_threshold": COVERAGE_THRESHOLD,            # Citation coverage floor (0.80)
+    "faithfulness_threshold": COVERAGE_THRESHOLD,        # Alias for backward compatibility
+    "nli_pass_threshold": NLI_PASS_THRESHOLD,            # NLI sentence entailment floor (0.15)
+    "nli_warn_threshold": NLI_WARN_THRESHOLD,            # NLI sentence entailment warning floor (0.001)
+    "nli_entailment_threshold": NLI_PASS_THRESHOLD,      # Alias for backward compatibility
+    "contradiction_ceiling": CONTRADICTION_CEILING,      # Hallucination/contradiction ceiling (0.05)
+    "urgency_tau_high": tau_high,                        # High urgency classification cutoff (0.25)
+    "tau_high": tau_high,                                # Direct pipeline constant name
+    "retrieval_alpha": 0.50,                             # Dense / BM25 convex combination weight
+    "lab_tolerance_relative": 0.15,                      # EHR-fact relative numeric tolerance
+    "lab_date_window_days": 90,                          # EHR-fact approximate date window
 }
+
 
 # ---------------------------------------------------------------------------
 # Artifact & Model Provenance Identifiers

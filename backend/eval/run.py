@@ -64,6 +64,8 @@ def execute_eval_run(
     subset_n: int | None = None,
     dry_run: bool = False,
     resume_id: int | None = None,
+    subset_strategy: str = "head",
+    per_family: int | None = None,
 ) -> int:
     """
     Executes an evaluation run and returns the eval_run_id.
@@ -112,7 +114,12 @@ def execute_eval_run(
                 run_name=f"{config}_{split}_{seed}_{int(time.time())}",
                 pipeline_version="pillar_c_v1",
                 status="running",
-                config=json.dumps({"ablation_arm": config, "dry_run": dry_run}),
+                config=json.dumps({
+                    "ablation_arm": config,
+                    "dry_run": dry_run,
+                    "subset_strategy": subset_strategy,
+                    "per_family": per_family,
+                }),
                 split=split,
                 seed=seed,
                 kb_snapshot_id=KB_SNAPSHOT_ID,
@@ -129,7 +136,26 @@ def execute_eval_run(
             print(f"[EVAL RUN START] ID={eval_run_id} | Config={config} | Split={split} | DryRun={dry_run}")
 
         # 2. Load dataset split queries
-        queries = load_query_split(split, db=db, subset_n=subset_n)
+        queries = load_query_split(
+            split,
+            db=db,
+            subset_n=subset_n,
+            subset_strategy=subset_strategy,
+            per_family=per_family,
+            seed=seed,
+        )
+        if subset_strategy == "family-stratified":
+            from collections import Counter, defaultdict
+            counts = Counter(q.raw_metadata.get("scenario_family", "unknown") for q in queries)
+            distinct_counts = defaultdict(set)
+            for q in queries:
+                fam = q.raw_metadata.get("scenario_family", "unknown")
+                distinct_counts[fam].add(q.query_text.strip())
+
+            print(f"[STRATIFIED SAMPLING] Selected {len(queries)} queries across {len(counts)} families:")
+            for fam, cnt in sorted(counts.items()):
+                print(f"  {fam:<30}: {cnt} rows, {len(distinct_counts[fam])} distinct texts")
+
         queries_to_run = [q for q in queries if q.query_text not in existing_query_texts]
         print(f"[DATASET] Loaded {len(queries)} total queries for split '{split}' (Remaining to execute: {len(queries_to_run)})")
 
@@ -243,6 +269,18 @@ def main() -> None:
         default=None,
         help="Resume an interrupted evaluation run by eval_run_id",
     )
+    parser.add_argument(
+        "--subset-strategy",
+        choices=["head", "family-stratified"],
+        default="head",
+        help="Subset strategy: 'head' (sequential first N) or 'family-stratified' (sample N per scenario family)",
+    )
+    parser.add_argument(
+        "--per-family",
+        type=int,
+        default=None,
+        help="Number of queries to sample per scenario_family in family-stratified mode",
+    )
 
     args = parser.parse_args()
     if not args.resume and (not args.config or not args.split):
@@ -255,6 +293,8 @@ def main() -> None:
         subset_n=args.subset,
         dry_run=args.dry_run,
         resume_id=args.resume,
+        subset_strategy=args.subset_strategy,
+        per_family=args.per_family,
     )
 
 

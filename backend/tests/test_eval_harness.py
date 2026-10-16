@@ -17,6 +17,7 @@ from backend.eval.stats import (
     wilcoxon_signed_rank,
     holm_bonferroni_correction,
     bootstrap_ci,
+    cluster_bootstrap_ci,
 )
 from backend.eval.metrics.retrieval import (
     compute_hit_at_k,
@@ -105,6 +106,29 @@ class TestStatisticalLayer:
         data = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
         low, high = bootstrap_ci(data, statistic_fn=np.mean)
         assert low <= 3.5 <= high
+
+    def test_cluster_bootstrap_ci_hand_computed(self):
+        # Hand-computed toy test:
+        # 2 clusters:
+        # Cluster 'A': [10.0, 10.0] (mean = 10.0)
+        # Cluster 'B': [0.0, 0.0]   (mean = 0.0)
+        # Possible resamples of 2 clusters:
+        # {A, A} with p=0.25 -> mean = 10.0
+        # {A, B} with p=0.50 -> mean = 5.0
+        # {B, B} with p=0.25 -> mean = 0.0
+        # The 95% CI (2.5% and 97.5% percentiles) MUST fall on 0.0 and 10.0 exactly.
+        data = [10.0, 10.0, 0.0, 0.0]
+        cluster_ids = ["A", "A", "B", "B"]
+        low, high = cluster_bootstrap_ci(data, cluster_ids, n_boot=2000, seed=42)
+        assert low == pytest.approx(0.0)
+        assert high == pytest.approx(10.0)
+
+        # Single cluster or identical clusters collapse to exact value
+        data_single = [4.0, 4.0]
+        clusters_single = ["c1", "c1"]
+        low_s, high_s = cluster_bootstrap_ci(data_single, clusters_single, n_boot=2000, seed=42)
+        assert low_s == pytest.approx(4.0)
+        assert high_s == pytest.approx(4.0)
 
 
 # ===========================================================================

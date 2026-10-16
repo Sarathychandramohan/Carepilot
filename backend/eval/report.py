@@ -55,6 +55,11 @@ FIGURES_DIR.mkdir(parents=True, exist_ok=True)
 # Any table with n_real < MIN_REAL_N must be labelled NOT COMPUTED or UNDERPOWERED.
 MIN_REAL_N = 30
 
+GOLD_CAVEAT_NOTE = (
+    "gold_scripted_candidate: ~40 distinct base scenarios "
+    "(38 clusters@0.7, 32 clusters@0.5), dev/test overlap (27 spanning clusters@0.7), not reportable"
+)
+
 
 def _data_validity_guard(
     consultations: list[Any] | None,
@@ -206,7 +211,7 @@ def compute_table_t1() -> dict[str, Any]:
             intents.get("symptom_report", 0),
             intents.get("followup_appointment", 0),
             intents.get("general_health_info", 0),
-            intents.get("admin_billing_insurance", 0) + intents.get("other", 0),
+            intents.get("admin_billing_insurance", 0) + intents.get("other", 0) + intents.get("unsupported", 0),
             urgencies.get("routine", 0),
             urgencies.get("soon", 0),
             urgencies.get("urgent", 0),
@@ -331,6 +336,7 @@ def compute_table_t2(gold_dev: list[dict], gold_test: list[dict]) -> dict[str, A
                 "n": len(eval_queries),
             }
 
+    rows.append([GOLD_CAVEAT_NOTE, "", "", "", "", ""])
     _write_csv(TABLES_DIR / "table_t2_retrieval.csv", headers, rows)
     _write_csv(FIGURES_DIR / "figure_f1_retrieval.csv", fig_f1_rows[0], fig_f1_rows[1:])
     return t2_results
@@ -424,6 +430,7 @@ def compute_table_t3(gold_queries: list[dict], silver_queries: list[dict]) -> di
             "urgency": {"labels": urgency_labels, "matrix": cm_urg},
         }
 
+    rows.append([GOLD_CAVEAT_NOTE, "", "", "", "", "", ""])
     _write_csv(TABLES_DIR / "table_t3_classification.csv", headers, rows)
 
     # Save Figure F2 confusion matrix JSON & formatted text
@@ -875,6 +882,9 @@ def generate_markdown_report(
 
 ## 3. Table T2 & Figure F1: Real KB Retrieval Performance
 
+> [!WARNING]
+> **Data Integrity Caveat:** {GOLD_CAVEAT_NOTE}
+
 Evaluated against all gold relevance annotations across 3 retrieval modes:
 
 | Configuration | Split | Hit@3 | Hit@5 | MRR |
@@ -884,12 +894,12 @@ Evaluated against all gold relevance annotations across 3 retrieval modes:
 | **Dense-Only (ChromaDB)** | gold-test | {t2.get('gold-test_Dense-Only (ChromaDB)', {}).get('hit_at_3', 0.0)}% | {t2.get('gold-test_Dense-Only (ChromaDB)', {}).get('hit_at_5', 0.0)}% | {t2.get('gold-test_Dense-Only (ChromaDB)', {}).get('mrr', 0.0):.4f} |
 | **BM25-Only (Sparse)** | gold-test | {t2.get('gold-test_BM25-Only (Sparse)', {}).get('hit_at_3', 0.0)}% | {t2.get('gold-test_BM25-Only (Sparse)', {}).get('hit_at_5', 0.0)}% | {t2.get('gold-test_BM25-Only (Sparse)', {}).get('mrr', 0.0):.4f} |
 
-> [!TIP]
-> **Key Retrieval Finding:** Hybrid fusion outperforms both pure dense and pure BM25 on both Hit@5 and MRR, validating the convex combination architecture ($p < 0.01$).
-
 ---
 
 ## 4. Table T3 & Figure F2: Classifier Benchmark
+
+> [!WARNING]
+> **Data Integrity Caveat:** {GOLD_CAVEAT_NOTE}
 
 Evaluated using the real trained classifiers (`backend/models/intent_classifier.joblib` and `backend/models/urgency_classifier.joblib`):
 

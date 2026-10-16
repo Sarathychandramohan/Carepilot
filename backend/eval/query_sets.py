@@ -56,6 +56,9 @@ def load_query_split(
     split_name: str,
     db: Session,
     subset_n: int | None = None,
+    subset_strategy: str = "head",
+    per_family: int | None = None,
+    seed: int = 42,
 ) -> list[EvalQuery]:
     """
     Load and validate queries for the requested split.
@@ -64,6 +67,9 @@ def load_query_split(
         split_name: One of 'gold-dev', 'gold-test', 'silver-dev', 'silver-test', 'rq3'.
         db: SQLAlchemy DB session (for patient validation / grounding).
         subset_n: Optional integer limiting the number of queries loaded.
+        subset_strategy: 'head' (take top subset_n) or 'family-stratified' (sample per scenario_family).
+        per_family: Number of queries to sample per scenario_family in family-stratified mode.
+        seed: Random seed used in sha256 deterministic query ordering.
 
     Returns:
         List of validated EvalQuery objects.
@@ -158,7 +164,60 @@ def load_query_split(
                     )
                 )
 
-    if subset_n is not None and subset_n > 0:
+    if subset_strategy == "family-stratified":
+        from collections import defaultdict
+        import hashlib
+
+        families = defaultdict(list)
+        for q in queries:
+            fam = q.raw_metadata.get("scenario_family") or "default"
+            families[fam].append(q)
+
+        n_per_fam = per_family
+        if n_per_fam is None:
+            if subset_n is not None and len(families) > 0:
+                n_per_fam = max(1, subset_n // len(families))
+            else:
+                n_per_fam = 1
+
+        selected: list[EvalQuery] = []
+        for fam in sorted(families.keys()):
+            fam_queries = families[fam]
+            # Deterministic ordering by sha256(f"{seed}|{query_id}")
+            sorted_q = sorted(
+                fam_queries,
+                key=lambda q: hashlib.sha256(f"{seed}|{q.query_id}".encode("utf-8")).hexdigest(),
+            )
+
+            # Pass 1: Pick distinct query_text values first
+            picked = []
+            seen_texts = set()
+            remaining = []
+            for q in sorted_q:
+                qtxt = q.query_text.strip()
+                if qtxt not in seen_texts:
+                    seen_texts.add(qtxt)
+                    picked.append(q)
+                    if len(picked) == n_per_fam:
+                        break
+                else:
+                    remaining.append(q)
+
+            # Pass 2: If fewer distinct texts than n_per_fam, cycle remaining rows
+            if len(picked) < n_per_fam:
+                needed = n_per_fam - len(picked)
+                while needed > 0 and remaining:
+                    take = remaining[:needed]
+                    picked.extend(take)
+                    needed -= len(take)
+
+            selected.extend(picked)
+
+        if subset_n is not None and subset_n > 0:
+            selected = selected[:subset_n]
+        return selected
+
+    elif subset_n is not None and subset_n > 0:
         queries = queries[:subset_n]
 
     return queries
