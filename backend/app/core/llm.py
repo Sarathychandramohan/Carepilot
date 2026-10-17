@@ -59,6 +59,8 @@ class OllamaClient:
             "usage": {
                 "prompt_tokens": data.get("prompt_eval_count", 0),
                 "completion_tokens": data.get("eval_count", 0),
+                "eval_duration_ns": data.get("eval_duration", 0),
+                "total_duration_ns": data.get("total_duration", 0),
             },
         }
 
