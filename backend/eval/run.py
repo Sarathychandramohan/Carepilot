@@ -85,6 +85,7 @@ def execute_eval_run(
     resume_id: int | None = None,
     subset_strategy: str = "head",
     per_family: int | None = None,
+    queries_file: str | None = None,
 ) -> int:
     """
     Executes an evaluation run and returns the eval_run_id.
@@ -169,6 +170,7 @@ def execute_eval_run(
             subset_strategy=subset_strategy,
             per_family=per_family,
             seed=seed,
+            queries_file=queries_file,
         )
         if subset_strategy == "family-stratified":
             from collections import Counter, defaultdict
@@ -312,6 +314,12 @@ def main() -> None:
         default=None,
         help="Number of queries to sample per scenario_family in family-stratified mode",
     )
+    parser.add_argument(
+        "--queries-file",
+        type=str,
+        default=None,
+        help="Optional path to external queries JSONL file (e.g. for gold-synthetic second batch)",
+    )
 
     args = parser.parse_args()
     if not args.resume and (not args.config or not args.split):
@@ -326,6 +334,7 @@ def main() -> None:
         resume_id=args.resume,
         subset_strategy=args.subset_strategy,
         per_family=args.per_family,
+        queries_file=args.queries_file,
     )
 
 

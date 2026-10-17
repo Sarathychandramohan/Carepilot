@@ -59,6 +59,7 @@ def load_query_split(
     subset_strategy: str = "head",
     per_family: int | None = None,
     seed: int = 42,
+    queries_file: Path | str | None = None,
 ) -> list[EvalQuery]:
     """
     Load and validate queries for the requested split.
@@ -163,6 +164,98 @@ def load_query_split(
                         raw_metadata=row,
                     )
                 )
+
+    elif split_name == "gold-synthetic":
+        pilot_path = DATASET_PATHS.get("gold_pilot") or (Path(__file__).resolve().parents[2] / "data" / "annotation" / "gold_synthetic_pilot.jsonl")
+        if not pilot_path.exists():
+            raise FileNotFoundError(f"Gold synthetic pilot file not found at: {pilot_path}")
+
+        # 1. Read the pilot: patient_id from the file; NEVER the default patient
+        with open(pilot_path, "r", encoding="utf-8") as f:
+            for line in f:
+                if not line.strip():
+                    continue
+                row = json.loads(line)
+                pid = row.get("patient_id")
+                if not pid:
+                    raise ValueError(f"Pilot query {row.get('query_id')} has missing patient_id. NEVER fallback to default patient.")
+                queries.append(
+                    EvalQuery(
+                        query_id=row["query_id"],
+                        query_text=row["query_text"],
+                        patient_id=pid,
+                        tier="gold_synthetic",
+                        split=split_name,
+                        intent_ground_truth=row.get("intent_label") or row.get("intent"),
+                        urgency_ground_truth=row.get("urgency_label") or row.get("urgency"),
+                        requires_patient_context=bool(row.get("requires_patient_context", True)),
+                        raw_metadata=row,
+                    )
+                )
+
+        # 2. Plus data/annotation/queries_noehr_45.jsonl if present
+        # (assign each row a deterministic patient from patient_picker_shortlist.csv via sha256(f"42|{scenario_id}"); needs_ehr=False)
+        noehr_path = Path(__file__).resolve().parents[2] / "data" / "annotation" / "queries_noehr_45.jsonl"
+        if noehr_path.exists():
+            shortlist_csv = Path(__file__).resolve().parents[2] / "data" / "annotation" / "patient_picker_shortlist.csv"
+            shortlist_pids = []
+            if shortlist_csv.exists():
+                import csv
+                with open(shortlist_csv, "r", encoding="utf-8") as sf:
+                    shortlist_pids = [r["patient_id"] for r in csv.DictReader(sf)]
+            if not shortlist_pids:
+                shortlist_pids = [default_patient_id]
+
+            import hashlib
+            with open(noehr_path, "r", encoding="utf-8") as f:
+                for idx, line in enumerate(f):
+                    if not line.strip():
+                        continue
+                    row = json.loads(line)
+                    scen_id = row.get("scenario_id") or f"NOEHR_{idx + 1:04d}"
+                    h_val = int(hashlib.sha256(f"42|{scen_id}".encode("utf-8")).hexdigest(), 16)
+                    assigned_pid = shortlist_pids[h_val % len(shortlist_pids)]
+                    queries.append(
+                        EvalQuery(
+                            query_id=row.get("query_id") or f"NOEHR-{idx + 1:04d}",
+                            query_text=row["query_text"],
+                            patient_id=assigned_pid,
+                            tier="gold_synthetic",
+                            split=split_name,
+                            intent_ground_truth=row.get("intent_label") or row.get("intent"),
+                            urgency_ground_truth=row.get("urgency_label") or row.get("urgency"),
+                            requires_patient_context=False,
+                            raw_metadata=row,
+                        )
+                    )
+
+        # 3. Add --queries-file so later 45 EHR-grounded rows load from a second file
+        if queries_file is not None:
+            qf_path = Path(queries_file)
+            if not qf_path.is_absolute():
+                qf_path = Path(__file__).resolve().parents[2] / qf_path
+            if qf_path.exists():
+                with open(qf_path, "r", encoding="utf-8") as f:
+                    for idx, line in enumerate(f):
+                        if not line.strip():
+                            continue
+                        row = json.loads(line)
+                        pid = row.get("patient_id")
+                        if not pid:
+                            raise ValueError(f"Queries file row {row.get('query_id', idx)} missing patient_id.")
+                        queries.append(
+                            EvalQuery(
+                                query_id=row.get("query_id") or f"EXT-{idx + 1:04d}",
+                                query_text=row["query_text"],
+                                patient_id=pid,
+                                tier="gold_synthetic",
+                                split=split_name,
+                                intent_ground_truth=row.get("intent_label") or row.get("intent"),
+                                urgency_ground_truth=row.get("urgency_label") or row.get("urgency"),
+                                requires_patient_context=bool(row.get("requires_patient_context", True)),
+                                raw_metadata=row,
+                            )
+                        )
 
     if subset_strategy == "family-stratified":
         from collections import defaultdict

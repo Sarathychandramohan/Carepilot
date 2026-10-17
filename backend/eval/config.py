@@ -80,6 +80,7 @@ DATA_DIR = PROJECT_ROOT / "data" / "queries"
 
 DATASET_PATHS: dict[str, Path] = {
     "gold_candidate": DATA_DIR / "gold_scripted_candidate.jsonl",
+    "gold_pilot": PROJECT_ROOT / "data" / "annotation" / "gold_synthetic_pilot.jsonl",
     "silver": DATA_DIR / "silver.jsonl",
     "rq3": DATA_DIR / "rq3_stream.jsonl",
 }
@@ -88,6 +89,7 @@ DATASET_PATHS: dict[str, Path] = {
 SUPPORTED_SPLITS = [
     "gold-dev",
     "gold-test",
+    "gold-synthetic",
     "silver-dev",
     "silver-test",
     "rq3",

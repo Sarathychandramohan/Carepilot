@@ -159,15 +159,24 @@ def classify_urgency(
     urgency_probs_arr = urgency_clf.predict_proba(embedding)[0]
 
     urgent_idx = urgency_classes.index("urgent") if "urgent" in urgency_classes else 0
+    soon_idx = urgency_classes.index("soon") if "soon" in urgency_classes else 1
+    routine_idx = urgency_classes.index("routine") if "routine" in urgency_classes else 2
+
     urgent_prob = float(urgency_probs_arr[urgent_idx])
+    soon_prob = float(urgency_probs_arr[soon_idx])
+    routine_prob = float(urgency_probs_arr[routine_idx])
+
+    tau_soon: float = float(urgency_data.get("tau_soon", 0.30))
 
     if urgent_prob >= tau_high:
         pred_urgency = "urgent"
         urgency_score = urgent_prob
+    elif soon_prob >= tau_soon:
+        pred_urgency = "soon"
+        urgency_score = soon_prob
     else:
-        top_idx = int(np.argmax(urgency_probs_arr))
-        pred_urgency = urgency_classes[top_idx]
-        urgency_score = float(urgency_probs_arr[top_idx])
+        pred_urgency = "routine"
+        urgency_score = routine_prob
 
     urgency_prob_dict = {
         cls: round(float(p), 4)

@@ -85,17 +85,25 @@ CORE_LAB_CONCEPTS = [
     "Microalbumin",
 ]
 
+# LOINC-specific plausibility bounds with wide physiologic limits
+LOINC_PLAUSIBILITY_RANGES: dict[str, tuple[float, float]] = {
+    "2085-9": (5.0, 150.0),    # HDL Cholesterol (mg/dL) - wide physiologic limits
+    "18262-6": (10.0, 500.0),  # LDL Cholesterol Direct assay (mg/dL) - filters unphysiological negative values
+    "2089-1": (10.0, 500.0),   # LDL Cholesterol (mg/dL)
+    "2093-3": (40.0, 800.0),   # Total Cholesterol (mg/dL)
+    "4548-4": (2.0, 20.0),     # Hemoglobin A1c (%)
+    "88293-6": (2.0, 20.0),    # Hemoglobin A1c (%)
+}
+
 # Plausibility bounds per concept to exclude unphysiological/outlier rows
 PLAUSIBILITY_RANGES: dict[str, tuple[float, float]] = {
     "Creatinine": (0.2, 15.0),
     "Glucose": (20.0, 800.0),
-    "Hemoglobin A1c": (3.5, 18.0),
     "Potassium": (1.5, 8.5),
     "Sodium": (100.0, 180.0),
     "Calcium": (4.0, 18.0),
     "Chloride": (60.0, 140.0),
     "Urea nitrogen (BUN)": (2.0, 150.0),
-    "Cholesterol": (50.0, 600.0),
     "Triglycerides": (20.0, 1500.0),
     "Blood Pressure": (30.0, 260.0),
     "eGFR": (5.0, 200.0),
@@ -333,17 +341,23 @@ def export_context_packs(
 
                 val = round(float(lr.numeric_value), 2)
 
-                # Plausibility bounds check
-                kc = extract_key_concept(desc)
-                if kc and kc in PLAUSIBILITY_RANGES:
-                    # Filter out urine test strip glucose from serum plausibility
-                    if kc == "Glucose" and "urine" in desc.lower():
-                        total_excluded_plausibility += 1
-                        continue
-                    p_min, p_max = PLAUSIBILITY_RANGES[kc]
+                # Plausibility bounds check: LOINC-specific bounds take precedence
+                if lr.code in LOINC_PLAUSIBILITY_RANGES:
+                    p_min, p_max = LOINC_PLAUSIBILITY_RANGES[lr.code]
                     if val < p_min or val > p_max:
                         total_excluded_plausibility += 1
                         continue
+                else:
+                    kc = extract_key_concept(desc)
+                    if kc and kc in PLAUSIBILITY_RANGES:
+                        # Filter out urine test strip glucose from serum plausibility
+                        if kc == "Glucose" and "urine" in desc.lower():
+                            total_excluded_plausibility += 1
+                            continue
+                        p_min, p_max = PLAUSIBILITY_RANGES[kc]
+                        if val < p_min or val > p_max:
+                            total_excluded_plausibility += 1
+                            continue
 
                 if desc.lower() in seen_concepts:
                     continue
@@ -594,9 +608,19 @@ def main():
 
     parser = argparse.ArgumentParser(description="Export clinical context packs")
     parser.add_argument("--new-45", action="store_true", help="Export 45 new context packs from patient_picker_shortlist_new_45.csv")
+    parser.add_argument("--new-45-v2", action="store_true", help="Export 45 new context packs to context_packs_new_45_v2.jsonl")
     args = parser.parse_args()
 
-    if args.new_45:
+    if args.new_45_v2:
+        shortlist_target = OUTPUT_DIR / "patient_picker_shortlist_new_45.csv"
+        output_target = OUTPUT_DIR / "context_packs_new_45_v2.jsonl"
+        print(f"Exporting 45 new context packs v2 to {output_target}...")
+        packs, excluded = export_context_packs(
+            shortlist_path=shortlist_target,
+            output_path=output_target,
+            start_scenario_idx=60,
+        )
+    elif args.new_45:
         shortlist_target = OUTPUT_DIR / "patient_picker_shortlist_new_45.csv"
         output_target = OUTPUT_DIR / "context_packs_new_45.jsonl"
         print(f"Exporting 45 new context packs from {shortlist_target}...")

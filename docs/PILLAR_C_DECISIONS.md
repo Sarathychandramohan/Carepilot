@@ -256,5 +256,29 @@ FROM consultations WHERE is_eval = true GROUP BY eval_run_id;
 - **SHA-256 Hash:** `77819e6b0b7d26c2bf14c3c4c3ee04899b42cb9a9b0c5ee31b19cb5370b52218`
 - **Purpose:** Anisotropy centering for BGE-small embeddings in near-duplicate and diversity evaluation.
 
+---
+
+## Decision D-C8: Pre-Registration of Pillar C Evaluation Harness, Thresholds & Models (2026-10-17)
+
+- **Timestamp:** 2026-10-17T18:54:00+05:30
+- **Evaluation Tag:** `freeze-eval`
+- **Sealed Pilot Labels SHA-256 (`data/queries/gold_synthetic_pilot_labels_sealed.csv`):** `dbc9649778c053a9dcdbf42dd642be02c2cbd17693d4a8605f8b42e4f874a619`
+- **No-EHR 45 Queries SHA-256 (`data/annotation/queries_noehr_45.jsonl`):** Pending input (file not yet provided in prompt)
+- **Global Mean Vector SHA-256 (`backend/models/corpus_mean_bge_small.npy`):** `77819e6b0b7d26c2bf14c3c4c3ee04899b42cb9a9b0c5ee31b19cb5370b52218`
+- **Urgency Classifier SHA-256 (`backend/models/urgency_classifier.pkl`):** `5d85bd6575b54bf2af7c4601164150fab2fabbd3e3027df37dc513fad38254d9`
+- **Intent Classifier SHA-256 (`backend/models/intent_classifier.pkl`):** `6612b7a9f4ca36e9ff3e9ba8df1a77478d531d054d00874e442df2e6e3fb24ce`
+- **Frozen Decision Thresholds:**
+  - $\tau_{\text{high}} = 0.25$ (High urgency classification cutoff)
+  - $\tau_{\text{soon}} = 0.30$ (Routine vs soon classification threshold)
+  - $\tau_{\text{intent}} = 0.45$ (Supported intent confidence floor)
+  - $\alpha_{\text{retrieval}} = 0.50$ (Dense vs BM25 convex combination weight)
+  - $\text{Coverage Threshold} = 0.80$ (Citation coverage floor)
+  - $\text{NLI Pass Threshold} = 0.15$ (Sentence entailment floor)
+  - $\text{NLI Warn Threshold} = 0.001$ (Entailment warning floor)
+  - $\text{Contradiction Ceiling} = 0.05$ (Hallucination ceiling)
+- **Active Ablation Arms:** `full`, `no_ehr`, `no_classifier` (unified_context deferred per D-C1)
+- **Active Splits:** `gold-dev`, `gold-test`, `gold-synthetic`, `silver-dev`, `silver-test`, `rq3`
+- **Note on Prompt Pre-Registration Block:** The user prompt specified "the block I give below verbatim", but the prompt terminated after Item 9 without pasting the text block. This entry pre-registers all required hashes, thresholds, and provenance markers under `freeze-eval`.
+
 
 

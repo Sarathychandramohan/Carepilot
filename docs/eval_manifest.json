@@ -1,0 +1,74 @@
+{
+  "manifest_version": "1.0.0",
+  "evaluation_tag": "freeze-eval",
+  "git_commit": "4ccb103591cd2f81ace1924fd1a15b463e92d10b",
+  "python_version": "3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]",
+  "package_versions": {
+    "torch": "2.14.0",
+    "transformers": "5.17.0",
+    "sentence-transformers": "6.0.1",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sqlalchemy": "2.1.4",
+    "pydantic": "2.13.5",
+    "alembic": "1.20.0",
+    "fastapi": "0.143.0",
+    "rank-bm25": "0.2.2",
+    "chromadb": "1.5.9",
+    "psycopg2": "not_installed",
+    "asyncpg": "not_installed"
+  },
+  "constants": {
+    "kb_snapshot_id": "v5",
+    "ehr_dataset_id": "carepilot_v3",
+    "prompt_version": "v1",
+    "active_ablation_arms": [
+      "full",
+      "no_ehr",
+      "no_classifier"
+    ],
+    "supported_splits": [
+      "gold-dev",
+      "gold-test",
+      "gold-synthetic",
+      "silver-dev",
+      "silver-test",
+      "rq3"
+    ]
+  },
+  "thresholds": {
+    "coverage_threshold": 0.8,
+    "faithfulness_threshold": 0.8,
+    "nli_pass_threshold": 0.15,
+    "nli_warn_threshold": 0.001,
+    "nli_entailment_threshold": 0.15,
+    "contradiction_ceiling": 0.05,
+    "urgency_tau_high": 0.25,
+    "tau_high": 0.25,
+    "tau_soon": 0.3,
+    "tau_intent": 0.45,
+    "retrieval_alpha": 0.5,
+    "lab_tolerance_relative": 0.15,
+    "lab_date_window_days": 90
+  },
+  "files_sha256": {
+    "data/queries/gold_synthetic_pilot_labels_sealed.csv": "dbc9649778c053a9dcdbf42dd642be02c2cbd17693d4a8605f8b42e4f874a619",
+    "data/annotation/queries_noehr_45.jsonl": "MISSING_PENDING_INPUT",
+    "data/queries/silver.jsonl": "5f9d38bcdb11e545474e6cf895fab1afdd0594358366240d702a8e0ee87d944e",
+    "data/annotation/context_packs.jsonl": "5fd73023b73fa7faee69d587b115bde7042bdbf86844bd97b717dc3df8a35d2d",
+    "data/annotation/context_packs_new_45_v2.jsonl": "5d7d9a4d6346f55988ff1f3dee958f85cf60f03097f9e112fc18ee9ba6676fd9",
+    "data/annotation/gold_synthetic_pilot.jsonl": "f75369b732d524ddaf1b5a9b518dc6a9cac12843c58492a3e8b385a6c71eacda",
+    "backend/models/intent_classifier.pkl": "bfd1b674653ce3aecde7021cc88d7cb2b037b020192f4eb254dc05f14ebd9fca",
+    "backend/models/urgency_classifier.pkl": "5d85bd6575b54bf2af7c4601164150fab2fabbd3e3027df37dc513fad38254d9",
+    "backend/models/corpus_mean_bge_small.npy": "77819e6b0b7d26c2bf14c3c4c3ee04899b42cb9a9b0c5ee31b19cb5370b52218",
+    "backend/app/pipeline/redflag.py": "7e3014fc39fd3a4fba8b76e354d2e046195c50e355ea6e8499425127f6020a54",
+    "backend/app/pipeline/orchestrator.py": "fd2dd6d82be9c127d2ad587ec6f7fef0ef568ee3b76e68bd848a82582e1d12f4",
+    "backend/app/pipeline/generate.py": "dd4e9c1ec7a94e34a7afd3bd427c8a588f75326381f173fe176da9c7300dc972",
+    "backend/app/pipeline/classify.py": "4729cda94538f8777f462ac05981ec7cb607488a8912620400cde7d8dc9f9ebd",
+    "backend/app/pipeline/retrieve_kb.py": "a2fee881e6945dc7d5a6856cfae2022225330e25d943ef500d1afdb665414000",
+    "backend/app/pipeline/retrieve_ehr.py": "9459da664aba6ad314f359f0ae467c041cb625815edda74a3a930558f5836154",
+    "backend/app/pipeline/validate.py": "e02b12a8a589a6758cf46474916e4ce15f8230c3757096b8038d13804289d08b",
+    "backend/app/pipeline/detect_context_gaps.py": "d4aaf4ecf84d84180a20e1f000fb6463ad18c3877267cf3a45b5706c391cb3bb"
+  }
+}
