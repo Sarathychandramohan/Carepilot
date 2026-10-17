@@ -61,6 +61,27 @@ GOLD_CAVEAT_NOTE = (
 )
 
 
+def _is_reportable_eval_run(run: EvalRun) -> bool:
+    """Return whether an evaluation run may contribute to headline tables."""
+    if str(run.status).startswith("invalid_"):
+        return False
+    if run.status != "completed" or run.finished_at is None:
+        return False
+    try:
+        config = json.loads(run.config or "{}")
+    except (TypeError, json.JSONDecodeError):
+        return False
+    return not bool(config.get("dry_run", False))
+
+
+def _load_reportable_runs(db: Any) -> list[EvalRun]:
+    """Load only complete, non-dry-run evaluation records."""
+    return [
+        run for run in db.query(EvalRun).all()
+        if _is_reportable_eval_run(run)
+    ]
+
+
 def _data_validity_guard(
     consultations: list[Any] | None,
     source_label: str,
@@ -610,6 +631,8 @@ def compute_table_t5_t6() -> dict[str, Any]:
         print(f"  Found {len(runs)} evaluation runs in database:")
         for r in runs:
             print(f"    - Run ID {r.id}: {r.run_name} | Status={r.status} | Finished={r.finished_at}")
+        reportable_runs = _load_reportable_runs(db)
+        print(f"  Reportable non-dry-run completed runs: {len(reportable_runs)}")
 
         headers_t5 = [
             "Ablation Arm",
@@ -631,22 +654,22 @@ def compute_table_t5_t6() -> dict[str, Any]:
             "Mean NLI Entailment",
         ]
         
-        # Track across arms
-        arm_mapping = {
-            "full": [5, 4, 3],
-            "no_ehr": [6],
-            "no_classifier": [7],
-        }
-
         t5_results = {}
-        for arm_name, candidate_run_ids in arm_mapping.items():
-            run_obj = None
-            for rid in candidate_run_ids:
-                r = db.query(EvalRun).filter(EvalRun.id == rid).first()
-                if r and r.status == "completed":
-                    run_obj = r
-                    break
-            
+        runs_by_arm: dict[str, list[EvalRun]] = defaultdict(list)
+        for run in reportable_runs:
+            try:
+                arm_name = json.loads(run.config or "{}").get("ablation_arm")
+            except (TypeError, json.JSONDecodeError):
+                arm_name = None
+            if arm_name:
+                runs_by_arm[arm_name].append(run)
+
+        for arm_name in ("full", "no_ehr", "no_classifier"):
+            run_obj = max(
+                runs_by_arm.get(arm_name, []),
+                key=lambda run: run.finished_at,
+                default=None,
+            )
             if not run_obj:
                 continue
 
@@ -799,15 +822,23 @@ def compute_table_t8() -> dict[str, Any]:
         "Throughput / SLA",
     ]
     with SessionLocal() as db:
-        consults = (
-            db.query(Consultation)
-            .filter(
-                Consultation.generation_latency_ms.isnot(None),
-                Consultation.llm_model.isnot(None),
-                Consultation.llm_model != "dry-run-mock",
+        reportable_run_ids = [
+            run.id for run in _load_reportable_runs(db)
+        ]
+        if reportable_run_ids:
+            consults = (
+                db.query(Consultation)
+                .join(EvalRun, Consultation.eval_run_id == EvalRun.id)
+                .filter(
+                    EvalRun.id.in_(reportable_run_ids),
+                    Consultation.generation_latency_ms.isnot(None),
+                    Consultation.llm_model.isnot(None),
+                    Consultation.llm_model != "dry-run-mock",
+                )
+                .all()
             )
-            .all()
-        )
+        else:
+            consults = []
         n = len(consults)
         if n < MIN_REAL_N:
             print("  [NOT COMPUTED] Table T8: NOT COMPUTED")

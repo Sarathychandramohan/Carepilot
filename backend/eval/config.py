@@ -31,6 +31,10 @@ from backend.app.pipeline.validate import (
     NLI_PASS_THRESHOLD,
     NLI_WARN_THRESHOLD,
 )
+from backend.eval.metrics.ehr_fact_accuracy import (
+    LAB_DATE_WINDOW_DAYS,
+    LAB_VALUE_TOLERANCE,
+)
 
 # ---------------------------------------------------------------------------
 # Evaluation Thresholds & Hyperparameters
@@ -60,8 +64,8 @@ THRESHOLDS: dict[str, Any] = {
     "tau_soon": tau_soon,                                # Routine vs soon threshold (0.30)
     "tau_intent": tau_intent,                            # Supported intent confidence floor (0.45)
     "retrieval_alpha": retrieval_alpha,                  # Dense / BM25 convex combination weight
-    "lab_tolerance_relative": 0.15,                      # EHR-fact relative numeric tolerance
-    "lab_date_window_days": 90,                          # EHR-fact approximate date window
+    "lab_tolerance_relative": LAB_VALUE_TOLERANCE,       # EHR-fact relative numeric tolerance
+    "lab_date_window_days": LAB_DATE_WINDOW_DAYS,        # EHR-fact approximate date window
 }
 
 

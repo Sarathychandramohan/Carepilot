@@ -42,20 +42,34 @@ from backend.eval.query_sets import load_query_split, EvalQuery
 
 def get_git_commit() -> str:
     """Returns the current 40-character HEAD git commit SHA."""
-    try:
-        res = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True)
-        return res.stdout.strip()
-    except Exception:
-        return "unknown"
+    res = subprocess.run(
+        ["git", "rev-parse", "HEAD"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if res.returncode != 0 or len(res.stdout.strip()) != 40:
+        raise RuntimeError(
+            "Unable to determine the Git commit for evaluation provenance. "
+            "Run this command from the repository root with Git available."
+        )
+    return res.stdout.strip()
 
 
 def is_git_dirty() -> bool:
     """Returns True if the git tree contains uncommitted or untracked changes."""
-    try:
-        res = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True, check=True)
-        return bool(res.stdout.strip())
-    except Exception:
-        return False
+    res = subprocess.run(
+        ["git", "status", "--porcelain"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if res.returncode != 0:
+        raise RuntimeError(
+            "Unable to inspect Git status for evaluation provenance. "
+            "Non-dry-run evaluation is blocked."
+        )
+    return bool(res.stdout.strip())
 
 
 def assert_preflight_invariants(db: Session) -> None:

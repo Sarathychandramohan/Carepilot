@@ -2,22 +2,37 @@ import { View, Text, ScrollView, TextInput, TouchableOpacity, KeyboardAvoidingVi
 import { useState } from 'react';
 import { useAuthStore } from '../../../store/authStore';
 import { useMockWorkflow } from '../../../services/mock/mockWorkflow';
+import { consultationApi } from '../../../services/api/consultationApi';
 import { useRouter } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import { COLORS } from '../../../constants/colors';
 
 export default function ChatScreen() {
   const [query, setQuery] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const user = useAuthStore(s => s.user);
   const submitConsultation = useMockWorkflow(s => s.submitConsultation);
   const router = useRouter();
 
   const handleSend = async () => {
-    if (!query.trim() || !user) return;
+    if (!query.trim() || !user || isSubmitting) return;
+    setIsSubmitting(true);
     
-    const id = await submitConsultation(query, user.id, `${user.firstName} ${user.lastName}`);
+    let consultationId: string | null = null;
+    try {
+      const res = await consultationApi.submitConsultation(user.id, query.trim());
+      if (res && res.consultation_id) {
+        consultationId = res.consultation_id;
+      }
+    } catch (err) {
+      console.warn('Backend consult API call failed, falling back to local workflow:', err);
+    }
+
+    const localId = await submitConsultation(query.trim(), user.id, `${user.firstName} ${user.lastName}`);
+    const targetId = consultationId || localId;
     setQuery('');
-    router.push(`/(tabs)/chat/${id}` as any);
+    setIsSubmitting(false);
+    router.push(`/(tabs)/chat/${targetId}` as any);
   };
 
   return (

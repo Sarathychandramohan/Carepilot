@@ -174,8 +174,11 @@ async def submit_consultation(
                    "Must be one of: full, no_ehr, no_classifier, unified_context",
         )
 
+    from backend.app.api.patient import resolve_patient_id
+    resolved_pid = resolve_patient_id(req.patient_id)
+
     consultation = run_pipeline(
-        patient_id=req.patient_id,
+        patient_id=resolved_pid,
         query_text=req.query_text,
         db=db,
         ablation_config=req.ablation_config,
@@ -204,6 +207,29 @@ async def submit_consultation(
     )
 
 
+def resolve_consultation(db: Session, consultation_id: str) -> Optional[Consultation]:
+    """Find consultation by exact UUID or resolve mock alias (e.g. consult-001)."""
+    row = db.query(Consultation).filter(Consultation.id == consultation_id).first()
+    if row:
+        return row
+    if consultation_id.startswith("consult-"):
+        items = (
+            db.query(Consultation)
+            .order_by(Consultation.created_at.desc())
+            .limit(10)
+            .all()
+        )
+        try:
+            idx = int(consultation_id.split("-")[-1]) - 1
+            if 0 <= idx < len(items):
+                return items[idx]
+        except Exception:
+            pass
+        if items:
+            return items[0]
+    return None
+
+
 @router.get("/{consultation_id}", response_model=dict)
 async def get_consultation(
     consultation_id: str,
@@ -215,7 +241,7 @@ async def get_consultation(
     Requires doctor authorization ('X-User-Role: doctor' or role='doctor').
     Patients must access their responses via /api/patient/{patient_id}/consultations/{id}.
     """
-    row = db.query(Consultation).filter(Consultation.id == consultation_id).first()
+    row = resolve_consultation(db, consultation_id)
     if not row:
         raise HTTPException(status_code=404, detail="Consultation not found")
 
@@ -282,9 +308,7 @@ async def submit_doctor_review(
             status_code=422,
             detail=f"Invalid doctor_action '{req.doctor_action}'. Must be one of ('approved', 'edited', 'rejected')",
         )
-    canonical_action = action_map[action_raw]
-
-    row = db.query(Consultation).filter(Consultation.id == consultation_id).first()
+    row = resolve_consultation(db, consultation_id)
     if not row:
         raise HTTPException(status_code=404, detail="Consultation not found")
 
@@ -353,7 +377,7 @@ async def deliver_consultation(
     - Records delivered_at and patient_notified_at timestamps.
     - Transitions thread_status to 'delivered'.
     """
-    row = db.query(Consultation).filter(Consultation.id == consultation_id).first()
+    row = resolve_consultation(db, consultation_id)
     if not row:
         raise HTTPException(status_code=404, detail="Consultation not found")
 

@@ -5,7 +5,26 @@ export type ThreadStatus = 'awaiting_doctor' | 'approved' | 'patient_replied';
 export type AppointmentStatus = 'requested' | 'pending' | 'confirmed' | 'rescheduled' | 'cancelled' | 'completed' | 'rejected';
 export type AppointmentRequestStatus = 'pending_doctor_approval' | 'approved' | 'denied' | 'alternative_proposed';
 export type RejectReason = 'factual_correction' | 'insufficient_context' | 'unsafe_response' | 'poor_tone' | 'other';
-export type EditCategory = 'factual_correction' | 'added_caution' | 'tone_change' | 'no_change';
+export type EditCategory =
+  | 'factual_correction'
+  | 'missing_ehr_fact'
+  | 'wrong_ehr_fact'
+  | 'unsupported_medical_claim'
+  | 'citation_error'
+  | 'urgency_correction'
+  | 'missing_caution'
+  | 'tone_change'
+  | 'unnecessary_content'
+  | 'retrieval_error'
+  | 'no_change'
+  | 'other'
+  | 'added_caution';
+
+export type ValidationStatus =
+  | 'passed'
+  | 'passed_with_warning'
+  | 'passed_with_outlier_caveat'
+  | 'manual_required';
 
 export interface Patient {
   id: string;
@@ -173,6 +192,13 @@ export interface Consultation {
   threadStatus?: ThreadStatus;
   intent?: IntentType;
   urgency?: UrgencyLevel;
+  validationStatus?: ValidationStatus;
+  faithfulnessScore?: number;
+  citationEntailmentScore?: number;
+  generationLatencyMs?: number;
+  ablationArm?: string;
+  hasDraft?: boolean;
+  aiDraftJson?: any;
   aiAnalysis?: AIAnalysis;
   aiDraft?: AIDraft;
   doctorReview?: DoctorReview;

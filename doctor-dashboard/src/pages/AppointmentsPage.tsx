@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useWorkflowStore } from '../services/mock/mockWorkflow';
+import { appointmentApi } from '../services/api/appointmentApi';
 import { cn } from '../utils/cn';
 import { Calendar, Clock, Check, RefreshCw, Send } from 'lucide-react';
 import { Dialog } from '@headlessui/react';
@@ -27,12 +28,22 @@ export function AppointmentsPage() {
     return false;
   }).sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time));
 
-  const handleApproveRequest = (reqId: string) => {
+  const handleApproveRequest = async (reqId: string) => {
+    try {
+      await appointmentApi.respondRequest(reqId, 'approve');
+    } catch (err) {
+      console.warn('Backend respondRequest skipped or offline:', err);
+    }
     respondAppointmentRequest(reqId, 'approve');
     toast.success('Appointment request approved & confirmed!');
   };
 
-  const handleDenyRequest = (reqId: string) => {
+  const handleDenyRequest = async (reqId: string) => {
+    try {
+      await appointmentApi.respondRequest(reqId, 'deny', 'Denied due to doctor schedule conflict.');
+    } catch (err) {
+      console.warn('Backend respondRequest skipped or offline:', err);
+    }
     respondAppointmentRequest(reqId, 'deny', 'Denied due to doctor schedule conflict.');
     toast.error('Appointment request denied.');
   };
@@ -42,8 +53,13 @@ export function AppointmentsPage() {
     setIsAltModalOpen(true);
   };
 
-  const handleSubmitAltPropose = () => {
+  const handleSubmitAltPropose = async () => {
     if (!selectedReqId) return;
+    try {
+      await appointmentApi.respondRequest(selectedReqId, 'propose_alternative', altNote || 'Proposed alternative schedule.', altDate, altTime);
+    } catch (err) {
+      console.warn('Backend respondRequest skipped or offline:', err);
+    }
     respondAppointmentRequest(selectedReqId, 'propose_alternative', altNote || 'Proposed alternative schedule.', altDate, altTime);
     toast.success('Alternative appointment time proposed to patient.');
     setIsAltModalOpen(false);

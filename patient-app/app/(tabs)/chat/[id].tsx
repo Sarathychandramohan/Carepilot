@@ -1,18 +1,47 @@
 import { View, Text, ScrollView, ActivityIndicator, TouchableOpacity, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useMockWorkflow } from '../../../services/mock/mockWorkflow';
+import { useAuthStore } from '../../../store/authStore';
+import { consultationApi } from '../../../services/api/consultationApi';
 import { Feather } from '@expo/vector-icons';
 import { COLORS } from '../../../constants/colors';
 
 export default function ConsultationDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const consultation = useMockWorkflow(s => s.getConsultationById(id));
+  const approveConsultation = useMockWorkflow(s => s.approveConsultation);
   const sendFollowUpReply = useMockWorkflow(s => s.sendFollowUpReply);
+  const user = useAuthStore(s => s.user);
   const router = useRouter();
   
   const [followUpText, setFollowUpText] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Poll backend for consultation delivery status (clinical HITL safe gate)
+  useEffect(() => {
+    if (!id || !user) return;
+
+    let isMounted = true;
+    const checkDelivery = async () => {
+      try {
+        const res = await consultationApi.getPatientConsultation(user.id, id);
+        if (!isMounted) return;
+        if (res && res.thread_status === 'delivered' && res.final_response) {
+          approveConsultation(id, res.final_response);
+        }
+      } catch (err) {
+        // Safe silent fail if offline or not yet delivered
+      }
+    };
+
+    checkDelivery();
+    const interval = setInterval(checkDelivery, 3500);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, [id, user]);
 
   if (!consultation) {
     return (
@@ -32,8 +61,16 @@ export default function ConsultationDetailScreen() {
   const handleSendFollowUp = async () => {
     if (!followUpText.trim() || isSubmitting) return;
     setIsSubmitting(true);
-    await sendFollowUpReply(consultation.id, followUpText.trim());
+    const text = followUpText.trim();
     setFollowUpText('');
+
+    try {
+      await consultationApi.sendFollowUpReply(consultation.id, text);
+    } catch (err) {
+      console.warn('Backend follow-up failed, falling back to local workflow:', err);
+    }
+
+    await sendFollowUpReply(consultation.id, text);
     setIsSubmitting(false);
   };
 

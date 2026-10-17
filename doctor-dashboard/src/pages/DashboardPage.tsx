@@ -1,14 +1,26 @@
+import { useState, useEffect } from 'react';
 import { useWorkflowStore } from '../services/mock/mockWorkflow';
 import { useNavigate } from 'react-router-dom';
 import { Activity, Clock, AlertTriangle, CheckCircle2 } from 'lucide-react';
+import { consultationApi, QueueStatsResponse } from '../services/api/consultationApi';
 
 export function DashboardPage() {
   const consultations = useWorkflowStore(state => state.consultations);
   const navigate = useNavigate();
+  const [queueStats, setQueueStats] = useState<QueueStatsResponse | null>(null);
+
+  useEffect(() => {
+    consultationApi.getQueueStats()
+      .then(stats => setQueueStats(stats))
+      .catch(() => {
+        // Fallback to store
+      });
+  }, []);
 
   const pending = consultations.filter(c => c.status === 'doctor_review');
   const urgent = pending.filter(c => c.urgency === 'urgent');
-  // Mock today based on total
+  const pendingCount = queueStats ? queueStats.total_pending : pending.length;
+  const urgentCount = queueStats ? queueStats.high_priority : urgent.length;
   const todayCount = consultations.length; 
   const reviewed = consultations.filter(c => c.status === 'approved' || c.status === 'rejected');
 
@@ -29,7 +41,7 @@ export function DashboardPage() {
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-text-muted">Pending Reviews</p>
-              <p className="text-2xl font-semibold text-text-navy">{pending.length}</p>
+              <p className="text-2xl font-semibold text-text-navy">{pendingCount}</p>
             </div>
           </div>
         </div>
@@ -41,7 +53,7 @@ export function DashboardPage() {
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-text-muted">Urgent Cases</p>
-              <p className="text-2xl font-semibold text-text-navy">{urgent.length}</p>
+              <p className="text-2xl font-semibold text-text-navy">{urgentCount}</p>
             </div>
           </div>
         </div>

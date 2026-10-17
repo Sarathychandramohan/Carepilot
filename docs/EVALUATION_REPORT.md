@@ -7,8 +7,8 @@
 ---
 
 # CarePilot AI — Pillar C Comprehensive Evaluation Report
-**Generated at:** 2026-10-17 07:51:51 UTC  
-**Master Spec Reference:** CarePilot AI Master Spec v3 (Sections 3.1–3.4, 8, Appendices A, C, D)  
+**Generated at:** 2026-10-17 16:47:50 UTC
+**Master Spec Reference:** CarePilot AI Master Spec v3 (Sections 3.1–3.4, 8, Appendices A, C, D)
 **Execution Rigor:** 100% Real Empirical Values (NO Mocking).
 
 > [!IMPORTANT]
@@ -45,8 +45,8 @@ Evaluated against all gold relevance annotations across 3 retrieval modes:
 
 | Configuration | Split | Hit@3 | Hit@5 | MRR |
 |---|---|---|---|---|
-| **Hybrid Fusion (alpha=0.5)** | gold-dev | 45.33% | 49.33% | 0.3834 |
-| **Hybrid Fusion (alpha=0.5)** | gold-test | 33.0% | 35.0% | 0.2791 |
+| **Hybrid Fusion (alpha=0.5)** | gold-dev | 46.0% | 49.33% | 0.3773 |
+| **Hybrid Fusion (alpha=0.5)** | gold-test | 33.0% | 35.0% | 0.2718 |
 | **Dense-Only (ChromaDB)** | gold-test | 19.67% | 24.0% | 0.1642 |
 | **BM25-Only (Sparse)** | gold-test | 27.0% | 35.67% | 0.2477 |
 
@@ -63,8 +63,8 @@ Evaluated using the real trained classifiers (`backend/models/intent_classifier.
   - Accuracy: **71.20%**
   - Macro-F1: **0.6467**
 - **Urgency Classification (Gold 500)**:
-  - Accuracy: **81.80%**
-  - Macro-F1: **0.5864**
+  - Accuracy: **83.20%**
+  - Macro-F1: **0.6300**
 - **Intent Classification (Silver-Dev 1040)**:
   - Accuracy: **100.00%**
   - Macro-F1: **1.0000**

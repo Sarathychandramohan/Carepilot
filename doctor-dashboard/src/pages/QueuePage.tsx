@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useWorkflowStore } from '../services/mock/mockWorkflow';
 import { useNavigate } from 'react-router-dom';
 import { Search, AlertOctagon } from 'lucide-react';
-import { UrgencyLevel, ConsultationStatus } from '../types';
+import { UrgencyLevel, ConsultationStatus, Consultation } from '../types';
+import { consultationApi } from '../services/api/consultationApi';
 
 export function QueuePage() {
   const consultations = useWorkflowStore(state => state.consultations);
@@ -10,12 +11,55 @@ export function QueuePage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [urgencyFilter, setUrgencyFilter] = useState<UrgencyLevel | 'all'>('all');
   const [statusFilter, setStatusFilter] = useState<ConsultationStatus | 'all'>('doctor_review');
+  const [backendQueue, setBackendQueue] = useState<Consultation[]>([]);
 
-  const highPriorityAlerts = consultations.filter(
+  useEffect(() => {
+    let isMounted = true;
+    const loadQueue = async () => {
+      try {
+        const items = await consultationApi.getQueue();
+        if (!isMounted) return;
+        const mapped: Consultation[] = items.map(r => ({
+          id: r.id,
+          patientId: r.patient_id,
+          patientName: r.patient_id.includes('55dedab5') || r.patient_id === 'hero-001' ? 'Christian Labadie' : `Patient ${r.patient_id.slice(0, 8)}`,
+          query: r.query_text,
+          status: 'doctor_review',
+          threadStatus: 'awaiting_doctor',
+          intent: r.intent as any,
+          urgency: r.urgency_final,
+          validationStatus: r.validation_status,
+          hasDraft: r.has_draft,
+          isHighPriorityAlert: r.is_high_priority,
+          isRedFlagOverride: r.is_red_flag_override,
+          messages: [{ id: 'm1', consultationId: r.id, role: 'patient', content: r.query_text, timestamp: r.created_at }],
+          createdAt: r.created_at,
+          updatedAt: r.created_at,
+        }));
+        setBackendQueue(mapped);
+      } catch (err) {
+        // Fallback to local store silently if backend unreachable
+      }
+    };
+
+    loadQueue();
+    const interval = setInterval(loadQueue, 5000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, []);
+
+  const allItems = [
+    ...backendQueue,
+    ...consultations.filter(c => !backendQueue.some(b => b.id === c.id)),
+  ];
+
+  const highPriorityAlerts = allItems.filter(
     c => c.status === 'doctor_review' && (c.urgency === 'urgent' || c.isHighPriorityAlert || c.isRedFlagOverride)
   );
 
-  const filtered = consultations.filter(c => {
+  const filtered = allItems.filter(c => {
     const matchesSearch = c.patientName.toLowerCase().includes(searchTerm.toLowerCase()) || 
                           c.query.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesUrgency = urgencyFilter === 'all' || c.urgency === urgencyFilter;

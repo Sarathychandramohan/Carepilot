@@ -2,22 +2,48 @@ import { useState, useEffect } from 'react';
 import { useWorkflowStore } from '../services/mock/mockWorkflow';
 import { useNavigate } from 'react-router-dom';
 import { Search } from 'lucide-react';
+import { patientApi } from '../services/api/patientApi';
+import { Patient } from '../types';
 
 export function PatientsPage() {
   const patients = useWorkflowStore(state => state.patients);
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [backendPatients, setBackendPatients] = useState<Patient[]>([]);
 
   useEffect(() => {
-    // Simulate initial loading
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
+    setIsLoading(true);
+    patientApi.getPatients(searchTerm)
+      .then(items => {
+        const mapped: Patient[] = items.map(p => ({
+          id: p.id,
+          firstName: p.firstName,
+          lastName: p.lastName,
+          dateOfBirth: p.dateOfBirth,
+          gender: p.gender,
+          age: p.age,
+          conditions: Array(p.conditionsCount).fill(0).map((_, idx) => ({ id: `c-${idx}`, description: `Clinical Diagnosis #${idx + 1}`, startDate: '2020-01-01', active: true })),
+          medications: Array(p.medicationsCount).fill(0).map((_, idx) => ({ id: `m-${idx}`, patientId: p.id, name: `Prescription #${idx + 1}`, dosage: 'Standard', frequency: 'Daily', startDate: '2020-01-01', active: true })),
+          allergies: [],
+          pendingConsultationCount: 0,
+        }));
+        setBackendPatients(mapped);
+      })
+      .catch(() => {
+        // Fallback to store
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [searchTerm]);
 
-  const filteredPatients = patients.filter(p => {
+  const allPatients = [
+    ...patients,
+    ...backendPatients.filter(bp => !patients.some(p => p.id === bp.id)),
+  ];
+
+  const filteredPatients = allPatients.filter(p => {
     const term = searchTerm.toLowerCase();
     const fullName = `${p.firstName} ${p.lastName}`.toLowerCase();
     return fullName.includes(term) || p.id.toLowerCase().includes(term);

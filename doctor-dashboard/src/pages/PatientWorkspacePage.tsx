@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useWorkflowStore } from '../services/mock/mockWorkflow';
+import { patientApi, PatientEhrData } from '../services/api/patientApi';
 import { cn } from '../utils/cn';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer } from 'recharts';
 import { FileText, Calendar, Activity, Clock, ChevronLeft, AlertTriangle, MessageSquare, ArrowRight, Pill, Stethoscope } from 'lucide-react';
@@ -20,7 +21,33 @@ export function PatientWorkspacePage() {
   const consultations = allConsultations.filter(c => c.patientId === id);
   const appointments = allAppointments.filter(a => a.patientId === id);
   
+  const [backendEhr, setBackendEhr] = useState<PatientEhrData | null>(null);
   const [activeTab, setActiveTab] = useState('overview');
+
+  useEffect(() => {
+    if (id) {
+      patientApi.getPatientEhr(id)
+        .then(ehr => {
+          setBackendEhr(ehr);
+        })
+        .catch(() => {
+          // Fallback to local store
+        });
+    }
+  }, [id]);
+
+  const effectivePatient = backendEhr ? {
+    id: backendEhr.id,
+    firstName: backendEhr.firstName,
+    lastName: backendEhr.lastName,
+    dateOfBirth: backendEhr.dateOfBirth,
+    gender: backendEhr.gender,
+    age: backendEhr.age,
+    conditions: backendEhr.conditions,
+    medications: backendEhr.medications,
+    allergies: backendEhr.allergies,
+    pendingConsultationCount: 0,
+  } : patient;
 
   // MODULE 3: Side-by-Side Lab Time Point Comparison state
   const labDataPoints = [
@@ -33,7 +60,7 @@ export function PatientWorkspacePage() {
   const [pointAIdx, setPointAIdx] = useState(0); // Baseline
   const [pointBIdx, setPointBIdx] = useState(3); // Most recent
 
-  if (!patient) {
+  if (!effectivePatient) {
     return (
       <div className="p-8 text-center">
         <h2 className="text-xl font-bold text-text-navy mb-2">Patient Not Found</h2>
@@ -74,17 +101,17 @@ export function PatientWorkspacePage() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="flex items-center space-x-4">
             <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold text-xl border border-primary/20">
-              {patient.firstName[0]}{patient.lastName[0]}
+              {effectivePatient.firstName[0]}{effectivePatient.lastName[0]}
             </div>
             <div>
               <div className="flex items-center space-x-3">
-                <h1 className="text-2xl font-bold text-text-navy">{patient.firstName} {patient.lastName}</h1>
+                <h1 className="text-2xl font-bold text-text-navy">{effectivePatient.firstName} {effectivePatient.lastName}</h1>
                 <span className="text-xs bg-gray-100 text-text-navy font-mono px-2.5 py-0.5 rounded border border-border-subtle font-semibold">
-                  Patient ID: {patient.id}
+                  Patient ID: {effectivePatient.id.slice(0, 16)}
                 </span>
               </div>
               <p className="text-sm text-text-muted mt-0.5">
-                {patient.gender === 'M' ? 'Male' : 'Female'} • DOB: {patient.dateOfBirth} ({patient.age}y) • Needham, Massachusetts
+                {effectivePatient.gender === 'M' ? 'Male' : 'Female'} • DOB: {effectivePatient.dateOfBirth} ({effectivePatient.age}y)
               </p>
             </div>
           </div>
@@ -117,11 +144,11 @@ export function PatientWorkspacePage() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 pt-6 border-t border-border-subtle">
           <div className="bg-gray-50/70 p-3 rounded-lg border border-border-subtle text-center">
             <span className="text-xs font-semibold text-text-muted uppercase">Conditions</span>
-            <p className="text-xl font-bold text-text-navy mt-1">{patient.conditions.length}</p>
+            <p className="text-xl font-bold text-text-navy mt-1">{effectivePatient.conditions.length}</p>
           </div>
           <div className="bg-gray-50/70 p-3 rounded-lg border border-border-subtle text-center">
             <span className="text-xs font-semibold text-text-muted uppercase">Medications</span>
-            <p className="text-xl font-bold text-text-navy mt-1">{patient.medications.length}</p>
+            <p className="text-xl font-bold text-text-navy mt-1">{effectivePatient.medications.length}</p>
           </div>
           <div className="bg-gray-50/70 p-3 rounded-lg border border-border-subtle text-center">
             <span className="text-xs font-semibold text-text-muted uppercase">Lab Results</span>
@@ -169,7 +196,7 @@ export function PatientWorkspacePage() {
                 <p className="text-xs text-text-muted mb-4">Documented active conditions in Synthea EMR record</p>
                 
                 <div className="space-y-2">
-                  {patient.conditions.map(c => (
+                  {effectivePatient.conditions.map(c => (
                     <div key={c.id} className="p-3 bg-gray-50 rounded-lg border border-border-subtle flex justify-between items-center">
                       <div>
                         <span className="text-sm font-bold text-text-navy">{c.description}</span>
@@ -196,7 +223,7 @@ export function PatientWorkspacePage() {
                 <p className="text-xs text-text-muted mb-4">Active prescribed medications & dosing regimens</p>
 
                 <div className="space-y-2">
-                  {patient.medications.filter(m => m.active).map(m => (
+                  {effectivePatient.medications.filter(m => m.active).map(m => (
                     <div key={m.id} className="p-3 bg-gray-50 rounded-lg border border-border-subtle flex justify-between items-center">
                       <div>
                         <span className="text-sm font-bold text-text-navy">{m.name} {m.dosage}</span>
@@ -218,8 +245,8 @@ export function PatientWorkspacePage() {
                 <h3 className="text-base font-bold text-text-navy">Allergies & Sensitivities</h3>
               </div>
               <p className="text-xs text-text-navy font-medium">
-                {patient.allergies.length > 0
-                  ? patient.allergies.map(a => a.description).join(', ')
+                {effectivePatient.allergies.length > 0
+                  ? effectivePatient.allergies.map(a => a.description).join(', ')
                   : 'No known drug allergies (NKDA) documented in patient electronic health record.'}
               </p>
             </div>
@@ -456,7 +483,7 @@ export function PatientWorkspacePage() {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-border-subtle">
-                {patient.medications.map(m => (
+                {effectivePatient.medications.map(m => (
                   <tr key={m.id}>
                     <td className="px-4 py-4 font-bold text-text-navy">{m.name}</td>
                     <td className="px-4 py-4 text-sm">{m.dosage}</td>

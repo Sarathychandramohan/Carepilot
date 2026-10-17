@@ -50,6 +50,11 @@ from typing import Any
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 
+# These values are part of the evaluation contract and are imported by
+# backend.eval.config so manifests cannot drift from metric behavior.
+LAB_VALUE_TOLERANCE = 0.15
+LAB_DATE_WINDOW_DAYS = 90
+
 # ---------------------------------------------------------------------------
 # Fuzzy string matching (no third-party library required beyond stdlib)
 # ---------------------------------------------------------------------------
@@ -342,8 +347,8 @@ def _get_patient_conditions(patient_id: str, db: Session) -> list[str]:
 # Matching logic
 # ---------------------------------------------------------------------------
 
-_LAB_VALUE_TOLERANCE = 0.15     # 15% relative tolerance for numeric matching
-_LAB_DATE_WINDOW_DAYS = 90      # ±90 days for approximate date matching
+_LAB_VALUE_TOLERANCE = LAB_VALUE_TOLERANCE
+_LAB_DATE_WINDOW_DAYS = LAB_DATE_WINDOW_DAYS
 
 
 _LAB_ALIASES: dict[str, list[str]] = {

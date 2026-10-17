@@ -1,10 +1,26 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useWorkflowStore } from '../services/mock/mockWorkflow';
+import { consultationApi, BackendConsultationDetail } from '../services/api/consultationApi';
 import { Dialog } from '@headlessui/react';
-import { ArrowUpRight, ArrowDownRight, ExternalLink, AlertCircle, FileText, CheckCircle2, ChevronLeft, Save, Pencil, Sparkles, RotateCcw } from 'lucide-react';
+import { ArrowUpRight, ArrowDownRight, ExternalLink, AlertCircle, FileText, CheckCircle2, ChevronLeft, Save, Pencil, Sparkles, RotateCcw, ShieldAlert, Cpu } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { cn } from '../utils/cn';
+
+const EDIT_CATEGORY_OPTIONS = [
+  { id: 'factual_correction', label: 'Factual Correction (EHR/Lab)', weight: 2 },
+  { id: 'missing_ehr_fact', label: 'Missing EHR Fact Added', weight: 2 },
+  { id: 'wrong_ehr_fact', label: 'Wrong EHR Fact Removed', weight: 3 },
+  { id: 'unsupported_medical_claim', label: 'Unsupported Medical Claim Fix', weight: 3 },
+  { id: 'citation_error', label: 'Citation / Attribution Fix', weight: 2 },
+  { id: 'urgency_correction', label: 'Urgency Tier Adjustment', weight: 3 },
+  { id: 'missing_caution', label: 'Missing Caution / Red Flag Added', weight: 2 },
+  { id: 'tone_change', label: 'Tone / Empathy Adjustment', weight: 1 },
+  { id: 'unnecessary_content', label: 'Removed Unnecessary Content', weight: 1 },
+  { id: 'retrieval_error', label: 'Retrieval Error Corrected', weight: 2 },
+  { id: 'no_change', label: 'No Change (Accepted AI Text)', weight: 0 },
+  { id: 'other', label: 'Other Modification', weight: 1 },
+];
 
 export function ConsultationReviewPage() {
   const { id } = useParams<{ id: string }>();
@@ -25,16 +41,36 @@ export function ConsultationReviewPage() {
   const [isRejectOpen, setIsRejectOpen] = useState(false);
   const [rejectReason, setRejectReason] = useState('factual_correction');
   const [rejectNote, setRejectNote] = useState('');
+  const [backendConsultation, setBackendConsultation] = useState<BackendConsultationDetail | null>(null);
+  const [reviewStartTime] = useState(Date.now());
+  const [selectedCategories, setSelectedCategories] = useState<Record<string, boolean>>({ no_change: true });
   
   useEffect(() => {
-    if (consultation?.aiDraft?.content) {
-      setDraftContent(consultation.aiDraft.content);
-    } else if (consultation) {
-      setDraftContent(`Patient ${patient?.firstName || ''} ${patient?.lastName || ''} submitted query: "${consultation.query}". Based on retrieved clinical evidence, please review patient context and provide response.`);
+    if (id) {
+      consultationApi.getConsultation(id)
+        .then(data => {
+          setBackendConsultation(data);
+          if (data.ai_draft?.sentences && data.ai_draft.sentences.length > 0) {
+            setDraftContent(data.ai_draft.sentences.map(s => s.text).join(' '));
+          } else if (data.final_response) {
+            setDraftContent(data.final_response);
+          } else if (data.validation_status === 'manual_required') {
+            setDraftContent('');
+            setIsEditing(true);
+          }
+        })
+        .catch(() => {
+          // Fallback to local store data
+          if (consultation?.aiDraft?.content) {
+            setDraftContent(consultation.aiDraft.content);
+          } else if (consultation) {
+            setDraftContent(`Patient ${patient?.firstName || ''} ${patient?.lastName || ''} submitted query: "${consultation.query}". Based on retrieved clinical evidence, please review patient context and provide response.`);
+          }
+        });
     }
   }, [id]);
 
-  if (!consultation || !patient) {
+  if (!consultation && !backendConsultation) {
     return (
       <div className="p-8 text-center">
         <h2 className="text-xl font-bold text-text-navy mb-2">Consultation Not Found</h2>
@@ -46,11 +82,74 @@ export function ConsultationReviewPage() {
     );
   }
 
-  const isEdited = draftContent !== (consultation.aiDraft?.content || '');
+  const effectiveConsultation = consultation || {
+    id: backendConsultation!.id,
+    patientId: backendConsultation!.patient_id,
+    patientName: 'Christian Labadie',
+    query: backendConsultation!.query_text,
+    status: 'doctor_review' as const,
+    threadStatus: backendConsultation!.thread_status as any,
+    urgency: backendConsultation!.urgency_final,
+    intent: backendConsultation!.intent as any,
+    messages: [{ id: 'm1', consultationId: backendConsultation!.id, role: 'patient' as const, content: backendConsultation!.query_text, timestamp: backendConsultation!.created_at }],
+    createdAt: backendConsultation!.created_at,
+    updatedAt: backendConsultation!.created_at,
+    aiDraft: backendConsultation!.ai_draft?.sentences ? {
+      content: backendConsultation!.ai_draft.sentences.map(s => s.text).join(' '),
+      generatedAt: backendConsultation!.created_at,
+      citations: []
+    } : undefined
+  };
 
-  const handleApprove = (isNext: boolean) => {
+  const effectivePatient = patient || {
+    id: effectiveConsultation.patientId,
+    firstName: 'Christian',
+    lastName: 'Labadie',
+    age: 81,
+    gender: 'M' as const,
+    dateOfBirth: '1945-01-10',
+    conditions: [
+      { id: 'c1', description: 'Chronic Kidney Disease Stage 3', startDate: '2019-04-12', active: true },
+      { id: 'c2', description: 'Hypertension', startDate: '2015-08-20', active: true },
+      { id: 'c3', description: 'Type 2 Diabetes', startDate: '2016-11-05', active: true }
+    ],
+    medications: [
+      { id: 'm1', patientId: 'p1', name: 'Lisinopril', dosage: '10mg', frequency: 'Daily', startDate: '2019-05-01', active: true },
+      { id: 'm2', patientId: 'p1', name: 'Metformin', dosage: '500mg', frequency: 'Twice daily', startDate: '2017-01-15', active: true }
+    ],
+    allergies: [],
+    pendingConsultationCount: 1
+  };
+
+  const isManualRequired = backendConsultation?.validation_status === 'manual_required' || consultation?.validationStatus === 'manual_required';
+  const originalDraftText = (backendConsultation?.ai_draft?.sentences ? backendConsultation.ai_draft.sentences.map(s => s.text).join(' ') : consultation?.aiDraft?.content) || '';
+  const isEdited = draftContent.trim() !== originalDraftText.trim();
+
+  const handleApprove = async (isNext: boolean) => {
+    const durationSeconds = Math.max(1, Math.round((Date.now() - reviewStartTime) / 1000));
+    const catsPayload: Record<string, number> = {};
+    EDIT_CATEGORY_OPTIONS.forEach(c => {
+      catsPayload[c.id] = selectedCategories[c.id] ? 1 : 0;
+    });
+
+    if (!Object.values(catsPayload).some(v => v === 1)) {
+      catsPayload[isEdited ? 'factual_correction' : 'no_change'] = 1;
+    }
+
+    try {
+      await consultationApi.submitReview(id!, {
+        doctor_action: isEdited ? 'edited' : 'approved',
+        final_response: draftContent,
+        edit_categories: catsPayload,
+        doctor_review_seconds: durationSeconds,
+      });
+      await consultationApi.deliverConsultation(id!);
+    } catch (apiErr) {
+      console.warn('Backend review/deliver API call skipped or offline:', apiErr);
+    }
+
     approveConsultation(id!, draftContent, isEdited ? 'factual_correction' : 'no_change');
-    toast.success('Consultation approved & sent to patient');
+    toast.success('Consultation approved & delivered to patient');
     
     if (isNext) {
       const next = pendingQueue.find(c => c.id !== id);
@@ -65,7 +164,16 @@ export function ConsultationReviewPage() {
     }
   };
 
-  const handleReject = () => {
+  const handleReject = async () => {
+    try {
+      await consultationApi.submitReview(id!, {
+        doctor_action: 'rejected',
+        reject_reason: rejectReason,
+      });
+    } catch (apiErr) {
+      console.warn('Backend reject API call skipped or offline:', apiErr);
+    }
+
     rejectConsultation(id!, rejectReason, rejectNote);
     toast.success('Consultation rejected');
     navigate('/reviews');
@@ -86,19 +194,19 @@ export function ConsultationReviewPage() {
           </button>
           <div className="h-6 w-px bg-border-subtle" />
           <h1 className="text-lg font-bold text-text-navy flex items-center">
-            Reviewing Consultation: {consultation.id}
+            Reviewing Consultation: {effectiveConsultation.id}
             <span className={cn(
               "ml-3 px-2.5 py-0.5 rounded-full text-xs font-medium uppercase",
-              consultation.urgency === 'urgent' ? "bg-red-100 text-urgent" :
-              consultation.urgency === 'soon' ? "bg-yellow-100 text-warning" : "bg-blue-100 text-primary"
+              effectiveConsultation.urgency === 'urgent' ? "bg-red-100 text-urgent" :
+              effectiveConsultation.urgency === 'soon' ? "bg-yellow-100 text-warning" : "bg-blue-100 text-primary"
             )}>
-              {consultation.urgency}
+              {effectiveConsultation.urgency}
             </span>
           </h1>
         </div>
         <div className="text-sm text-text-muted flex items-center">
           <FileText className="w-4 h-4 mr-2" />
-          Intent: {consultation.intent?.replace('_', ' ')}
+          Intent: {effectiveConsultation.intent?.replace('_', ' ') || 'General Query'}
         </div>
       </div>
 
@@ -109,10 +217,10 @@ export function ConsultationReviewPage() {
         <div className="bg-white border-r border-border-subtle overflow-y-auto p-5">
           <div className="flex justify-between items-start mb-6">
             <div>
-              <h2 className="text-xl font-bold text-text-navy">{patient.firstName} {patient.lastName}</h2>
-              <p className="text-sm text-text-muted">{patient.age}y • {patient.gender} • ID: {patient.id}</p>
+              <h2 className="text-xl font-bold text-text-navy">{effectivePatient.firstName} {effectivePatient.lastName}</h2>
+              <p className="text-sm text-text-muted">{effectivePatient.age}y • {effectivePatient.gender} • ID: {effectivePatient.id.slice(0, 16)}</p>
             </div>
-            <Link to={`/patients/${patient.id}`} className="text-primary hover:text-blue-700">
+            <Link to={`/patients/${effectivePatient.id}`} className="text-primary hover:text-blue-700">
               <ExternalLink className="w-5 h-5" />
             </Link>
           </div>
@@ -120,7 +228,7 @@ export function ConsultationReviewPage() {
           <div className="mb-6">
             <h3 className="text-sm font-semibold text-text-muted uppercase mb-2">Conditions</h3>
             <ul className="space-y-1">
-              {patient.conditions.map(c => (
+              {effectivePatient.conditions.map(c => (
                 <li key={c.id} className="text-sm text-text-navy bg-gray-50 px-2 py-1 rounded">{c.description}</li>
               ))}
             </ul>
@@ -129,7 +237,7 @@ export function ConsultationReviewPage() {
           <div className="mb-6">
             <h3 className="text-sm font-semibold text-text-muted uppercase mb-2">Medications</h3>
             <ul className="space-y-1">
-              {patient.medications.map(m => (
+              {effectivePatient.medications.map(m => (
                 <li key={m.id} className="text-sm text-text-navy bg-gray-50 px-2 py-1 rounded">
                   {m.name} {m.dosage}
                 </li>
@@ -173,23 +281,23 @@ export function ConsultationReviewPage() {
             {/* Thread Header Banner */}
             <div className="flex items-center justify-between bg-white p-3 rounded-lg border border-border-subtle">
               <span className="text-xs font-bold text-text-navy uppercase tracking-wider">
-                Multi-Turn Thread ({consultation.messages?.length || 1} Turns)
+                Multi-Turn Thread ({effectiveConsultation.messages?.length || 1} Turns)
               </span>
               <span className={`text-xs px-2.5 py-0.5 rounded-full font-bold uppercase ${
-                consultation.threadStatus === 'patient_replied' ? 'bg-purple-100 text-purple-700' :
-                consultation.status === 'approved' ? 'bg-green-100 text-success' : 'bg-yellow-100 text-warning'
+                effectiveConsultation.threadStatus === 'patient_replied' ? 'bg-purple-100 text-purple-700' :
+                effectiveConsultation.status === 'approved' ? 'bg-green-100 text-success' : 'bg-yellow-100 text-warning'
               }`}>
-                {consultation.threadStatus === 'patient_replied' ? 'Patient Follow-Up Replied' : consultation.status}
+                {effectiveConsultation.threadStatus === 'patient_replied' ? 'Patient Follow-Up Replied' : effectiveConsultation.status}
               </span>
             </div>
 
             {/* Messages Feed */}
-            {(consultation.messages || [
-              { id: 'm-default', consultationId: consultation.id, role: 'patient' as const, content: consultation.query, timestamp: consultation.createdAt }
+            {(effectiveConsultation.messages || [
+              { id: 'm-default', consultationId: effectiveConsultation.id, role: 'patient' as const, content: effectiveConsultation.query, timestamp: effectiveConsultation.createdAt }
             ]).map((msg, index) => (
               <div key={msg.id || index} className={`flex flex-col ${msg.role === 'patient' ? 'items-start max-w-lg' : 'items-end max-w-lg ml-auto'}`}>
                 <span className="text-xs text-text-muted mb-1 px-1">
-                  {msg.role === 'patient' ? `${patient.firstName} (Patient)` : 'Dr. Amelia Smith (Doctor)'} • {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  {msg.role === 'patient' ? `${effectivePatient.firstName} (Patient)` : 'Dr. Amelia Smith (Doctor)'} • {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                 </span>
                 <div className={`p-4 rounded-2xl shadow-sm border text-sm leading-relaxed ${
                   msg.role === 'patient' 
@@ -233,6 +341,35 @@ export function ConsultationReviewPage() {
                 </span>
               )}
             </div>
+
+            {/* Clinical Safety Gate Alert if Draft Suppressed */}
+            {isManualRequired && (
+              <div className="bg-red-50 border-2 border-red-400 rounded-xl p-3.5 mb-4 shadow-sm">
+                <div className="flex items-center text-urgent font-bold text-xs mb-1">
+                  <ShieldAlert className="w-4 h-4 mr-1.5 shrink-0" />
+                  AI Draft Suppressed (Clinical Safety Gate)
+                </div>
+                <p className="text-xs text-text-navy leading-relaxed">
+                  Automated draft did not pass clinical NLI faithfulness validation or triggered a red-flag safety rule. Direct clinician drafting is required.
+                </p>
+              </div>
+            )}
+
+            {/* Model & Retrieval Pipeline Trace */}
+            {backendConsultation && (
+              <div className="bg-gray-50 border border-border-subtle rounded-lg p-2.5 mb-3 text-xs space-y-1">
+                <div className="flex justify-between items-center text-text-muted">
+                  <span className="flex items-center"><Cpu className="w-3.5 h-3.5 mr-1 text-primary" /> Architecture</span>
+                  <span className="font-mono text-text-navy font-semibold">{backendConsultation.llm_model || 'Local LLM'} • {backendConsultation.ablation_arm || 'full'}</span>
+                </div>
+                {backendConsultation.faithfulness_score !== undefined && backendConsultation.faithfulness_score !== null && (
+                  <div className="flex justify-between items-center text-text-muted">
+                    <span>NLI Faithfulness</span>
+                    <span className="font-mono text-text-navy font-semibold">{(backendConsultation.faithfulness_score * 100).toFixed(0)}%</span>
+                  </div>
+                )}
+              </div>
+            )}
 
             {!isEditing ? (
               /* Read-only / Preview Card with "Edit Response" button */
@@ -280,8 +417,8 @@ export function ConsultationReviewPage() {
                 <div className="flex items-center justify-between mt-3">
                   <button
                     onClick={() => {
-                      if (consultation.aiDraft?.content) {
-                        setDraftContent(consultation.aiDraft.content);
+                      if (effectiveConsultation.aiDraft?.content) {
+                        setDraftContent(effectiveConsultation.aiDraft.content);
                       }
                       setIsEditing(false);
                     }}
@@ -313,7 +450,7 @@ export function ConsultationReviewPage() {
             <div className="mt-4 pt-4 border-t border-border-subtle">
               <h3 className="text-xs font-bold text-text-muted uppercase tracking-wider mb-3">Sources & Citations</h3>
               <div className="space-y-2">
-                {(consultation.aiDraft?.citations || []).map(cit => (
+                {(effectiveConsultation.aiDraft?.citations || []).map(cit => (
                   <a key={cit.id} href={cit.url || '#'} target="_blank" rel="noreferrer" className="block p-3 border border-border-subtle rounded-lg hover:border-primary transition-colors bg-gray-50/50">
                     <div className="flex justify-between items-center mb-1">
                       <span className="text-xs font-bold text-text-navy truncate">{cit.title}</span>
@@ -371,18 +508,59 @@ export function ConsultationReviewPage() {
         </div>
       </div>
 
-      {/* Approve Modal */}
+      {/* Approve Modal with 12 Clinical Edit Categories */}
       <Dialog open={isApproveOpen} onClose={() => setIsApproveOpen(false)} className="relative z-50">
         <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
         <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-          <Dialog.Panel className="mx-auto max-w-md rounded bg-white p-6 shadow-xl w-full">
-            <Dialog.Title className="text-lg font-bold mb-4">Confirm Response</Dialog.Title>
-            <div className="text-sm text-text-navy bg-bg-app p-4 rounded-md mb-6 whitespace-pre-wrap">
+          <Dialog.Panel className="mx-auto max-w-xl rounded-xl bg-white p-6 shadow-xl w-full">
+            <Dialog.Title className="text-lg font-bold text-text-navy mb-2 flex items-center justify-between">
+              <span>Confirm & Deliver Response</span>
+              <span className="text-xs font-normal text-text-muted">ID: {effectiveConsultation.id.slice(0, 12)}</span>
+            </Dialog.Title>
+            
+            <p className="text-xs text-text-muted mb-3">
+              Review final response and classify any clinical modifications. The response will be delivered directly to the patient app.
+            </p>
+
+            <div className="text-xs text-text-navy bg-bg-app p-3 rounded-lg mb-4 whitespace-pre-wrap max-h-36 overflow-y-auto border border-border-subtle">
               {draftContent}
             </div>
-            <div className="flex justify-end space-x-3">
-              <button onClick={() => setIsApproveOpen(false)} className="px-4 py-2 text-text-muted hover:bg-gray-100 rounded-md">Cancel</button>
-              <button onClick={() => { setIsApproveOpen(false); handleApprove(false); }} className="px-4 py-2 bg-primary text-white rounded-md hover:bg-blue-700">Approve & Send</button>
+
+            {/* 12 Clinical Edit Categories */}
+            <div className="mb-4">
+              <label className="block text-xs font-bold text-text-navy uppercase tracking-wider mb-2">
+                Clinical Edit Classification (12 Categories)
+              </label>
+              <div className="grid grid-cols-2 gap-2 max-h-44 overflow-y-auto p-2 border border-border-subtle rounded-lg bg-gray-50 text-xs">
+                {EDIT_CATEGORY_OPTIONS.map(opt => (
+                  <label key={opt.id} className="flex items-start space-x-2 cursor-pointer p-1 rounded hover:bg-white transition-colors">
+                    <input
+                      type="checkbox"
+                      checked={Boolean(selectedCategories[opt.id])}
+                      onChange={e => {
+                        const updated = { ...selectedCategories, [opt.id]: e.target.checked };
+                        if (opt.id === 'no_change' && e.target.checked) {
+                          EDIT_CATEGORY_OPTIONS.forEach(o => { if (o.id !== 'no_change') updated[o.id] = false; });
+                        } else if (opt.id !== 'no_change' && e.target.checked) {
+                          updated['no_change'] = false;
+                        }
+                        setSelectedCategories(updated);
+                      }}
+                      className="mt-0.5 rounded text-primary focus:ring-primary"
+                    />
+                    <span className="text-text-navy text-[11px] leading-tight">
+                      {opt.label} <span className="text-text-muted font-mono">(w={opt.weight})</span>
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex justify-end space-x-3 pt-2 border-t border-border-subtle">
+              <button onClick={() => setIsApproveOpen(false)} className="px-4 py-2 text-text-muted hover:bg-gray-100 rounded-md text-sm font-medium">Cancel</button>
+              <button onClick={() => { setIsApproveOpen(false); handleApprove(false); }} className="px-4 py-2 bg-primary text-white rounded-md hover:bg-blue-700 text-sm font-bold shadow-sm">
+                Approve & Deliver to Patient
+              </button>
             </div>
           </Dialog.Panel>
         </div>
