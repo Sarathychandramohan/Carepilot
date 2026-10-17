@@ -242,4 +242,10 @@ FROM consultations WHERE is_eval = true GROUP BY eval_run_id;
 - **SHA-256 Hash:** `dbc9649778c053a9dcdbf42dd642be02c2cbd17693d4a8605f8b42e4f874a619`
 - **Immutability Contract:** These baseline author labels are permanently sealed and must never be edited directly. Any LLM-assisted review and developer adjudication, corrections, or post-hoc label adjudications must be stored in a separate adjudication file (`data/annotation/adjudicated_pilot_labels.csv`).
 
+### Methodological Scope & Limitations of Pilot Dataset (`gold_synthetic_pilot`)
+- **Deviation from Spec Gold-Human Tier:** The 60 pilot queries are 100% LLM-written, and their labels are LLM-proposed. No clinician wrote these queries and no human second annotator has independently reviewed them.
+- **RQ1 Fairness (EHR Requirement Asymmetry):** All 60 pilot queries have `needs_ehr=True` (zero no-EHR rows). Evaluating RQ1 (`full` vs `no_ehr`) solely on this pilot set is fundamentally asymmetric against the `no_ehr` arm; a fair evaluation requires the newly planned balanced query set with genuine no-EHR inquiries.
+- **Exploratory Status of RQ2 Safety Claims:** RQ2 triage evaluation performed against LLM-labelled data is exploratory only. No safety claims or clinical triage efficacy certifications may be asserted on this pilot set.
+
+
 
