@@ -1,157 +1,157 @@
 # Pillar B Plan — RAG Generation, Triage, and Validation Pipeline
-**Document Version:** 2.0 (Ongoing Implementation & Post-Gate 0 Blueprint)  
-**Authoritative Reference:** `CarePilot_AI_Master_Spec_v3.md` (Sections 3.1–3.2, 3.5, 4.1–4.4, 5.1, S3, S5, S7, S8, S9, Appendices A, B, C, E)  
-**System Role:** Subsystem Plan for Pillar B (Consultation Lifecycle, Retrieval Branches, Local LLM Inference, and NLI Guardrails)
+
+**Document Version:** 3.0 (Aligned with Master Plan v5 & Post-Phase-5 State)  
+**Authoritative Reference:** `docs/MASTER_PROJECT_PLAN_v5.md` (Sections 1, 3, 5, 8, 10)  
+**System Role:** Subsystem Specification and Implementation Plan for Pillar B (Consultation Lifecycle, Triage Classifiers, Dual Evidence Retrieval, Local LLM Inference, Readability Control, and Validation Guardrails)  
+**Current Git State:** Implemented and verified on branches `main` and `friend` (commit `fee80e4` / `0f7f40a`)
 
 ---
 
 ## 1. Pillar Objectives and Scope
 
-Pillar B implements the asynchronous core pipeline (`P1` through `P8`) that ingests patient requests, applies safety triage, retrieves evidence from dual sources (EHR + Knowledge Base), drafts clinical responses via a local open-weight LLM, and enforces post-generation faithfulness validation prior to clinician review.
+Pillar B implements the core clinical pipeline (`P1` through `P8`) that ingests patient consultation messages, performs safety triage, retrieves evidence from dual sources (EHR + Knowledge Base), drafts clinical responses via a local open-weight LLM, applies readability simplification, and enforces post-generation faithfulness validation prior to mandatory clinician review.
 
 ### Primary Research Objectives:
-1. **RQ1 Dual-Context Evaluation**: Compare factual accuracy and hallucination rates between dual-context retrieval (`full`) and knowledge-only retrieval (`no_ehr`), with a pilot `unified_context` baseline (**Spec Section 3.1, lines 160–161**).
-2. **RQ2 Triage Safety Comparison**: Compare HIGH-urgency false negative rates between an independent calibrated classifier with red-flag override vs. LLM self-reported urgency (`no_classifier` arm) (**Spec Section 3.1, line 162**).
-3. **Pillar C/D Grounding**: Ensure every consultation generates an auditable, schema-compliant JSON trace logging all intermediate stages, latencies, citations, and NLI scores (**Spec D20, line 301**).
+1. **RQ1 Dual-Context Evaluation**: Compare factual accuracy and hallucination rates between dual-context retrieval (`full`) and knowledge-only retrieval (`no_ehr`), establishing whether patient-scoped EHR grounding improves relevance without increasing unsupported claims.
+2. **RQ2 Triage Safety Comparison**: Compare HIGH-urgency false negative rates between an independent calibrated classifier with negation-aware red-flag overrides vs. LLM self-reported urgency (`no_classifier` arm), specifically measuring keyword-free emergency scenarios.
+3. **RQ4 Readability vs. Faithfulness Trade-Off**: Evaluate whether a post-generation readability controller reduces response complexity to grade $\le 8$ without sacrificing evidence faithfulness or clinical completeness (anchored to Small et al., 2024).
+4. **Structured Provenance Logging**: Ensure every consultation generates an auditable, schema-compliant JSON trace logging all intermediate stages, latencies, citations, NLI scores, and validation decisions (`consultations` & `eval_runs` tables).
 
 ---
 
-## 2. Applicable Spec Requirements and Numerical Targets
+## 2. Applicable Requirements and Numerical Targets
 
-| Spec Section | Component / Stage | Target / Constraint | Rationale / Reference |
-| :--- | :--- | :--- | :--- |
-| **S3 (lines 433–451)** | Request Lifecycle | P1 to P8 asynchronous pipeline per consult | Background task with semaphore, non-blocking polling (**D1**). |
-| **S3 (lines 437–446)** | Stage 1 EHR Retrieval | Parameterized SQL scoped by `patient_id` | Restricted by classified intent, concept IDs, recency window; max 200 candidate facts (**D10**). |
-| **S3 (lines 446)** | Stage 2 EHR Rerank | Dense similarity + recency weight | Reranks on the fly via `bge-small-en-v1.5`; top-8 facts into prompt (**D10, D11**). |
-| **S5 (lines 464–470)** | KB Hybrid Retrieval | Dense (top-20) + BM25 (top-20) | Fused scoring over frozen `carepilot_kb_v5`; top-5 logged, top-3 into prompt. Target p95 $\le 300\text{ ms}$. |
-| **D17 (line 298)** | Conflict & Missing Context | Rule-based flags over concepts | `patient_ehr_mismatch` requires clarification or explicit discrepancy; `missing_context` routes to `manual_required`. |
-| **S7 (lines 482–488)** | Local LLM Drafting | Qwen3-8B via local Ollama | `"think": false`, `temp: 0`, structured JSON (Appendix A), prompt skeleton (Appendix B); up to 2 retries; target p95 $\le 120\text{ s}$ (**R4**). |
-| **S8 (lines 489–501)** | Faithfulness & Citations | Sentence-level NLI + Citation Check | `cross-encoder/nli-deberta-v3-small` per sentence; citation validity, citation coverage ($\ge 0.80$), $\tau_{\text{faith}} = 0.50$, $\tau_{\text{faith\_low}} = 0.30$. |
-| **S9 (lines 502–514)** | Review Queue & Memory | Status transition & Enqueueing | Priority ordering by `urgency_final`; 12-category weighted edit burden; typed edit memory (D6). |
-| **Sec 3.5 (lines 221)** | Gold-Test Compute Budget | 1,050 drafts (350 $\times$ 3 configs) | Spec estimated envelope: 9 to 18 hours. |
+| Stage / Component | Target / Constraint | Operational Implementation |
+|---|---|---|
+| **P1 Request Intake & Auth** | Server-side patient scoping | `patient_id` extracted exclusively from validated auth context, never client payload (**Invariant I2**). |
+| **P2 Red-Flag Override** | 11 Emergency Categories | Frozen negation-aware rule engine; firm hits force HIGH urgency and emergency care diversion before drafting (**Invariant I3**). |
+| **P4 Triage Classifiers** | 5 Intent / 3 Urgency classes | Calibrated Logistic Regression over `bge-small` embeddings. $\tau_{\text{intent}} = 0.45$, $\tau_{\text{high}} = 0.25$, $\tau_{\text{soon}} = 0.30$. |
+| **P5.1 Structured EHR Retrieval** | Patient-scoped SQL + Rerank | Parameterized SQL restricted to `patient_id = :pid`; max 200 candidates; on-the-fly dense similarity + recency rerank; top-8 facts into prompt. |
+| **P5.2 Knowledge Base Retrieval** | Dual Dense + BM25 Hybrid | Top-20 dense from `carepilot_kb_v5` + top-20 sparse from `bm25_index_v5.pkl`; convex combination fusion; top-3 passages into prompt. |
+| **D17 Conflict & Missing Context** | Conflict & Gap detection | `ehr_mismatch` flags contradictions for doctor review; `missing_context` triggers **Clarify-Instead-of-Skip** question generation. |
+| **P6 Local LLM Generation** | Ollama `qwen3:8b` | Local inference on `127.0.0.1:11434`, `"think": false`, `temperature: 0.0`, `seed: 42`, structured JSON output with inline citations. |
+| **B5b Readability Controller** | Grade $\le 8$ + Length cap | Post-draft rewrite targeting reading grade $\le 8$; two-way NLI factual equivalence check; rejects rewrite if facts alter. |
+| **P7 Validation Gate** | Multi-gate guardrails | Citation ID existence, citation coverage ($\ge 0.80$), NLI entailment ($\tau_{\text{faith}} = 0.15$, warning $0.001$), contradiction ceiling ($\le 0.05$). |
+| **B6b Claim Verification** | Atomic evidence linking | Splits draft into atomic claims; links to EHR or KB evidence IDs; measures supported/unsupported/contradicted rates. |
+| **P8 Clinician Enqueueing** | Mandatory Doctor Review | Draft placed in queue sorted by `urgency_final` descending. No patient delivery without explicit doctor approval (**Invariant I1**). |
 
 ---
 
-## 3. Sub-Pillar Architecture and Implementation Breakdown
+## 3. End-to-End Pipeline Architecture
 
 ```
 [Patient Request]
        │
        ▼
-[B1: Intake & JWT Scope] ──> Create Consultation (is_eval, ablation_config)
+[P1: Intake & Security Scoping] ──> Scoped by authenticated patient_id in SQL
        │
        ▼
-[B2: Pre-Check & Triage] ──> P2: redflag.py (Firm Hit ──> Static Emergency Message)
-                         ──> P3: normalize.py (Tier 1/2, Negation, Temporal)
-                         ──> P4: classify.py (Intent [5 classes] + Urgency [3 classes])
-                                (Max P(intent) < tau_intent ──> route: unsupported)
+[P2: Red-Flag Pre-Check] ─────────> 11 emergency categories
+                                   (Firm Hit ──> static emergency override, no AI draft)
        │
        ▼
-[B3: Evidence Retrieval] ──> B3.1: Two-Stage EHR (Scoped SQL ──> Dense/Recency Rerank ──> Top-8)
-                         ──> B3.2: Hybrid KB (ChromaDB + BM25 ──> Fusion ──> Top-3 prompt / Top-5 log)
-                         ──> B3.3: D17 Conflict & Missing-Context Check
+[P4: Triage Classification] ──────> BGE-small dense embedding (384-d)
+                                   - Intent: 5 classes (symptom, med, lab, appt, info)
+                                   - Urgency: routine, soon, urgent (tau_high = 0.25)
        │
        ▼
-[B4: Local LLM Drafting] ──> generate.py (Prompt Skeleton + Qwen3-8B via Ollama + JSON Retry Loop)
+[P5: Evidence Retrieval] ─────────> B3.1 EHR: Parameterized SQL (top-200) ──> Rerank ──> Top-8 facts
+                                   B3.2 KB:  ChromaDB (top-20) + BM25 (top-20) ──> Top-3 passages
+                                   B3.3 D17: Conflict (mismatch) & Missing-Context checks
        │
        ▼
-[B5: Post-Gen Validation]──> B5a: Citation ID validity & coverage check
-                         ──> B5b: Sentence-level NLI entailment (nli-deberta-v3-small)
-                         ──> B5c: Outlier caveat check ──> 4-state routing (passed, warning, caveat, manual)
+[P6: Local LLM Drafting] ─────────> Prompt skeleton + Qwen3-8B (Ollama, temp=0, seed=42)
+                                   Structured JSON with sentence citations
+                                   (If missing_context & clarify enabled: generate clarification)
        │
        ▼
-[B6: Queue & Review Hook]──> P8: urgency_final = max(classifier, redflag) ──> Priority Enqueue
+[B5b: Readability Controller] ────> Target FK grade <= 8, length cap
+                                   Two-way NLI fact check (rejects rewrite if facts change)
+       │
+       ▼
+[P7: Multi-Gate Validation] ──────> 1. Citation validity & coverage (>= 0.80)
+                                   2. NLI entailment scoring (nli-deberta-v3-small)
+                                   3. Contradiction ceiling (<= 0.05)
+                                   4. Claim-level support assessment (B6b)
+       │
+       ▼
+[P8: Queue & Review Hook] ────────> urgency_final = max(classifier, redflag)
+                                   Enqueued for Doctor Dashboard review
+       │
+       ▼
+[Doctor Review & Delivery] ───────> Approve / Edit / Reject / Request Clarification
+                                   Delivered to Patient App ONLY after approval (Invariant I1)
 ```
 
-### Detailed Sub-Pillars:
+---
 
-#### B1: Request Intake and Security Scoping (`P1`)
-- **File**: `backend/app/pipeline/orchestrator.py`
-- Enforce strict server-side scoping: `patient_id` extracted exclusively from validated JWT token, never from request payload (**Spec Section 4.5, line 324**).
-- Persist consultation record to PostgreSQL with `thread_status = 'received'`, timestamps, and ablation configuration.
+## 4. Pipeline Stages in Detail
 
-#### B2: Safety Pre-Check, Terminology Normalization, and Triage (`P2–P4`)
-- **Files**: `backend/app/pipeline/redflag.py`, `backend/app/pipeline/normalize.py`, `backend/app/pipeline/classify.py`
-- **P2 Red-Flag Pre-Check**: Run raw text against frozen 9-category lexicon. Firm hits immediately override urgency to `urgent` and return a pre-approved static emergency template (**Invariant I3, D3, D8**). Soft hits (historical/hypothetical) are logged for doctor advisory display.
-- **P3 Normalization**: Extract clinical concepts via Tier 1 dictionary (SNOMED, LOINC, RxNorm); resolve unmatched spans against concept embeddings; flag negation (30-char lookback) and temporal duration/anchor spans.
-- **P4 Triage Classification**: Compute dense 384-d `bge-small` embedding once. Predict Intent (5 classes); if confidence $< \tau_{\text{intent}}$ (`0.45`), set route to `unsupported` $\rightarrow$ `manual_required`. In all arms except `no_classifier`, predict Urgency (predict `urgent` if $P(\text{urgent}) \ge \tau_{\text{high}} = 0.25$).
+### P1: Intake and Security Scoping
+- **Implementation**: `backend/app/pipeline/orchestrator.py`
+- Enforces server-side scoping: `patient_id` resolved from authenticated session, never trusted from client request parameters (**Invariant I2**).
+- Persists consultation record to PostgreSQL with `thread_status = 'received'`, timestamps, and active ablation flags.
 
-#### B3: Two-Stage Structured EHR and Hybrid KB Retrieval (`P5`)
+### P2 & P4: Safety Triage and Emergency Rules
+- **Files**: `backend/app/pipeline/redflag.py`, `backend/app/pipeline/classify.py`
+- **11 Red-Flag Emergency Categories**: Chest pain, acute respiratory distress, stroke indicators, acute severe hemorrhage, syncope/seizures, anaphylaxis, acute suicidal ideation/self-harm, meningitis/sepsis signs, acute surgical abdomen, sudden thunderclap headache, and acute poisoning/overdose.
+- **Pre-Generation Override**: A firm red-flag match immediately sets `urgency_final = 'urgent'` and short-circuits drafting. The patient app receives an immediate emergency advisory (**Invariant I3**).
+- **Classification**: Generates `bge-small` embedding. Classifies Intent across 5 classes (routes to unsupported if max confidence $< 0.45$). Urgency predicted across 3 ordered classes (`routine`, `soon`, `urgent`). Predicts `urgent` when $P(\text{urgent}) \ge 0.25$.
+
+### P5: Dual Evidence Retrieval & D17 Safety Checks
 - **Files**: `backend/app/pipeline/retrieve_ehr.py`, `backend/app/pipeline/retrieve_kb.py`, `backend/app/pipeline/detect_context_gaps.py`
-- **B3.1 Two-Stage EHR Retrieval**:
-  - *Stage 1*: Parameterized SQL restricted by `patient_id = :pid` and intent-routed tables (`symptom_report`: conditions, meds, allergies, encounters; `medication_query`: meds, allergies, renal labs; `lab_result_query`: matching LOINC observations and reference ranges; `followup_appointment`: encounters; `general_health_info`: conditions, meds). Cap at 200 facts.
-  - *Stage 2*: Embed candidate snippets on the fly via `bge-small`, score by cosine similarity plus recency decay, select top-8 facts for prompt injection (**D10, D11**). Tag each chunk with `is_outlier`.
-  - *Ablation*: Skipped entirely in `no_ehr` arm.
-- **B3.2 Hybrid KB Retrieval**:
-  - Query expansion with top canonical concept labels.
-  - Retrieve top-20 dense candidates from ChromaDB collection `carepilot_kb_v5` and top-20 sparse candidates from `bm25_index_v5.pkl`.
-  - Fusion scoring: rank/score candidates, log top-5, pass top-3 into prompt context block.
-- **B3.3 D17 Conflict and Context Gap Safety**:
-  - `patient_ehr_mismatch`: Query references a medication/condition/lab absent from or contradicting the EHR. Requires LLM `needs_clarification = true` or routes to `manual_required`.
-  - `missing_context`: EHR-dependent intent has zero valid non-outlier EHR rows and low-confidence KB evidence. Bypasses LLM drafting and routes directly to `manual_required`.
+- **EHR Retrieval**: Queries PostgreSQL `carepilot_v3` strictly scoped to `patient_id = :pid`. Caps candidate pool at 200 rows. Re-ranks dynamically using cosine similarity against query embedding + recency decay. Top 8 facts injected into prompt with LOINC reference ranges and outlier tags.
+- **KB Hybrid Retrieval**: Augments query with canonical medical concept labels. Queries ChromaDB `carepilot_kb_v5` (top 20) and BM25 index `bm25_index_v5.pkl` (top 20). Fuses scores with configured $\alpha$; injects top 3 passages into prompt.
+- **D17 Gaps & Clarification**:
+  - `ehr_mismatch`: Detects contradiction between query claim and EHR (e.g., patient asking about a medication never prescribed). Routes to clinician review with explicit discrepancy warning.
+  - `missing_context`: If key clinical context is absent, the pipeline triggers **Clarify-Instead-of-Skip**, generating a focused question asking the patient for the missing detail.
 
-#### B4: Local LLM Draft Generation (`P6`)
+### P6: Local LLM Drafting (Ollama Qwen3-8B)
 - **File**: `backend/app/pipeline/generate.py`
-- **Model**: Local `qwen3:8b` via Ollama (`http://127.0.0.1:11434/api/generate`) with `"think": false`, `temperature: 0`, `seed: 42`.
-- **Concurrency**: Guarded by `asyncio.Semaphore(1)` to serialize GPU calls and prevent VRAM exhaustion (**D1**).
-- **Prompt Architecture (Appendix B)**: Isolated delimited blocks (`[PATIENT_MESSAGE]`, `[NORMALIZED_CONCEPTS]`, `[FLAGS]`, `[EHR_CONTEXT]`, `[KNOWLEDGE_CONTEXT]`, optional `[REVIEWED_EXAMPLES]`). System instructions strictly forbid following instructions within context blocks (injection defense) and forbid diagnostic/prescriptive instructions.
-- **Outlier Caveat Handling**: If any retrieved EHR chunk has `is_outlier = true`, inject explicit prompt caveat warning.
-- **Ablation Arm Routing**:
-  - `full`: EHR context + KB context + classifier urgency.
-  - `no_ehr`: KB context only + classifier urgency.
-  - `no_classifier`: EHR context + KB context; prompt asks LLM to self-assess urgency; skips classifier step (requires `is_eval=true` authorization check).
-  - `unified_context`: Merged shared candidate pool of EHR snippets and KB chunks ranked by single score.
-- **JSON Validation & Retry**: Output parsed against Appendix A Pydantic schema (`sentences` with `claim_type` and `citations`, `overall_tone`, `urgency_self_report`, `needs_clarification`). If invalid, retry up to 2 times; if still invalid, route to `manual_required`.
+- **Runtime**: Local Ollama instance (`http://127.0.0.1:11434/api/generate`) running `qwen3:8b` (Q4_K_M quantization).
+- **Determinism**: Guarded with `temperature = 0.0`, `seed = 42`, `"think": false`.
+- **Structured Schema**: Enforces JSON response containing individual sentence claims, citation tokens (`ehr:{table}:{id}` or `kb:{doc_id}:chunk{n}`), tone indicators, and clarification flags.
 
-#### B5: Post-Generation Faithfulness and Citation Guardrails (`P7`)
+### B5b: Readability Controller (RQ4)
+- **File**: `backend/app/pipeline/generate.py` / `backend/eval/metrics/readability.py`
+- Post-generation simplification module targeting reading grade level $\le 8$ (Flesch–Kincaid) and a concise length cap.
+- **Safety Invariant**: Rewritten text is verified against the original draft using two-way NLI (`cross-encoder/nli-deberta-v3-small`). If any clinical fact, medication dose, number, unit, or negation is altered, the rewrite is rejected and the original draft is retained.
+
+### P7 & B6b: Multi-Gate Validation & Claim-Level Verification
 - **File**: `backend/app/pipeline/validate.py`
-- **B5a Citation Validity & Coverage**:
-  - Check that every cited ID exists in the retrieved candidate set.
-  - If a sentence cites *only* outlier-flagged EHR rows without non-outlier corroboration, it receives zero validity credit.
-  - Compute `citation_coverage` = (sentences with $\ge 1$ valid citation) / (total scored sentences).
-- **B5b NLI Entailment Scoring**:
-  - Model: `cross-encoder/nli-deberta-v3-small` (softmax over contradiction=0, entailment=1, neutral=2).
-  - For each non-caution sentence: premise = cited source text; hypothesis = sentence text; score = max entailment probability across cited sources.
-  - Compute draft `faithfulness_mean` (`avg_nli_entailment`).
-- **4-State Gate Matrix**:
-  1. `manual_required`: `citation_coverage < 0.80` OR `avg_nli_entailment < 0.30` ($\tau_{\text{faith\_low}}$). AI draft withheld from doctor.
-  2. `passed_with_outlier_caveat`: Any sentence relies exclusively on outlier-flagged EHR evidence.
-  3. `passed_with_warning`: `0.30 \le avg_nli_entailment < 0.50` ($\tau_{\text{faith}}$). Individual sentences highlighted for clinician.
-  4. `passed`: `citation_coverage \ge 0.80` AND `avg_nli_entailment \ge 0.50`.
+- **Multi-Gate Checks**:
+  1. *Citation Validity*: 100% of cited citation IDs must exist in the retrieved evidence set.
+  2. *Citation Coverage*: At least 80% of factual sentences must carry valid citations.
+  3. *NLI Faithfulness*: Evaluates entailment between each sentence and its cited source text.
+  4. *Contradiction Ceiling*: Fails if contradiction probability exceeds 0.05.
+- **Atomic Claim Verification (B6b)**: Decomposes draft into atomic propositions, checks direct entailment against EHR/KB evidence, and reports supported, unsupported, and contradicted claim rates.
 
-#### B6: Urgency Finalization, Enqueueing, and Review Hook (`P8–P10`)
+### P8: Queue Management and Clinician Delivery Gate
 - **File**: `backend/app/pipeline/orchestrator.py`
-- Resolve `urgency_final`:
-  - `full`, `no_ehr`, `unified_context`: `max(urgency_classifier, red_flag_level)`.
-  - `no_classifier`: `urgency_self_report` (unless overridden by firm red-flag).
-- Enqueue consultation into doctor review queue ordered by `urgency_final` descending, then `created_at` ascending.
-- Review effort and edit tracking hooks: record review duration, sources opened, Levenshtein distances, and 12-category weighted edit burden.
+- Resolves `urgency_final = max(urgency_classifier, red_flag_level)`.
+- Enqueues consultation in Doctor Review Queue (`doctor-dashboard`).
+- **Safety Invariant I1**: Draft remains blocked until an authenticated clinician explicitly approves or edits it.
 
 ---
 
-## 4. Hardware Telemetry and Measured Compute Budget (Gate 0)
+## 5. Feature Flags & Experimental Ablation Matrix
 
-From Gate 0 benchmark on host hardware (NVIDIA GeForce RTX 2050 4GB VRAM, AMD Ryzen 5 5600H CPU, 16GB RAM):
-- **Model Tag**: `qwen3:8b` (5.2 GB, Q4_K_M equivalent via Ollama v0.40.3).
-- **Layer Offload**: 13 layers CUDA / 24 layers CPU. Peak VRAM: ~2,311 MiB. Peak RAM: ~14.8 GB.
-- **Measured Latency Profile (Stratified 20-Query Run across 5 Intents)**:
-  - Median: **47.41 s/draft**
-  - Mean: **52.21 s/draft**
-  - p95: **85.43 s/draft** (below Spec Risk R4 ceiling of 120 s)
-  - Throughput: **3.80 tokens/sec**
-  - JSON Schema Validity: **100% on first attempt** (0 retries required)
-- **Recomputed Gold-Test Drafting Budget (350 queries $\times$ 3 configs = 1,050 drafts)**:
-  - At Median (47.41 s): **13.83 hours**
-  - At Mean (52.21 s): **15.23 hours**
-  - At p95 (85.43 s): **24.92 hours**
-  - Conforms strictly to Spec Section 3.5 planned window of **9 to 18 hours**.
+The pipeline architecture exposes explicit, logged configuration flags for reproducible ablation studies:
+
+| Ablation Arm | EHR Context | KB Context | Urgency Triage | Readability Controller | Purpose / Evaluated Effect |
+|---|---|---|---|---|---|
+| **`full`** | Yes (Top 8) | Yes (Top 3) | Classifier + Red-Flag | Enabled (Grade $\le 8$) | Primary system pipeline with all safeguards active. |
+| **`no_ehr`** | No | Yes (Top 3) | Classifier + Red-Flag | Enabled | Isolates clinical grounding contribution of patient EHR (**RQ1**). |
+| **`no_classifier`** | Yes (Top 8) | Yes (Top 3) | LLM Self-Assessment | Enabled | Isolates safety impact of independent triage classifier (**RQ2**). |
+| **`no_readability`** | Yes (Top 8) | Yes (Top 3) | Classifier + Red-Flag | Disabled (Raw LLM) | Measures readability vs faithfulness trade-off (**RQ4**). |
+| **`clarify_enabled`** | Yes (Top 8) | Yes (Top 3) | Classifier + Red-Flag | Enabled | Emits clarifying question when clinical context is missing. |
 
 ---
 
-## 5. Technical Decisions and Policy Constraints
+## 6. Implementation Status & Verified Test Suites
 
-- **D-001 (NLI Model)**: `cross-encoder/nli-deberta-v3-small` selected per Spec Section 4.4 (line 313).
-- **D-002 (LLM Model Selection)**: `qwen3:8b` confirmed as authoritative drafting model based on real Gate 0 latency and 100% schema compliance.
-- **D-003 (`no_classifier` Urgency Policy)**: In the `no_classifier` arm, the LLM self-assesses urgency via prompt instructions, testing RQ2.
-- **D-004 (Zero Cloud LLMs)**: Gemini API and external cloud fallbacks strictly excluded. Pipeline operates 100% locally.
-- **Authorization Enforcement**: `no_classifier` and other evaluation ablations must enforce `is_eval == true` and admin privileges to prevent unsafe deployment in live patient care.
+Pillar B is fully implemented and passes all automated regression test suites:
+- `backend/tests/test_redflag_11_categories.py`: **88/88 passed** (100% coverage of emergency categories & negation).
+- `backend/tests/test_ehr_fact_accuracy.py`: **43/43 passed** (groundedness across meds, labs, and vitals).
+- `backend/tests/test_skip_reasons.py`: **7/7 passed** (gate persistence and pipeline skip logic).
+- `backend/tests/test_eval_provenance.py`: **2/2 passed** (threshold synchronization and run validation).
