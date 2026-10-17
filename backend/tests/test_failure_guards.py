@@ -286,3 +286,55 @@ def test_split_gold_zero_spanning_clusters():
         in_dev = any(qid in dev_ids for qid in comp_qids)
         in_test = any(qid in test_ids for qid in comp_qids)
         assert not (in_dev and in_test), f"Cluster spanned dev and test: {comp_qids}"
+
+
+def test_fixture_paraphrase_pairs_flagged_and_distinct_pairs_not():
+    """
+    Test fixture:
+      - 5 paraphrase pairs must be flagged as duplicates (cosine >= dup_threshold)
+      - 5 distinct-scenario pairs must not be flagged as duplicates (cosine < dup_threshold)
+    Evaluated under the calibrated setting (BAAI/bge-small-en-v1.5, centered, dup_threshold=0.60).
+    """
+    import numpy as np
+    from backend.eval.import_synthetic_gold import get_corpus_mean, get_diversity_embedder
+
+    embedder = get_diversity_embedder(local_files_only=True)
+    corpus_mean = get_corpus_mean()
+
+    paraphrase_pairs = [
+        ("Can I take metformin with my dinner?", "Is it okay to take my metformin medication with dinner?"),
+        ("My blood pressure was 150/95 this morning, should I be concerned?", "This morning my BP was 150/95, is that dangerous?"),
+        ("I need to reschedule my followup appointment for next week.", "Can I change the date of my upcoming followup visit to next week?"),
+        ("What do my latest creatinine lab results mean?", "Could you explain my recent creatinine blood test results?"),
+        ("I am experiencing severe dizziness and nausea after taking lisinopril.", "Feeling very dizzy and nauseous since starting lisinopril."),
+    ]
+
+    distinct_pairs = [
+        ("Can I take metformin with my dinner?", "I need to schedule an appointment for routine flu vaccine."),
+        ("My blood pressure was 150/95 this morning, should I be concerned?", "What are the normal reference ranges for total cholesterol?"),
+        ("I need to reschedule my followup appointment for next week.", "I have an itchy rash on my left arm that started yesterday."),
+        ("What do my latest creatinine lab results mean?", "Can I drink coffee before my fasting blood glucose test?"),
+        ("I am experiencing severe dizziness and nausea after taking lisinopril.", "I want to know if my insurance covers physical therapy."),
+    ]
+
+    threshold = 0.60
+
+    def calc_similarity(t1: str, t2: str) -> float:
+        e1 = embedder.encode([t1], normalize_embeddings=True)[0]
+        e2 = embedder.encode([t2], normalize_embeddings=True)[0]
+        c1 = e1 - corpus_mean
+        c2 = e2 - corpus_mean
+        c1 = c1 / np.linalg.norm(c1)
+        c2 = c2 / np.linalg.norm(c2)
+        return float(np.dot(c1, c2))
+
+    # 1. 5 paraphrase pairs must be flagged as duplicates (sim >= threshold)
+    for idx, (t1, t2) in enumerate(paraphrase_pairs, start=1):
+        sim = calc_similarity(t1, t2)
+        assert sim >= threshold, f"Paraphrase pair {idx} failed to flag as duplicate: sim={sim:.4f} < {threshold}"
+
+    # 2. 5 distinct-scenario pairs must NOT be flagged as duplicates (sim < threshold)
+    for idx, (t1, t2) in enumerate(distinct_pairs, start=1):
+        sim = calc_similarity(t1, t2)
+        assert sim < threshold, f"Distinct pair {idx} falsely flagged as duplicate: sim={sim:.4f} >= {threshold}"
+

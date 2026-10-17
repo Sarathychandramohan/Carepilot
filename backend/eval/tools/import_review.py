@@ -43,6 +43,7 @@ URGENCY_ORDER: dict[str, int] = {
 }
 
 DEFAULT_SEALED_PATH = PROJECT_ROOT / "data" / "queries" / "gold_synthetic_pilot_labels_sealed.csv"
+DEFAULT_BLIND_MAP_PATH = PROJECT_ROOT / "data" / "annotation" / "blind_id_map.csv"
 DEFAULT_DISAGREEMENTS_PATH = PROJECT_ROOT / "data" / "annotation" / "review_disagreements.csv"
 
 
@@ -58,16 +59,38 @@ def parse_boolean(val: Any) -> bool:
     raise ValueError(f"Invalid boolean value: {val!r}")
 
 
-def validate_reviewer_row(row: dict[str, Any], row_idx: int | None = None) -> dict[str, Any]:
+def load_blind_id_map(blind_map_path: Path | str | None = None) -> dict[str, str]:
+    """Loads blind_id to query_id mapping CSV."""
+    if blind_map_path is None:
+        blind_map_path = DEFAULT_BLIND_MAP_PATH
+    p = Path(blind_map_path)
+    if not p.exists():
+        return {}
+    b_map: dict[str, str] = {}
+    with open(p, mode="r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for r in reader:
+            b_id = r.get("blind_id", "").strip()
+            q_id = r.get("query_id", "").strip()
+            if b_id and q_id:
+                b_map[b_id] = q_id
+    return b_map
+
+
+def validate_reviewer_row(
+    row: dict[str, Any],
+    blind_map: dict[str, str] | None = None,
+    row_idx: int | None = None,
+) -> dict[str, Any]:
     """
     Validates a single reviewer CSV record against pipeline enums and schema.
+    Accepts either 'query_id' or 'blind_id' (resolved via blind_map).
     Returns cleaned row with standardized types.
     """
     row_desc = f"Row {row_idx}" if row_idx is not None else "Reviewer row"
 
     required_fields = [
         "reviewer_id",
-        "query_id",
         "intent",
         "urgency",
         "needs_ehr",
@@ -83,9 +106,17 @@ def validate_reviewer_row(row: dict[str, Any], row_idx: int | None = None) -> di
     if not reviewer_id:
         raise ValueError(f"{row_desc}: 'reviewer_id' cannot be empty")
 
-    query_id = str(row["query_id"]).strip()
-    if not query_id:
-        raise ValueError(f"{row_desc}: 'query_id' cannot be empty")
+    query_id = str(row.get("query_id", "")).strip()
+    blind_id = str(row.get("blind_id", "")).strip()
+
+    if not query_id and not blind_id:
+        raise ValueError(f"{row_desc}: must provide either 'query_id' or 'blind_id'")
+
+    if not query_id and blind_id:
+        if blind_map and blind_id in blind_map:
+            query_id = blind_map[blind_id]
+        else:
+            raise ValueError(f"{row_desc}: unmapped blind_id '{blind_id}'")
 
     intent = str(row["intent"]).strip()
     if intent not in REAL_INTENTS:
@@ -113,6 +144,7 @@ def validate_reviewer_row(row: dict[str, Any], row_idx: int | None = None) -> di
     return {
         "reviewer_id": reviewer_id,
         "query_id": query_id,
+        "blind_id": blind_id,
         "intent": intent,
         "urgency": urgency,
         "needs_ehr": needs_ehr,
@@ -212,15 +244,18 @@ def load_sealed_labels(sealed_path: Path | str) -> dict[str, dict[str, Any]]:
 def load_and_join_reviews(
     review_path: Path | str,
     sealed_path: Path | str,
+    blind_map_path: Path | str | None = None,
 ) -> Tuple[List[Dict[str, Any]], List[str], List[str]]:
     """
     Reads reviewer CSV, validates enums, and joins with sealed labels.
+    If reviewer records are keyed by blind_id, maps them to query_id.
     Returns:
       matched_rows: list of joined dictionaries
       unmatched_in_review: reviewer query_ids not found in sealed labels
       unmatched_in_sealed: sealed query_ids not present in reviewer file
     """
     sealed_map = load_sealed_labels(sealed_path)
+    blind_map = load_blind_id_map(blind_map_path)
 
     matched_rows: list[dict[str, Any]] = []
     unmatched_in_review: list[str] = []
@@ -229,15 +264,17 @@ def load_and_join_reviews(
     with open(review_path, mode="r", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for idx, raw_row in enumerate(reader, start=2):
-            validated = validate_reviewer_row(raw_row, row_idx=idx)
+            validated = validate_reviewer_row(raw_row, blind_map=blind_map, row_idx=idx)
             qid = validated["query_id"]
             seen_queries.add(qid)
+
 
             if qid in sealed_map:
                 author_item = sealed_map[qid]
                 matched_rows.append({
                     "reviewer_id": validated["reviewer_id"],
                     "query_id": qid,
+                    "blind_id": validated.get("blind_id", ""),
                     "author_intent": author_item["intent"],
                     "reviewer_intent": validated["intent"],
                     "author_urgency": author_item["urgency"],
@@ -458,10 +495,16 @@ def main() -> int:
         help="Path to sealed author labels CSV",
     )
     parser.add_argument(
+        "--blind-map",
+        type=Path,
+        default=DEFAULT_BLIND_MAP_PATH,
+        help="Path to blind_id_map.csv",
+    )
+    parser.add_argument(
         "--output-disagreements",
         type=Path,
-        default=DEFAULT_DISAGREEMENTS_PATH,
-        help="Path to write disagreements CSV",
+        default=None,
+        help="Optional path to write disagreements CSV (never written unless specified)",
     )
 
     args = parser.parse_args()
@@ -476,14 +519,17 @@ def main() -> int:
     matched_rows, unmatched_rev, unmatched_seal = load_and_join_reviews(
         args.review_file,
         args.sealed_file,
+        blind_map_path=args.blind_map,
     )
     metrics = compute_review_metrics(matched_rows)
     print_review_report(metrics, unmatched_rev, unmatched_seal)
 
-    n_dis = write_disagreements_csv(matched_rows, args.output_disagreements)
-    print(f"Wrote {n_dis} disagreement row(s) to {args.output_disagreements}")
+    if args.output_disagreements is not None and matched_rows:
+        n_dis = write_disagreements_csv(matched_rows, args.output_disagreements)
+        print(f"Wrote {n_dis} disagreement row(s) to {args.output_disagreements}")
     return 0
 
 
 if __name__ == "__main__":
     sys.exit(main())
+

@@ -128,33 +128,8 @@ synthea/out/
 data/kb_raw/
 data/kb_clean/
 data/kb_chunks/
-# ─── Synthea — Ignore external repo, build artifacts & large exports ─────────
-synthea/.git/
-synthea/.gradle/
-synthea/.venv/
-synthea/build/
-synthea/out/
-synthea/carepilot_output/
-synthea/carepilot_output_2k/
-synthea/*
-!synthea/carepilot_data/
-!synthea/carepilot_data/**
-# ─── Knowledge Base (RAG) — Ignore binary store, raw scrapes & index pickles ──
-rag_knowledge/chroma_db/
-rag_knowledge/raw/
-rag_knowledge/kb_export/
-rag_knowledge/kb_export_v*/
-rag_knowledge/bm25_index_*.pkl
-rag_knowledge/__pycache__/
-rag_knowledge/*
-!rag_knowledge/*.py
-!rag_knowledge/*.txt
-!rag_knowledge/manifest/
-!rag_knowledge/manifest/**
-!rag_knowledge/cleaned/
-!rag_knowledge/cleaned/**
-!rag_knowledge/chunks/
-!rag_knowledge/chunks/**
+synthea/
+rag_knowledge/
 
 # Pillar C Audit & Backups
 *.sdk57-backup

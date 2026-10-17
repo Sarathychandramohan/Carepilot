@@ -225,3 +225,59 @@ class TestImportReviewMetrics:
         del missing_field["confidence"]
         with pytest.raises(ValueError, match="missing required column: 'confidence'"):
             validate_reviewer_row(missing_field)
+
+    def test_reviewer_keyed_by_blind_id(self, tmp_path: Path):
+        sealed_file = tmp_path / "sealed_test.csv"
+        with open(sealed_file, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=["query_id", "intent", "urgency", "needs_ehr"])
+            writer.writeheader()
+            writer.writerow({"query_id": "GS-0001", "intent": "lab_result_query", "urgency": "urgent", "needs_ehr": True})
+            writer.writerow({"query_id": "GS-0002", "intent": "medication_query", "urgency": "routine", "needs_ehr": True})
+
+        map_file = tmp_path / "blind_map.csv"
+        with open(map_file, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=["blind_id", "query_id"])
+            writer.writeheader()
+            writer.writerow({"blind_id": "R1001", "query_id": "GS-0001"})
+            writer.writerow({"blind_id": "R1002", "query_id": "GS-0002"})
+
+        # Reviewer file has blind_id instead of query_id
+        rev_file = tmp_path / "rev_blind.csv"
+        with open(rev_file, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(
+                f,
+                fieldnames=["reviewer_id", "blind_id", "intent", "urgency", "needs_ehr", "confidence", "rationale", "source_url"],
+            )
+            writer.writeheader()
+            writer.writerow({
+                "reviewer_id": "DR-1", "blind_id": "R1001", "intent": "lab_result_query",
+                "urgency": "urgent", "needs_ehr": "True", "confidence": "5", "rationale": "High lab", "source_url": ""
+            })
+            writer.writerow({
+                "reviewer_id": "DR-1", "blind_id": "R1002", "intent": "medication_query",
+                "urgency": "soon", "needs_ehr": "True", "confidence": "4", "rationale": "Moderate med", "source_url": ""
+            })
+
+        matched, un_rev, un_seal = load_and_join_reviews(rev_file, sealed_file, blind_map_path=map_file)
+        assert len(matched) == 2
+        assert matched[0]["query_id"] == "GS-0001"
+        assert matched[0]["blind_id"] == "R1001"
+        assert matched[1]["query_id"] == "GS-0002"
+        assert matched[1]["blind_id"] == "R1002"
+
+        # Check unknown blind_id rejection
+        bad_rev_file = tmp_path / "rev_bad_blind.csv"
+        with open(bad_rev_file, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(
+                f,
+                fieldnames=["reviewer_id", "blind_id", "intent", "urgency", "needs_ehr", "confidence", "rationale", "source_url"],
+            )
+            writer.writeheader()
+            writer.writerow({
+                "reviewer_id": "DR-1", "blind_id": "R9999", "intent": "lab_result_query",
+                "urgency": "urgent", "needs_ehr": "True", "confidence": "5", "rationale": "", "source_url": ""
+            })
+
+        with pytest.raises(ValueError, match="unmapped blind_id 'R9999'"):
+            load_and_join_reviews(bad_rev_file, sealed_file, blind_map_path=map_file)
+

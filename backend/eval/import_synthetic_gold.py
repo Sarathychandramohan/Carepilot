@@ -55,6 +55,16 @@ REAL_URGENCIES = [
 _EMBEDDER = None
 
 
+def get_corpus_mean(fallback_embeddings: np.ndarray | None = None) -> np.ndarray:
+    """Load precomputed 384-d corpus mean vector for BAAI/bge-small-en-v1.5, or fallback to batch mean."""
+    mean_path = PROJECT_ROOT / "backend" / "models" / "corpus_mean_bge_small.npy"
+    if mean_path.exists():
+        return np.load(mean_path)
+    if fallback_embeddings is not None and len(fallback_embeddings) > 0:
+        return np.mean(fallback_embeddings, axis=0)
+    return np.zeros(384)
+
+
 def get_diversity_embedder(local_files_only: bool = True):
     """Load cached BAAI/bge-small-en-v1.5 embedding model with local_files_only as default."""
     global _EMBEDDER
@@ -126,13 +136,21 @@ def validate_and_import_synthetic_gold(
     input_path: Path,
     output_path: Path = DEFAULT_OUTPUT_PATH,
     context_packs_path: Path = CONTEXT_PACKS_PATH,
-    cluster_threshold: float = 0.70,
+    dup_threshold: float = 0.60,
+    center: bool = True,
+    cluster_threshold: float | None = None,
     local_files_only: bool = True,
 ) -> list[dict[str, Any]]:
     """
     Validates input synthetic JSONL queries and merges them into output JSONL
     keyed by scenario_id.
     """
+    if cluster_threshold is not None:
+        dup_threshold = cluster_threshold
+
+    mode_str = "centered" if center else "raw"
+    print(f"[De-duplication Configuration] Mode: {mode_str} | Threshold: {dup_threshold:.2f}")
+
     if not input_path.exists():
         raise FileNotFoundError(f"Input file not found at: {input_path}")
 
@@ -272,23 +290,33 @@ def validate_and_import_synthetic_gold(
     print(f"Total merged candidate queries to validate: {len(merged_rows)} (Existing: {len(existing_rows)}, New: {len(new_validated_rows)})")
 
     # 4. Near-duplicate query validation across the WHOLE merged file
-    print(f"Computing embeddings with BAAI/bge-small-en-v1.5 and checking cosine >= {cluster_threshold} across ALL {len(merged_rows)} merged queries...")
+    print(
+        f"Computing embeddings with BAAI/bge-small-en-v1.5 and checking cosine >= {dup_threshold:.2f} "
+        f"(mode: {mode_str}) across ALL {len(merged_rows)} merged queries..."
+    )
     embedder = get_diversity_embedder(local_files_only=local_files_only)
     cleaned_texts = [strip_greetings_and_signoffs(r["query_text"]) for r in merged_rows]
     embeddings = embedder.encode(cleaned_texts, normalize_embeddings=True)
+
+    if center:
+        corpus_mean = get_corpus_mean(embeddings)
+        centered = embeddings - corpus_mean
+        norms = np.linalg.norm(centered, axis=1, keepdims=True)
+        norms[norms == 0] = 1.0
+        embeddings = centered / norms
 
     num_queries = len(merged_rows)
     for i in range(num_queries):
         for j in range(i + 1, num_queries):
             cos_sim = float(np.dot(embeddings[i], embeddings[j]))
-            if cos_sim >= cluster_threshold:
+            if cos_sim >= dup_threshold:
                 raise ValueError(
                     f"[FAIL: Near-Duplicate Query] Query {i+1} ('{merged_rows[i]['query_text']}') and "
                     f"Query {j+1} ('{merged_rows[j]['query_text']}') have cosine similarity "
-                    f"{cos_sim:.4f} >= {cluster_threshold}."
+                    f"{cos_sim:.4f} >= {dup_threshold:.2f} (mode: {mode_str})."
                 )
 
-    print(f"Passed near-duplicate query check across whole merged file (all pairwise cosine < {cluster_threshold}).")
+    print(f"Passed near-duplicate query check across whole merged file (all pairwise cosine < {dup_threshold:.2f}).")
 
     # 5. Check scenario-level split consistency across merged file
     scenario_splits = defaultdict(set)
@@ -334,6 +362,24 @@ def main():
     parser.add_argument("--input", type=Path, required=True, help="Path to input synthetic JSONL")
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT_PATH, help="Path to output JSONL")
     parser.add_argument("--context-packs", type=Path, default=CONTEXT_PACKS_PATH, help="Path to context_packs.jsonl")
+    parser.add_argument(
+        "--dup-threshold",
+        type=float,
+        default=0.60,
+        help="Duplicate cosine similarity threshold (default: 0.60)",
+    )
+    parser.add_argument(
+        "--center",
+        action="store_true",
+        default=True,
+        help="Mean-center embeddings before cosine similarity (default: True)",
+    )
+    parser.add_argument(
+        "--no-center",
+        dest="center",
+        action="store_false",
+        help="Disable mean-centering of embeddings",
+    )
     parser.add_argument("--no-local-files-only", action="store_true", help="Allow online download of embedder")
     args = parser.parse_args()
 
@@ -342,6 +388,8 @@ def main():
             input_path=args.input,
             output_path=args.output,
             context_packs_path=args.context_packs,
+            dup_threshold=args.dup_threshold,
+            center=args.center,
             local_files_only=not args.no_local_files_only,
         )
         print(f"\n[VALIDATOR PASS] Successfully processed and merged {len(validated)} candidate queries.")

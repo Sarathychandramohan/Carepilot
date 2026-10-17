@@ -26,7 +26,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from backend.eval.diversity_report import strip_greetings_and_signoffs
-from backend.eval.import_synthetic_gold import get_diversity_embedder
+from backend.eval.import_synthetic_gold import get_corpus_mean, get_diversity_embedder
 
 DEFAULT_CANDIDATES_PATH = PROJECT_ROOT / "data" / "annotation" / "gold_synthetic_candidate.jsonl"
 DEFAULT_DEV_PATH = PROJECT_ROOT / "data" / "annotation" / "gold_dev.jsonl"
@@ -35,7 +35,8 @@ DEFAULT_TEST_PATH = PROJECT_ROOT / "data" / "annotation" / "gold_test.jsonl"
 
 def compute_clusters_and_scenarios(
     records: list[dict[str, Any]],
-    threshold: float = 0.70,
+    threshold: float = 0.60,
+    center: bool = True,
     local_files_only: bool = True,
 ) -> list[list[int]]:
     """
@@ -46,9 +47,19 @@ def compute_clusters_and_scenarios(
     if n == 0:
         return []
 
+    mode_str = "centered" if center else "raw"
+    print(f"[Split Configuration] Cluster Threshold: {threshold:.2f} | Mode: {mode_str}")
+
     embedder = get_diversity_embedder(local_files_only=local_files_only)
     cleaned = [strip_greetings_and_signoffs(r["query_text"]) for r in records]
     embs = embedder.encode(cleaned, normalize_embeddings=True)
+
+    if center:
+        corpus_mean = get_corpus_mean(embs)
+        centered = embs - corpus_mean
+        norms = np.linalg.norm(centered, axis=1, keepdims=True)
+        norms[norms == 0] = 1.0
+        embs = centered / norms
 
     adj = defaultdict(set)
 
@@ -162,6 +173,8 @@ def split_gold_dataset(
     input_path: Path = DEFAULT_CANDIDATES_PATH,
     dev_path: Path = DEFAULT_DEV_PATH,
     test_path: Path = DEFAULT_TEST_PATH,
+    dup_threshold: float = 0.60,
+    center: bool = True,
     dev_ratio: float = 0.35,
     seed: int = 42,
     local_files_only: bool = True,
@@ -181,7 +194,9 @@ def split_gold_dataset(
         raise ValueError(f"No records found in {input_path}")
 
     print(f"Loaded {len(records)} records from {input_path}")
-    clusters = compute_clusters_and_scenarios(records, threshold=0.70, local_files_only=local_files_only)
+    clusters = compute_clusters_and_scenarios(
+        records, threshold=dup_threshold, center=center, local_files_only=local_files_only
+    )
     print(f"Computed {len(clusters)} near-duplicate & scenario clusters.")
 
     dev_records, test_records = split_candidate_clusters(
@@ -218,6 +233,24 @@ def main():
     parser.add_argument("--input", type=Path, default=DEFAULT_CANDIDATES_PATH)
     parser.add_argument("--dev-out", type=Path, default=DEFAULT_DEV_PATH)
     parser.add_argument("--test-out", type=Path, default=DEFAULT_TEST_PATH)
+    parser.add_argument(
+        "--dup-threshold",
+        type=float,
+        default=0.60,
+        help="Duplicate cosine similarity threshold (default: 0.60)",
+    )
+    parser.add_argument(
+        "--center",
+        action="store_true",
+        default=True,
+        help="Mean-center embeddings before cosine similarity (default: True)",
+    )
+    parser.add_argument(
+        "--no-center",
+        dest="center",
+        action="store_false",
+        help="Disable mean-centering of embeddings",
+    )
     parser.add_argument("--dev-ratio", type=float, default=0.35)
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
@@ -226,6 +259,8 @@ def main():
         input_path=args.input,
         dev_path=args.dev_out,
         test_path=args.test_out,
+        dup_threshold=args.dup_threshold,
+        center=args.center,
         dev_ratio=args.dev_ratio,
         seed=args.seed,
     )
