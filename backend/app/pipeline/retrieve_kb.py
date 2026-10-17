@@ -28,6 +28,7 @@ from typing import Any
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
 SPEC_CITATION_REGEX = re.compile(r"^kb:[A-Za-z0-9\-_]+:chunk\d{4}$")
+DEFAULT_ALPHA: float = 0.50
 
 # Lazy-loaded singletons
 _CHROMA_COLLECTION = None

@@ -10,7 +10,7 @@ across the CarePilot evaluation corpora (`gold_scripted_candidate`, `silver`, an
 - **L2 Normalization**: Raw embeddings are $l_2$-normalized to the unit sphere ($\|e_i\|_2 = 1$).
 - **Mean-Centering**: Mitigates embedding space anisotropy (representation hubness) where raw baseline clinical similarities artificially hover at 0.50–0.60. Embeddings are centered by subtracting the global clinical corpus mean vector $\mu$ (`backend/models/corpus_mean_bge_small.npy`), then re-normalized to unit norm:
   $$\hat{e}_i = \frac{e_i - \mu}{\|e_i - \mu\|}$$
-- **Calibrated Threshold**: $\tau_{\text{dup}} = 0.60$. Calibrated against clinical paraphrase and distinct-scenario benchmark pairs (separates true clinical paraphrases $\ge 0.65$ from distinct clinical scenarios $\le 0.15$ or negative).
+- **Calibrated Threshold**: $\tau_{\text{dup}} = 0.60$. Calibrated against clinical benchmark pairs with measured separation: hard-negative max 0.576 (< 0.60); paraphrases 4/5 $\ge 0.60$ (range 0.516 to 0.786).
 
 ## Dataset Diversity Summary
 

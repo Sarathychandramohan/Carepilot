@@ -260,7 +260,7 @@ def run_diversity_analysis(
         r"- **L2 Normalization**: Raw embeddings are $l_2$-normalized to the unit sphere ($\|e_i\|_2 = 1$).",
         "- **Mean-Centering**: Mitigates embedding space anisotropy (representation hubness) where raw baseline clinical similarities artificially hover at 0.50–0.60. Embeddings are centered by subtracting the global clinical corpus mean vector $\\mu$ (`backend/models/corpus_mean_bge_small.npy`), then re-normalized to unit norm:",
         r"  $$\hat{e}_i = \frac{e_i - \mu}{\|e_i - \mu\|}$$",
-        fr"- **Calibrated Threshold**: $\tau_{{\text{{dup}}}} = {dup_threshold:.2f}$. Calibrated against clinical paraphrase and distinct-scenario benchmark pairs (separates true clinical paraphrases $\ge 0.65$ from distinct clinical scenarios $\le 0.15$ or negative).",
+        fr"- **Calibrated Threshold**: $\tau_{{\text{{dup}}}} = {dup_threshold:.2f}$. Calibrated against clinical benchmark pairs with measured separation: hard-negative max 0.576 (< {dup_threshold:.2f}); paraphrases 4/5 $\ge {dup_threshold:.2f}$ (range 0.516 to 0.786).",
         "",
         "## Dataset Diversity Summary",
         "",

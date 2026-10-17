@@ -24,6 +24,7 @@ ACTIVE_ABLATION_ARMS: list[str] = [
 ]
 
 from backend.app.pipeline.classify import load_urgency_model
+from backend.app.pipeline.retrieve_kb import DEFAULT_ALPHA
 from backend.app.pipeline.validate import (
     CONTRADICTION_CEILING,
     COVERAGE_THRESHOLD,
@@ -37,13 +38,15 @@ from backend.app.pipeline.validate import (
 # ---------------------------------------------------------------------------
 try:
     _urg_model = load_urgency_model()
-    tau_high: float = float(_urg_model.get("tau_high", 0.25))
-    tau_soon: float = float(_urg_model.get("tau_soon", 0.30))
+    tau_high: float = float(_urg_model["tau_high"])
+    tau_soon: float = float(_urg_model["tau_soon"])
     tau_intent: float = float(_urg_model.get("tau_intent", 0.45))
-except Exception:
-    tau_high = 0.25
-    tau_soon = 0.30
-    tau_intent = 0.45
+except Exception as err:
+    raise RuntimeError(
+        f"Critical error loading pipeline model/thresholds in eval.config: {err}"
+    ) from err
+
+retrieval_alpha: float = DEFAULT_ALPHA
 
 THRESHOLDS: dict[str, Any] = {
     "coverage_threshold": COVERAGE_THRESHOLD,            # Citation coverage floor (0.80)
@@ -56,7 +59,7 @@ THRESHOLDS: dict[str, Any] = {
     "tau_high": tau_high,                                # Direct pipeline constant name
     "tau_soon": tau_soon,                                # Routine vs soon threshold (0.30)
     "tau_intent": tau_intent,                            # Supported intent confidence floor (0.45)
-    "retrieval_alpha": 0.50,                             # Dense / BM25 convex combination weight
+    "retrieval_alpha": retrieval_alpha,                  # Dense / BM25 convex combination weight
     "lab_tolerance_relative": 0.15,                      # EHR-fact relative numeric tolerance
     "lab_date_window_days": 90,                          # EHR-fact approximate date window
 }
