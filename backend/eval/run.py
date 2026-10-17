@@ -16,6 +16,7 @@ import argparse
 import datetime
 import json
 import random
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -37,6 +38,24 @@ from backend.eval.config import (
     PROMPT_VERSION,
 )
 from backend.eval.query_sets import load_query_split, EvalQuery
+
+
+def get_git_commit() -> str:
+    """Returns the current 40-character HEAD git commit SHA."""
+    try:
+        res = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True)
+        return res.stdout.strip()
+    except Exception:
+        return "unknown"
+
+
+def is_git_dirty() -> bool:
+    """Returns True if the git tree contains uncommitted or untracked changes."""
+    try:
+        res = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True, check=True)
+        return bool(res.stdout.strip())
+    except Exception:
+        return False
 
 
 def assert_preflight_invariants(db: Session) -> None:
@@ -73,6 +92,12 @@ def execute_eval_run(
     """
     random.seed(seed)
     started_at = datetime.datetime.utcnow()
+
+    if not dry_run and is_git_dirty():
+        raise RuntimeError(
+            "Evaluation provenance guard violation: Refusing to start non-dry-run evaluation on a dirty git tree. "
+            "Please commit or stash changes before executing real evaluations."
+        )
 
     with SessionLocal() as db:
         assert_preflight_invariants(db)
@@ -114,6 +139,7 @@ def execute_eval_run(
                 run_name=f"{config}_{split}_{seed}_{int(time.time())}",
                 pipeline_version="pillar_c_v1",
                 status="running",
+                git_commit=get_git_commit(),
                 config=json.dumps({
                     "ablation_arm": config,
                     "dry_run": dry_run,
@@ -201,6 +227,11 @@ def execute_eval_run(
                         is_eval=True,
                         eval_run_id=eval_run_id,
                     )
+
+                if consultation:
+                    consultation.eval_query_id = q.query_id
+                    db.add(consultation)
+                    db.commit()
 
                 latency_s = time.time() - t0
                 completed_count += 1

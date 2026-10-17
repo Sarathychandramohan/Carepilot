@@ -50,22 +50,27 @@ git log -n 3 --oneline
 ```
 
 ### 2. Large Data Bundles (Transferred Separately)
-Due to size and binary nature, the following artifacts are transferred via an external USB drive or secure cloud storage bundle (`CarePilot_Transfer_Bundle/`):
-- `carepilot_v3_backup.dump` (~60 MB): PostgreSQL compressed database dump.
-- `chroma_db.zip` (~140 MB): Compressed ChromaDB vector store directory.
-- `bm25_index_v5.pkl` (14.8 MB): Pre-computed BM25 sparse index.
-- `backend/.env`: Local configuration file containing database password and paths.
+Due to size and binary nature, the following artifacts are transferred via an external USB drive or storage device from the verified transfer bundle (`CarePilotAI_Transfer/`):
+- `01_DATABASE\carepilot_v3_backup.dump` (62.3 MB): PostgreSQL compressed database dump.
+- `02_RAG_ARTIFACTS\chroma_db.zip` (227.4 MB): Compressed ChromaDB vector store directory.
+- `02_RAG_ARTIFACTS\bm25_index_v5.pkl` (15.5 MB): Pre-computed BM25 sparse index.
+- `04_CONFIG_AND_ENV\.env`: Local configuration file containing database password and paths.
+- `05_RESEARCH_DATA\`: Annotation sheets, shortlist, and research patches.
+- `06_LLM_CONFIG\`: Ollama guide and optional offline model weights.
 
-Place these files into the following repository locations:
+Assuming your external drive is mounted at `E:\`, place these files into the following repository locations:
 ```powershell
-# Copy ChromaDB directory
-Expand-Archive -Path "E:\CarePilot_Transfer_Bundle\chroma_db.zip" -DestinationPath "D:\CarePilotAI\rag_knowledge\"
+# 1. Unpack ChromaDB vector store directory
+Expand-Archive -Path "E:\CarePilotAI_Transfer\02_RAG_ARTIFACTS\chroma_db.zip" -DestinationPath "D:\CarePilotAI\rag_knowledge\"
 
-# Copy BM25 Index
-Copy-Item "E:\CarePilot_Transfer_Bundle\bm25_index_v5.pkl" -Destination "D:\CarePilotAI\rag_knowledge\"
+# 2. Copy BM25 Index
+Copy-Item "E:\CarePilotAI_Transfer\02_RAG_ARTIFACTS\bm25_index_v5.pkl" -Destination "D:\CarePilotAI\rag_knowledge\"
 
-# Copy Local Environment File
-Copy-Item "E:\CarePilot_Transfer_Bundle\.env" -Destination "D:\CarePilotAI\backend\.env"
+# 3. Copy Local Environment File
+Copy-Item "E:\CarePilotAI_Transfer\04_CONFIG_AND_ENV\.env" -Destination "D:\CarePilotAI\backend\.env"
+
+# 4. (Optional) Verify checksums against CHECKSUMS_SHA256.txt on the drive
+Get-FileHash "E:\CarePilotAI_Transfer\01_DATABASE\carepilot_v3_backup.dump" -Algorithm SHA256
 ```
 
 ---
@@ -153,7 +158,7 @@ createdb -U postgres -h localhost -p 5432 carepilot_v3
 ### 2. Restore Database Dump
 Restore the provided snapshot:
 ```powershell
-pg_restore -U postgres -h localhost -p 5432 -d carepilot_v3 -v "E:\CarePilot_Transfer_Bundle\carepilot_v3_backup.dump"
+pg_restore -U postgres -h localhost -p 5432 -d carepilot_v3 -v "E:\CarePilotAI_Transfer\01_DATABASE\carepilot_v3_backup.dump"
 ```
 
 ### 3. Verify Database Counts
@@ -198,16 +203,37 @@ Verify retrieval operation with the inspection script:
 ```
 
 ### 2. Setup Ollama and Qwen3-8B
-CarePilot AI uses local inference (`qwen3:8b`) without cloud dependencies:
+CarePilot AI uses local inference (`qwen3:8b`, 8B parameters, Q4_K_M quantization) served via Ollama without cloud dependencies. Install Ollama from [https://ollama.com/download](https://ollama.com/download).
+
+You have two options to bring the model to the second laptop:
+
+#### Option A: Online Pull via Ollama Registry (Recommended & Simplest)
+If the second laptop has internet access:
 ```powershell
-# Start Ollama service (runs in background or system tray)
+# 1. Start Ollama service (runs in background or system tray)
 ollama serve
 
-# In a separate terminal, download the Qwen3-8B model
+# 2. In a PowerShell terminal, download the exact verified Qwen3-8B model
 ollama pull qwen3:8b
 
-# Test inference
+# 3. Test inference
 ollama run qwen3:8b "Hello, CarePilot AI"
+```
+
+#### Option B: Offline Direct Copy from External Drive (No Internet Required)
+If you copied the 4.87 GB Ollama models directory to `E:\CarePilotAI_Transfer\06_LLM_CONFIG\models\`:
+```powershell
+# 1. Ensure Ollama is closed (exit from Windows taskbar system tray)
+
+# 2. Create the destination directory if it does not exist
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.ollama"
+
+# 3. Copy the models directory from the USB drive
+Copy-Item -Recurse -Force "E:\CarePilotAI_Transfer\06_LLM_CONFIG\models" "$env:USERPROFILE\.ollama\"
+
+# 4. Start Ollama and verify it recognizes the model instantly without downloading
+ollama list
+ollama run qwen3:8b "CarePilot AI offline test"
 ```
 
 ---

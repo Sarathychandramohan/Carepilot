@@ -1,7 +1,8 @@
 Retrieval Configuration,Split,Queries Evaluated,Hit@3 (%),Hit@5 (%),MRR
 Dense-Only (ChromaDB),gold-dev,150,26.0%,31.33%,0.2166
 BM25-Only (Sparse),gold-dev,150,35.33%,49.33%,0.3374
-Hybrid Fusion (alpha=0.5),gold-dev,150,45.33%,49.33%,0.3764
+Hybrid Fusion (alpha=0.5),gold-dev,150,45.33%,49.33%,0.3834
 Dense-Only (ChromaDB),gold-test,300,19.67%,24.0%,0.1642
 BM25-Only (Sparse),gold-test,300,27.0%,35.67%,0.2477
-Hybrid Fusion (alpha=0.5),gold-test,300,32.33%,35.0%,0.2702
+Hybrid Fusion (alpha=0.5),gold-test,300,33.0%,35.0%,0.2791
+"gold_scripted_candidate: ~40 distinct base scenarios (38 clusters@0.7, 32 clusters@0.5), dev/test overlap (27 spanning clusters@0.7), not reportable",,,,,

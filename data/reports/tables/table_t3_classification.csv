@@ -1,5 +1,10 @@
 Dataset Split,Task,Total Evaluated,Accuracy (%),Macro-Precision,Macro-Recall,Macro-F1
 Gold (All 500),Intent Classification,500,71.20%,0.6743,0.6606,0.6467
 Gold (All 500),Urgency Classification,500,81.80%,0.7955,0.6865,0.5864
-Silver (1000),Intent Classification,1000,100.00%,1.0000,1.0000,1.0000
-Silver (1000),Urgency Classification,1000,100.00%,1.0000,1.0000,1.0000
+Silver-Dev (1040),Intent Classification,1040,100.00%,1.0000,1.0000,1.0000
+Silver-Dev (1040),Urgency Classification,1040,62.50%,0.4944,0.6667,0.5611
+Silver-Test (1040),Intent Classification,1040,77.88%,0.7843,0.7792,0.7479
+Silver-Test (1040),Urgency Classification,1040,85.29%,0.9365,0.8038,0.8259
+Silver-Dev+Test (2080),Intent Classification,2080,88.94%,0.8770,0.8896,0.8729
+Silver-Dev+Test (2080),Urgency Classification,2080,73.89%,0.8792,0.7215,0.6907
+"gold_scripted_candidate: ~40 distinct base scenarios (38 clusters@0.7, 32 clusters@0.5), dev/test overlap (27 spanning clusters@0.7), not reportable",,,,,,

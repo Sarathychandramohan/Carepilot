@@ -36,9 +36,14 @@ from backend.app.pipeline.validate import (
 # Imported directly from pipeline modules to guarantee provenance consistency.
 # ---------------------------------------------------------------------------
 try:
-    tau_high: float = float(load_urgency_model().get("tau_high", 0.25))
+    _urg_model = load_urgency_model()
+    tau_high: float = float(_urg_model.get("tau_high", 0.25))
+    tau_soon: float = float(_urg_model.get("tau_soon", 0.30))
+    tau_intent: float = float(_urg_model.get("tau_intent", 0.45))
 except Exception:
     tau_high = 0.25
+    tau_soon = 0.30
+    tau_intent = 0.45
 
 THRESHOLDS: dict[str, Any] = {
     "coverage_threshold": COVERAGE_THRESHOLD,            # Citation coverage floor (0.80)
@@ -49,6 +54,8 @@ THRESHOLDS: dict[str, Any] = {
     "contradiction_ceiling": CONTRADICTION_CEILING,      # Hallucination/contradiction ceiling (0.05)
     "urgency_tau_high": tau_high,                        # High urgency classification cutoff (0.25)
     "tau_high": tau_high,                                # Direct pipeline constant name
+    "tau_soon": tau_soon,                                # Routine vs soon threshold (0.30)
+    "tau_intent": tau_intent,                            # Supported intent confidence floor (0.45)
     "retrieval_alpha": 0.50,                             # Dense / BM25 convex combination weight
     "lab_tolerance_relative": 0.15,                      # EHR-fact relative numeric tolerance
     "lab_date_window_days": 90,                          # EHR-fact approximate date window

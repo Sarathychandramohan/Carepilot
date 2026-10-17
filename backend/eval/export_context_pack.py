@@ -274,6 +274,7 @@ def export_context_packs(
     output_path: Path = OUTPUT_FILE,
     seed: int = 42,
     rename_bp_to_vital: bool = False,
+    start_scenario_idx: int = 0,
 ) -> tuple[list[dict[str, Any]], int]:
     """
     Export clinical context packs with enhanced quota assignment, lab flags,
@@ -415,7 +416,7 @@ def export_context_packs(
             else:
                 quota_tag = f"{intent}:{urg}"
 
-            scenario_id = f"S{idx + 1:04d}"
+            scenario_id = f"S{start_scenario_idx + idx + 1:04d}"
             key_concept = patient_assigned_key_concept[pid]
             if rename_bp_to_vital and key_concept == "Blood Pressure":
                 key_concept = "vital"
@@ -587,14 +588,31 @@ def export_context_packs(
 
 
 def main():
+    import argparse
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-    print(f"Exporting context packs from {SHORTLIST_FILE}...")
-    packs, excluded = export_context_packs()
+
+    parser = argparse.ArgumentParser(description="Export clinical context packs")
+    parser.add_argument("--new-45", action="store_true", help="Export 45 new context packs from patient_picker_shortlist_new_45.csv")
+    args = parser.parse_args()
+
+    if args.new_45:
+        shortlist_target = OUTPUT_DIR / "patient_picker_shortlist_new_45.csv"
+        output_target = OUTPUT_DIR / "context_packs_new_45.jsonl"
+        print(f"Exporting 45 new context packs from {shortlist_target}...")
+        packs, excluded = export_context_packs(
+            shortlist_path=shortlist_target,
+            output_path=output_target,
+            start_scenario_idx=60,
+        )
+    else:
+        print(f"Exporting context packs from {SHORTLIST_FILE}...")
+        packs, excluded = export_context_packs()
+
     print(f"Row count: {len(packs)}")
     print(f"Count of excluded out-of-range lab rows: {excluded}")
 
-    # Check key_lab_concept inclusion across all 60 packs
+    # Check key_lab_concept inclusion across all packs
     all_included = True
     missing_count = 0
     for p in packs:

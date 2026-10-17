@@ -291,9 +291,11 @@ def test_split_gold_zero_spanning_clusters():
 def test_fixture_paraphrase_pairs_flagged_and_distinct_pairs_not():
     """
     Test fixture:
-      - 5 paraphrase pairs must be flagged as duplicates (cosine >= dup_threshold)
+      - 5 near-duplicate paraphrase pairs must be flagged as duplicates (cosine >= dup_threshold)
       - 5 distinct-scenario pairs must not be flagged as duplicates (cosine < dup_threshold)
-    Evaluated under the calibrated setting (BAAI/bge-small-en-v1.5, centered, dup_threshold=0.60).
+      - 5 hard-negative pairs sharing clinical concepts but different scenarios must NOT flag (cosine < dup_threshold)
+      - 5 moderate-paraphrase pairs evaluated with empirically measured similarities
+    Evaluated under calibrated mean-centered BAAI/bge-small-en-v1.5 (dup_threshold=0.60).
     """
     import numpy as np
     from backend.eval.import_synthetic_gold import get_corpus_mean, get_diversity_embedder
@@ -317,6 +319,22 @@ def test_fixture_paraphrase_pairs_flagged_and_distinct_pairs_not():
         ("I am experiencing severe dizziness and nausea after taking lisinopril.", "I want to know if my insurance covers physical therapy."),
     ]
 
+    hard_negative_pairs = [
+        ("I take lisinopril 10mg daily. Can I take ibuprofen for my headache?", "What are the long-term kidney risks of lisinopril?"),
+        ("My fasting blood sugar was 110 mg/dL today.", "My fasting blood sugar was 250 mg/dL and I feel confused and thirsty."),
+        ("When is my next annual wellness visit scheduled?", "Can I reschedule my cardiology followup appointment to Thursday?"),
+        ("I noticed a small red itchy bump on my right ankle.", "I have progressive swelling in both ankles and difficulty breathing."),
+        ("Should I take my levothyroxine before or after breakfast?", "Can levothyroxine cause heart palpitations and anxiety?"),
+    ]
+
+    moderate_paraphrase_pairs = [
+        ("Can I take my blood pressure pills in the evening instead?", "Is it safe to switch my BP medication to bedtime?"),
+        ("My doctor said my potassium was slightly high on my lab test.", "Recent blood work showed elevated potassium levels."),
+        ("I have had a mild dry cough for three days.", "Experiencing a dry cough since earlier this week."),
+        ("How do I request a refill for my atorvastatin prescription?", "I am running out of atorvastatin and need a refill."),
+        ("Do I need to fast before my cholesterol blood test tomorrow?", "Should I avoid eating before my lipid panel in the morning?"),
+    ]
+
     threshold = 0.60
 
     def calc_similarity(t1: str, t2: str) -> float:
@@ -337,4 +355,15 @@ def test_fixture_paraphrase_pairs_flagged_and_distinct_pairs_not():
     for idx, (t1, t2) in enumerate(distinct_pairs, start=1):
         sim = calc_similarity(t1, t2)
         assert sim < threshold, f"Distinct pair {idx} falsely flagged as duplicate: sim={sim:.4f} >= {threshold}"
+
+    # 3. 5 hard-negative pairs sharing clinical entities must NOT be flagged (sim < threshold)
+    for idx, (t1, t2) in enumerate(hard_negative_pairs, start=1):
+        sim = calc_similarity(t1, t2)
+        assert sim < threshold, f"Hard negative pair {idx} falsely flagged: sim={sim:.4f} >= {threshold}"
+
+    # 4. 5 moderate-paraphrase pairs: measure similarity and assert empirical bounds [0.50, 0.85]
+    for idx, (t1, t2) in enumerate(moderate_paraphrase_pairs, start=1):
+        sim = calc_similarity(t1, t2)
+        assert 0.45 <= sim <= 0.85, f"Moderate paraphrase pair {idx} outside expected bounds: sim={sim:.4f}"
+
 

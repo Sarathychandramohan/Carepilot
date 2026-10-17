@@ -247,5 +247,14 @@ FROM consultations WHERE is_eval = true GROUP BY eval_run_id;
 - **RQ1 Fairness (EHR Requirement Asymmetry):** All 60 pilot queries have `needs_ehr=True` (zero no-EHR rows). Evaluating RQ1 (`full` vs `no_ehr`) solely on this pilot set is fundamentally asymmetric against the `no_ehr` arm; a fair evaluation requires the newly planned balanced query set with genuine no-EHR inquiries.
 - **Exploratory Status of RQ2 Safety Claims:** RQ2 triage evaluation performed against LLM-labelled data is exploratory only. No safety claims or clinical triage efficacy certifications may be asserted on this pilot set.
 
+---
+
+## Decision D-C7: Global Corpus Mean Vector Rebuild (2026-10-17)
+
+- **Artifact:** `backend/models/corpus_mean_bge_small.npy`
+- **Rebuilt Across:** All 1,553 distinct texts from `gold_scripted_candidate` (283 unique), `silver` (1,210 unique across train/dev/test), and `gold_synthetic_pilot` (60 unique). Zero truncation (`[:1000]` eliminated).
+- **SHA-256 Hash:** `77819e6b0b7d26c2bf14c3c4c3ee04899b42cb9a9b0c5ee31b19cb5370b52218`
+- **Purpose:** Anisotropy centering for BGE-small embeddings in near-duplicate and diversity evaluation.
+
 
 

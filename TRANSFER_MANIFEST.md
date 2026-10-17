@@ -6,15 +6,16 @@ This manifest records all components, database snapshots, vector stores, models,
 
 ## 1. Transfer Summary & Architecture Matrix
 
-| Subsystem | Primary Artifact | Storage Location | Transfer Method | Expected Size | Integrity / Verification Check |
-|---|---|---|---|---|---|
-| **Source Code** | Full git repository (`feature/pillar-c-eval`) | GitHub (`Sarathychandramohan/Carepilot`) | `git clone` | ~50 MB | `git rev-parse HEAD` |
-| **Relational DB** | PostgreSQL database `carepilot_v3` | Local PostgreSQL 18 instance | `pg_dump` compressed dump | ~60 MB | 2,330 patients, ~2.5M rows across 9 tables |
-| **Vector Store** | ChromaDB collection `carepilot_kb_v5` | `rag_knowledge/chroma_db/` | Zip archive (`chroma_db.zip`) | ~140 MB compressed (~376 MB uncompressed) | 10,074 chunks from 1,045 documents |
-| **Sparse Index** | BM25 index `bm25_index_v5.pkl` | `rag_knowledge/bm25_index_v5.pkl` | Direct file transfer | 14.8 MB | Matches `carepilot_kb_v5` corpus order |
-| **Classifiers** | Intent & Urgency models | `backend/models/*.pkl` | Git or File Transfer | ~45 KB | BGE-small calibrated Logistic Regression |
-| **Local LLM** | Ollama Qwen3-8B | Local Ollama library | `ollama pull qwen3:8b` | ~4.7 GB | Ollama tag `qwen3:8b` |
-| **Environment** | Configuration secrets | `backend/.env` | Secure manual copy | ~2 KB | Based on safe `backend/.env.example` |
+| Subsystem | Primary Artifact | Storage Location | Transfer Method | Size (Bytes) | SHA-256 Checksum | Integrity / Verification Check |
+|---|---|---|---|---|---|---|
+| **Source Code** | Full git repository (`feature/pillar-c-eval`) | GitHub (`Sarathychandramohan/Carepilot`) | `git clone` | ~50 MB | Commit Hash | `git rev-parse HEAD` |
+| **Relational DB** | PostgreSQL database `carepilot_v3` | `01_DATABASE/carepilot_v3_backup.dump` | Custom format dump | 62,318,070 | `0afb298b53c90e70b26c05eff1e23758b6f41365d1940e2b91aef0e4baa0bb63` | 2,330 patients, ~2.5M rows across tables |
+| **Vector Store** | ChromaDB collection `carepilot_kb_v5` | `02_RAG_ARTIFACTS/chroma_db.zip` | Zip archive | 227,351,321 | `65e6f1dd32c157e3e8cfc9a416a3835a942582127ae1a54974d9477e6bec6b05` | 10,074 chunks from 1,045 documents |
+| **Sparse Index** | BM25 index `bm25_index_v5.pkl` | `02_RAG_ARTIFACTS/bm25_index_v5.pkl` | Serialized pickle | 15,548,899 | `1e6c4569754f565e6128a0969d0f19a2b87c5156fe28f457299d08c21053e333` | Matches `carepilot_kb_v5` corpus order |
+| **Classifiers** | Intent & Urgency models | `backend/models/*.pkl` | Git + Backup | ~45 KB | Git Tracked | BGE-small calibrated Logistic Regression |
+| **Local LLM** | Ollama Qwen3-8B | Local Ollama library | `ollama pull qwen3:8b` OR USB copy | ~4.87 GB | Registry / Blobs | Ollama tag `qwen3:8b` (Q4_K_M) |
+| **Environment** | Configuration secrets | `04_CONFIG_AND_ENV/.env` | Secure manual copy | 81 | `8f3e61ed6e7e897d66d00a97634f0827932feb6ed2c8ab7a7046693fbe58bb22` | Based on safe `backend/.env.example` |
+| **Working Patch**| Post-C-Audit Git Patch | `05_RESEARCH_DATA/working_changes_post_c_audit.patch` | Unified Git diff | 644,644 | `417726b54339a03290d97081e8b5a749bfd1b75934745111c45e5e36ad0cf0a7` | Applies cleanly with `git apply` |
 
 ---
 

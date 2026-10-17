@@ -360,8 +360,18 @@ def compute_table_t3(gold_queries: list[dict], silver_queries: list[dict]) -> di
     rows = []
     t3_results: dict[str, Any] = {}
     f2_confusion: dict[str, Any] = {}
+    silver_dev = [q for q in silver_queries if q.get("split") == "dev"]
+    silver_test = [q for q in silver_queries if q.get("split") == "test"]
+    silver_eval = silver_dev + silver_test
 
-    for name, dataset in [("Gold (All 500)", gold_queries), ("Silver (1000)", silver_queries[:1000])]:
+    datasets = [
+        ("Gold (All 500)", gold_queries),
+        ("Silver-Dev (1040)", silver_dev),
+        ("Silver-Test (1040)", silver_test),
+        ("Silver-Dev+Test (2080)", silver_eval),
+    ]
+
+    for name, dataset in datasets:
         y_intent_true = []
         y_intent_pred = []
         y_urgency_true = []
@@ -909,6 +919,15 @@ Evaluated using the real trained classifiers (`backend/models/intent_classifier.
 - **Urgency Classification (Gold 500)**:
   - Accuracy: **{t3.get('Gold (All 500)_urgency', {}).get('accuracy', 0.0)*100:.2f}%**
   - Macro-F1: **{t3.get('Gold (All 500)_urgency', {}).get('macro_f1', 0.0):.4f}**
+- **Intent Classification (Silver-Dev 1040)**:
+  - Accuracy: **{t3.get('Silver-Dev (1040)_intent', {}).get('accuracy', 0.0)*100:.2f}%**
+  - Macro-F1: **{t3.get('Silver-Dev (1040)_intent', {}).get('macro_f1', 0.0):.4f}**
+- **Intent Classification (Silver-Test 1040)**:
+  - Accuracy: **{t3.get('Silver-Test (1040)_intent', {}).get('accuracy', 0.0)*100:.2f}%**
+  - Macro-F1: **{t3.get('Silver-Test (1040)_intent', {}).get('macro_f1', 0.0):.4f}**
+- **Intent Classification (Silver-Dev+Test 2080)**:
+  - Accuracy: **{t3.get('Silver-Dev+Test (2080)_intent', {}).get('accuracy', 0.0)*100:.2f}%**
+  - Macro-F1: **{t3.get('Silver-Dev+Test (2080)_intent', {}).get('macro_f1', 0.0):.4f}**
 - Confusion matrices exported to: `data/reports/figures/figure_f2_confusion_matrices.json`.
 
 ---

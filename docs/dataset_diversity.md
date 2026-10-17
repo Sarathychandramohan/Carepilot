@@ -19,12 +19,12 @@ across the CarePilot evaluation corpora (`gold_scripted_candidate`, `silver`, an
 | `gold-dev` | 150 | 126 | 27 | 24 | 24 | 24 | N/A | N/A |
 | `gold-test` | 350 | 206 | 39 | 35 | 35 | 34 | N/A | N/A |
 | `gold-combined` | 500 | 283 | 40 | 35 | 35 | 34 | 24 | 24 |
-| `silver-train` | 1690 | 492 | 492 | 39 | 196 | 20 | N/A | N/A |
-| `silver-dev` | 1040 | 361 | 361 | 14 | 37 | 10 | N/A | N/A |
-| `silver-test` | 1040 | 357 | 357 | 14 | 39 | 9 | N/A | N/A |
-| `silver-dev+test` | 2080 | 718 | 718 | 24 | 63 | 15 | 4 | 5 |
-| `silver-all` | 3770 | 1210 | 1210 | 47 | 206 | 24 | 4 | 7 |
-| `rq3` | 60 | 57 | 57 | 30 | 49 | 22 | N/A | N/A |
+| `silver-train` | 1690 | 492 | 492 | 42 | 150 | 20 | N/A | N/A |
+| `silver-dev` | 1040 | 361 | 361 | 22 | 63 | 12 | N/A | N/A |
+| `silver-test` | 1040 | 357 | 357 | 24 | 47 | 9 | N/A | N/A |
+| `silver-dev+test` | 2080 | 718 | 718 | 31 | 101 | 14 | 5 | 8 |
+| `silver-all` | 3770 | 1210 | 1210 | 49 | 189 | 23 | 4 | 9 |
+| `rq3` | 60 | 57 | 57 | 32 | 52 | 25 | N/A | N/A |
 
 ## Silver Corpus: Scenario Family Distribution
 

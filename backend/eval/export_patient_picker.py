@@ -186,7 +186,7 @@ def export_patient_picker_sheet() -> tuple[float, float, int, int]:
             writer.writerow(headers)
             writer.writerows(out_rows)
 
-        # 6. Build Shortlist of 60 patients
+        # 6. Build Shortlist of 105 patients (30 long, 30 mid, 45 new, none from first 60)
         # Eligibility: >=2 active medications, >=2 conditions, >=3 lab rows
         import hashlib
 
@@ -195,7 +195,7 @@ def export_patient_picker_sheet() -> tuple[float, float, int, int]:
             if r.active_rx_count >= 2 and r.cd_count >= 2 and r.lb_count >= 3
         ]
 
-        # Stratum 1: total_facts > p75 (30 patients)
+        # Stratum 1: total_facts > p75 (30 initial long patients)
         stratum_high = [r for r in eligible if r.total_facts > p75]
         stratum_high_sorted = sorted(
             stratum_high,
@@ -203,7 +203,7 @@ def export_patient_picker_sheet() -> tuple[float, float, int, int]:
         )
         picked_high = stratum_high_sorted[:30]
 
-        # Stratum 2: median <= total_facts <= p75 (30 patients)
+        # Stratum 2: median <= total_facts <= p75 (30 initial mid patients)
         stratum_mid = [r for r in eligible if median_facts <= r.total_facts <= p75]
         stratum_mid_sorted = sorted(
             stratum_mid,
@@ -211,7 +211,13 @@ def export_patient_picker_sheet() -> tuple[float, float, int, int]:
         )
         picked_mid = stratum_mid_sorted[:30]
 
-        shortlist_records = picked_high + picked_mid
+        # 45 new patients: none from first 60, applying the same rules and strata
+        # 23 additional high (long) and 22 additional mid patients
+        picked_high_new = stratum_high_sorted[30:53]
+        picked_mid_new = stratum_mid_sorted[30:52]
+        picked_new = picked_high_new + picked_mid_new
+
+        shortlist_records = picked_high + picked_mid + picked_new
         # Deterministic order by patient_id
         shortlist_records_sorted = sorted(shortlist_records, key=lambda r: r.patient_id)
         shortlist_rows = [rows_by_id[str(r.patient_id)] for r in shortlist_records_sorted]
@@ -220,6 +226,15 @@ def export_patient_picker_sheet() -> tuple[float, float, int, int]:
             writer = csv.writer(f)
             writer.writerow(headers)
             writer.writerows(shortlist_rows)
+
+        # Also write the 45 new patients to patient_picker_shortlist_new_45.csv
+        new_45_file = OUTPUT_DIR / "patient_picker_shortlist_new_45.csv"
+        new_45_sorted = sorted(picked_new, key=lambda r: r.patient_id)
+        new_45_rows = [rows_by_id[str(r.patient_id)] for r in new_45_sorted]
+        with open(new_45_file, "w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerow(headers)
+            writer.writerows(new_45_rows)
 
         return median_facts, p75, total_patients, len(shortlist_rows)
     finally:

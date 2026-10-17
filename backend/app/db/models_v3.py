@@ -384,6 +384,7 @@ class EvalRun(Base):
     thresholds       = Column(JSON)          # {faithfulness_threshold, nli_entailment_threshold, …}
     started_at       = Column(DateTime)      # when harness began
     finished_at      = Column(DateTime)      # when harness completed (NULL while still running)
+    git_commit       = Column(String(40), nullable=True)  # Migration 004: git commit SHA
 
     # Relationships
     consultations    = relationship("Consultation", back_populates="eval_run")
@@ -507,6 +508,10 @@ class Consultation(Base):
     # ── Migration 003: Pipeline skip reason ──────────────────────────────────
     # 'emergency' | 'unsupported_intent' | 'generation_parse_failed' | 'validation_failed' | ...
     skip_reason = Column(String(50), nullable=True)
+
+    # ── Migration 004: Evaluation query ID ───────────────────────────────────
+    # e.g. 'SF-DEV-APPT-ROUTINE-001', 'GS-0001'
+    eval_query_id = Column(String(64), nullable=True, index=True)
 
     patient  = relationship("Patient")
     eval_run = relationship("EvalRun", back_populates="consultations")
