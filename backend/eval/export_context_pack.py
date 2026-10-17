@@ -6,11 +6,15 @@ and trimmed batch files: data/annotation/packs_batch_1.jsonl, packs_batch_2.json
 
 Rules:
   - Parses medication name, strength and dose (preserving '70 UNT/ML / 30 UNT/ML' and '24 HR').
+  - Applies clinical plausibility ranges per concept (e.g. Creatinine [0.2, 15.0] mg/dL),
+    excluding out-of-range values.
   - Assigns clinical flag (high|low|normal) to every lab using lab_results.is_abnormal,
     ref_min/ref_max, and fallback to reference_ranges.
   - Quota assignment: guarantees no two patients with the same (intent, key_lab_concept)
     until all concepts are exhausted; marks followup_appointment:urgent and general_health_info:urgent
     as stress_test in quota_tag.
+  - Guarantees each pack always includes its key_lab_concept lab, even if not among
+    the 6 most recent.
   - Deterministic (seed 42).
 """
 from __future__ import annotations
@@ -80,6 +84,23 @@ CORE_LAB_CONCEPTS = [
     "Blood Pressure",
     "Microalbumin",
 ]
+
+# Plausibility bounds per concept to exclude unphysiological/outlier rows
+PLAUSIBILITY_RANGES: dict[str, tuple[float, float]] = {
+    "Creatinine": (0.2, 15.0),
+    "Glucose": (20.0, 800.0),
+    "Hemoglobin A1c": (3.5, 18.0),
+    "Potassium": (1.5, 8.5),
+    "Sodium": (100.0, 180.0),
+    "Calcium": (4.0, 18.0),
+    "Chloride": (60.0, 140.0),
+    "Urea nitrogen (BUN)": (2.0, 150.0),
+    "Cholesterol": (50.0, 600.0),
+    "Triglycerides": (20.0, 1500.0),
+    "Blood Pressure": (30.0, 260.0),
+    "eGFR": (5.0, 200.0),
+    "Microalbumin": (0.0, 5000.0),
+}
 
 # Clinical static reference range fallback from seed_reference_ranges.py
 STATIC_REF_RANGES: dict[str, tuple[float | None, float | None]] = {
@@ -181,7 +202,6 @@ def determine_lab_flag(
 
     # Fallback to is_abnormal
     if is_abnormal is True:
-        # Default directionally to high for kidney/metabolic markers if elevated
         return "high"
     return "normal"
 
@@ -216,12 +236,49 @@ def extract_key_concept(desc: str) -> str | None:
     return None
 
 
+def select_recent_labs_with_key_concept(
+    candidate_labs: list[dict[str, Any]],
+    key_concept: str,
+    limit: int = 6,
+) -> list[dict[str, Any]]:
+    """
+    Ensure the pack's key_lab_concept lab is always included, even if it is not
+    among the limit most recent.
+    """
+    if not candidate_labs:
+        return []
+
+    # Check if key_concept is already within top limit
+    has_kc = any(extract_key_concept(l["concept"]) == key_concept for l in candidate_labs[:limit])
+    if has_kc:
+        return candidate_labs[:limit]
+
+    # Find the most recent lab matching key_concept
+    kc_lab = None
+    for l in candidate_labs:
+        if extract_key_concept(l["concept"]) == key_concept:
+            kc_lab = l
+            break
+
+    if kc_lab is not None:
+        # Include it: take top limit - 1 and append kc_lab
+        selected = candidate_labs[: max(1, limit - 1)] + [kc_lab]
+        # Sort by date DESC
+        return sorted(selected, key=lambda x: str(x.get("date", "")), reverse=True)
+
+    return candidate_labs[:limit]
+
+
 def export_context_packs(
     shortlist_path: Path = SHORTLIST_FILE,
     output_path: Path = OUTPUT_FILE,
     seed: int = 42,
-) -> list[dict[str, Any]]:
-    """Export clinical context packs with enhanced quota assignment and lab flags."""
+    rename_bp_to_vital: bool = False,
+) -> tuple[list[dict[str, Any]], int]:
+    """
+    Export clinical context packs with enhanced quota assignment, lab flags,
+    plausibility filtering, and guaranteed key lab concept inclusion.
+    """
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(shortlist_path, "r", encoding="utf-8") as f:
         shortlist = list(csv.DictReader(f))
@@ -232,6 +289,7 @@ def export_context_packs(
     db = SessionLocal()
     today = date.today()
     packs = []
+    total_excluded_plausibility = 0
 
     try:
         # Load reference ranges from DB
@@ -245,7 +303,7 @@ def export_context_packs(
             if min_v is not None or max_v is not None:
                 rr_map[r.code] = (min_v, max_v)
 
-        # Pre-query clinical labs for all shortlisted patients to discover available concepts
+        # Pre-query clinical labs with plausibility filtering
         patient_labs_raw: dict[str, list[dict[str, Any]]] = {}
         patient_concepts: dict[str, list[str]] = {}
 
@@ -272,11 +330,24 @@ def export_context_packs(
                 if not desc or is_survey_lab(desc, units):
                     continue
 
+                val = round(float(lr.numeric_value), 2)
+
+                # Plausibility bounds check
+                kc = extract_key_concept(desc)
+                if kc and kc in PLAUSIBILITY_RANGES:
+                    # Filter out urine test strip glucose from serum plausibility
+                    if kc == "Glucose" and "urine" in desc.lower():
+                        total_excluded_plausibility += 1
+                        continue
+                    p_min, p_max = PLAUSIBILITY_RANGES[kc]
+                    if val < p_min or val > p_max:
+                        total_excluded_plausibility += 1
+                        continue
+
                 if desc.lower() in seen_concepts:
                     continue
                 seen_concepts.add(desc.lower())
 
-                val = round(float(lr.numeric_value), 2)
                 d_str = lr.observed_at.strftime("%Y-%m-%d") if lr.observed_at else ""
 
                 min_v, max_v = rr_map.get(lr.code, (lr.ref_min, lr.ref_max))
@@ -296,24 +367,18 @@ def export_context_packs(
                     "code": lr.code,
                 })
 
-                kc = extract_key_concept(desc)
                 if kc and kc not in avail_concepts:
                     avail_concepts.append(kc)
 
             patient_labs_raw[pid] = valid_labs
             patient_concepts[pid] = avail_concepts
 
-        # Quota Assignment:
-        # Deterministically assign intent and urgency so every intent (5) and urgency (3)
-        # has 4 patients (total 60).
-        # Plus guarantee: no two patients with the same (intent, key_lab_concept)
-        # until every patient has one.
+        # Quota Assignment (seed 42)
         rng = random.Random(seed)
         combos = [(intent, urg) for intent in REAL_INTENTS for urg in URGENCY_LEVELS]
         slots = (combos * ((total_patients // len(combos)) + 1))[:total_patients]
         rng.shuffle(slots)
 
-        # Track concepts used per intent
         intent_used_concepts: dict[str, set[str]] = defaultdict(set)
         patient_assigned_key_concept: dict[str, str] = {}
 
@@ -322,7 +387,6 @@ def export_context_packs(
             intent, urg = slots[idx]
             avail = patient_concepts.get(pid, [])
 
-            # Pick concept not yet used for this intent
             chosen_concept = None
             for c in avail:
                 if c not in intent_used_concepts[intent]:
@@ -330,7 +394,6 @@ def export_context_packs(
                     break
 
             if chosen_concept is None:
-                # If all available have been used, pick from least used or CORE_LAB_CONCEPTS
                 if avail:
                     chosen_concept = avail[0]
                 else:
@@ -339,7 +402,7 @@ def export_context_packs(
             intent_used_concepts[intent].add(chosen_concept)
             patient_assigned_key_concept[pid] = chosen_concept
 
-        # Build full context packs
+        # Build packs
         for idx, row in enumerate(shortlist):
             pid = row["patient_id"]
             intent, urg = slots[idx]
@@ -354,6 +417,8 @@ def export_context_packs(
 
             scenario_id = f"S{idx + 1:04d}"
             key_concept = patient_assigned_key_concept[pid]
+            if rename_bp_to_vital and key_concept == "Blood Pressure":
+                key_concept = "vital"
 
             # Demographics
             p_row = db.execute(
@@ -370,7 +435,7 @@ def export_context_packs(
 
             sex = "M" if str(gender).upper().startswith("M") else "F" if str(gender).upper().startswith("F") else str(gender)
 
-            # Active medications (up to ~6, parsed)
+            # Active medications
             rx_rows = db.execute(
                 text("""
                     SELECT description, start_date 
@@ -401,7 +466,7 @@ def export_context_packs(
                 if len(active_meds) >= 6:
                     break
 
-            # Disorders (up to ~6, deduplicated)
+            # Disorders
             cond_rows = db.execute(
                 text("""
                     SELECT description, start_date 
@@ -424,7 +489,11 @@ def export_context_packs(
                 if len(disorders) >= 6:
                     break
 
-            # Recent labs with flags (up to ~8)
+            # Ensure recent_labs always includes the key_lab_concept lab
+            raw_patient_labs = patient_labs_raw[pid]
+            raw_key_concept = patient_assigned_key_concept[pid]
+            selected_labs = select_recent_labs_with_key_concept(raw_patient_labs, raw_key_concept, limit=6)
+
             recent_labs = [
                 {
                     "concept": l["concept"],
@@ -433,17 +502,17 @@ def export_context_packs(
                     "date": l["date"],
                     "flag": l["flag"],
                 }
-                for l in patient_labs_raw[pid][:8]
+                for l in selected_labs
             ]
 
-            # Encounters (up to 5)
+            # Encounters (up to 3)
             enc_rows = db.execute(
                 text("""
                     SELECT description, encounter_class, start_time 
                     FROM encounters 
                     WHERE patient_id = :pid 
                     ORDER BY start_time DESC NULLS LAST, id ASC
-                    LIMIT 5
+                    LIMIT 3
                 """),
                 {"pid": pid},
             ).fetchall()
@@ -506,52 +575,36 @@ def export_context_packs(
                     "sex": p["sex"],
                     "meds": p["active_medications"],
                     "disorders": p["disorders"],
-                    "recent_labs": p["recent_labs"][:6],
-                    "upcoming_or_recent_encounters": p["upcoming_or_recent_encounters"][:3],
+                    "recent_labs": p["recent_labs"],
+                    "upcoming_or_recent_encounters": p["upcoming_or_recent_encounters"],
                     "assigned_quota_tag": p["assigned_quota_tag"],
                     "scenario_id": p["scenario_id"],
                     "key_lab_concept": p["key_lab_concept"],
                 }
                 bf.write(json.dumps(trimmed) + "\n")
 
-    return packs
-
-
-def print_quota_and_key_concepts(packs: list[dict[str, Any]]) -> None:
-    """Print quota table and key lab concept distribution."""
-    counts = Counter(p["assigned_quota_tag"] for p in packs)
-    print("\n=== QUOTA TABLE ===")
-    print(f"{'Intent':<24} | {'Routine':<8} | {'Soon':<8} | {'Urgent':<18} | {'Total':<8}")
-    print("-" * 75)
-    total_routine = 0
-    total_soon = 0
-    total_urgent = 0
-    for intent in REAL_INTENTS:
-        r = counts.get(f"{intent}:routine", 0)
-        s = counts.get(f"{intent}:soon", 0)
-        # Check standard urgent or stress_test
-        u = counts.get(f"{intent}:urgent", 0) + counts.get(f"{intent}:urgent:stress_test", 0)
-        tot = r + s + u
-        total_routine += r
-        total_soon += s
-        total_urgent += u
-        u_label = f"{u} (stress)" if counts.get(f"{intent}:urgent:stress_test", 0) > 0 else f"{u}"
-        print(f"{intent:<24} | {r:<8} | {s:<8} | {u_label:<18} | {tot:<8}")
-    print("-" * 75)
-    print(f"{'Total':<24} | {total_routine:<8} | {total_soon:<8} | {total_urgent:<18} | {len(packs):<8}")
-
-    print("\n=== PATIENT KEY LAB CONCEPTS ===")
-    for p in packs:
-        print(f"{p['scenario_id']} ({p['patient_id'][:8]}): {p['assigned_quota_tag']:<35} -> Key Concept: {p['key_lab_concept']}")
+    return packs, total_excluded_plausibility
 
 
 def main():
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     print(f"Exporting context packs from {SHORTLIST_FILE}...")
-    packs = export_context_packs()
+    packs, excluded = export_context_packs()
     print(f"Row count: {len(packs)}")
-    print_quota_and_key_concepts(packs)
+    print(f"Count of excluded out-of-range lab rows: {excluded}")
+
+    # Check key_lab_concept inclusion across all 60 packs
+    all_included = True
+    missing_count = 0
+    for p in packs:
+        kc = p["key_lab_concept"]
+        has_it = any(extract_key_concept(l["concept"]) == kc for l in p["recent_labs"])
+        if not has_it:
+            all_included = False
+            missing_count += 1
+
+    print(f"Check: Key lab concept included in all {len(packs)} packs: {all_included} (missing={missing_count})")
 
 
 if __name__ == "__main__":

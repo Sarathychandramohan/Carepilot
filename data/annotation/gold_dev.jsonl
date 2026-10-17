@@ -1,0 +1,1 @@
+{"query_id": "GS-0001", "scenario_id": "S0001", "patient_id": "062d51e6-50d3-3fdf-dc51-4874850033ec", "query_text": "What should I do if I missed my morning dose of Furosemide?", "intent_label": "medication_query", "urgency_label": "urgent", "referenced_fact": "Furosemide", "split": "dev", "tier": "gold", "requires_patient_context": true}

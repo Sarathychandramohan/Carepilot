@@ -1,0 +1,1 @@
+{"query_id": "GS-0002", "scenario_id": "S0002", "patient_id": "070cf91b-f623-772b-48f4-4088b69516f6", "query_text": "Can you explain my recent glucose test result of 98.2 mg/dL?", "intent_label": "lab_result_query", "urgency_label": "routine", "referenced_fact": "Glucose", "split": "test", "tier": "gold", "requires_patient_context": true}
