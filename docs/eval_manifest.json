@@ -1,7 +1,7 @@
 {
   "manifest_version": "1.0.0",
   "evaluation_tag": "freeze-eval",
-  "git_commit": "4ccb103591cd2f81ace1924fd1a15b463e92d10b",
+  "git_commit": "1bbd6015dc4801e574ce3896a6e9bd57609d23c0",
   "python_version": "3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]",
   "package_versions": {
     "torch": "2.14.0",
