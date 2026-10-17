@@ -227,3 +227,16 @@ FROM consultations WHERE is_eval = true GROUP BY eval_run_id;
 
 - **T7**: `doctor_action`, `edit_distance_chars`, `edit_distance_words` must be populated by real human reviewers for **≥ 30** `is_eval=true` consultations from an RQ3 run. Code will gate on `count(doctor_action) >= 30`.
 - **T6**: Real per-consultation citation-source tagging must be implemented in `orchestrator.py` (tracking EHR vs KB origin per citation), with **≥ 30** non-`dry-run-mock` consultations in the database.
+
+---
+
+## Decision D-C3: Sealing Gold Synthetic Pilot Labels (2026-10-17)
+
+- **Timestamp:** 2026-10-17T12:23:28+05:30
+- **Artifact:** `data/queries/gold_synthetic_pilot_labels_sealed.csv`
+- **Source:** Pilot gold synthetic candidate dataset (`data/annotation/gold_synthetic_candidate.jsonl`, 60 queries: GS-0001 through GS-0060)
+- **Schema:** `query_id,intent,urgency,needs_ehr`
+- **Total Records:** 60
+- **SHA-256 Hash:** `dbc9649778c053a9dcdbf42dd642be02c2cbd17693d4a8605f8b42e4f874a619`
+- **Immutability Contract:** These baseline author labels are permanently sealed and must never be edited directly. Any clinician review feedback, corrections, or post-hoc label adjudications must be stored in a separate adjudication file (`data/annotation/adjudicated_pilot_labels.csv`).
+
