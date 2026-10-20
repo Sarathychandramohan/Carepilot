@@ -14,7 +14,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-import psycopg2
+import psycopg
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -58,13 +58,13 @@ RENAME_COLUMNS = [
 
 
 def run_migration() -> None:
-    dsn = settings.db_url.replace("postgresql+psycopg://", "postgresql://").replace("postgresql+psycopg2://", "postgresql://")
+    dsn = settings.db_url.replace("postgresql+psycopg://", "postgresql://")
 
     print("=" * 60)
     print("CarePilot AI — Pillar B DB Migration")
     print("=" * 60)
 
-    conn = psycopg2.connect(dsn)
+    conn = psycopg.connect(dsn)
     conn.autocommit = True
     with conn:
         with conn.cursor() as cur:

@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useWorkflowStore } from '../services/mock/mockWorkflow';
 import { consultationApi, BackendConsultationDetail } from '../services/api/consultationApi';
 import { Dialog } from '@headlessui/react';
-import { ArrowUpRight, ArrowDownRight, ExternalLink, AlertCircle, FileText, CheckCircle2, ChevronLeft, Save, Pencil, Sparkles, RotateCcw, ShieldAlert, Cpu } from 'lucide-react';
+import { ArrowUpRight, ArrowDownRight, ExternalLink, AlertCircle, FileText, CheckCircle2, ChevronLeft, Save, Pencil, Sparkles, RotateCcw, ShieldAlert, Cpu, Volume2, Globe } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { cn } from '../utils/cn';
 
@@ -44,6 +44,8 @@ export function ConsultationReviewPage() {
   const [backendConsultation, setBackendConsultation] = useState<BackendConsultationDetail | null>(null);
   const [reviewStartTime] = useState(Date.now());
   const [selectedCategories, setSelectedCategories] = useState<Record<string, boolean>>({ no_change: true });
+  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
   
   useEffect(() => {
     if (id) {
@@ -91,6 +93,7 @@ export function ConsultationReviewPage() {
     threadStatus: backendConsultation!.thread_status as any,
     urgency: backendConsultation!.urgency_final,
     intent: backendConsultation!.intent as any,
+    language: backendConsultation!.language || 'en',
     messages: [{ id: 'm1', consultationId: backendConsultation!.id, role: 'patient' as const, content: backendConsultation!.query_text, timestamp: backendConsultation!.created_at }],
     createdAt: backendConsultation!.created_at,
     updatedAt: backendConsultation!.created_at,
@@ -124,6 +127,28 @@ export function ConsultationReviewPage() {
   const isManualRequired = backendConsultation?.validation_status === 'manual_required' || consultation?.validationStatus === 'manual_required';
   const originalDraftText = (backendConsultation?.ai_draft?.sentences ? backendConsultation.ai_draft.sentences.map(s => s.text).join(' ') : consultation?.aiDraft?.content) || '';
   const isEdited = draftContent.trim() !== originalDraftText.trim();
+
+  const handleSpeakAudio = async () => {
+    const text = draftContent || backendConsultation?.final_response || '';
+    if (!text) return;
+    setIsPlayingAudio(true);
+    try {
+      if (!audioUrl) {
+        const url = await consultationApi.synthesizeAudio?.(text, 'en-US-JennyNeural');
+        if (url) setAudioUrl(url);
+      }
+      if (audioUrl) {
+        const audio = new Audio(audioUrl);
+        audio.play();
+        audio.onended = () => setIsPlayingAudio(false);
+      }
+    } catch (err: any) {
+      console.warn('TTS playback failed:', err);
+      toast('Text-to-speech unavailable');
+    } finally {
+      setIsPlayingAudio(false);
+    }
+  };
 
   const handleApprove = async (isNext: boolean) => {
     const durationSeconds = Math.max(1, Math.round((Date.now() - reviewStartTime) / 1000));
@@ -207,6 +232,12 @@ export function ConsultationReviewPage() {
         <div className="text-sm text-text-muted flex items-center">
           <FileText className="w-4 h-4 mr-2" />
           Intent: {effectiveConsultation.intent?.replace('_', ' ') || 'General Query'}
+          {effectiveConsultation.language && (
+            <span className="ml-2 flex items-center space-x-1">
+              <Globe className="w-3 h-3" />
+              <span className="text-[10px] font-bold uppercase">{effectiveConsultation.language}</span>
+            </span>
+          )}
         </div>
       </div>
 
@@ -504,6 +535,21 @@ export function ConsultationReviewPage() {
             className="px-4 py-2 text-white bg-primary rounded-md hover:bg-blue-700 font-bold transition-colors shadow-sm flex items-center"
           >
             <CheckCircle2 className="w-4 h-4 mr-2" /> Approve & Send
+          </button>
+          <button 
+            onClick={handleSpeakAudio}
+            className="px-4 py-2 text-primary border border-primary rounded-md hover:bg-blue-50 font-medium transition-colors flex items-center disabled:opacity-50"
+            disabled={isPlayingAudio}
+          >
+          {isPlayingAudio ? (
+            <span className="flex items-center">
+              <Volume2 className="w-3 h-3 mr-1 animate-spin" />
+              <span className="text-[10px]">Playing...</span>
+            </span>
+          ) : (
+            <Volume2 className="w-4 h-4 mr-2" />
+          )}
+          Speak
           </button>
         </div>
       </div>

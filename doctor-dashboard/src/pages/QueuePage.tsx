@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useWorkflowStore } from '../services/mock/mockWorkflow';
 import { useNavigate } from 'react-router-dom';
-import { Search, AlertOctagon } from 'lucide-react';
+import { Search, AlertOctagon, Globe } from 'lucide-react';
 import { UrgencyLevel, ConsultationStatus, Consultation } from '../types';
 import { consultationApi } from '../services/api/consultationApi';
 
@@ -27,6 +27,7 @@ export function QueuePage() {
           status: 'doctor_review',
           threadStatus: 'awaiting_doctor',
           intent: r.intent as any,
+          language: r.language,
           urgency: r.urgency_final,
           validationStatus: r.validation_status,
           hasDraft: r.has_draft,
@@ -151,6 +152,7 @@ export function QueuePage() {
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider">Patient</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider">Query / Thread</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider">Lang</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider">Urgency & Alerts</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider">Status</th>
                 <th className="px-6 py-3 text-right text-xs font-medium text-text-muted uppercase tracking-wider">Action</th>
@@ -180,6 +182,12 @@ export function QueuePage() {
                           Multi-Turn Thread ({c.turnCount} turns)
                         </span>
                       )}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="flex items-center space-x-1">
+                        <Globe className="w-3 h-3 text-text-muted shrink-0" />
+                        <span className="text-xs font-medium text-text-navy uppercase">{c.language || 'en'}</span>
+                      </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex flex-col items-start space-y-1">

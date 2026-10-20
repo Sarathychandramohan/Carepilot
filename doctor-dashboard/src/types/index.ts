@@ -197,6 +197,7 @@ export interface Consultation {
   citationEntailmentScore?: number;
   generationLatencyMs?: number;
   ablationArm?: string;
+  language?: string;
   hasDraft?: boolean;
   aiDraftJson?: any;
   aiAnalysis?: AIAnalysis;

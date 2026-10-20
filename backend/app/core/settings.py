@@ -10,6 +10,7 @@ from pydantic_settings import BaseSettings
 from pathlib import Path
 
 ENV_FILE = Path(__file__).resolve().parents[3] / "backend" / ".env"
+PROJECT_ROOT = ENV_FILE.parent.parent
 
 
 class Settings(BaseSettings):
@@ -30,17 +31,23 @@ class Settings(BaseSettings):
     # ── Knowledge Base (Pillar A) ─────────────────────────────────────────────
     kb_snapshot_id: str = "v5"
     chroma_collection: str = "carepilot_kb_v5"
-    bm25_index_path: str = "D:/CarePilotAI/rag_knowledge/bm25_index_v5.pkl"
+    bm25_index_path: str = str(PROJECT_ROOT / "rag_knowledge" / "bm25_index_v5.pkl")
     embedding_model: str = "BAAI/bge-small-en-v1.5"
 
     # ── LLM — Local (Pillar B) ────────────────────────────────────────────────
-    llm_local_model_path: str = "D:/CarePilotAI/models/qwen-4b-q4.gguf"
+    llm_local_model_path: str = str(PROJECT_ROOT / "models" / "qwen-4b-q4.gguf")
     llm_local_n_gpu_layers: int = 20        # Layers offloaded to RTX 2050
     llm_local_max_tokens: int = 1024
 
     # ── LLM — Gemini API Fallback (Pillar B) ─────────────────────────────────
     gemini_api_key: str = ""               # Set in backend/.env — never hardcode
     gemini_model: str = "gemini-1.5-flash"
+    ollama_url: str = "http://127.0.0.1:11434"
+    ollama_model: str = "qwen3:8b"
+    nvidia_api_key: str = ""
+    nvidia_model: str = "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning"
+    nvidia_url: str = "https://integrate.api.nvidia.com/v1/chat/completions"
+    nvidia_fallback_enabled: bool = False
 
     # ── Retrieval Configuration (Pillar B P5) ────────────────────────────────
     kb_dense_top_k: int = 15              # ChromaDB candidate pool size
@@ -63,7 +70,7 @@ class Settings(BaseSettings):
         if self.database_url:
             return self.database_url
         return (
-            f"postgresql+psycopg2://{self.db_user}:{self.db_password}"
+            f"postgresql+psycopg://{self.db_user}:{self.db_password}"
             f"@{self.db_host}:{self.db_port}/{self.db_name}"
         )
 

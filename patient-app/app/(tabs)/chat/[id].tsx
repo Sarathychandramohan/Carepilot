@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, ActivityIndicator, TouchableOpacity, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useMockWorkflow } from '../../../services/mock/mockWorkflow';
 import { useAuthStore } from '../../../store/authStore';
 import { consultationApi } from '../../../services/api/consultationApi';
@@ -17,6 +17,9 @@ export default function ConsultationDetailScreen() {
   
   const [followUpText, setFollowUpText] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // Poll backend for consultation delivery status (clinical HITL safe gate)
   useEffect(() => {
@@ -29,6 +32,13 @@ export default function ConsultationDetailScreen() {
         if (!isMounted) return;
         if (res && res.thread_status === 'delivered' && res.final_response) {
           approveConsultation(id, res.final_response);
+          // Auto-generate TTS audio for the delivered response
+          try {
+            const url = await consultationApi.synthesizeAudio(res.final_response, 'en-US-JennyNeural');
+            setAudioUrl(url);
+          } catch (ttsErr) {
+            console.warn('TTS auto-play failed:', ttsErr);
+          }
         }
       } catch (err) {
         // Safe silent fail if offline or not yet delivered
@@ -43,23 +53,29 @@ export default function ConsultationDetailScreen() {
     };
   }, [id, user]);
 
-  if (!consultation) {
-    return (
-      <View className="flex-1 items-center justify-center bg-background p-6">
-        <Feather name="alert-circle" size={48} color={COLORS.TEXT_SECONDARY} />
-        <Text className="text-textPrimary font-bold text-lg mt-4">Consultation Not Found</Text>
-        <TouchableOpacity 
-          className="mt-6 bg-primary px-6 py-3 rounded-xl"
-          onPress={() => router.push('/(tabs)/chat')}
-        >
-          <Text className="text-white font-medium">Back to Consultations</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+  const handleSpeakResponse = async () => {
+    if (!consultation?.finalResponse) return;
+    setIsPlayingAudio(true);
+    try {
+      if (!audioUrl) {
+        const url = await consultationApi.synthesizeAudio(consultation.finalResponse, 'en-US-JennyNeural');
+        setAudioUrl(url);
+      }
+      if (audioUrl) {
+        const audio = new Audio(audioUrl);
+        audioRef.current = audio;
+        audio.play();
+        audio.onended = () => setIsPlayingAudio(false);
+      }
+    } catch (err: any) {
+      console.warn('TTS failed:', err);
+    } finally {
+      setIsPlayingAudio(false);
+    }
+  };
 
   const handleSendFollowUp = async () => {
-    if (!followUpText.trim() || isSubmitting) return;
+    if (!followUpText.trim() || isSubmitting || !consultation) return;
     setIsSubmitting(true);
     const text = followUpText.trim();
     setFollowUpText('');
@@ -75,6 +91,7 @@ export default function ConsultationDetailScreen() {
   };
 
   const renderStatusBanner = () => {
+    if (!consultation) return null;
     switch (consultation.status) {
       case 'sending':
         return (
@@ -131,6 +148,18 @@ export default function ConsultationDetailScreen() {
                 <Text className="text-success font-bold text-sm">Doctor Approved Response Available</Text>
                 <Text className="text-textSecondary text-xs">Reviewed by Dr. Amelia Smith · Nephrologist</Text>
               </View>
+              {/* Audio Playback Button */}
+              <TouchableOpacity 
+                className="bg-success p-2 rounded-lg"
+                onPress={handleSpeakResponse}
+                disabled={isPlayingAudio}
+              >
+                {isPlayingAudio ? (
+                  <ActivityIndicator size="small" color="white" />
+                ) : (
+                  <Feather name="volume-2" size={20} color="white" />
+                )}
+              </TouchableOpacity>
             </View>
           </View>
         );
@@ -138,6 +167,21 @@ export default function ConsultationDetailScreen() {
         return null;
     }
   };
+
+  if (!consultation) {
+    return (
+      <View className="flex-1 items-center justify-center bg-background p-6">
+        <Feather name="alert-circle" size={48} color={COLORS.TEXT_SECONDARY} />
+        <Text className="text-textPrimary font-bold text-lg mt-4">Consultation Not Found</Text>
+        <TouchableOpacity 
+          className="mt-6 bg-primary px-6 py-3 rounded-xl"
+          onPress={() => router.push('/(tabs)/chat')}
+        >
+          <Text className="text-white font-medium">Back to Consultations</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 
   return (
     <KeyboardAvoidingView 

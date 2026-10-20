@@ -88,6 +88,11 @@ class ConsultRequest(BaseModel):
         default=False,
         description="If True, marks query as evaluation/benchmark run and excludes from clinical doctor queue",
     )
+    language: str = Field(
+        default="en",
+        pattern="^(en|multilingual)$",
+        description="Classifier embedding mode: en or multilingual",
+    )
 
 
 class ConsultResponse(BaseModel):
@@ -184,6 +189,7 @@ async def submit_consultation(
         ablation_config=req.ablation_config,
         edit_memory=req.edit_memory,
         is_eval=req.is_eval,
+        language=req.language,
     )
 
     return ConsultResponse(
@@ -308,6 +314,7 @@ async def submit_doctor_review(
             status_code=422,
             detail=f"Invalid doctor_action '{req.doctor_action}'. Must be one of ('approved', 'edited', 'rejected')",
         )
+    canonical_action = action_map[action_raw]
     row = resolve_consultation(db, consultation_id)
     if not row:
         raise HTTPException(status_code=404, detail="Consultation not found")

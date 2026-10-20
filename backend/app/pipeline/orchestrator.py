@@ -140,6 +140,7 @@ def run_pipeline(
     edit_memory: bool = False,
     is_eval: bool = False,
     eval_run_id: int | None = None,
+    language: str = "en",
 ) -> Consultation:
     """
     Full B1→B6 pipeline orchestrator.
@@ -152,6 +153,7 @@ def run_pipeline(
         edit_memory:     If True, inject D6 prior approved responses into B4 prompt
         is_eval:         Authorization flag required for eval-only ablations like no_classifier
         eval_run_id:     Optional FK linking row to eval_runs table for Pillar C harness
+        language:        Language code for intent classification (default: "en")
 
     Returns:
         Consultation ORM object (committed to DB)
@@ -193,7 +195,7 @@ def run_pipeline(
     consultation.normalization_trace = norm.get("resolved_concepts", [])
 
     # ── B2: Intent classification — ALWAYS runs in every arm (C11) ───────────
-    intent_result = classify_intent(query_text)
+    intent_result = classify_intent(query_text, language=language)
     consultation.intent = intent_result["intent"]
     consultation.intent_prob = intent_result["intent_confidence"]
     consultation.intent_probs_json = intent_result["intent_probs"]

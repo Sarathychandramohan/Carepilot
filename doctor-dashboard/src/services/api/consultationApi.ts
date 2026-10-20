@@ -5,6 +5,7 @@ export interface QueueItemResponse {
   patient_id: string;
   query_text: string;
   intent: string;
+  language?: string;
   urgency_final: 'routine' | 'soon' | 'urgent';
   is_high_priority: boolean;
   is_red_flag_override: boolean;
@@ -59,6 +60,7 @@ export interface BackendConsultationDetail {
   patient_id: string;
   query_text: string;
   intent?: string;
+  language?: string;
   urgency_final?: 'routine' | 'soon' | 'urgent';
   validation_status?: 'passed' | 'passed_with_warning' | 'passed_with_outlier_caveat' | 'manual_required';
   thread_status: string;
@@ -119,4 +121,24 @@ export const consultationApi = {
       alertReason: string;
       createdAt: string;
     }>>('/api/notifications/doctor/alerts'),
+
+  // ── Text-to-Speech ──────────────────────────────────────────────
+  synthesizeAudio: async (text: string, voice?: string) => {
+    const API_BASE_URL = (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_API_URL) || 'http://localhost:8000';
+    const response = await fetch(`${API_BASE_URL}/api/voice/synthesize`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-User-Role': 'doctor',
+      },
+      body: JSON.stringify({ text, voice: voice || 'en-US-JennyNeural' }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`TTS failed: HTTP ${response.status}`);
+    }
+
+    const blob = await response.blob();
+    return URL.createObjectURL(blob);
+  },
 };

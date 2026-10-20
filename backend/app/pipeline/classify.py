@@ -5,8 +5,9 @@ Runtime Intent and Urgency Classifier Module (S6 / P4)
 Infers clinical intent and urgency acuity using pre-trained calibrated models.
 
 Public API (Pillar B):
-  classify_intent(query_text)               — always runs in every ablation arm
-  classify_urgency(query_text, embedding)   — skipped in no_classifier arm only
+  classify_intent(query_text, language)               — always runs in every ablation arm
+  classify_urgency(query_text, embedding)             — skipped in no_classifier arm only
+  classify_query(query_text, language)                — calls both in sequence (unchanged API)
 
 Legacy wrapper (retained for train_classifiers.py, evaluate_classifiers_rq2.py):
   classify_query(query_text)                — calls both in sequence (unchanged API)
@@ -29,21 +30,30 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 MODELS_DIR = PROJECT_ROOT / "models"
 INTENT_MODEL_PATH = MODELS_DIR / "intent_classifier.pkl"
 URGENCY_MODEL_PATH = MODELS_DIR / "urgency_classifier.pkl"
-EMBEDDING_MODEL_NAME = "BAAI/bge-small-en-v1.5"
 
-_EMBEDDER = None
+# Embedding models by language
+EMBEDDING_MODEL_NAME_EN = "BAAI/bge-small-en-v1.5"
+EMBEDDING_MODEL_NAME_MULTILINGUAL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+
+# Language config: model name per language code
+EMBEDDING_MODELS: dict[str, str] = {
+    "en": EMBEDDING_MODEL_NAME_EN,
+    "multilingual": EMBEDDING_MODEL_NAME_MULTILINGUAL,
+    "auto": EMBEDDING_MODEL_NAME_MULTILINGUAL,  # fallback when lang detected
+}
+
+_EMBEDDERS: dict[str, SentenceTransformer] = {}
 _INTENT_DATA = None
 _URGENCY_DATA = None
 
 
-def get_embedder() -> SentenceTransformer:
-    global _EMBEDDER
-    if _EMBEDDER is None:
+def get_embedder(model_name: str = EMBEDDING_MODEL_NAME_EN) -> SentenceTransformer:
+    if model_name not in _EMBEDDERS:
         try:
-            _EMBEDDER = SentenceTransformer(EMBEDDING_MODEL_NAME, local_files_only=True)
+            _EMBEDDERS[model_name] = SentenceTransformer(model_name, local_files_only=True)
         except Exception:
-            _EMBEDDER = SentenceTransformer(EMBEDDING_MODEL_NAME)
-    return _EMBEDDER
+            _EMBEDDERS[model_name] = SentenceTransformer(model_name)
+    return _EMBEDDERS[model_name]
 
 
 def load_intent_model():
@@ -76,9 +86,19 @@ def load_urgency_model():
 # Public Pillar B API — split functions
 # ---------------------------------------------------------------------------
 
-def classify_intent(query_text: str) -> dict[str, Any]:
+def classify_intent(
+    query_text: str,
+    language: str = "en",
+) -> dict[str, Any]:
     """
     Always runs in every ablation arm (full / no_ehr / no_classifier / unified_context).
+
+    Args:
+        query_text: Raw patient query text.
+        language: Language code. Currently supports:
+                  "en"  -> English embedding model (BAAI/bge-small-en-v1.5)
+                  "multilingual" -> Multilingual model
+                  default "en" if unknown.
 
     Returns:
         intent            : str     — one of the 5 supported intent labels
@@ -86,8 +106,14 @@ def classify_intent(query_text: str) -> dict[str, Any]:
         intent_probs      : dict    — per-class posteriors
         route             : str     — 'draft' | 'unsupported'
         embedding         : ndarray — reusable by classify_urgency() to avoid double-encode
+        detected_language : str     — language code that was used
     """
-    embedder = get_embedder()
+    # Determine embedding model based on language
+    embed_model_name = EMBEDDING_MODELS.get(
+        language, EMBEDDING_MODEL_NAME_EN
+    )
+
+    embedder = get_embedder(embed_model_name)
     intent_data = load_intent_model()
     urgency_data = load_urgency_model()  # tau_intent is stored in urgency pkl
 
@@ -132,6 +158,7 @@ def classify_intent(query_text: str) -> dict[str, Any]:
         "is_dual_intent": is_dual_intent,
         "secondary_intent": secondary_intent,
         "embedding": emb,  # pass this to classify_urgency() to skip re-encoding
+        "detected_language": language,
     }
 
 
@@ -194,14 +221,17 @@ def classify_urgency(
 # Legacy wrapper — unchanged API for train_classifiers.py / evaluate_classifiers_rq2.py
 # ---------------------------------------------------------------------------
 
-def classify_query(query_text: str) -> dict[str, Any]:
+def classify_query(
+    query_text: str,
+    language: str = "en",
+) -> dict[str, Any]:
     """
     Convenience wrapper that calls classify_intent() then classify_urgency()
     sharing the computed embedding. Retained so all existing training and
     evaluation scripts remain unmodified. The orchestrator calls the split
     functions directly.
     """
-    intent_result = classify_intent(query_text)
+    intent_result = classify_intent(query_text, language=language)
     urgency_result = classify_urgency(query_text, embedding=intent_result["embedding"])
 
     return {

@@ -7,6 +7,8 @@ import uuid
 from backend.app.api.consult import router as consult_router
 from backend.app.api.queue import router as queue_router
 from backend.app.api.patient import router as patient_router, patients_router
+from backend.app.api.voice import router as voice_router
+from backend.app.core.settings import settings
 
 # Stand-in FastAPI router implementation for CarePilot AI Modules 1-4
 app = FastAPI(
@@ -17,7 +19,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=settings.cors_origins_list,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -28,6 +30,7 @@ app.include_router(consult_router)
 app.include_router(queue_router)
 app.include_router(patient_router)
 app.include_router(patients_router)
+app.include_router(voice_router)
 
 # -----------------------------------------------------------------------------
 
